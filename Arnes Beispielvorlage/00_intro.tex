@@ -1,0 +1,88 @@
+\begin{titlepage}
+	\begin{picture}(0,0)
+	\put(-91,-50){\includegraphics*{./bilder/kopfzeile}}
+	\end{picture}
+	
+	\begin{center}
+		\vfill
+		
+		{\huge\textsc{Diplomarbeit}}
+		\vfill
+		
+		zum Thema \\[0.5cm]
+			
+		{\large \LaTeX-Vorlage für Diplomarbeiten am Institut für Automatisierungstechnik der Technischen Universität Dresden}
+		\vfill
+		
+		\begin{tabular}{rl}
+			vorgelegt von 	& Max\,Mustermann\\
+			geboren am 			& 02.06.1983 in Dresden\\ 
+		\end{tabular}
+		\vfill
+		
+		{\large zur Erlangung des akademischen Grades} \\[0.2cm]
+		
+		{\LARGE Diplomingenieur\\
+						(Dipl.-Ing.)}
+		\vfill
+		
+		\begin{tabular}{rl}
+			Betreuer: 												& Dipl.-Ing.\,\,B.\,Treuer,\\
+																				& Dr.-Ing.\,\,S.\,Onstiger\\
+			Verantwortlicher									& \\
+			Hochschullehrer: 									& Prof.\,Dr.\,techn.\ K.\,Janschek\\
+			Tag der Einreichung: 							& 7. August 2008\\
+		\end{tabular}
+	\end{center}
+\end{titlepage}
+
+\clearpage
+\begingroup
+	\pagestyle{empty}	%Im Vorspann nur Seiten ohne Kopf- und Fußzeile (außer Abschnittsbeginn)
+	\renewcommand*{\chapterpagestyle}{empty} %Auch Abschnittsbeginn ohne Kopf- und Fußzeile
+
+	%\includepdf[offset=15pt 9pt]{bilder/aufgabenstellung.pdf}
+	%\includepdf[offset=15pt 0]{bilder/kurzfassung.pdf}
+	%\includepdf[offset=15pt 0]{bilder/abstract.pdf}
+	\tableofcontents
+	\clearpage
+	\listoffigures
+	\clearpage
+	\listoftables
+	\clearpage
+	
+%	%Symbole und Abkürzungen normalerweise im Text definiert, da wo sie gebraucht werden. Hier außnahmsweise vorher:
+%	\nomenclature[yx ]{$a_{BA}$}{Anteil der ausgegebenen Nullen (kein Speicherzugriff)}
+%	\nomenclature[yx ]{$a_{BE}$}{Anteil der eingefügten Nullen (kein Speicherzugriff)}
+%	\nomenclature[yx ]{$a_{SA}$}{Anteil der geschriebenen Werte (Speicherzugriff)}
+%	\nomenclature[yx ]{$a_{SE}$}{Anteil der eingelesenen Werte (Speicherzugriff)}
+%	\nomenclature[yx ]{$f_{FPGA}$}{Taktfrequenz des FPGA}
+%	\nomenclature[yx ]{$\tilde{f}_{\text{Praes}}$}{geschätzte Bearbeitungsfrequenz im Präsentationsmodus (d.\,h. ohne Vorhersage)}
+%	\nomenclature[yx ]{$\tilde{f}_{\text{Praez}}$}{geschätzte Bearbeitungsfrequenz im Präzisionsmodus (d.\,h. mit Vorhersage)}
+%	\nomenclature[yx ]{$f(k,l)$}{Originalsignal (Signalbereich)}
+%	\nomenclature[yx ]{$F(m,n)$}{Originalsignal (Frequenzbereich)}
+%	\nomenclature[yx ]{$g(k,l)$}{Originalsignal (Signalbereich)}
+%	\nomenclature[yx ]{$G(m,n)$}{Originalsignal (Frequenzbereich)}
+%	\nomenclature[yx ]{$G^*(m,n)$}{Originalsignal, konjugiert komplex (Frequenzbereich)}
+%	\nomenclature[yx ]{$k$}{Laufvariable Korrelationsfunktion, Zeilenrichtung}
+%	\nomenclature[yx ]{$l$}{Laufvariable Korrelationsfunktion, Spaltenrichtung}
+%	\nomenclature[yx ]{$m$}{Laufvariable diskretes Signal, Zeilenrichtung}
+%	\nomenclature[yx ]{$M$}{Größe eines diskreten Segments, Zeilenrichtung}
+%	\nomenclature[yx ]{$n$}{Laufvariable diskretes Signal, Spaltenrichtung}
+%	\nomenclature[yx ]{$N$}{Größe eines diskreten Segments, Spaltenrichtung}
+%
+%	\nomenclature[ba ]{1D}{eindimensional(e)}
+%	\nomenclature[ba ]{2D}{zweidimensional(e)}
+%	\nomenclature[ba ]{A}{Anforderung}
+%	\nomenclature[ba ]{Altera\TReg}{FPGA Hersteller}
+%	\nomenclature[ba ]{Base-TX}{Ethernetspezifikation}
+%	\nomenclature[ba ]{DIP}{Bildprozessor ("`Digital Image Processor"')}
+%	\nomenclature[ba ]{E/A}{Ein(gang) / Aus(gang)}
+%	\nomenclature[ba ]{EPP}{Parallelportspezifikation ("`Enhanced Parallel Port"')}
+%	\nomenclature[ba ]{FFT}{Fast-Fourier-Transformation}
+%
+%	%\markboth{\nomname}{\nomname}
+%	
+%	%Dieser Befehl setzt an diese Stelle das Nomenklaturverzeichnis.
+%	\printnomenclature[2.3cm]
+\endgroup

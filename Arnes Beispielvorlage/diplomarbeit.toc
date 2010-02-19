@@ -1,0 +1,3 @@
+\select@language {ngerman}
+\contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}
+\contentsline {chapter}{Literaturverzeichnis}{3}{appendix*.4}
