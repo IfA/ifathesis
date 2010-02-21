@@ -1,5 +1,3 @@
-%!TEX root = /Users/stefan/Desktop/de.tud.et.ifa.latex.ifathesis/test-template.tex
-
 % Copyright text goes here...
 %
 %
@@ -12,10 +10,18 @@
 \ProvidesClass{\filename}[\filedate DA/SA-Klasse des Instituts fuer Automatisierungstechnik, (c) by Stefan Hennig, Arne Sonnenburg]
 \typeout{Class: '\filename' Version \fileversion, Standard DA/SA-Klasse des Instituts fuer Automatisierungstechnik.}
 
+\newif\if@useListOfFigures\@useListOfFiguresfalse
+\DeclareOption{listoffigures}{\@useListOfFigurestrue}
+
+\newif\if@useListOfTables\@useListOfTablesfalse
+\DeclareOption{listoftables}{\@useListOfTablestrue}
+
+\ProcessOptions\relax
+
 % Lade Basisklasse der Vorlage
 \LoadClass[
 	fontsize=12pt,			% Grundschriftgröße
-	a4paper,				% Papiergröße
+	a4paper,					% Papiergröße
 	%BCOR=12mm,				% Binderandgröße für DRUCK ANSCHALTEN!!!
 	DIV=9,					% Teil der Seite, der als Seitenrand berücksichtigt wird (auch =calc mgl.):
 							% Z.B. DIV=10: Randbreite Oben und Mitte 1/10, Unten und Außen 2/10 der Seite.
@@ -24,16 +30,16 @@
 	headinclude=true,		% Gehört Kopfzeile eher zur Seite oder zum Rand?
 	footinclude=false,		% Gehört Fußzeile eher zur Seite oder zum Rand?
 	captions=tableheading,	% Tabellenabstände für TabellenÜBERschriften optimieren
-	twoside=false,			% Dokument zweiseitig?
+	twoside=true,			% Dokument zweiseitig?
 	headings=small,			% Relative Größe der Überschriften
 	bibliography=totoc,		% Literaturverzeichnis im Inhaltsverzeichnis referenziert
 	%chapterprefix,			% Schaltet die "Kapitel ..." Zeile ein
-	%appendixprefix,		% Schaltet die "Anhang ..." Zeile ein (inkompatibel mit der Definition weiter unten)
+	%appendixprefix,			% Schaltet die "Anhang ..." Zeile ein (inkompatibel mit der Definition weiter unten)
 	numbers=noenddot,		% Punkte nach Abschnittsnummern? (Weglassen = Automatik)
 							% Nach Duden im vorliegenden Bsp. falsch, da auch Buchstaben in Gliederung (Anhang).
 	pagesize,				% Schreibt die Seitengröße ins Seitenregister, so das DVI- und PDF-Seiten die richtige
 							% Größe haben.
-	svgnames				% Namensraum für xcolor Paket											
+	svgnames					% Namensraum für xcolor Paket											
 ]{scrbook}					% Basisklasse der Vorlage: Koma-Skrip Klasse analog zur book-Klasse.
 
 \RequirePackage[utf8]{inputenc}	% Eingabe von Umlauten ermöglichen.
@@ -124,7 +130,7 @@
 	\fi
 }																												
 
-																						
+\RequirePackage{ifthen}																			
 
 %%%%%
 % Jetzt müssen zunächst die variablen Angaben geladen werden
@@ -132,22 +138,35 @@
 \newcommand*{\@ifaAuthor}{Max Mustermann}
 \newcommand*{\@ifaAuthorBirthday}{01.01.1970}
 \newcommand*{\@ifaAuthorBirthplace}{Dresden}
-
-
 \newcommand*{\@ifaKeywords}{Komma-separierte, Liste, mit, Schlagwörtern, zum Thema, der Arbeit}
 \newcommand*{\@ifaTitle}{Titel der Arbeit}
-\newcommand*{\@ifaBetreuer}{Stefan Hennig}
-\newcommand*{\@ifaHochschullehrer}{Titel der Arbeit}
+\newcommand*{\@ifaSupervisorA}{Dipl.-Ing. Mein Trapez}
+\newcommand*{\@ifaSupervisorB}{Dr.-Ing. John Doe}
+\newcommand*{\@ifaSupervisorC}{}
+\newcommand*{\@ifaSupervisorD}{}
+\newcommand*{\@ifaSupervisorE}{}
+\newcommand*{\@ifaProfessor}{Titel der Arbeit}
+\newcommand*{\@ifaDayOfSubmission}{\today}
+\newcommand*{\@ifaAppendix}{GoHaigh2}
+\newcommand*{\@ifaReferences}{IPhei0Ox}
+\newcommand*{\@ifaSelfRelianceDeclaration}{Ooch8hoo}
 
 \newcommand*{\ifaThesis}[1]{\renewcommand*{\@ifaThesis}{#1}}
 \newcommand*{\ifaAuthor}[1]{\renewcommand*{\@ifaAuthor}{#1}}
+\newcommand*{\ifaAuthorBirthday}[1]{\renewcommand*{\@ifaAuthorBirthday}{#1}}
+\newcommand*{\ifaAuthorBirthplace}[1]{\renewcommand*{\@ifaAuthorBirthplace}{#1}}
 \newcommand*{\ifaKeywords}[1]{\renewcommand*{\@ifaKeywords}{#1}}
 \newcommand*{\ifaTitle}[1]{\renewcommand*{\@ifaTitle}{#1}}
-
-\newcommand{\ifaTitlepage} {
-
-}
-
+\newcommand*{\ifaSupervisorA}[1]{\renewcommand*{\@ifaSupervisorA}{#1}}
+\newcommand*{\ifaSupervisorB}[1]{\renewcommand*{\@ifaSupervisorB}{#1}}
+\newcommand*{\ifaSupervisorC}[1]{\renewcommand*{\@ifaSupervisorC}{#1}}
+\newcommand*{\ifaSupervisorD}[1]{\renewcommand*{\@ifaSupervisorD}{#1}}
+\newcommand*{\ifaSupervisorE}[1]{\renewcommand*{\@ifaSupervisorE}{#1}}
+\newcommand*{\ifaProfessor}[1]{\renewcommand*{\@ifaProfessor}{#1}}
+\newcommand*{\ifaDayOfSubmission}[1]{\renewcommand*{\@ifaDayOfSubmission}{#1}}
+\newcommand*{\ifaAppendix}[1]{\renewcommand*{\@ifaAppendix}{#1}}
+\newcommand*{\ifaReferences}[1]{\renewcommand*{\@ifaReferences}{#1}}
+\newcommand*{\ifaSelfRelianceDeclaration}[1]{\renewcommand*{\@ifaSelfRelianceDeclaration}{#1}}
 
 
 \AtBeginDocument{%
@@ -157,9 +176,9 @@
 	% pdf...: Setzten von Variablen die in den Eigenschaften der PDF-Datei angzeigt werden
 	% Weitere Optionen möglich - siehe Dokumentation des Paktes hyperref
 	\hypersetup{
-		linkcolor=DarkBlue,%
+		linkcolor=blue,%
 		urlcolor=blue,%
-		citecolor=DarkGreen,%
+		citecolor=green,%
 		pdftitle=\@ifaTitle,%
 		pdfauthor=\@ifaAuthor,%
 		pdfsubject=\@ifaTitle,%
@@ -168,46 +187,107 @@
 		pdfpagemode=UseOutlines	%Determines how the file is opening:
 		%UseNone, UseThumbs (show thumbnails), UseOutlines (show bookmarks), FullScreen, UseOC, UseAttachments
 	}
-    \setlength{\baselineskip}{2.4ex plus0.3ex minus0.2ex}%
-    \setlength{\parskip}{\baselineskip}%
-    \setlength{\parindent}{0mm}%
-    \raggedright%
+    \setlength{\parskip}{3mm}%
 
 	\frontmatter
+	
 	\begin{titlepage}
+		\hspace*{1cm}
 		\begin{picture}(0,0)
 		\put(-91,-50){\includegraphics*{kopfzeile.pdf}}
 		\end{picture}
+		
+		\hspace*{1cm}
+		\begin{minipage}{\textwidth}
 		\begin{center}
-			\vfill
-			{\huge\textsc{\@ifaThesis}}
-			\vfill
+			\vspace{3cm}
+
+			{\huge\textsc{\@ifaThesis}}\\[1cm]
 			zum Thema \\[0.5cm]
-			{\large \@ifaTitle}
-			\vfill
+			{\large \@ifaTitle}\\[2cm]
+
 			\begin{tabular}{rl}
 				vorgelegt von 	& \@ifaAuthor \\
-				geboren am 		& \@ifaAuthorBirthday in \@ifaAuthorBirthplace\\ 
+				geboren am 		& \@ifaAuthorBirthday\:in\:\@ifaAuthorBirthplace\\ 
 			\end{tabular}
-			\vfill
+			\vspace{2cm}
 
 			\ifthenelse{\equal{\@ifaThesis}{Diplomarbeit}}{
 				{\large zur Erlangung des akademischen Grades} \\[0.2cm]
-				{\LARGE Diplomingenieur\\(Dipl.-Ing.)}
-				\vfill
-			} {
+				{\LARGE Diplomingenieur\\[0.2cm](Dipl.-Ing.)}
+				\vspace{2cm}
+			}{
 				\vspace{4.5cm}
 			}
-
+		
 			\begin{tabular}{rl}
-				Betreuer: 												& Dipl.-Ing.\,\,B.\,Treuer,\\
-																					& Dr.-Ing.\,\,S.\,Onstiger\\
-				Verantwortlicher									& \\
-				Hochschullehrer: 									& Prof.\,Dr.\,techn.\ K.\,Janschek\\
-				Tag der Einreichung: 							& 7. August 2008\\
+				Betreuer: 
+				\ifthenelse{\equal{\@ifaSupervisorA}{}}{}{
+					& \@ifaSupervisorA \\
+					\ifthenelse{\equal{\@ifaSupervisorB}{}}{}{
+						& \@ifaSupervisorB \\
+						\ifthenelse{\equal{\@ifaSupervisorC}{}}{}{
+							& \@ifaSupervisorC \\
+							\ifthenelse{\equal{\@ifaSupervisorD}{}}{}{
+								& \@ifaSupervisorD \\
+								\ifthenelse{\equal{\@ifaSupervisorE}{}}{}{
+									& \@ifaSupervisorE \\
+								}
+							}
+						}
+					}
+				}
+				Verantwortlicher			& \\
+				Hochschullehrer: 		& \@ifaProfessor \\
+				Tag der Einreichung:		& \@ifaDayOfSubmission \\
 			\end{tabular}
 		\end{center}
+		\end{minipage}
 	\end{titlepage}
 
+	\clearpage
+	\begingroup
+		% Im Vorspann nur Seiten ohne Kopf- und Fuﬂzeile (auﬂer Abschnittsbeginn)
+		\pagestyle{empty}	
+		% Auch Abschnittsbeginn ohne Kopf- und Fuﬂzeile
+		\renewcommand*{\chapterpagestyle}{empty} 
+		
+		% Verzeichnisse
+		\tableofcontents
+		\clearpage
+		\if@useListOfFigures
+			\listoffigures
+			\clearpage
+		\fi
+		\if@useListOfTables
+			\listoftables
+			\clearpage
+		\fi
+	\endgroup
+	
+	\mainmatter
+
+	\pagestyle{scrheadings}
 }
 
+\AtEndDocument{
+	
+	\IfFileExists{\@ifaAppendix}{
+		\appendix
+		\input{\@ifaAppendix}
+	}{}
+
+	\backmatter
+	
+	% Im Abspann nur Seiten ohne Kopf- und Fuﬂzeile (auﬂer Abschnittsbeginn)
+	\pagestyle{empty}	
+	% Auch Abschnittsbeginn ohne Kopf- und Fuﬂzeile
+	\renewcommand*{\chapterpagestyle}{empty} 
+
+	\bibliographystyle{abbrvnat}
+	\bibliography{\@ifaReferences}
+	
+	\IfFileExists{\@ifaSelfRelianceDeclaration}{
+		\input{9ZZ_selbstst}
+	}{}
+}
