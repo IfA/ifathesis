@@ -16,77 +16,35 @@
 \newif\if@useListOfTables\@useListOfTablesfalse
 \DeclareOption{listoftables}{\@useListOfTablestrue}
 
+\newif\if@isReadyForPrint\@isReadyForPrintfalse
+\DeclareOption{print}{\@isReadyForPrinttrue}
+
 \ProcessOptions\relax
 
 % Lade Basisklasse der Vorlage
 \LoadClass[
-	fontsize=12pt,			% Grundschriftgröße
-	a4paper,					% Papiergröße
-	%BCOR=12mm,				% Binderandgröße für DRUCK ANSCHALTEN!!!
-	DIV=9,					% Teil der Seite, der als Seitenrand berücksichtigt wird (auch =calc mgl.):
-							% Z.B. DIV=10: Randbreite Oben und Mitte 1/10, Unten und Außen 2/10 der Seite.
-							% Regel: 60 bis 70 Zeichen pro Zeile, weniger ist besser, niemals mehr als 80!
-							% Für DRUCK DIV=10!!!
-	headinclude=true,		% Gehört Kopfzeile eher zur Seite oder zum Rand?
-	footinclude=false,		% Gehört Fußzeile eher zur Seite oder zum Rand?
-	captions=tableheading,	% Tabellenabstände für TabellenÜBERschriften optimieren
-	twoside=true,			% Dokument zweiseitig?
-	headings=small,			% Relative Größe der Überschriften
-	bibliography=totoc,		% Literaturverzeichnis im Inhaltsverzeichnis referenziert
-	%chapterprefix,			% Schaltet die "Kapitel ..." Zeile ein
-	%appendixprefix,			% Schaltet die "Anhang ..." Zeile ein (inkompatibel mit der Definition weiter unten)
-	numbers=noenddot,		% Punkte nach Abschnittsnummern? (Weglassen = Automatik)
-							% Nach Duden im vorliegenden Bsp. falsch, da auch Buchstaben in Gliederung (Anhang).
-	pagesize,				% Schreibt die Seitengröße ins Seitenregister, so das DVI- und PDF-Seiten die richtige
-							% Größe haben.
-	svgnames					% Namensraum für xcolor Paket											
-]{scrbook}					% Basisklasse der Vorlage: Koma-Skrip Klasse analog zur book-Klasse.
+	fontsize=12pt,									% Grundschriftgröße
+	a4paper,										% Papiergröße
+	BCOR=12mm,										% Binderandgröße für DRUCK ANSCHALTEN!!!
+	DIV=9,											% Teil der Seite, der als Seitenrand berücksichtigt wird (auch =calc mgl.):
+													% Z.B. DIV=10: Randbreite Oben und Mitte 1/10, Unten und Außen 2/10 der Seite.
+													% Regel: 60 bis 70 Zeichen pro Zeile, weniger ist besser, niemals mehr als 80!
+													% Für DRUCK DIV=10!!!
+	headinclude=true,								% Gehört Kopfzeile eher zur Seite oder zum Rand?
+	footinclude=false,								% Gehört Fußzeile eher zur Seite oder zum Rand?
+	captions=tableheading,							% Tabellenabstände für TabellenÜBERschriften optimieren
+	\if@isReadyForPrint	twoside\else oneside\fi,	% Dokument zweiseitig?
+	headings=small,									% Relative Größe der Überschriften
+	bibliography=totoc,								% Literaturverzeichnis im Inhaltsverzeichnis referenziert
+	numbers=noenddot,								% Punkte nach Abschnittsnummern? (Weglassen = Automatik)
+													% Nach Duden im vorliegenden Bsp. falsch, da auch Buchstaben in Gliederung (Anhang).
+	pagesize,										% Schreibt die Seitengröße ins Seitenregister, 
+													% sodass DVI- und PDF-Seiten die richtige Größe haben.
+	svgnames										% Namensraum für xcolor Paket											
+]{scrbook}											% Basisklasse der Vorlage: Koma-Skrip Klasse analog zur book-Klasse.
 
-\RequirePackage[utf8]{inputenc}	% Eingabe von Umlauten ermöglichen.
-\RequirePackage[T1]{fontenc}		% EC-Fonts verwenden, so dass Wörter mit Umlauten getrennt werden
-\RequirePackage{lmodern}			% Verbesserte Schriftart. Alternativ auch \RequirePackage{palatino}, \RequirePackage{fourier}, etc.
-\RequirePackage[ngerman]{babel}		% Silbentrennung nach neuer deutscher Rechtschreibung.
-\RequirePackage{nameref}			% Zusatzpaket zu hyperref. Muss vor inkompatiblen Paketen geladen werden.
-\RequirePackage{graphicx} 			% zum Einbinden von Graphiken (.png,.pdf,...)
-\RequirePackage{units}				% zum Korrekten setzen von Einheiten mit \unit[Wert]{Einheit}
-									% (noch weitere Befehle unterstützt)
-\RequirePackage{booktabs}			% verbessert das Aussehen von Tabellen, neue Berehele \toprule, \midrule, etc.
-\RequirePackage{multirow}			% Mehrere Zeilen in Tabellen zusammenfassen
-\RequirePackage{multicol}			% Mehrere Spalten in Tabellen zusammenfassen
-\RequirePackage{paralist}			% Ermöglicht parametrisierbare Listen wie z.B. compactitem
-\RequirePackage{subfigure} 			% Zum Benutzen der Subfigure Umgebung  (2 Bilder in einem) <VOR/NACH Paket hyperref?>
-\RequirePackage[section]{placeins}	% Plaztiert zu einem Abschnitt gehörende Floating-Objekte spätestens am Ende des Abschnitts
-\RequirePackage{pdfpages} 			% Zum einbinden von kompletten PDF-Seiten (z.B. Aufgabenstellung)
-\RequirePackage{caption}			% Paket zum Einbinden von Captions bei Nicht-Float-Objekten (hauptsächlich für Anhang)
-\RequirePackage{natbib}		        % Paket zum Personalisieren von Zitaten im Text. Fuer eckige Klammern [square]
-
-\RequirePackage{calc} 				% Für Berechnungen mit Variablen
-\RequirePackage{upgreek} 			% Aufrechte griechische Buchstaben (beachte ISO konformer Formelsatz
-\RequirePackage{bm}               	% Fette Formelzeichen (Vektoren, Matrizen, etc.)
-
-\RequirePackage{microtype} 			% Optischer Randausgleich
-
-\RequirePackage{textcomp}			% Sonderzeichen wie Copyright, Trademark, Registered und nicht kursives mü
-	% Zum hochgestellten Benutzen der des Registered-Zeichens
-	\def\TReg{\textsuperscript{\textregistered}}
-	% Zum hochgestellten Benutzen der des Copyright-Zeichens
-	\def\TCop{\textsuperscript{\textcopyright}} 
-	% Zum hochgestellten Benutzen der des Trademark-Zeichens
-	\def\TTra{\textsuperscript{\texttrademark}}  
-
-% für mathematische Symbole <Kompatibilität zu hyperref beachten!>
-\RequirePackage{amsmath}			
-	% Workaround für hyperref Verwendung
-	\let\equation\gather	
-	% Workaround für hyperref Verwendung			
-	\let\endequation\endgather	
-
-% zur scrbook-Klasse passendes Koma-Skript- Paket zum Einbinden einer Kopf-/Fußzeile:		
-\RequirePackage[
-	headsepline, 	% headsepline für die Linie unter der Kopfzeie,
-	automark		% automark für das automatische Update des Kopfzeileninhalts
-]{scrpage2} 	
-																							
+% Lade benötigte Pakete
+\include{packages}
 
 %-------------------------------------------------------------------------
 % Macht im Anhang aus "A Quellcode" -> "Anhang A Quellcode"
@@ -104,21 +62,6 @@
 \setkomafont{captionlabel}{\sffamily\bfseries}	% Caption-Label fett und serifenlos
 \setcapindent{1em}								% 2. Zeile der Caption mit hängendem Einzug
 
-% Für farbige Verweise
-\RequirePackage{xcolor}								
-
-% Paket zum setzen von Verweisen im Dokument 	
-\RequirePackage[
-	pdfpagelabels, 
-	plainpages=false, 
-	colorlinks=true
-]{hyperref}
-
-\RequirePackage[
-	hyperpageref,
-	german
-]{backref}
-
 \renewcommand*{\backref}[1]{}
 \renewcommand*{\backrefalt}[4]{%
 	\ifcase #1 %
@@ -130,7 +73,7 @@
 	\fi
 }																												
 
-\RequirePackage{ifthen}																			
+\RequirePackage{ifthen}																		
 
 %%%%%
 % Jetzt müssen zunächst die variablen Angaben geladen werden
@@ -168,7 +111,7 @@
 \newcommand*{\ifaReferences}[1]{\renewcommand*{\@ifaReferences}{#1}}
 \newcommand*{\ifaSelfRelianceDeclaration}[1]{\renewcommand*{\@ifaSelfRelianceDeclaration}{#1}}
 
-
+% Jetzt geht es los...
 \AtBeginDocument{%
 	% colorlinks: Farbige Verweise statt Umrahmung 
 	% Verhalten von hyperef ändern: Farbe für Bildschirm, SW für Druck
@@ -176,9 +119,9 @@
 	% pdf...: Setzten von Variablen die in den Eigenschaften der PDF-Datei angzeigt werden
 	% Weitere Optionen möglich - siehe Dokumentation des Paktes hyperref
 	\hypersetup{
-		linkcolor=blue,%
-		urlcolor=blue,%
-		citecolor=green,%
+		linkcolor=\if@isReadyForPrint black\else blue\fi,%
+		urlcolor=\if@isReadyForPrint black\else blue\fi,%
+		citecolor=\if@isReadyForPrint black\else green\fi,%
 		pdftitle=\@ifaTitle,%
 		pdfauthor=\@ifaAuthor,%
 		pdfsubject=\@ifaTitle,%
@@ -192,12 +135,12 @@
 	\frontmatter
 	
 	\begin{titlepage}
-		\hspace*{1cm}
+		\if@isReadyForPrint\else\hspace*{-12mm}\fi
 		\begin{picture}(0,0)
-		\put(-91,-50){\includegraphics*{kopfzeile.pdf}}
+			\put(-91,-50){\includegraphics*{kopfzeile.pdf}}
 		\end{picture}
 		
-		\hspace*{1cm}
+		\if@isReadyForPrint\else\hspace*{-12mm}\fi
 		\begin{minipage}{\textwidth}
 		\begin{center}
 			\vspace{3cm}
@@ -270,8 +213,8 @@
 	\pagestyle{scrheadings}
 }
 
+% ...und gleich ist Schluss!
 \AtEndDocument{
-	
 	\IfFileExists{\@ifaAppendix}{
 		\appendix
 		\input{\@ifaAppendix}
