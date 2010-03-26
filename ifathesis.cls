@@ -16,32 +16,37 @@
 \newif\if@useListOfTables\@useListOfTablesfalse
 \DeclareOption{listoftables}{\@useListOfTablestrue}
 
-\newif\if@isReadyForPrint\@isReadyForPrintfalse
-\DeclareOption{print}{\@isReadyForPrinttrue}
+\newif\if@isReadyForPrint\@isReadyForPrinttrue
+\DeclareOption{screen}{\@isReadyForPrintfalse}
 
 \ProcessOptions\relax
 
 % Lade Basisklasse der Vorlage
+\PassOptionsToPackage{%
+	paper=a4,% Papiergröße
+	headinclude=true,  								% Gehört Kopfzeile eher zur Seite oder zum Rand?
+	footinclude=false, 								% Gehört Fußzeile eher zur Seite oder zum Rand?
+	pagesize 										% Schreibt die Seitengröße ins Seitenregister, 
+													% sodass DVI- und PDF-Seiten die richtige Größe haben.
+}{typearea}
+\PassOptionsToPackage{svgnames}{xcolor}				% Namensraum für xcolor Paket			
 \LoadClass[
 	fontsize=12pt,									% Grundschriftgröße
-	a4paper,										% Papiergröße
-	BCOR=12mm,										% Binderandgröße für DRUCK ANSCHALTEN!!!
-	DIV=9,											% Teil der Seite, der als Seitenrand berücksichtigt wird (auch =calc mgl.):
+	\if@isReadyForPrint	BCOR=15mm\else BCOR=0mm\fi,	% Binderandgröße für DRUCK ANSCHALTEN!!!
+	\if@isReadyForPrint	DIV=10\else DIV=9\fi,		% Teil der Seite, der als Seitenrand berücksichtigt wird (auch =calc mgl.):
 													% Z.B. DIV=10: Randbreite Oben und Mitte 1/10, Unten und Außen 2/10 der Seite.
 													% Regel: 60 bis 70 Zeichen pro Zeile, weniger ist besser, niemals mehr als 80!
 													% Für DRUCK DIV=10!!!
-	headinclude=true,								% Gehört Kopfzeile eher zur Seite oder zum Rand?
-	footinclude=false,								% Gehört Fußzeile eher zur Seite oder zum Rand?
 	captions=tableheading,							% Tabellenabstände für TabellenÜBERschriften optimieren
-	\if@isReadyForPrint	twoside\else oneside\fi,	% Dokument zweiseitig?
+	\if@isReadyForPrint	twoside=true\else twoside=false\fi,	% Dokument zweiseitig?
 	headings=small,									% Relative Größe der Überschriften
+	fleqn,											% Formeln linksbündig
 	bibliography=totoc,								% Literaturverzeichnis im Inhaltsverzeichnis referenziert
 	numbers=noenddot,								% Punkte nach Abschnittsnummern? (Weglassen = Automatik)
 													% Nach Duden im vorliegenden Bsp. falsch, da auch Buchstaben in Gliederung (Anhang).
-	pagesize,										% Schreibt die Seitengröße ins Seitenregister, 
-													% sodass DVI- und PDF-Seiten die richtige Größe haben.
-	svgnames										% Namensraum für xcolor Paket											
 ]{scrbook}											% Basisklasse der Vorlage: Koma-Skrip Klasse analog zur book-Klasse.
+
+ 
 
 % Lade benötigte Pakete
 \include{packages}
@@ -73,7 +78,9 @@
 	\fi
 }																												
 
-\RequirePackage{ifthen}																		
+\RequirePackage{ifthen}	
+
+														
 
 %%%%%
 % Jetzt müssen zunächst die variablen Angaben geladen werden
@@ -81,6 +88,8 @@
 \newcommand*{\@ifaAuthor}{Max Mustermann}
 \newcommand*{\@ifaAuthorBirthday}{01.01.1970}
 \newcommand*{\@ifaAuthorBirthplace}{Dresden}
+\newcommand*{\@ifaAuthorCourse}{Informationssystemtechnik}
+\newcommand*{\@ifaAuthorYearOfMatriculation}{2000}
 \newcommand*{\@ifaKeywords}{Komma-separierte, Liste, mit, Schlagwörtern, zum Thema, der Arbeit}
 \newcommand*{\@ifaTitle}{Titel der Arbeit}
 \newcommand*{\@ifaSupervisorA}{Dipl.-Ing. Mein Trapez}
@@ -98,6 +107,8 @@
 \newcommand*{\ifaAuthor}[1]{\renewcommand*{\@ifaAuthor}{#1}}
 \newcommand*{\ifaAuthorBirthday}[1]{\renewcommand*{\@ifaAuthorBirthday}{#1}}
 \newcommand*{\ifaAuthorBirthplace}[1]{\renewcommand*{\@ifaAuthorBirthplace}{#1}}
+\newcommand*{\ifaAuthorCourse}[1]{\renewcommand*{\@ifaAuthorCourse}{#1}}
+\newcommand*{\ifaAuthorYearOfMatriculation}[1]{\renewcommand*{\@ifaAuthorYearOfMatriculation}{#1}}
 \newcommand*{\ifaKeywords}[1]{\renewcommand*{\@ifaKeywords}{#1}}
 \newcommand*{\ifaTitle}[1]{\renewcommand*{\@ifaTitle}{#1}}
 \newcommand*{\ifaSupervisorA}[1]{\renewcommand*{\@ifaSupervisorA}{#1}}
@@ -151,9 +162,10 @@
 
 			\begin{tabular}{rl}
 				vorgelegt von 	& \@ifaAuthor \\
+				im Studiengang	& \@ifaAuthorCourse,\:Jg.\:\@ifaAuthorYearOfMatriculation \\
 				geboren am 		& \@ifaAuthorBirthday\:in\:\@ifaAuthorBirthplace\\ 
 			\end{tabular}
-			\vspace{2cm}
+			\vspace{1.5cm}
 
 			\ifthenelse{\equal{\@ifaThesis}{Diplomarbeit}}{
 				{\large zur Erlangung des akademischen Grades} \\[0.2cm]
