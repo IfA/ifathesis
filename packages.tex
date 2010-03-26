@@ -1,4 +1,4 @@
-\RequirePackage[utf8]{inputenc}		% Eingabe von Umlauten ermöglichen.
+\RequirePackage[latin1]{inputenc}		% Eingabe von Umlauten ermöglichen.
 \RequirePackage[T1]{fontenc}		% EC-Fonts verwenden, so dass Wörter mit Umlauten getrennt werden
 \RequirePackage{lmodern}			% Verbesserte Schriftart. Alternativ auch \RequirePackage{palatino}, \RequirePackage{fourier}, etc.
 \RequirePackage[ngerman]{babel}		% Silbentrennung nach neuer deutscher Rechtschreibung.
@@ -50,7 +50,10 @@
 \RequirePackage[
 	pdfpagelabels, 
 	plainpages=false, 
-	colorlinks=true
+	colorlinks=true,
+	pdfdisplaydoctitle=true,%
+	pdfpagemode=UseOutlines	%Determines how the file is opening:
+		                      %UseNone, UseThumbs (show thumbnails), UseOutlines (show bookmarks), FullScreen, UseOC, UseAttachments
 ]{hyperref}
 
 \RequirePackage[

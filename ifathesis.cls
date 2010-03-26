@@ -30,6 +30,7 @@
 													% sodass DVI- und PDF-Seiten die richtige Größe haben.
 }{typearea}
 \PassOptionsToPackage{svgnames}{xcolor}				% Namensraum für xcolor Paket			
+\PassOptionsToPackage{fleqn}{amsmath}
 \LoadClass[
 	fontsize=12pt,									% Grundschriftgröße
 	\if@isReadyForPrint	BCOR=15mm\else BCOR=0mm\fi,	% Binderandgröße für DRUCK ANSCHALTEN!!!
@@ -46,7 +47,9 @@
 													% Nach Duden im vorliegenden Bsp. falsch, da auch Buchstaben in Gliederung (Anhang).
 ]{scrbook}											% Basisklasse der Vorlage: Koma-Skrip Klasse analog zur book-Klasse.
 
- 
+% Absatznummerierung fuer 4 Ebenen (z.B. 2.3.2.1) gemaess IfA Richtlinie einschalten.
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4} 
 
 % Lade benötigte Pakete
 \include{packages}
@@ -136,43 +139,43 @@
 		pdftitle=\@ifaTitle,%
 		pdfauthor=\@ifaAuthor,%
 		pdfsubject=\@ifaTitle,%
-		pdfkeywords={\@ifaKeywords},%
-		pdfdisplaydoctitle=true,%
-		pdfpagemode=UseOutlines	%Determines how the file is opening:
-		%UseNone, UseThumbs (show thumbnails), UseOutlines (show bookmarks), FullScreen, UseOC, UseAttachments
+		pdfkeywords={\@ifaKeywords}%,%
 	}
-    \setlength{\parskip}{3mm}%
 
 	\frontmatter
 	
 	\begin{titlepage}
-		\if@isReadyForPrint\else\hspace*{-12mm}\fi
+		%\if@isReadyForPrint\else\hspace*{-12mm}\fi
 		\begin{picture}(0,0)
-			\put(-91,-50){\includegraphics*{kopfzeile.pdf}}
+			\put(-91,-50){\includegraphics*{kopfzeile}}
 		\end{picture}
-		
-		\if@isReadyForPrint\else\hspace*{-12mm}\fi
-		\begin{minipage}{\textwidth}
+				
+		%\if@isReadyForPrint\else\hspace*{-12mm}\fi
+		%\begin{minipage}{\textwidth}
 		\begin{center}
-			\vspace{3cm}
+			\vfill %space{3cm}\
+			\vfill
 
-			{\huge\textsc{\@ifaThesis}}\\[1cm]
+			{\huge\textsc{\@ifaThesis}}\\[0.5cm]%[1cm]
 			zum Thema \\[0.5cm]
-			{\large \@ifaTitle}\\[2cm]
+			{\large \@ifaTitle}\\%[2cm]
+
+			\vfill
 
 			\begin{tabular}{rl}
 				vorgelegt von 	& \@ifaAuthor \\
 				im Studiengang	& \@ifaAuthorCourse,\:Jg.\:\@ifaAuthorYearOfMatriculation \\
 				geboren am 		& \@ifaAuthorBirthday\:in\:\@ifaAuthorBirthplace\\ 
 			\end{tabular}
-			\vspace{1.5cm}
+			\vfill %space{1.5cm}
 
 			\ifthenelse{\equal{\@ifaThesis}{Diplomarbeit}}{
 				{\large zur Erlangung des akademischen Grades} \\[0.2cm]
 				{\LARGE Diplomingenieur\\[0.2cm](Dipl.-Ing.)}
-				\vspace{2cm}
+				\vfill %space{2cm}
 			}{
-				\vspace{4.5cm}
+				\vfill %space{4.5cm}
+				\vfill
 			}
 		
 			\begin{tabular}{rl}
@@ -197,7 +200,7 @@
 				Tag der Einreichung:		& \@ifaDayOfSubmission \\
 			\end{tabular}
 		\end{center}
-		\end{minipage}
+		%\end{minipage}
 	\end{titlepage}
 
 	\clearpage
