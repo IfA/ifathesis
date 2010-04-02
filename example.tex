@@ -1,7 +1,7 @@
 \documentclass[
-	screen,			% makes the thesis better readable on screens (onesided, coloured links)
+	print,			% makes the thesis better readable on screens (onesided, coloured links)
 								% ATTENTION: Changes size of text area slightly. Always optimize document without
-								% screen opition first for printing (size of graphics etc.) and convert afterwards
+								% screen option first for printing (size of graphics etc.) and convert afterwards
 								% in screen optimized version!
 	listoffigures, 	% includes list of figures
 	listoftables 	% includes list of tables
@@ -25,12 +25,13 @@
 \ifaDayOfSubmission{21.03.2009}
 \ifaAppendix{anhaenge}
 \ifaReferences{bibliography}
-\ifaSelfRelianceDeclaration{9ZZ_selbstst}
+\ifaSelfRelianceDeclaration{example_files/9ZZ_selbstst}
 
 
 \begin{document}
 
-\input{01_Allgemeines}
-\input{02_Richtlinie}
+\input{example_files/00_Vorab}
+\input{example_files/01_Allgemeines}
+\input{example_files/02_Richtlinie}
 
 \end{document}
