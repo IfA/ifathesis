@@ -186,39 +186,36 @@ Mögliche Ordnungsprinzipien im Literaturverzeichnis sind
 
 Literaturangaben sind in der Vollständigkeit und Interpunktion gemäß nachfolgender Beispiele (Buch, Zeitschrift, Tagungsband, Firmenschrift, Diplomarbeit, Standard, Internetquelle) auszuführen:
 
-\fixme{make the list look nice}
-\renewcommand{\theenumi}{[\arabic{enumi}]}
+\renewcommand{\labelenumi}{[\theenumi]}
 \begin{enumerate}
 	\item Isermann, R.: Identifikation dynamischer Systeme, Band II. Springer-Verlag, Berlin, Heidelberg, New York, 1988.
 	\item Bärmann, F.;  Greye, G.R.; Lüdeke, M.: Prozessregelung einer Nachreaktion auf der Basis eines künstlichen neuronalen Netzmodells. Automatisierungstechnische Praxis 37 (1995) 8, 36-43.
-%[3]	Pereira, C.;  Rathke, T.: Objektorientierte Entwicklung von Echtzeitsystemen in der Automatisierungstechnik. Proc. 39. Int. Wiss. Kolloq., Ilmenau 1994.
-%[4]	National Instruments Corp.: LabView-Getting Started with LabView for Windows. Software-Dokumentation, 1992.
-%[5]	Nitsche, R.: Entwurf und Erprobung eines Fuzzy-Reglers zur Reibkraftkompensation. Diplomarbeit FH Heilbronn, Feb. 1993.
-%[6]	DIN 19227, Teil 2: Graphische Symbole und Kennbuchstaben für die Prozessleittechnik, Darstellung und Einzelheiten.
- 	 
+	\item Pereira, C.;  Rathke, T.: Objektorientierte Entwicklung von Echtzeitsystemen in der Automatisierungstechnik. Proc. 39. Int. Wiss. Kolloq., Ilmenau 1994.
+	\item	National Instruments Corp.: LabView-Getting Started with LabView for Windows. Software-Dokumentation, 1992.
+	\item Nitsche, R.: Entwurf und Erprobung eines Fuzzy-Reglers zur Reibkraftkompensation. Diplomarbeit FH Heilbronn, Feb. 1993.
+	\item DIN 19227, Teil 2: Graphische Symbole und Kennbuchstaben für die Prozessleittechnik, Darstellung und Einzelheiten.
 \end{enumerate}
-%Alternativ kann auch die sog. Harvard-Nummerierung verwendet werden. Dabei wird ein K?rzel aus drei Buchstaben (des einzigen bzw. der ersten drei Autoren) und zwei Ziffern des Erscheinungsjahres gebildet.
-%
-%Beispiele
-%
-% [Bra-95]	Branicky, M.S.: Studies in hybrid systems: Modeling, analysis and control.
-%Diss. Massachusetts Institute of Technology, Cambridge 1995.
-% [B?h-88]	B?hler, H.: Anti-Reset-Windup-Ma?nahmen bei stetigen Reglern.
-%at - Automatisierungstechnik 36 (1988) 5, 190-191.
-% [CEO-93]	Cellier, F.E.; Elmqvist, H.; Otter, M. u.a.: Guidelines for Modeling and Simulation
-%of Hybrid Systems. IFAC World Congress. Sydney 1993, 1219-1225.
-% [Eng-97]	Engell, S.: Modellierung und Analyse hybrider dynamischer Systeme.
-%at - Automatisierungstechnik 45 (1997) 4, 152-161.
-% [Fil-60]	Filippov, A.F.: Differential equation with discontinuous right-hand sides.
-%Mathematicheskii Sbornik 51 (1960).
-% [SSc-00]	Schaft, A.v.d.; Schumacher, H.: An introduction to hybrid dynamic systems. (Lecture
-%notes in control and information Science 251) London, Berlin, Heidelberg (Springer) 2000.
-% [Sur-04]	SurTec Deutschland GmbH: SurTec 680 Chromitierungsberechnungen
-%ULR: http://berechnung.surtec.com/Chromitierung/ (Stand: 27.07.2004).
-% [TWM-00]	Thiele, W.; Wildner, K.; Matschiner, H. u.a.: Offenlegungsschrift OS DE 198 50 530 A.
-%Kreislaufverfahren zum Beizen von Kupfer und Kupferlegierungen (2000).
-% [ZUt-96]	Zhao, F.; Utkin V.: Adaptive Simulation and Control of Variable-structure Control
-%Systems in Sliding Regimes. Automatica 32 (1996) 7, 1037-1042.
+\renewcommand{\labelenumi}{\theenumi.}
+
+Alternativ kann auch die sog. Harvard-Nummerierung verwendet werden. Dabei wird ein K?rzel aus drei Buchstaben (des einzigen bzw. der ersten drei Autoren) und zwei Ziffern des Erscheinungsjahres gebildet.
+
+\minisec{Beispiele}
+
+\begin{list}{[AAA]}{
+		\setlength{\leftmargin}{2.6cm} 
+		\setlength{\labelwidth}{2cm} 
+		\renewcommand{\makelabel}[1]{[#1]}
+	}
+	\item[Bra-95]	Branicky, M.S.: Studies in hybrid systems: Modeling, analysis and control. Diss. Massachusetts Institute of Technology, Cambridge 1995.
+	\item[Böh-88]	Böhler, H.: Anti-Reset-Windup-Maßnahmen bei stetigen Reglern. at - Automatisierungstechnik 36 (1988) 5, 190-191.
+	\item[CEO-93]	Cellier, F.E.; Elmqvist, H.; Otter, M. u.a.: Guidelines for Modeling and Simulation of Hybrid Systems. IFAC World Congress. Sydney 1993, 1219-1225.
+	\item[Eng-97]	Engell, S.: Modellierung und Analyse hybrider dynamischer Systeme. at - Automatisierungstechnik 45 (1997) 4, 152-161.
+	\item[Fil-60]	Filippov, A.F.: Differential equation with discontinuous right-hand sides. Mathematicheskii Sbornik 51 (1960).
+	\item[SSc-00]	Schaft, A.v.d.; Schumacher, H.: An introduction to hybrid dynamic systems. (Lecture notes in control and information Science 251) London, Berlin, Heidelberg (Springer) 2000.
+	\item[Sur-04]	SurTec Deutschland GmbH: SurTec 680 Chromitierungsberechnungen URL: \href{http://berechnung.surtec.com/Chromitierung/}{http://berechnung.surtec.com/Chromitierung/} (Stand: 27.07.2004).
+	\item[TWM-00]	Thiele, W.; Wildner, K.; Matschiner, H. u.a.: Offenlegungsschrift OS DE 198 50 530 A. Kreislaufverfahren zum Beizen von Kupfer und Kupferlegierungen (2000).
+	\item[ZUt-96]	Zhao, F.; Utkin V.: Adaptive Simulation and Control of Variable-structure Control Systems in Sliding Regimes. Automatica 32 (1996) 7, 1037-1042.
+\end{list}
 
 ACHTUNG: Fehlendes Kenntlichmachen von Zitaten kann zur Nichtannahme einer wissenschaftlichen Arbeit führen!
 
@@ -287,7 +284,7 @@ Die Kurzfassungen (deutsch/englisch) sind rechnerlesbar (Diskette/CD z.B. in MS 
 \label{sec:PosterNurFuerDiplomarbeit}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
 
-Zur Veröffentlichung der wichtigsten Arbeitsergebnisse der Diplomarbeit im Posterschaukasten des Instituts für Automatisierungstechnik ist ein Poster zu gestalten und zur Verteidigung der Diplomarbeit vorzulegen. Gestaltungsrichtlinien sind im Anhang 1\fixme{Flesh out appendix!} dieser Empfehlungen enthalten. Die Maßangaben sind unbedingt verbindlich.
+Zur Veröffentlichung der wichtigsten Arbeitsergebnisse der Diplomarbeit im Posterschaukasten des Instituts für Automatisierungstechnik ist ein Poster zu gestalten und zur Verteidigung der Diplomarbeit vorzulegen. Gestaltungsrichtlinien sind im Anhang \ref{sec:Postergestaltung} dieser Empfehlungen enthalten. Die Maßangaben sind unbedingt verbindlich.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
@@ -309,104 +306,4 @@ Im Übrigen gelten die Bestimmungen der entsprechenden Diplomprüfungsordnung (sie
 \begin{compactitem}
 	\item Der Student legt zur Verteidigung den vollständig unterschriebenen IfA-Laufzettel vor.
 	\item Das Prüfungsergebnis wird erst nach Vorlage des ordnungsgemäß ausgefüllten IfA-Laufzettels an das Prüfungsamt weitergeleitet.
-\end{compactitem}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
-\section{Sonstiges}
-\label{sec:Sonstiges}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Postergestaltung}
-\label{sec:Postergestaltung}
-
-(Beispiele siehe Postertafel des Instituts)
-
-\minisec{Schwerpunkte}
-\begin{compactitem}
-	\item Kurzvorstellung der Aufgabe
-	\item Anschauliche Darstellung des Lösungsweges und wesentlicher Ergebnisse, möglichst durch Bilder und Tabellen unterstützt (kurze Texte, 14 pt / 3mm)
-	\item Zusammenfassende Wertung der Ergebnisse und Ausblick auf noch zu lösende Probleme.
-\end{compactitem}
-
-\minisec{Gestaltung}
-\begin{compactitem}
-	\item Größe: 
-		\begin{compactitem}
-			\item DIN A2-Querformat (59,4 x 42,0 cm), allseitiger Rand 2 cm
-	\end{compactitem}
-	\item Kopf:
-		\begin{compactitem}
-			\item Überschrift (Kurzthema), Schriftgröße: 90 pt, fett (20 mm)
-			\item Logo-Block (Schriftgröße: 18 pt (4 mm) / 14 pt (3 mm):
-		\end{compactitem}
-\end{compactitem}
-
-\begin{figure}[h]
-	\centering{
-		\includegraphics[keepaspectratio, width=9cm]{example_files/RTEmagicC_poster.jpg}
-	}
-	\label{fig:poster}
-	\caption{Gestaltungsrichtlinie des Posters, Maße und Abstände}
-\end{figure}
-
-\minisec{Gestaltung des Logo-Blocks}
-Maße und Schriftgrößen siehe oben
-
-\begin{figure}[h]
-	\centering{
-		\includegraphics[keepaspectratio, width=9cm]{example_files/RTEmagicC_muster.jpg}
-	}
-	\label{fig:poster-logo-block}
-	\caption{Gestaltungsrichtlinie des Logo-Blocks des Posters}
-\end{figure}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Informationsmittel zur Literaturrecherche}
-\label{sec:InformationsmittelZurLiteraturrecherche}
-
-
-Wegen der ständig anwachsenden Zahl von Veröffentlichungen ist es angebracht, bei der Literaturrecherche rationelle Methoden anzuwenden.
-Dafür stehen in den wissenschaftlichen Bibliotheken
-\begin{compactitem}
-	\item Sächsische Landesbibliothek - Staats- und Universitätsbibliothek (SLUB)
-	\item Fachbibliothek Elektrotechnik und Informationstechnik (FBE, DrePunct, Zellescher Weg 17)
-\end{compactitem}
-Informationsmittel zur Verfügung.
-
-\begin{table*}[h]
-	\centering
-		\caption{Kataloge}
-		\label{tab:Kataloge}
-		\begin{tabular}{lll}%{p{4cm}p{4cm}p{4cm}}
-			\toprule
-			Bezeichnung & 													& Standort \\
-			\midrule
-			Kataloge	& Alphabetischer Katalog 								& SLUB, FBE \\
-        				& Sachkatalog 					 						& SLUB, FBE \\
-        				& Dissertationskatalog   								& SLUB, FBE \\
-        				& Zeitschriftenkatalog   								& SLUB, FBE \\
-        				& Zentralkatalog 				 						& SLUB \\
-			Bibliographien &									 				& SLUB, FBE \\
-    			Firmenschriften/Prospekte/Wirtschaftsliteratur & 					& SLUB \\
-    			Normen 		&													& SLUB, FBE \\
-    			Dokumentations- und Referatedienste & 							& SLUB, FBE \\
-    			Patente   &														& SLUB \\ 				
-			\bottomrule
-		\end{tabular}	
-\end{table*}\fixme{table alignment, size, combine cells?}
-
-
-\minisec{Rechnergestützte Recherche-Mittel}
-\begin{compactitem}
-	\item Rechnergestützter Katalog OPAC (Monographie-Bestand der SLUB)
-	\item Recherchen in CD-ROM-Datenbanken verschiedener Hersteller (SLUB)
-	\item IEEE-Dokumente: Aufsätze, Tagungsbandbeiträge etc. (Volltexte seit 1951 von Uni-IP)
-	\item TOC Premier: Zeitschrifteninhaltsverzeichnisse führender Verlage weltweit (Literaturrecherche von Uni-IP)
-	\item Datenbank FIZ Technik und Unterdatenbanken: (Literaturrecherche von Uni-IP)
-	\item Online-Informationsdienst in kostenpflichtigen Datenbanken (SLUB)
-	\item Internet
 \end{compactitem}

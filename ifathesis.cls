@@ -231,8 +231,10 @@
 % ...und gleich ist Schluss!
 \AtEndDocument{
 	\IfFileExists{\@ifaAppendix}{
-		\appendix
-		\input{\@ifaAppendix}
+		\renewcommand{\appendixpagename}{Anhang}
+		\begin{appendices}
+			\input{\@ifaAppendix}
+		\end{appendices}
 	}{}
 
 	\backmatter
