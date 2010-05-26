@@ -147,7 +147,7 @@
 	\begin{titlepage}
 		%\if@isReadyForPrint\else\hspace*{-12mm}\fi
 		\begin{picture}(0,0)
-			\put(-91,-50){\includegraphics*{kopfzeile}}
+			\put(-97,-50){\includegraphics*{kopfzeile}}
 		\end{picture}
 				
 		%\if@isReadyForPrint\else\hspace*{-12mm}\fi
