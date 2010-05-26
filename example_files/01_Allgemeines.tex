@@ -5,7 +5,7 @@
 
 
 \section{Installation}
-Die Vorlage \verb-ifathesis- ist eine fertige \LaTeX-Klasse, die die Richtlinie für wissenschaftliche Arbeiten am \emph{Institut für Automatisierungstechnik, Technische Universität Dresden} realisiert. Um diese Vorlage zu verwenden müssen die folgenden Dateien lediglich im Wurzelverzeichnis des zu verfassenden \LaTeX-Dokuments liegen:
+Die Vorlage \verb-ifathesis- ist eine fertige \LaTeX-Klasse, die die Richtlinie für wissenschaftliche Arbeiten am \emph{Institut für Automatisierungstechnik, Technische Universität Dresden} (IfA) realisiert. Um diese Vorlage zu verwenden müssen die folgenden Dateien lediglich im Wurzelverzeichnis des zu verfassenden \LaTeX-Dokuments liegen:
 \begin{compactitem}
 	\item \verb-ifathesis.cls-
 	\item \verb-packages.tex-
@@ -22,8 +22,8 @@ Zur Verfügung steht die Dokumentenklasse \verb-ifathesis- mit folgenden Optionen
 
 \begin{description}
 	\item[print | screen] Übersetzt das Dokument optimiert für den Druck bzw. für das Lesen am Monitor (einseitig, farbig hervorgehobene Links). \textbf{Achtung: Die Größe des Textkörpers unterscheidet sich geringfügig. Daher bitte immer zuerst das Dokument für den Druck optimert erstellen, wodurch bspw. die Größe der Grafiken richtig bestimmt werden kann. Anschließend kann in die für das Monitorlesen optimierte Version übersetzt werden}\footnote{Zur Abgabe der Arbeit auf einem Datenträger erforderlich}. Voreinstellung: \verb-print-. 
-	\item[listoffigures] Integriert ein Abbildungsverzeichnis an der richtigen Stelle, gemäß der \emph{ifa}-Richtlinie
-	\item[listoftables] Integriert ein Tabellenverzeichnis an der richtigen Stelle, gemäß der \emph{ifa}-Richtlinie
+	\item[listoffigures] Integriert ein Abbildungsverzeichnis an der richtigen Stelle, gemäß der \emph{IfA}-Richtlinie
+	\item[listoftables] Integriert ein Tabellenverzeichnis an der richtigen Stelle, gemäß der \emph{IfA}-Richtlinie
 \end{description}
 
 \subsection{Weitere Parameter}
@@ -44,3 +44,22 @@ Zur Verfügung steht die Dokumentenklasse \verb-ifathesis- mit folgenden Optionen
 	\item[ifaReferences] Name der Bibliographiedatei (vollständige Pfadangabe ausgehend von der Dokumentenwurzel erforderlich)
 	\item[ifaSelfRelianceDeclaration] Dateiname der Selbständigkeitserklärung (vollständige Pfadangabe ausgehend von der Dokumentenwurzel erforderlich)
 \end{description}
+
+
+\section{Zusätzliche Pakete}
+\label{sec:ZusätzlichePakete}
+Die \LaTeX-Klasse \verb-ifathesis- wurde durch sinnvolle \LaTeX-Pakete erweitert, damit der Funktionsumfang für eine wissenschaftliche Arbeit angemessen ist. Wichtige und sinnvolle Pakete wurden in der Datei \verb-packages.tex- eingebunden. Die einzelnen Pakete sind dort mit einem kurzen Kommentar versehen. Eigene Paket-Erweiterungen können hier hinzugefügt werden.
+
+Generell gilt: Benötigen sie Befehle/Funktionen, die die Vorlage nicht zur Verfügung stellt, nutzen Sie ausgewählte Pakete und \emph{nicht} den nächstbesten Workaround der im Internet zu finden ist. Oft sind zusätzliche Pakete besser auf die verwendete Klasse und die anderen ebenfalls eingebundenen Pakete abgestimmt, als wenn man mit \TeX-Primitiven tief in die Grundlagen des Dokuments eingreift. Bei direkten Eingriffen können (nicht gleich erkennbare) Layoutfehler die Folge sein, da die Klasse und andere Pakete nicht "`wissen"' können, das Sie als Anwender etwas verändert haben (z.\,B. ein Textelement verschoben).
+
+Lesen Sie auch undbedingt die Dokumentationen der bereits eingebundenen und von Ihnen hinzugefügten Packete um
+\begin{itemize}
+	\item einerseits über deren Möglichkeiten (z.\,B. die Befehle \verb-\toprule- und \verb-\bottomrule- bei Tabellen) und 
+	\item anderseits über Inkompatibilitäten oder Notwendigkeiten bei der Reihenfolge der Pakete Bescheid zu wissen!
+\end{itemize}
+
+
+\section{Wichtige Informationen zur Form der Arbeit}
+\label{sec:WichtigeInformationenZurFormDerArbeit}
+
+Text- und Formelsatz unterliegt typografischen Regeln, die im Allgemeinen nicht besonders bekannt sind. Dennoch ist es wichtig sich an die Konventionen zu halten, damit das erstellte Dokument einem professionellen Anspruch genügt. Die wichtigsten Regeln und Hinweise findet man in wenigen guten Dokumenten zusammengefasst, die (neben weiteren nützlichen .pdf-Dateien) im Unterverzeichnis \verb-docs- der Vorlage zu finden sind. Bitte beachten sie die die dort aufgestellten Regeln bei der Erstellung Ihrer Arbeit!

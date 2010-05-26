@@ -152,7 +152,7 @@ Tabellen erhalten eine Tabellenüberschrift (Bezeichnung "'Tabelle"', lfd. Nr., a
 
 Gleichungen sind entsprechend DIN 1338 (Formelschreibweise und Formelsatz) zu gestalten. Sie sind im Text fortlaufend zu nummerieren und mit runden Klammern am rechten Rand zu kennzeichnen. Eine abschnittsweise Nummerierung ist zu empfehlen. Gleichungen sind in den durchgängig lesbaren Text der Arbeit unter Beachtung von Interpunktionszeichen einzubeziehen. Formelzeichen sind zu erklären. Der Verweis auf eine oder mehrere Gleichungen ist im Text mit der Abkürzung Gl. (1.1) bzw. Gln. (1.1) zu beschreiben.
 
-Bei der Wahl der Formelzeichen ist zu beachten, dass der Bezeichner $Ta$ in mathematischer Schreibweise $T \cdot a$ bedeutet. Deshalb ist in Formeln eine tiefgestellte Indizierung ($T_a$) zu bevorzugen. Sollen im Zusammenhang mit Rechenprogrammen gleichungsm??ige Zusammenh?nge erl?utert werden, so sind geeignete Indizes zu w?hlen (z.\,B. $T_a$) oder besondere Anmerkungen zu treffen.
+Bei der Wahl der Formelzeichen ist zu beachten, dass der Bezeichner $Ta$ in mathematischer Schreibweise $T \cdot a$ bedeutet. Deshalb ist in Formeln eine tiefgestellte Indizierung ($T_a$) zu bevorzugen. Sollen im Zusammenhang mit Rechenprogrammen gleichungsmäßige Zusammenhänge erläutert werden, so sind geeignete Indizes zu wählen (z.\,B. $T_a$) oder besondere Anmerkungen zu treffen.
 
 \minisec{Beispiel}
 
@@ -173,19 +173,20 @@ Bei der Wahl der Formelzeichen ist zu beachten, dass der Bezeichner $Ta$ in math
 \subsubsection{Literaturstellen}
 \label{sec:Literaturstellen}
 
-Literaturstellen sind im Textteil durch gleiche Kürzel wie im Literaturverzeichnis in eckigen Klammern oder Schrägstrichen / / anzugeben; bei wörtlich zitierter Literatur sind außerdem die Seiten anzugeben.
-
-Beispiel: "'... und wie zu verfahren ist"' [41] S. 211.
-
+Literaturstellen sind im Textteil durch gleiche Kürzel wie im Literaturverzeichnis in eckigen Klammern oder Schrägstrichen / / anzugeben; bei wörtlich zitierter Literatur sind außerdem die Seiten anzugeben. Hilfe zum \verb-natbib--Paket ist \href{http://merkel.zoneo.net/Latex/natbib.php}{hier} zu finden.
+Beispiele:
+\begin{itemize}
+	\item ... "`... und wie zu verfahren ist"' \citep[S. 211]{w3c_svg} ...
+	\item ... \citet{gme_overview} beschreiben in ihrer Abhandlung...
+	\item ... und ist bereits von verschiedenen Autoren beschrieben worden. \citep{xvcml-indin2007,frankel,steinberg_emf_2008} ...
+\end{itemize}
 Mögliche Ordnungsprinzipien im Literaturverzeichnis sind
-\begin{compactitem}
+\begin{itemize}
 	\item numerische Ordnung in alphabetischer Reihenfolge nach jeweils erstem Autor
 	\item numerische Ordnung nach der Reihenfolge der zitierten Quellen
 	\item alphabetische Ordnung
-\end{compactitem}
-
+\end{itemize}
 Literaturangaben sind in der Vollständigkeit und Interpunktion gemäß nachfolgender Beispiele (Buch, Zeitschrift, Tagungsband, Firmenschrift, Diplomarbeit, Standard, Internetquelle) auszuführen:
-
 \renewcommand{\labelenumi}{[\theenumi]}
 \begin{enumerate}
 	\item Isermann, R.: Identifikation dynamischer Systeme, Band II. Springer-Verlag, Berlin, Heidelberg, New York, 1988.
@@ -196,11 +197,9 @@ Literaturangaben sind in der Vollständigkeit und Interpunktion gemäß nachfolgend
 	\item DIN 19227, Teil 2: Graphische Symbole und Kennbuchstaben für die Prozessleittechnik, Darstellung und Einzelheiten.
 \end{enumerate}
 \renewcommand{\labelenumi}{\theenumi.}
+Alternativ kann auch die sog. Harvard-Nummerierung oder der Zitatstil des vorliegenden Dokuments (siehe Literaturverzeichnis) verwendet werden.
 
-Alternativ kann auch die sog. Harvard-Nummerierung verwendet werden. Dabei wird ein K?rzel aus drei Buchstaben (des einzigen bzw. der ersten drei Autoren) und zwei Ziffern des Erscheinungsjahres gebildet.
-
-\minisec{Beispiele}
-
+Bei der Harvard-Nummerierung wird ein Kürzel aus drei Buchstaben (des einzigen bzw. der ersten drei Autoren) und zwei Ziffern des Erscheinungsjahres gebildet:
 \begin{list}{[AAA]}{
 		\setlength{\leftmargin}{2.6cm} 
 		\setlength{\labelwidth}{2cm} 
@@ -212,12 +211,11 @@ Alternativ kann auch die sog. Harvard-Nummerierung verwendet werden. Dabei wird 
 	\item[Eng-97]	Engell, S.: Modellierung und Analyse hybrider dynamischer Systeme. at - Automatisierungstechnik 45 (1997) 4, 152-161.
 	\item[Fil-60]	Filippov, A.F.: Differential equation with discontinuous right-hand sides. Mathematicheskii Sbornik 51 (1960).
 	\item[SSc-00]	Schaft, A.v.d.; Schumacher, H.: An introduction to hybrid dynamic systems. (Lecture notes in control and information Science 251) London, Berlin, Heidelberg (Springer) 2000.
-	\item[Sur-04]	SurTec Deutschland GmbH: SurTec 680 Chromitierungsberechnungen URL: \href{http://berechnung.surtec.com/Chromitierung/}{http://berechnung.surtec.com/Chromitierung/} (Stand: 27.07.2004).
+	\item[Sur-04]	SurTec Deutschland GmbH: SurTec 680 Chromitierungsberechnungen; URL: \href{http://berechnung.surtec.com/Chromitierung/}{http://berechnung.surtec.com/Chromitierung/} (Stand: 27.07.2004).
 	\item[TWM-00]	Thiele, W.; Wildner, K.; Matschiner, H. u.a.: Offenlegungsschrift OS DE 198 50 530 A. Kreislaufverfahren zum Beizen von Kupfer und Kupferlegierungen (2000).
 	\item[ZUt-96]	Zhao, F.; Utkin V.: Adaptive Simulation and Control of Variable-structure Control Systems in Sliding Regimes. Automatica 32 (1996) 7, 1037-1042.
 \end{list}
-
-ACHTUNG: Fehlendes Kenntlichmachen von Zitaten kann zur Nichtannahme einer wissenschaftlichen Arbeit führen!
+Achtung: Fehlendes Kenntlichmachen von Zitaten kann zur Nichtannahme einer wissenschaftlichen Arbeit führen!
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
