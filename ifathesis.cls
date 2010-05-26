@@ -17,6 +17,7 @@
 \DeclareOption{listoftables}{\@useListOfTablestrue}
 
 \newif\if@isReadyForPrint\@isReadyForPrinttrue
+\DeclareOption{print}{\@isReadyForPrinttrue}
 \DeclareOption{screen}{\@isReadyForPrintfalse}
 
 \ProcessOptions\relax
@@ -38,12 +39,12 @@
 													% Z.B. DIV=10: Randbreite Oben und Mitte 1/10, Unten und Außen 2/10 der Seite.
 													% Regel: 60 bis 70 Zeichen pro Zeile, weniger ist besser, niemals mehr als 80!
 													% Für DRUCK DIV=10!!!
-	captions=tableheading,							% Tabellenabstände für TabellenÜBERschriften optimieren
+%	captions=tableheading,							% Tabellenabstände für TabellenÜBERschriften optimieren
 	\if@isReadyForPrint	twoside=true\else twoside=false\fi,	% Dokument zweiseitig?
-	headings=small,									% Relative Größe der Überschriften
+%	headings=small,									% Relative Größe der Überschriften
 	fleqn,											% Formeln linksbündig
-	bibliography=totoc,								% Literaturverzeichnis im Inhaltsverzeichnis referenziert
-	numbers=noenddot,								% Punkte nach Abschnittsnummern? (Weglassen = Automatik)
+%	bibliography=totoc,								% Literaturverzeichnis im Inhaltsverzeichnis referenziert
+%	numbers=noenddot,								% Punkte nach Abschnittsnummern? (Weglassen = Automatik)
 													% Nach Duden im vorliegenden Bsp. falsch, da auch Buchstaben in Gliederung (Anhang).
 ]{scrbook}											% Basisklasse der Vorlage: Koma-Skrip Klasse analog zur book-Klasse.
 
@@ -94,7 +95,8 @@
 \newcommand*{\@ifaAuthorCourse}{Informationssystemtechnik}
 \newcommand*{\@ifaAuthorYearOfMatriculation}{2000}
 \newcommand*{\@ifaKeywords}{Komma-separierte, Liste, mit, Schlagwörtern, zum Thema, der Arbeit}
-\newcommand*{\@ifaTitle}{Titel der Arbeit}
+\newcommand*{\@ifaTitleDE}{Titel der Arbeit}
+\newcommand*{\@ifaTitleEN}{Titel der Arbeit}
 \newcommand*{\@ifaSupervisorA}{Dipl.-Ing. Mein Trapez}
 \newcommand*{\@ifaSupervisorB}{Dr.-Ing. John Doe}
 \newcommand*{\@ifaSupervisorC}{}
@@ -103,6 +105,8 @@
 \newcommand*{\@ifaProfessor}{Titel der Arbeit}
 \newcommand*{\@ifaDayOfSubmission}{\today}
 \newcommand*{\@ifaAppendix}{GoHaigh2}
+\newcommand*{\@ifaAbstractDE}{GoHaigh2}
+\newcommand*{\@ifaAbstractEN}{GoHaigh2}
 \newcommand*{\@ifaReferences}{IPhei0Ox}
 \newcommand*{\@ifaSelfRelianceDeclaration}{Ooch8hoo}
 
@@ -113,7 +117,8 @@
 \newcommand*{\ifaAuthorCourse}[1]{\renewcommand*{\@ifaAuthorCourse}{#1}}
 \newcommand*{\ifaAuthorYearOfMatriculation}[1]{\renewcommand*{\@ifaAuthorYearOfMatriculation}{#1}}
 \newcommand*{\ifaKeywords}[1]{\renewcommand*{\@ifaKeywords}{#1}}
-\newcommand*{\ifaTitle}[1]{\renewcommand*{\@ifaTitle}{#1}}
+\newcommand*{\ifaTitleDE}[1]{\renewcommand*{\@ifaTitleDE}{#1}}
+\newcommand*{\ifaTitleEN}[1]{\renewcommand*{\@ifaTitleEN}{#1}}
 \newcommand*{\ifaSupervisorA}[1]{\renewcommand*{\@ifaSupervisorA}{#1}}
 \newcommand*{\ifaSupervisorB}[1]{\renewcommand*{\@ifaSupervisorB}{#1}}
 \newcommand*{\ifaSupervisorC}[1]{\renewcommand*{\@ifaSupervisorC}{#1}}
@@ -122,6 +127,8 @@
 \newcommand*{\ifaProfessor}[1]{\renewcommand*{\@ifaProfessor}{#1}}
 \newcommand*{\ifaDayOfSubmission}[1]{\renewcommand*{\@ifaDayOfSubmission}{#1}}
 \newcommand*{\ifaAppendix}[1]{\renewcommand*{\@ifaAppendix}{#1}}
+\newcommand*{\ifaAbstractDE}[1]{\renewcommand*{\@ifaAbstractDE}{#1}}
+\newcommand*{\ifaAbstractEN}[1]{\renewcommand*{\@ifaAbstractEN}{#1}}
 \newcommand*{\ifaReferences}[1]{\renewcommand*{\@ifaReferences}{#1}}
 \newcommand*{\ifaSelfRelianceDeclaration}[1]{\renewcommand*{\@ifaSelfRelianceDeclaration}{#1}}
 
@@ -136,9 +143,9 @@
 		linkcolor=\if@isReadyForPrint black\else blue\fi,%
 		urlcolor=\if@isReadyForPrint black\else blue\fi,%
 		citecolor=\if@isReadyForPrint black\else green\fi,%
-		pdftitle=\@ifaTitle,%
+		pdftitle=\@ifaTitleDE,%
 		pdfauthor=\@ifaAuthor,%
-		pdfsubject=\@ifaTitle,%
+		pdfsubject=\@ifaTitleDE,%
 		pdfkeywords={\@ifaKeywords}%,%
 	}
 
@@ -158,7 +165,7 @@
 
 			{\huge\textsc{\@ifaThesis}}\\[0.5cm]%[1cm]
 			zum Thema \\[0.5cm]
-			{\large \@ifaTitle}\\%[2cm]
+			{\large \@ifaTitleDE}\\%[2cm]
 
 			\vfill
 
@@ -210,7 +217,41 @@
 		% Auch Abschnittsbeginn ohne Kopf- und Fuﬂzeile
 		\renewcommand*{\chapterpagestyle}{empty} 
 		
+		% Aufgabenstellung
+		\vfill
+		\begin{center}
+			\Huge Hier die Aufgabenstellung im Original bzw. als Kopie im Zweitexemplar einbinden.
+		\end{center}
+		\cleardoublepage 
+		
+		% Kurzfassungen
+		%
+		%
+%		\thispagestyle{empty}
+		%
+		\begin{picture}(0,0)
+			\put(-97,-50){\includegraphics*{kopfzeile}}
+		\end{picture}
+		\vfill
+		\section*{\@ifaTitleDE}
+		\input{\@ifaAbstractDE}
+		\vfill
+		\cleardoublepage
+
+%		\thispagestyle{empty}
+		%
+		\begin{picture}(0,0)
+			\put(-97,-50){\includegraphics*{kopfzeile}}
+		\end{picture}
+		\vfill
+		\section*{\@ifaTitleEN}
+		\input{\@ifaAbstractEN}
+		\vfill
+		\cleardoublepage
+		
 		% Verzeichnisse
+		%
+		%
 		\tableofcontents
 		\clearpage
 		\if@useListOfFigures
