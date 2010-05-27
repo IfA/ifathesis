@@ -24,25 +24,25 @@
 
 % Lade Basisklasse der Vorlage
 \PassOptionsToPackage{%
-	paper=a4,% PapiergrÃ¶ÃŸe
-	headinclude=true,  								% GehÃ¶rt Kopfzeile eher zur Seite oder zum Rand?
-	footinclude=false, 								% GehÃ¶rt FuÃŸzeile eher zur Seite oder zum Rand?
-	pagesize 										% Schreibt die SeitengrÃ¶ÃŸe ins Seitenregister, 
-													% sodass DVI- und PDF-Seiten die richtige GrÃ¶ÃŸe haben.
+	paper=a4,% Papiergröße
+	headinclude=true,  								% Gehört Kopfzeile eher zur Seite oder zum Rand?
+	footinclude=false, 								% Gehört Fußzeile eher zur Seite oder zum Rand?
+	pagesize 										% Schreibt die Seitengröße ins Seitenregister, 
+													% sodass DVI- und PDF-Seiten die richtige Größe haben.
 }{typearea}
-\PassOptionsToPackage{svgnames}{xcolor}				% Namensraum fÃ¼r xcolor Paket			
+\PassOptionsToPackage{svgnames}{xcolor}				% Namensraum für xcolor Paket			
 \PassOptionsToPackage{fleqn}{amsmath}
 \LoadClass[
-	fontsize=12pt,									% GrundschriftgrÃ¶ÃŸe
-	\if@isReadyForPrint	BCOR=15mm\else BCOR=0mm\fi,	% BinderandgrÃ¶ÃŸe fÃ¼r DRUCK ANSCHALTEN!!!
-	\if@isReadyForPrint	DIV=10\else DIV=9\fi,		% Teil der Seite, der als Seitenrand berÃ¼cksichtigt wird (auch =calc mgl.):
-													% Z.B. DIV=10: Randbreite Oben und Mitte 1/10, Unten und AuÃŸen 2/10 der Seite.
+	fontsize=12pt,									% Grundschriftgröße
+	\if@isReadyForPrint	BCOR=15mm\else BCOR=0mm\fi,	% Binderandgröße für DRUCK ANSCHALTEN!!!
+	\if@isReadyForPrint	DIV=10\else DIV=9\fi,		% Teil der Seite, der als Seitenrand berücksichtigt wird (auch =calc mgl.):
+													% Z.B. DIV=10: Randbreite Oben und Mitte 1/10, Unten und Außen 2/10 der Seite.
 													% Regel: 60 bis 70 Zeichen pro Zeile, weniger ist besser, niemals mehr als 80!
-													% FÃ¼r DRUCK DIV=10!!!
-%	captions=tableheading,							% TabellenabstÃ¤nde fÃ¼r TabellenÃœBERschriften optimieren
+													% Für DRUCK DIV=10!!!
+%	captions=tableheading,							% TabellenabstÃ¤nde fÃ¼r TabellenÃ?BERschriften optimieren
 	\if@isReadyForPrint	twoside=true\else twoside=false\fi,	% Dokument zweiseitig?
-%	headings=small,									% Relative GrÃ¶ÃŸe der Ãœberschriften
-	fleqn,											% Formeln linksbÃ¼ndig
+%	headings=small,									% Relative Größe der Überschriften
+	fleqn,											% Formeln linksbündig
 %	bibliography=totoc,								% Literaturverzeichnis im Inhaltsverzeichnis referenziert
 %	numbers=noenddot,								% Punkte nach Abschnittsnummern? (Weglassen = Automatik)
 													% Nach Duden im vorliegenden Bsp. falsch, da auch Buchstaben in Gliederung (Anhang).
@@ -52,7 +52,7 @@
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4} 
 
-% Lade benÃ¶tigte Pakete
+% Lade benötigte Pakete
 \include{packages}
 
 %-------------------------------------------------------------------------
@@ -66,10 +66,10 @@
 }
 %-------------------------------------------------------------------------																							
 																							
-% VerÃ¤nderung der Bildunterschriften und TabellenÃ¼berschriften:
-\addtokomafont{caption}{\small}					% Kleinere SchriftgrÃ¶ÃŸe fÃ¼r Captions
+% Veränderung der Bildunterschriften und Tabellenüberschriften:
+\addtokomafont{caption}{\small}					% Kleinere Schriftgröße für Captions
 \setkomafont{captionlabel}{\sffamily\bfseries}	% Caption-Label fett und serifenlos
-\setcapindent{1em}								% 2. Zeile der Caption mit hÃ¤ngendem Einzug
+\setcapindent{1em}								% 2. Zeile der Caption mit hängendem Einzug
 
 \renewcommand*{\backref}[1]{}
 \renewcommand*{\backrefalt}[4]{%
@@ -108,7 +108,6 @@
 \newcommand*{\@ifaAbstractDE}{GoHaigh2}
 \newcommand*{\@ifaAbstractEN}{GoHaigh2}
 \newcommand*{\@ifaReferences}{IPhei0Ox}
-\newcommand*{\@ifaSelfRelianceDeclaration}{Ooch8hoo}
 
 \newcommand*{\ifaThesis}[1]{\renewcommand*{\@ifaThesis}{#1}}
 \newcommand*{\ifaAuthor}[1]{\renewcommand*{\@ifaAuthor}{#1}}
@@ -130,15 +129,14 @@
 \newcommand*{\ifaAbstractDE}[1]{\renewcommand*{\@ifaAbstractDE}{#1}}
 \newcommand*{\ifaAbstractEN}[1]{\renewcommand*{\@ifaAbstractEN}{#1}}
 \newcommand*{\ifaReferences}[1]{\renewcommand*{\@ifaReferences}{#1}}
-\newcommand*{\ifaSelfRelianceDeclaration}[1]{\renewcommand*{\@ifaSelfRelianceDeclaration}{#1}}
 
 % Jetzt geht es los...
 \AtBeginDocument{%
 	% colorlinks: Farbige Verweise statt Umrahmung 
-	% Verhalten von hyperef Ã¤ndern: Farbe fÃ¼r Bildschirm, SW fÃ¼r Druck
+	% Verhalten von hyperef Ändern: Farbe fÃ¼r Bildschirm, SW für Druck
 	% ...color: Farbe verschiedener Verweise nach Farbpalette svgnames
 	% pdf...: Setzten von Variablen die in den Eigenschaften der PDF-Datei angzeigt werden
-	% Weitere Optionen mÃ¶glich - siehe Dokumentation des Paktes hyperref
+	% Weitere Optionen möglich - siehe Dokumentation des Paktes hyperref
 	\hypersetup{
 		linkcolor=\if@isReadyForPrint black\else blue\fi,%
 		urlcolor=\if@isReadyForPrint black\else blue\fi,%
@@ -152,20 +150,17 @@
 	\frontmatter
 	
 	\begin{titlepage}
-		%\if@isReadyForPrint\else\hspace*{-12mm}\fi
 		\begin{picture}(0,0)
 			\put(-97,-50){\includegraphics*{kopfzeile}}
 		\end{picture}
 				
-		%\if@isReadyForPrint\else\hspace*{-12mm}\fi
-		%\begin{minipage}{\textwidth}
 		\begin{center}
-			\vfill %space{3cm}\
+			\vfill
 			\vfill
 
-			{\huge\textsc{\@ifaThesis}}\\[0.5cm]%[1cm]
+			{\huge\textsc{\@ifaThesis}}\\[0.5cm]
 			zum Thema \\[0.5cm]
-			{\large \@ifaTitleDE}\\%[2cm]
+			{\large \@ifaTitleDE}\\
 
 			\vfill
 
@@ -174,14 +169,14 @@
 				im Studiengang	& \@ifaAuthorCourse,\:Jg.\:\@ifaAuthorYearOfMatriculation \\
 				geboren am 		& \@ifaAuthorBirthday\:in\:\@ifaAuthorBirthplace\\ 
 			\end{tabular}
-			\vfill %space{1.5cm}
+			\vfill
 
 			\ifthenelse{\equal{\@ifaThesis}{Diplomarbeit}}{
 				{\large zur Erlangung des akademischen Grades} \\[0.2cm]
 				{\LARGE Diplomingenieur\\[0.2cm](Dipl.-Ing.)}
-				\vfill %space{2cm}
+				\vfill
 			}{
-				\vfill %space{4.5cm}
+				\vfill
 				\vfill
 			}
 		
@@ -207,14 +202,13 @@
 				Tag der Einreichung:		& \@ifaDayOfSubmission \\
 			\end{tabular}
 		\end{center}
-		%\end{minipage}
 	\end{titlepage}
 
 	\clearpage
 	\begingroup
-		% Im Vorspann nur Seiten ohne Kopf- und Fuï¬‚zeile (auï¬‚er Abschnittsbeginn)
+		% Im Vorspann nur Seiten ohne Kopf- und Fußzeile (außer Abschnittsbeginn)
 		\pagestyle{empty}	
-		% Auch Abschnittsbeginn ohne Kopf- und Fuï¬‚zeile
+		% Auch Abschnittsbeginn ohne Kopf- und Fußzeile
 		\renewcommand*{\chapterpagestyle}{empty} 
 		
 		% Aufgabenstellung
@@ -227,7 +221,6 @@
 		% Kurzfassungen
 		%
 		%
-%		\thispagestyle{empty}
 		%
 		\begin{picture}(0,0)
 			\put(-97,-50){\includegraphics*{kopfzeile}}
@@ -238,7 +231,6 @@
 		\vfill
 		\cleardoublepage
 
-%		\thispagestyle{empty}
 		%
 		\begin{picture}(0,0)
 			\put(-97,-50){\includegraphics*{kopfzeile}}
@@ -280,15 +272,34 @@
 
 	\backmatter
 	
-	% Im Abspann nur Seiten ohne Kopf- und Fuï¬‚zeile (auï¬‚er Abschnittsbeginn)
+	% Im Abspann nur Seiten ohne Kopf- und Fußzeile (außer Abschnittsbeginn)
 	\pagestyle{empty}	
-	% Auch Abschnittsbeginn ohne Kopf- und Fuï¬‚zeile
+	% Auch Abschnittsbeginn ohne Kopf- und Fußzeile
 	\renewcommand*{\chapterpagestyle}{empty} 
 
 	\bibliographystyle{abbrvnat}
 	\bibliography{\@ifaReferences}
+	\cleardoublepage
 	
-	\IfFileExists{\@ifaSelfRelianceDeclaration}{
-		\input{\@ifaSelfRelianceDeclaration}
-	}{}
-}
+	% Selbständigkeitserklärung
+	%
+	%
+	\vspace*{\fill} %4cm}
+	\section*{Selbstständigkeitserklärung}
+		Hiermit erkläre ich, \@ifaAuthor, geboren am \@ifaAuthorBirthday~in \@ifaAuthorBirthplace, dass ich die 
+		von mir am heutigen Tag dem Prüfungsausschuss der Fakultät Elektrotechnik und Informationstechnik 
+		eingereichte Diplomarbeitarbeit zum Thema 
+		\begin{quote}
+	 		\begin{center}
+	  			\emph{\@ifaTitleDE}
+	 		\end{center}
+		\end{quote}
+		vollkommen selbstständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt, 
+		sowie Zitate kenntlich gemacht habe.
+	\vspace{2cm}
+	\begin{flushright}
+		Dresden, den \@ifaDayOfSubmission \hfill \dotfill\\
+		Unterschrift
+	\end{flushright}
+	\vfill
+}%EOF
