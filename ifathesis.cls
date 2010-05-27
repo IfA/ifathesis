@@ -289,6 +289,6 @@
 	\bibliography{\@ifaReferences}
 	
 	\IfFileExists{\@ifaSelfRelianceDeclaration}{
-		\input{9ZZ_selbstst}
+		\input{\@ifaSelfRelianceDeclaration}
 	}{}
 }
