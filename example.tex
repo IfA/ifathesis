@@ -1,11 +1,12 @@
 \documentclass[
-	screen,			% makes the thesis better readable on screens (onesided, coloured links)
+	print,			% makes the thesis better readable on screens (onesided, coloured links)
 								% ATTENTION: Changes size of text area slightly. Always optimize document WITHOUT
 								% screen option first for printing (size of graphics etc.) and convert afterwards
 								% in screen optimized version!
-	listoffigures, 	% includes list of figures
-	listoftables 	% includes list of tables
-]{ifathesis}
+	listoffigures,% includes list of figures
+	listoftables,	% includes list of tables
+	abbrevations	% includes index of symbols and abbrevations
+	]{ifathesis}
 
 
 \ifaThesis{Diplomarbeit}
@@ -27,6 +28,7 @@
 \ifaAppendix{example_files/appendix}
 \ifaAbstractDE{example_files/00_Abstract_de}
 \ifaAbstractEN{example_files/00_Abstract_en}
+\ifaAbbrev{example_files/00_Abbrev}
 \ifaReferences{bibliography}
 
 

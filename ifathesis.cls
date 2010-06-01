@@ -16,6 +16,9 @@
 \newif\if@useListOfTables\@useListOfTablesfalse
 \DeclareOption{listoftables}{\@useListOfTablestrue}
 
+\newif\if@useAbbrevations\@useAbbrevationsfalse
+\DeclareOption{abbrevations}{\@useAbbrevationstrue}
+
 \newif\if@isReadyForPrint\@isReadyForPrinttrue
 \DeclareOption{print}{\@isReadyForPrinttrue}
 \DeclareOption{screen}{\@isReadyForPrintfalse}
@@ -39,13 +42,13 @@
 													% Z.B. DIV=10: Randbreite Oben und Mitte 1/10, Unten und Außen 2/10 der Seite.
 													% Regel: 60 bis 70 Zeichen pro Zeile, weniger ist besser, niemals mehr als 80!
 													% Für DRUCK DIV=10!!!
-%	captions=tableheading,							% TabellenabstÃ¤nde fÃ¼r TabellenÃ?BERschriften optimieren
+	captions=tableheading,							% Tabellenabstände für TabellenÜBERschriften optimieren
 	\if@isReadyForPrint	twoside=true\else twoside=false\fi,	% Dokument zweiseitig?
-%	headings=small,									% Relative Größe der Überschriften
+	headings=small,						  % Relative Größe der Überschriften, small ist besser lesbar und erzeugt weniger Zweizeiligs
 	fleqn,											% Formeln linksbündig
-%	bibliography=totoc,								% Literaturverzeichnis im Inhaltsverzeichnis referenziert
-%	numbers=noenddot,								% Punkte nach Abschnittsnummern? (Weglassen = Automatik)
-													% Nach Duden im vorliegenden Bsp. falsch, da auch Buchstaben in Gliederung (Anhang).
+	bibliography=totoc,								% Literaturverzeichnis im Inhaltsverzeichnis referenziert
+	numbers=noenddot,								% Punkte nach Abschnittsnummern? (Weglassen = Automatik)
+													% Nach Duden im vorliegenden Bsp. falsch, da auch Buchstaben in Gliederung (Anhang), sieht aber besser aus.
 ]{scrbook}											% Basisklasse der Vorlage: Koma-Skrip Klasse analog zur book-Klasse.
 
 % Absatznummerierung fuer 4 Ebenen (z.B. 2.3.2.1) gemaess IfA Richtlinie einschalten.
@@ -108,6 +111,7 @@
 \newcommand*{\@ifaAbstractDE}{GoHaigh2}
 \newcommand*{\@ifaAbstractEN}{GoHaigh2}
 \newcommand*{\@ifaReferences}{IPhei0Ox}
+\newcommand*{\@ifaAbbrev}{00_Abbrev}
 
 \newcommand*{\ifaThesis}[1]{\renewcommand*{\@ifaThesis}{#1}}
 \newcommand*{\ifaAuthor}[1]{\renewcommand*{\@ifaAuthor}{#1}}
@@ -129,6 +133,7 @@
 \newcommand*{\ifaAbstractDE}[1]{\renewcommand*{\@ifaAbstractDE}{#1}}
 \newcommand*{\ifaAbstractEN}[1]{\renewcommand*{\@ifaAbstractEN}{#1}}
 \newcommand*{\ifaReferences}[1]{\renewcommand*{\@ifaReferences}{#1}}
+\newcommand*{\ifaAbbrev}[1]{\renewcommand*{\@ifaAbbrev}{#1}}
 
 % Jetzt geht es los...
 \AtBeginDocument{%
@@ -254,6 +259,14 @@
 			\listoftables
 			\clearpage
 		\fi
+		\if@useAbbrevations
+		\IfFileExists{\@ifaAbbrev}{
+			
+				\input{\@ifaAbbrev}
+				\clearpage
+			
+		}{}
+		\fi
 	\endgroup
 	
 	\mainmatter
@@ -267,6 +280,7 @@
 		\renewcommand{\appendixpagename}{Anhang}
 		\begin{appendices}
 			\input{\@ifaAppendix}
+			\clearpage
 		\end{appendices}
 	}{}
 

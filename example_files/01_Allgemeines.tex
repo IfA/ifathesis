@@ -5,13 +5,22 @@
 
 
 \section{Installation}
+\label{sec:install}
 Die Vorlage \verb-ifathesis- ist eine fertige \LaTeX-Klasse, die die Richtlinie für wissenschaftliche Arbeiten am \emph{Institut für Automatisierungstechnik, Technische Universität Dresden} (IfA) realisiert. Um diese Vorlage zu verwenden müssen die folgenden Dateien lediglich im Wurzelverzeichnis des zu verfassenden \LaTeX-Dokuments liegen:
+\nomenclature[ba ]{IfA}{Institut für Automatisierungstechnik}
 \begin{compactitem}
 	\item \verb-ifathesis.cls-
 	\item \verb-packages.tex-
 	\item \verb-kopfzeile.{pdf, eps}-
+	\item \verb-nomencl.cfg-
 \end{compactitem}
 Alternativ können diese Dateien dem \LaTeX-Paketbaum hinzugefügt werden. Dann steht die Vorlage stets zur Verfügung. Die dafür notwendigen Schritte sind allerdings von der verwendeten \LaTeX-Distribution sowie vom Betriebssystem abhängig, daher wird an dieser Stelle auf eine Internetrecherche verwiesen: \href{http://www.google.de/search?sourceid=chrome&ie=UTF-8&q=latex+install+packages}{z.B. über Google.}
+
+Um die automatische Generierung eines Abkürzungs- und Symbolverzeichnises zu benutzen, müssen Sie zusätzlich zum pdftex-Kompiler den makeindex-Kompiler benutzen. Dieser ist wie folgt entweder manuell oder im TeXnicCenter eingebunden aufzurufen:
+
+\noindent \begin{center} \verb|makeindex.exe "%bm.nlo" -s nomencl.ist -o "%bm.nls"| \end{center}
+
+\noindent Dabei steht \verb|%bm| als Platzhalter für den Dateinamen der kompillierten .tex-Datei. Im TexnicCenter wird dieser Platzhalter automatisch durch den richtigen Dateinamen erstetzt.
 
 \section{Konfiguration}
 Dieser Vorlage liegt ein umfassendes Beispiel bei, welches mit der Vorlage erstellt wurde (siehe \verb-example.tex-). 
@@ -24,6 +33,7 @@ Zur Verfügung steht die Dokumentenklasse \verb-ifathesis- mit folgenden Optionen
 	\item[print | screen] Übersetzt das Dokument optimiert für den Druck bzw. für das Lesen am Monitor (einseitig, farbig hervorgehobene Links). \textbf{Achtung: Die Größe des Textkörpers unterscheidet sich geringfügig. Daher bitte immer zuerst das Dokument für den Druck optimert erstellen, wodurch bspw. die Größe der Grafiken richtig bestimmt werden kann. Anschließend kann in die für das Monitorlesen optimierte Version übersetzt werden}\footnote{Zur Abgabe der Arbeit auf einem Datenträger erforderlich}. Voreinstellung: \verb-print-. 
 	\item[listoffigures] Integriert ein Abbildungsverzeichnis an der richtigen Stelle, gemäß der \emph{IfA}-Richtlinie
 	\item[listoftables] Integriert ein Tabellenverzeichnis an der richtigen Stelle, gemäß der \emph{IfA}-Richtlinie
+	\item[abbrevations] Integriert ein Symbol- und Abkürzungsverzeichnis an der richtigen Stelle, gemäß der \emph{IfA}-Richtlinie. Weitere Informationen finden Sie in Abschnitt \ref{sec:install} und in der Datei \verb-exmaple_files\00_abbrev.tex-.
 \end{description}
 
 \subsection{Weitere Parameter}
@@ -40,6 +50,7 @@ Zur Verfügung steht die Dokumentenklasse \verb-ifathesis- mit folgenden Optionen
 	\item[ifaTitleEN] Englische Übersetzung des Titels der Arbeit
 	\item[ifaAbstractDE] Dateiname der deutschsprachigen Kurzfassung
 	\item[ifaAbstractEN] Dateiname der englischsprachigen Kurzfassung
+	\item[ifaAbbrev] Dateiname des Abkürzungsverzeichnisses
 	\item[ifaSupervisor{\emph X}] mit $X=A\dots E$, Angabe von bis zu fünf Betreuern (A\,--\,E).
 	\item[ifaProfessor] Betreuender Hochschullehrer
 	\item[ifaDayOfSubmission] Tag der Einreichung
@@ -47,7 +58,6 @@ Zur Verfügung steht die Dokumentenklasse \verb-ifathesis- mit folgenden Optionen
 	\item[ifaReferences] Name der Bibliographiedatei (vollständige Pfadangabe ausgehend von der Dokumentenwurzel erforderlich)
 erforderlich)
 \end{description}
-
 
 \section{Zusätzliche Pakete}
 \label{sec:ZusätzlichePakete}
