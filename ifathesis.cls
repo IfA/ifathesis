@@ -186,25 +186,9 @@
 			}
 		
 			\begin{tabular}{rl}
-				Betreuer: 
-				\ifthenelse{\equal{\@ifaSupervisorA}{}}{}{
-					& \@ifaSupervisorA \\
-					\ifthenelse{\equal{\@ifaSupervisorB}{}}{}{
-						& \@ifaSupervisorB \\
-						\ifthenelse{\equal{\@ifaSupervisorC}{}}{}{
-							& \@ifaSupervisorC \\
-							\ifthenelse{\equal{\@ifaSupervisorD}{}}{}{
-								& \@ifaSupervisorD \\
-								\ifthenelse{\equal{\@ifaSupervisorE}{}}{}{
-									& \@ifaSupervisorE \\
-								}
-							}
-						}
-					}
-				}
-				Verantwortlicher			& \\
-				Hochschullehrer: 		& \@ifaProfessor \\
-				Tag der Einreichung:		& \@ifaDayOfSubmission \\
+				Betreuer: \ifthenelse{\equal{\@ifaSupervisorA}{}}{}{&\@ifaSupervisorA\\ \ifthenelse{\equal{\@ifaSupervisorB}{}}{}{&\@ifaSupervisorB\\ \ifthenelse{\equal{\@ifaSupervisorC}{}}{}{&\@ifaSupervisorC\\\ifthenelse{\equal{\@ifaSupervisorD}{}}{}{&\@ifaSupervisorD\\ \ifthenelse{\equal{\@ifaSupervisorE}{}}{}{&\@ifaSupervisorE\\}}}}}
+				Verantwortlicher Hochschullehrer: 	& \@ifaProfessor \\
+				Tag der Einreichung:	& \@ifaDayOfSubmission \\
 			\end{tabular}
 		\end{center}
 	\end{titlepage}
@@ -234,6 +218,20 @@
 		\section*{\@ifaTitleDE}
 		\input{\@ifaAbstractDE}
 		\vfill
+
+		\begin{flushleft}
+			\scriptsize
+			\begin{tabular}{ll}
+				Betreuer: \ifthenelse{\equal{\@ifaSupervisorA}{}}{}{&\@ifaSupervisorA\\ \ifthenelse{\equal{\@ifaSupervisorB}{}}{}{&\@ifaSupervisorB\\ \ifthenelse{\equal{\@ifaSupervisorC}{}}{}{&\@ifaSupervisorC\\ \ifthenelse{\equal{\@ifaSupervisorD}{}}{}{&\@ifaSupervisorD\\ \ifthenelse{\equal{\@ifaSupervisorE}{}}{}{&\@ifaSupervisorE\\}}}}}Hochschullehrer: &\@ifaProfessor\\Tag der Einreichung: &\@ifaDayOfSubmission \\
+			\end{tabular}
+			\hfill
+			\hrule
+			\vspace{.2cm}\normalsize
+
+			\ifthenelse{\equal{\@ifaThesis}{Diplomarbeit}}{DIPLOMARBEIT}{STUDIENARBEIT}
+			\hfill Bearbeiter: \@ifaAuthor
+		\end{flushleft}
+
 		\cleardoublepage
 
 		%
@@ -244,6 +242,18 @@
 		\section*{\@ifaTitleEN}
 		\input{\@ifaAbstractEN}
 		\vfill
+		\begin{flushleft}
+			\scriptsize
+			\begin{tabular}{ll}
+				Tutor: \ifthenelse{\equal{\@ifaSupervisorA}{}}{}{&\@ifaSupervisorA\\ \ifthenelse{\equal{\@ifaSupervisorB}{}}{}{&\@ifaSupervisorB\\ \ifthenelse{\equal{\@ifaSupervisorC}{}}{}{&\@ifaSupervisorC\\ \ifthenelse{\equal{\@ifaSupervisorD}{}}{}{&\@ifaSupervisorD\\ \ifthenelse{\equal{\@ifaSupervisorE}{}}{}{&\@ifaSupervisorE\\}}}}}Supervisor: &\@ifaProfessor\\Day of Submission: &\@ifaDayOfSubmission \\
+			\end{tabular}
+			\hfill
+			\hrule
+			\vspace{.2cm}\normalsize
+			\ifthenelse{\equal{\@ifaThesis}{Diplomarbeit}}{DIPLOMA THESIS}{STUDENT RESEARCH THESIS}
+			\hfill Author: \@ifaAuthor
+		\end{flushleft}
+
 		\cleardoublepage
 		
 		% Verzeichnisse
@@ -260,12 +270,10 @@
 			\clearpage
 		\fi
 		\if@useAbbrevations
-		\IfFileExists{\@ifaAbbrev}{
-			
+			\IfFileExists{\@ifaAbbrev}{
 				\input{\@ifaAbbrev}
 				\clearpage
-			
-		}{}
+			}{}
 		\fi
 	\endgroup
 	
@@ -276,6 +284,13 @@
 
 % ...und gleich ist Schluss!
 \AtEndDocument{
+	% Auch Abschnittsbeginn ohne Kopf- und Fuﬂzeile
+	\renewcommand*{\chapterpagestyle}{empty} 
+
+	\bibliographystyle{abbrvnat}
+	\bibliography{\@ifaReferences}
+	\cleardoublepage
+
 	\IfFileExists{\@ifaAppendix}{
 		\renewcommand{\appendixpagename}{Anhang}
 		\begin{appendices}
@@ -291,10 +306,6 @@
 	% Auch Abschnittsbeginn ohne Kopf- und Fuﬂzeile
 	\renewcommand*{\chapterpagestyle}{empty} 
 
-	\bibliographystyle{abbrvnat}
-	\bibliography{\@ifaReferences}
-	\cleardoublepage
-	
 	% Selbst‰ndigkeitserkl‰rung
 	%
 	%
