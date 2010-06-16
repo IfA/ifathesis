@@ -27,25 +27,25 @@
 
 % Lade Basisklasse der Vorlage
 \PassOptionsToPackage{%
-	paper=a4,% Papiergrˆﬂe
-	headinclude=true,  								% Gehˆrt Kopfzeile eher zur Seite oder zum Rand?
-	footinclude=false, 								% Gehˆrt Fuﬂzeile eher zur Seite oder zum Rand?
-	pagesize 										% Schreibt die Seitengrˆﬂe ins Seitenregister, 
-													% sodass DVI- und PDF-Seiten die richtige Grˆﬂe haben.
+	paper=a4,% Papiergr√∂√üe
+	headinclude=true,  								% Geh√∂rt Kopfzeile eher zur Seite oder zum Rand?
+	footinclude=false, 								% Geh√∂rt Fu√üzeile eher zur Seite oder zum Rand?
+	pagesize 										% Schreibt die Seitengr√∂√üe ins Seitenregister, 
+													% sodass DVI- und PDF-Seiten die richtige Gr√∂√üe haben.
 }{typearea}
-\PassOptionsToPackage{svgnames}{xcolor}				% Namensraum f¸r xcolor Paket			
+\PassOptionsToPackage{svgnames}{xcolor}				% Namensraum f√ºr xcolor Paket			
 \PassOptionsToPackage{fleqn}{amsmath}
 \LoadClass[
-	fontsize=12pt,									% Grundschriftgrˆﬂe
-	\if@isReadyForPrint	BCOR=15mm\else BCOR=0mm\fi,	% Binderandgrˆﬂe f¸r DRUCK ANSCHALTEN!!!
-	\if@isReadyForPrint	DIV=10\else DIV=9\fi,		% Teil der Seite, der als Seitenrand ber¸cksichtigt wird (auch =calc mgl.):
-													% Z.B. DIV=10: Randbreite Oben und Mitte 1/10, Unten und Auﬂen 2/10 der Seite.
+	fontsize=12pt,									% Grundschriftgr√∂√üe
+	\if@isReadyForPrint	BCOR=15mm\else BCOR=0mm\fi,	% Binderandgr√∂√üe f√ºr DRUCK ANSCHALTEN!!!
+	\if@isReadyForPrint	DIV=10\else DIV=9\fi,		% Teil der Seite, der als Seitenrand ber√ºcksichtigt wird (auch =calc mgl.):
+													% Z.B. DIV=10: Randbreite Oben und Mitte 1/10, Unten und Au√üen 2/10 der Seite.
 													% Regel: 60 bis 70 Zeichen pro Zeile, weniger ist besser, niemals mehr als 80!
-													% F¸r DRUCK DIV=10!!!
-	captions=tableheading,							% Tabellenabst‰nde f¸r Tabellen‹BERschriften optimieren
+													% F√ºr DRUCK DIV=10!!!
+	captions=tableheading,							% Tabellenabst√§nde f√ºr Tabellen√úBERschriften optimieren
 	\if@isReadyForPrint	twoside=true\else twoside=false\fi,	% Dokument zweiseitig?
-	headings=small,						  % Relative Grˆﬂe der ‹berschriften, small ist besser lesbar und erzeugt weniger Zweizeiligs
-	fleqn,											% Formeln linksb¸ndig
+	headings=small,						  % Relative Gr√∂√üe der √úberschriften, small ist besser lesbar und erzeugt weniger Zweizeiligs
+	fleqn,											% Formeln linksb√ºndig
 	bibliography=totoc,								% Literaturverzeichnis im Inhaltsverzeichnis referenziert
 	numbers=noenddot,								% Punkte nach Abschnittsnummern? (Weglassen = Automatik)
 													% Nach Duden im vorliegenden Bsp. falsch, da auch Buchstaben in Gliederung (Anhang), sieht aber besser aus.
@@ -55,7 +55,7 @@
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4} 
 
-% Lade benˆtigte Pakete
+% Lade ben√∂tigte Pakete
 \include{packages}
 
 %-------------------------------------------------------------------------
@@ -69,10 +69,10 @@
 }
 %-------------------------------------------------------------------------																							
 																							
-% Ver‰nderung der Bildunterschriften und Tabellen¸berschriften:
-\addtokomafont{caption}{\small}					% Kleinere Schriftgrˆﬂe f¸r Captions
+% Ver√§nderung der Bildunterschriften und Tabellen√ºberschriften:
+\addtokomafont{caption}{\small}					% Kleinere Schriftgr√∂√üe f√ºr Captions
 \setkomafont{captionlabel}{\sffamily\bfseries}	% Caption-Label fett und serifenlos
-\setcapindent{1em}								% 2. Zeile der Caption mit h‰ngendem Einzug
+\setcapindent{1em}								% 2. Zeile der Caption mit h√§ngendem Einzug
 
 \renewcommand*{\backref}[1]{}
 \renewcommand*{\backrefalt}[4]{%
@@ -90,18 +90,18 @@
 														
 
 %%%%%
-% Jetzt m√ºssen zun√§chst die variablen Angaben geladen werden
+% Jetzt m√É¬ºssen zun√É¬§chst die variablen Angaben geladen werden
 \newcommand*{\@ifaThesis}{Diplomarbeit}
 \newcommand*{\@ifaAuthor}{Max Mustermann}
 \newcommand*{\@ifaAuthorBirthday}{01.01.1970}
 \newcommand*{\@ifaAuthorBirthplace}{Dresden}
 \newcommand*{\@ifaAuthorCourse}{Informationssystemtechnik}
 \newcommand*{\@ifaAuthorYearOfMatriculation}{2000}
-\newcommand*{\@ifaKeywords}{Komma-separierte, Liste, mit, Schlagw√∂rtern, zum Thema, der Arbeit}
+\newcommand*{\@ifaKeywords}{Komma-separierte, Liste, mit, Schlagw√É¬∂rtern, zum Thema, der Arbeit}
 \newcommand*{\@ifaTitleDE}{Titel der Arbeit}
 \newcommand*{\@ifaTitleEN}{Titel der Arbeit}
-\newcommand*{\@ifaSupervisorA}{Dipl.-Ing. Mein Trapez}
-\newcommand*{\@ifaSupervisorB}{Dr.-Ing. John Doe}
+\newcommand*{\@ifaSupervisorA}{}
+\newcommand*{\@ifaSupervisorB}{}
 \newcommand*{\@ifaSupervisorC}{}
 \newcommand*{\@ifaSupervisorD}{}
 \newcommand*{\@ifaSupervisorE}{}
@@ -138,10 +138,10 @@
 % Jetzt geht es los...
 \AtBeginDocument{%
 	% colorlinks: Farbige Verweise statt Umrahmung 
-	% Verhalten von hyperef ƒndern: Farbe f√ºr Bildschirm, SW f¸r Druck
+	% Verhalten von hyperef √Ñndern: Farbe f√É¬ºr Bildschirm, SW f√ºr Druck
 	% ...color: Farbe verschiedener Verweise nach Farbpalette svgnames
 	% pdf...: Setzten von Variablen die in den Eigenschaften der PDF-Datei angzeigt werden
-	% Weitere Optionen mˆglich - siehe Dokumentation des Paktes hyperref
+	% Weitere Optionen m√∂glich - siehe Dokumentation des Paktes hyperref
 	\hypersetup{
 		linkcolor=\if@isReadyForPrint black\else blue\fi,%
 		urlcolor=\if@isReadyForPrint black\else blue\fi,%
@@ -195,9 +195,9 @@
 
 	\clearpage
 	\begingroup
-		% Im Vorspann nur Seiten ohne Kopf- und Fuﬂzeile (auﬂer Abschnittsbeginn)
+		% Im Vorspann nur Seiten ohne Kopf- und Fu√üzeile (au√üer Abschnittsbeginn)
 		\pagestyle{empty}	
-		% Auch Abschnittsbeginn ohne Kopf- und Fuﬂzeile
+		% Auch Abschnittsbeginn ohne Kopf- und Fu√üzeile
 		\renewcommand*{\chapterpagestyle}{empty} 
 		
 		% Aufgabenstellung
@@ -284,7 +284,7 @@
 
 % ...und gleich ist Schluss!
 \AtEndDocument{
-	% Auch Abschnittsbeginn ohne Kopf- und Fuﬂzeile
+	% Auch Abschnittsbeginn ohne Kopf- und Fu√üzeile
 	\renewcommand*{\chapterpagestyle}{empty} 
 
 	\bibliographystyle{abbrvnat}
@@ -301,25 +301,25 @@
 
 	\backmatter
 	
-	% Im Abspann nur Seiten ohne Kopf- und Fuﬂzeile (auﬂer Abschnittsbeginn)
+	% Im Abspann nur Seiten ohne Kopf- und Fu√üzeile (au√üer Abschnittsbeginn)
 	\pagestyle{empty}	
-	% Auch Abschnittsbeginn ohne Kopf- und Fuﬂzeile
+	% Auch Abschnittsbeginn ohne Kopf- und Fu√üzeile
 	\renewcommand*{\chapterpagestyle}{empty} 
 
-	% Selbst‰ndigkeitserkl‰rung
+	% Selbst√§ndigkeitserkl√§rung
 	%
 	%
 	\vspace*{\fill} %4cm}
-	\section*{Selbstst‰ndigkeitserkl‰rung}
-		Hiermit erkl‰re ich, \@ifaAuthor, geboren am \@ifaAuthorBirthday~in \@ifaAuthorBirthplace, dass ich die 
-		von mir am heutigen Tag dem Pr¸fungsausschuss der Fakult‰t Elektrotechnik und Informationstechnik 
+	\section*{Selbstst√§ndigkeitserkl√§rung}
+		Hiermit erkl√§re ich, \@ifaAuthor, geboren am \@ifaAuthorBirthday~in \@ifaAuthorBirthplace, dass ich die 
+		von mir am heutigen Tag dem Pr√ºfungsausschuss der Fakult√§t Elektrotechnik und Informationstechnik 
 		eingereichte Diplomarbeitarbeit zum Thema 
 		\begin{quote}
 	 		\begin{center}
 	  			\emph{\@ifaTitleDE}
 	 		\end{center}
 		\end{quote}
-		vollkommen selbstst‰ndig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt, 
+		vollkommen selbstst√§ndig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt, 
 		sowie Zitate kenntlich gemacht habe.
 	\vspace{2cm}
 	\begin{flushright}

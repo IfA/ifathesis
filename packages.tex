@@ -1,23 +1,23 @@
 \RequirePackage[latin1]{inputenc}	% Eingabe von Umlauten ermöglichen.
-\RequirePackage[T1]{fontenc}		% EC-Fonts verwenden, so dass Wörter mit Umlauten getrennt werden
-\RequirePackage{lmodern}			% Verbesserte Schriftart. Alternativ auch \RequirePackage{palatino}, \RequirePackage{fourier}, etc.
+\RequirePackage[T1]{fontenc}			% EC-Fonts verwenden, so dass Wörter mit Umlauten getrennt werden
+\RequirePackage{lmodern}				% Verbesserte Schriftart. Alternativ auch \RequirePackage{palatino}, \RequirePackage{fourier}, etc.
 \RequirePackage[ngerman]{babel}		% Silbentrennung nach neuer deutscher Rechtschreibung.
-\RequirePackage{nameref}			% Zusatzpaket zu hyperref. Muss vor inkompatiblen Paketen geladen werden.
+\RequirePackage{nameref}				% Zusatzpaket zu hyperref. Muss vor inkompatiblen Paketen geladen werden.
 \RequirePackage{graphicx} 			% zum Einbinden von Graphiken (.png,.pdf,...)
 \RequirePackage{units}				% zum Korrekten setzen von Einheiten mit \unit[Wert]{Einheit}
 									% (noch weitere Befehle unterstützt)
-\RequirePackage{booktabs}			% verbessert das Aussehen von Tabellen, neue Berehele \toprule, \midrule, etc.
+\RequirePackage{booktabs}			% verbessert das Aussehen von Tabellen, neue Befehle \toprule, \midrule, etc.
 \RequirePackage{multirow}			% Mehrere Zeilen in Tabellen zusammenfassen
 \RequirePackage{multicol}			% Mehrere Spalten in Tabellen zusammenfassen
 \RequirePackage{paralist}			% Ermöglicht parametrisierbare Listen wie z.B. compactitem
 \RequirePackage{subfigure} 			% Zum Benutzen der Subfigure Umgebung  (2 Bilder in einem) <VOR/NACH Paket hyperref?>
 \RequirePackage[section]{placeins}	% Plaztiert zu einem Abschnitt gehörende Floating-Objekte spätestens am Ende des Abschnitts
 \RequirePackage{pdfpages} 			% Zum einbinden von kompletten PDF-Seiten (z.B. Aufgabenstellung)
-\RequirePackage{caption}			% Paket zum Einbinden von Captions bei Nicht-Float-Objekten (hauptsächlich für Anhang)
-\RequirePackage[square]{natbib}		        % Paket zum Personalisieren von Zitaten im Text. Fuer eckige Klammern [square]
+\RequirePackage{caption}				% Paket zum Einbinden von Captions bei Nicht-Float-Objekten (hauptsächlich für Anhang)
+\RequirePackage[square]{natbib}		% Paket zum Personalisieren von Zitaten im Text. Fuer eckige Klammern [square]
 
 \RequirePackage{calc} 				% Für Berechnungen mit Variablen
-\RequirePackage{upgreek} 			% Aufrechte griechische Buchstaben (beachte ISO konformer Formelsatz
+\RequirePackage{upgreek} 			% Aufrechte griechische Buchstaben (beachte ISO konformer Formelsatz)
 \RequirePackage{bm}               	% Fette Formelzeichen (Vektoren, Matrizen, etc.)
 
 \RequirePackage{microtype} 			% Optischer Randausgleich
@@ -40,7 +40,7 @@
 % zur scrbook-Klasse passendes Koma-Skript- Paket zum Einbinden einer Kopf-/FuÃŸzeile:		
 \RequirePackage[
 	headsepline, 	% headsepline für die Linie unter der Kopfzeie,
-	automark		% automark für das automatische Update des Kopfzeileninhalts
+	automark			% automark für das automatische Update des Kopfzeileninhalts
 ]{scrpage2} 	
 																							
 % Für farbige Verweise
@@ -51,9 +51,9 @@
 	pdfpagelabels, 
 	plainpages=false, 
 	colorlinks=true,
-	pdfdisplaydoctitle=true,%
-	pdfpagemode=UseOutlines	%Determines how the file is opening:
-		                      %UseNone, UseThumbs (show thumbnails), UseOutlines (show bookmarks), FullScreen, UseOC, UseAttachments
+	pdfdisplaydoctitle=true,	%
+	pdfpagemode=UseOutlines	% Determines how the file is opening:
+							% UseNone, UseThumbs (show thumbnails), UseOutlines (show bookmarks), FullScreen, UseOC, UseAttachments
 ]{hyperref}
 
 \RequirePackage[
@@ -61,11 +61,11 @@
 	german
 ]{backref}
 
-%\RequirePackage[draft]{fixme} % Zum Einfügen von Kommentaren im Text, z.B. Erinnerungen welche Stellen noch bearbeitet werden müssen.
-															 % Mit \fixme{}, \fxnote{}, \fxwarning{}, \fxerror{} können differnzierte Notizen gemacht werden.
-															 % Beim Kompillieren wird eine Zusammenfassung gegeben, wie viele fixme-Notizen noch im Dokument sind.
+%\RequirePackage[draft]{fixme}	% Zum Einfügen von Kommentaren im Text, z.B. Erinnerungen welche Stellen noch bearbeitet werden müssen.
+								% Mit \fixme{}, \fxnote{}, \fxwarning{}, \fxerror{} können differnzierte Notizen gemacht werden.
+								% Beim Kompillieren wird eine Zusammenfassung gegeben, wie viele fixme-Notizen noch im Dokument sind.
 \RequirePackage[page, titletoc]{appendix}
 
-%Erlaubt das Einfügen eines automatischen Symbolverzeichnisses
+% Erlaubt das Einfügen eines automatischen Symbolverzeichnisses
 \usepackage[german]{nomencl}		
 \makenomenclature
