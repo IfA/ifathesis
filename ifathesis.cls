@@ -1,9 +1,5 @@
-% Copyright text goes here...
-%
-%
-%
 \def\fileversion{0.1}
-\def\filedate{2010/02/20 }
+\def\filedate{2010/02/20}
 \def\filename{ifathesis}
 
 \NeedsTeXFormat{LaTeX2e}
@@ -27,77 +23,76 @@
 
 % Lade Basisklasse der Vorlage
 \PassOptionsToPackage{%
-	paper=a4,% Papiergr√∂√üe
-	headinclude=true,  								% Geh√∂rt Kopfzeile eher zur Seite oder zum Rand?
-	footinclude=false, 								% Geh√∂rt Fu√üzeile eher zur Seite oder zum Rand?
-	pagesize 										% Schreibt die Seitengr√∂√üe ins Seitenregister, 
-													% sodass DVI- und PDF-Seiten die richtige Gr√∂√üe haben.
+  paper=a4,           % Papiergrˆﬂe
+  headinclude=true,   % Gehˆrt Kopfzeile eher zur Seite oder zum Rand?
+  footinclude=false,  % Gehˆrt Fuﬂzeile eher zur Seite oder zum Rand?
+  pagesize            % Schreibt die Seitengrˆﬂe ins Seitenregister,
+                      % sodass DVI- und PDF-Seiten die richtige Grˆﬂe haben.
 }{typearea}
-\PassOptionsToPackage{svgnames}{xcolor}				% Namensraum f√ºr xcolor Paket			
+\PassOptionsToPackage{svgnames}{xcolor}  % Namensraum f¸r xcolor Paket      
 \PassOptionsToPackage{fleqn}{amsmath}
 \LoadClass[
-	fontsize=12pt,									% Grundschriftgr√∂√üe
-	\if@isReadyForPrint	BCOR=15mm\else BCOR=0mm\fi,	% Binderandgr√∂√üe f√ºr DRUCK ANSCHALTEN!!!
-	\if@isReadyForPrint	DIV=10\else DIV=9\fi,		% Teil der Seite, der als Seitenrand ber√ºcksichtigt wird (auch =calc mgl.):
-													% Z.B. DIV=10: Randbreite Oben und Mitte 1/10, Unten und Au√üen 2/10 der Seite.
-													% Regel: 60 bis 70 Zeichen pro Zeile, weniger ist besser, niemals mehr als 80!
-													% F√ºr DRUCK DIV=10!!!
-	captions=tableheading,							% Tabellenabst√§nde f√ºr Tabellen√úBERschriften optimieren
-	\if@isReadyForPrint	twoside=true\else twoside=false\fi,	% Dokument zweiseitig?
-	headings=small,						  % Relative Gr√∂√üe der √úberschriften, small ist besser lesbar und erzeugt weniger Zweizeiligs
-	fleqn,											% Formeln linksb√ºndig
-	bibliography=totoc,								% Literaturverzeichnis im Inhaltsverzeichnis referenziert
-	numbers=noenddot,								% Punkte nach Abschnittsnummern? (Weglassen = Automatik)
-													% Nach Duden im vorliegenden Bsp. falsch, da auch Buchstaben in Gliederung (Anhang), sieht aber besser aus.
-]{scrbook}											% Basisklasse der Vorlage: Koma-Skrip Klasse analog zur book-Klasse.
+  fontsize=12pt,                                            % Grundschriftgrˆﬂe
+  \if@isReadyForPrint  BCOR=15mm\else BCOR=0mm\fi,          % Binderandgrˆﬂe
+  \if@isReadyForPrint  DIV=10\else DIV=9\fi,                % Teil der Seite, der als Seitenrand ber¸cksichtigt wird (auch =calc mgl.):
+                                                            % Z.B. DIV=10: Randbreite Oben und Mitte 1/10, Unten und Auﬂen 2/10 der Seite.
+                                                            % Regel: 60 bis 70 Zeichen pro Zeile, weniger ist besser, niemals mehr als 80!
+  captions=tableheading,                                    % Tabellenabst‰nde f¸r Tabellen‹BERschriften optimieren
+  \if@isReadyForPrint  twoside=true\else twoside=false\fi,  % Dokument zweiseitig?
+  headings=small,                                           % Relative Grˆﬂe der ‹berschriften, small ist besser lesbar und erzeugt weniger Zweizeiligs
+  fleqn,                                                    % Formeln linksb¸ndig
+  bibliography=totoc,                                       % Literaturverzeichnis im Inhaltsverzeichnis referenziert
+  numbers=noenddot,                                         % Punkte nach Abschnittsnummern? (Weglassen = Automatik)
+                                                            % Nach Duden im vorliegenden Bsp. falsch, da auch Buchstaben in Gliederung (Anhang), sieht aber besser aus.
+]{scrbook}                                                  % Basisklasse der Vorlage: Koma-Skrip Klasse analog zur book-Klasse.
 
 % Absatznummerierung fuer 4 Ebenen (z.B. 2.3.2.1) gemaess IfA Richtlinie einschalten.
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4} 
 
-% Lade ben√∂tigte Pakete
+% Lade benˆtigte Pakete
 \include{packages}
 
 %-------------------------------------------------------------------------
 % Macht im Anhang aus "A Quellcode" -> "Anhang A Quellcode"
-%-------------------------------------------------------------------------																							
+%-------------------------------------------------------------------------
 \newcommand*{\appendixmore}{%
-	\renewcommand*{\chapterformat}{%
-		\appendixname~\thechapter\autodot:\enskip}
-	\renewcommand*{\chaptermarkformat}{%
-		\appendixname~\thechapter\autodot:\enskip}
+  \renewcommand*{\chapterformat}{%
+    \appendixname~\thechapter\autodot:\enskip}
+  \renewcommand*{\chaptermarkformat}{%
+    \appendixname~\thechapter\autodot:\enskip}
 }
-%-------------------------------------------------------------------------																							
-																							
-% Ver√§nderung der Bildunterschriften und Tabellen√ºberschriften:
-\addtokomafont{caption}{\small}					% Kleinere Schriftgr√∂√üe f√ºr Captions
-\setkomafont{captionlabel}{\sffamily\bfseries}	% Caption-Label fett und serifenlos
-\setcapindent{1em}								% 2. Zeile der Caption mit h√§ngendem Einzug
+%-------------------------------------------------------------------------
+                                              
+% Ver‰nderung der Bildunterschriften und Tabellen¸berschriften:
+\addtokomafont{caption}{\small}                 % Kleinere Schriftgrˆﬂe f¸r Captions
+\setkomafont{captionlabel}{\sffamily\bfseries}  % Caption-Label fett und serifenlos
+\setcapindent{1em}                              % 2. Zeile der Caption mit h‰ngendem Einzug
 
 \renewcommand*{\backref}[1]{}
 \renewcommand*{\backrefalt}[4]{%
-	\ifcase #1 %
-	%
-	\or
-	\par \footnotesize \sffamily \vspace{0.25\baselineskip} {\raggedleft Zitiert auf Seite #2.\par}%
-	\else
-	\par \footnotesize \sffamily \vspace{0.25\baselineskip} {\raggedleft Zitiert auf Seiten #2.\par}%
-	\fi
-}																												
+  \ifcase #1 %
+    %
+  \or
+    \par \footnotesize \sffamily \vspace{0.25\baselineskip} {\raggedleft Zitiert auf Seite #2.\par}%
+  \else
+    \par \footnotesize \sffamily \vspace{0.25\baselineskip} {\raggedleft Zitiert auf Seiten #2.\par}%
+  \fi
+}
 
-\RequirePackage{ifthen}	
+\RequirePackage{ifthen}
 
-														
+
 
 %%%%%
-% Jetzt m√É¬ºssen zun√É¬§chst die variablen Angaben geladen werden
+% Jetzt m¸ssen zun√§chst die variablen Angaben geladen werden
 \newcommand*{\@ifaThesis}{Diplomarbeit}
 \newcommand*{\@ifaAuthor}{Max Mustermann}
 \newcommand*{\@ifaAuthorBirthday}{01.01.1970}
 \newcommand*{\@ifaAuthorBirthplace}{Dresden}
 \newcommand*{\@ifaAuthorCourse}{Informationssystemtechnik}
 \newcommand*{\@ifaAuthorYearOfMatriculation}{2000}
-\newcommand*{\@ifaKeywords}{Komma-separierte, Liste, mit, Schlagw√É¬∂rtern, zum Thema, der Arbeit}
+\newcommand*{\@ifaKeywords}{Komma-separierte, Liste, mit, Schlagwˆrtern, zum Thema, der Arbeit}
 \newcommand*{\@ifaTitleDE}{Titel der Arbeit}
 \newcommand*{\@ifaTitleEN}{Titel der Arbeit}
 \newcommand*{\@ifaSupervisorA}{}
@@ -137,194 +132,187 @@
 
 % Jetzt geht es los...
 \AtBeginDocument{%
-	% colorlinks: Farbige Verweise statt Umrahmung 
-	% Verhalten von hyperef √Ñndern: Farbe f√É¬ºr Bildschirm, SW f√ºr Druck
-	% ...color: Farbe verschiedener Verweise nach Farbpalette svgnames
-	% pdf...: Setzten von Variablen die in den Eigenschaften der PDF-Datei angzeigt werden
-	% Weitere Optionen m√∂glich - siehe Dokumentation des Paktes hyperref
-	\hypersetup{
-		linkcolor=\if@isReadyForPrint black\else blue\fi,%
-		urlcolor=\if@isReadyForPrint black\else blue\fi,%
-		citecolor=\if@isReadyForPrint black\else green\fi,%
-		pdftitle=\@ifaTitleDE,%
-		pdfauthor=\@ifaAuthor,%
-		pdfsubject=\@ifaTitleDE,%
-		pdfkeywords={\@ifaKeywords}%,%
-	}
+  % colorlinks: Farbige Verweise statt Umrahmung 
+  % Verhalten von hyperef ƒndern: Farbe f¸r Bildschirm, SW f¸r Druck
+  % ...color: Farbe verschiedener Verweise nach Farbpalette svgnames
+  % pdf...: Setzten von Variablen die in den Eigenschaften der PDF-Datei angzeigt werden
+  % Weitere Optionen mˆglich - siehe Dokumentation des Paktes hyperref
+  \hypersetup{
+    linkcolor=\if@isReadyForPrint black\else blue\fi,%
+    urlcolor=\if@isReadyForPrint black\else blue\fi,%
+    citecolor=\if@isReadyForPrint black\else green\fi,%
+    pdftitle=\@ifaTitleDE,%
+    pdfauthor=\@ifaAuthor,%
+    pdfsubject=\@ifaTitleDE,%
+    pdfkeywords={\@ifaKeywords}%,%
+  }
 
-	\frontmatter
-	
-	\begin{titlepage}
-		\begin{picture}(0,0)
-			\put(-97,-50){\includegraphics*{kopfzeile}}
-		\end{picture}
-				
-		\begin{center}
-			\vfill
-			\vfill
+  \frontmatter
+  
+  \begin{titlepage}
+    \begin{picture}(0,0)
+      \put(-97,-50){\includegraphics*{kopfzeile}}
+    \end{picture}
+        
+    \begin{center}
+      \vfill
+      \vfill
 
-			{\huge\textsc{\@ifaThesis}}\\[0.5cm]
-			zum Thema \\[0.5cm]
-			{\large \@ifaTitleDE}\\
+      {\huge\textsc{\@ifaThesis}}\\[0.5cm]
+      zum Thema \\[0.5cm]
+      {\large \@ifaTitleDE}\\
 
-			\vfill
+      \vfill
 
-			\begin{tabular}{rl}
-				vorgelegt von 	& \@ifaAuthor \\
-				im Studiengang	& \@ifaAuthorCourse,\:Jg.\:\@ifaAuthorYearOfMatriculation \\
-				geboren am 		& \@ifaAuthorBirthday\:in\:\@ifaAuthorBirthplace\\ 
-			\end{tabular}
-			\vfill
+      \begin{tabular}{rl}
+        vorgelegt von   & \@ifaAuthor \\
+        im Studiengang  & \@ifaAuthorCourse,\:Jg.\:\@ifaAuthorYearOfMatriculation \\
+        geboren am     & \@ifaAuthorBirthday\:in\:\@ifaAuthorBirthplace\\ 
+      \end{tabular}
+      \vfill
 
-			\ifthenelse{\equal{\@ifaThesis}{Diplomarbeit}}{
-				{\large zur Erlangung des akademischen Grades} \\[0.2cm]
-				{\LARGE Diplomingenieur\\[0.2cm](Dipl.-Ing.)}
-				\vfill
-			}{
-				\vfill
-				\vfill
-			}
-		
-			\begin{tabular}{rl}
-				Betreuer: \ifthenelse{\equal{\@ifaSupervisorA}{}}{}{&\@ifaSupervisorA\\ \ifthenelse{\equal{\@ifaSupervisorB}{}}{}{&\@ifaSupervisorB\\ \ifthenelse{\equal{\@ifaSupervisorC}{}}{}{&\@ifaSupervisorC\\\ifthenelse{\equal{\@ifaSupervisorD}{}}{}{&\@ifaSupervisorD\\ \ifthenelse{\equal{\@ifaSupervisorE}{}}{}{&\@ifaSupervisorE\\}}}}}
-				Verantwortlicher Hochschullehrer: 	& \@ifaProfessor \\
-				Tag der Einreichung:	& \@ifaDayOfSubmission \\
-			\end{tabular}
-		\end{center}
-	\end{titlepage}
+      \ifthenelse{\equal{\@ifaThesis}{Diplomarbeit}}{
+        {\large zur Erlangung des akademischen Grades} \\[0.2cm]
+        {\LARGE Diplomingenieur\\[0.2cm](Dipl.-Ing.)}
+        \vfill
+      }{
+        \vfill
+        \vfill
+      }
 
-	\clearpage
-	\begingroup
-		% Im Vorspann nur Seiten ohne Kopf- und Fu√üzeile (au√üer Abschnittsbeginn)
-		\pagestyle{empty}	
-		% Auch Abschnittsbeginn ohne Kopf- und Fu√üzeile
-		\renewcommand*{\chapterpagestyle}{empty} 
-		
-		% Aufgabenstellung
-		\vfill
-		\begin{center}
-			\Huge Hier die Aufgabenstellung im Original bzw. als Kopie im Zweitexemplar einbinden.
-		\end{center}
-		\cleardoublepage 
-		
-		% Kurzfassungen
-		%
-		%
-		%
-		\begin{picture}(0,0)
-			\put(-97,-50){\includegraphics*{kopfzeile}}
-		\end{picture}
-		\vfill
-		\section*{\@ifaTitleDE}
-		\input{\@ifaAbstractDE}
-		\vfill
+      \begin{tabular}{rl}
+        Betreuer: \ifthenelse{\equal{\@ifaSupervisorA}{}}{}{&\@ifaSupervisorA\\ \ifthenelse{\equal{\@ifaSupervisorB}{}}{}{&\@ifaSupervisorB\\ \ifthenelse{\equal{\@ifaSupervisorC}{}}{}{&\@ifaSupervisorC\\\ifthenelse{\equal{\@ifaSupervisorD}{}}{}{&\@ifaSupervisorD\\ \ifthenelse{\equal{\@ifaSupervisorE}{}}{}{&\@ifaSupervisorE\\}}}}}
+        Verantwortlicher Hochschullehrer:   & \@ifaProfessor \\
+        Tag der Einreichung:  & \@ifaDayOfSubmission \\
+      \end{tabular}
+    \end{center}
+  \end{titlepage}
 
-		\begin{flushleft}
-			\scriptsize
-			\begin{tabular}{ll}
-				Betreuer: \ifthenelse{\equal{\@ifaSupervisorA}{}}{}{&\@ifaSupervisorA\\ \ifthenelse{\equal{\@ifaSupervisorB}{}}{}{&\@ifaSupervisorB\\ \ifthenelse{\equal{\@ifaSupervisorC}{}}{}{&\@ifaSupervisorC\\ \ifthenelse{\equal{\@ifaSupervisorD}{}}{}{&\@ifaSupervisorD\\ \ifthenelse{\equal{\@ifaSupervisorE}{}}{}{&\@ifaSupervisorE\\}}}}}Hochschullehrer: &\@ifaProfessor\\Tag der Einreichung: &\@ifaDayOfSubmission \\
-			\end{tabular}
-			\hfill
-			\hrule
-			\vspace{.2cm}\normalsize
+  \clearpage
+  \begingroup
+    % Im Vorspann nur Seiten ohne Kopf- und Fuﬂzeile (auﬂer Abschnittsbeginn)
+    \pagestyle{empty}  
+    % Auch Abschnittsbeginn ohne Kopf- und Fuﬂzeile
+    \renewcommand*{\chapterpagestyle}{empty}
 
-			\ifthenelse{\equal{\@ifaThesis}{Diplomarbeit}}{DIPLOMARBEIT}{STUDIENARBEIT}
-			\hfill Bearbeiter: \@ifaAuthor
-		\end{flushleft}
+    % Aufgabenstellung
+    \vfill
+    \begin{center}
+      \Huge Hier die Aufgabenstellung im Original (bzw. als Kopie im Zweitexemplar) nach dem Drucken, vor dem Binden einbinden, indem dieses Blatt ersetzt wird. Die Mˆglichkeit die Kopie als pdf-Dokument einzuf¸gen wird evtl. in einer folgenden Version der Vorlage zur Verf¸gung stehen.
+    \end{center}
+    \cleardoublepage 
 
-		\cleardoublepage
+    % Kurzfassungen
+    \begin{picture}(0,0)
+      \put(-97,-50){\includegraphics*{kopfzeile}}
+    \end{picture}
+    \vfill
+    \section*{\@ifaTitleDE}
+    \input{\@ifaAbstractDE}
+    \vfill
 
-		%
-		\begin{picture}(0,0)
-			\put(-97,-50){\includegraphics*{kopfzeile}}
-		\end{picture}
-		\vfill
-		\section*{\@ifaTitleEN}
-		\input{\@ifaAbstractEN}
-		\vfill
-		\begin{flushleft}
-			\scriptsize
-			\begin{tabular}{ll}
-				Tutor: \ifthenelse{\equal{\@ifaSupervisorA}{}}{}{&\@ifaSupervisorA\\ \ifthenelse{\equal{\@ifaSupervisorB}{}}{}{&\@ifaSupervisorB\\ \ifthenelse{\equal{\@ifaSupervisorC}{}}{}{&\@ifaSupervisorC\\ \ifthenelse{\equal{\@ifaSupervisorD}{}}{}{&\@ifaSupervisorD\\ \ifthenelse{\equal{\@ifaSupervisorE}{}}{}{&\@ifaSupervisorE\\}}}}}Supervisor: &\@ifaProfessor\\Day of Submission: &\@ifaDayOfSubmission \\
-			\end{tabular}
-			\hfill
-			\hrule
-			\vspace{.2cm}\normalsize
-			\ifthenelse{\equal{\@ifaThesis}{Diplomarbeit}}{DIPLOMA THESIS}{STUDENT RESEARCH THESIS}
-			\hfill Author: \@ifaAuthor
-		\end{flushleft}
+    \begin{flushleft}
+      \scriptsize
+      \begin{tabular}{ll}
+        Betreuer: \ifthenelse{\equal{\@ifaSupervisorA}{}}{}{&\@ifaSupervisorA\\ \ifthenelse{\equal{\@ifaSupervisorB}{}}{}{&\@ifaSupervisorB\\ \ifthenelse{\equal{\@ifaSupervisorC}{}}{}{&\@ifaSupervisorC\\ \ifthenelse{\equal{\@ifaSupervisorD}{}}{}{&\@ifaSupervisorD\\ \ifthenelse{\equal{\@ifaSupervisorE}{}}{}{&\@ifaSupervisorE\\}}}}}Hochschullehrer: &\@ifaProfessor\\Tag der Einreichung: &\@ifaDayOfSubmission \\
+      \end{tabular}
+      \hfill
+      \hrule
+      \vspace{.2cm}\normalsize
 
-		\cleardoublepage
-		
-		% Verzeichnisse
-		%
-		%
-		\tableofcontents
-		\clearpage
-		\if@useListOfFigures
-			\listoffigures
-			\clearpage
-		\fi
-		\if@useListOfTables
-			\listoftables
-			\clearpage
-		\fi
-		\if@useAbbrevations
-			\IfFileExists{\@ifaAbbrev}{
-				\input{\@ifaAbbrev}
-				\clearpage
-			}{}
-		\fi
-	\endgroup
-	
-	\mainmatter
+      \ifthenelse{\equal{\@ifaThesis}{Diplomarbeit}}{DIPLOMARBEIT}{STUDIENARBEIT}
+      \hfill Bearbeiter: \@ifaAuthor
+    \end{flushleft}
 
-	\pagestyle{scrheadings}
+    \cleardoublepage
+
+    %
+    \begin{picture}(0,0)
+      \put(-97,-50){\includegraphics*{kopfzeile}}
+    \end{picture}
+    \vfill
+    \section*{\@ifaTitleEN}
+    \input{\@ifaAbstractEN}
+    \vfill
+    \begin{flushleft}
+      \scriptsize
+      \begin{tabular}{ll}
+        Tutor: \ifthenelse{\equal{\@ifaSupervisorA}{}}{}{&\@ifaSupervisorA\\ \ifthenelse{\equal{\@ifaSupervisorB}{}}{}{&\@ifaSupervisorB\\ \ifthenelse{\equal{\@ifaSupervisorC}{}}{}{&\@ifaSupervisorC\\ \ifthenelse{\equal{\@ifaSupervisorD}{}}{}{&\@ifaSupervisorD\\ \ifthenelse{\equal{\@ifaSupervisorE}{}}{}{&\@ifaSupervisorE\\}}}}}Supervisor: &\@ifaProfessor\\Day of Submission: &\@ifaDayOfSubmission \\
+      \end{tabular}
+      \hfill
+      \hrule
+      \vspace{.2cm}\normalsize
+      \ifthenelse{\equal{\@ifaThesis}{Diplomarbeit}}{DIPLOMA THESIS}{STUDENT RESEARCH THESIS}
+      \hfill Author: \@ifaAuthor
+    \end{flushleft}
+
+    \cleardoublepage
+
+    % Verzeichnisse
+    \tableofcontents
+    \clearpage
+    \if@useListOfFigures
+      \listoffigures
+      \clearpage
+    \fi
+    \if@useListOfTables
+      \listoftables
+      \clearpage
+    \fi
+    \if@useAbbrevations
+      \IfFileExists{\@ifaAbbrev}{
+        \input{\@ifaAbbrev}
+        \clearpage
+      }{}
+    \fi
+  \endgroup
+  
+  \mainmatter
+
+  \pagestyle{scrheadings}
 }
 
 % ...und gleich ist Schluss!
 \AtEndDocument{
-	% Auch Abschnittsbeginn ohne Kopf- und Fu√üzeile
-	\renewcommand*{\chapterpagestyle}{empty} 
+  % Auch Abschnittsbeginn ohne Kopf- und Fuﬂzeile
+  \renewcommand*{\chapterpagestyle}{empty} 
 
-	\bibliographystyle{abbrvnat}
-	\bibliography{\@ifaReferences}
-	\cleardoublepage
+  \bibliographystyle{abbrvnat}
+  \bibliography{\@ifaReferences}
+  \cleardoublepage
 
-	\IfFileExists{\@ifaAppendix}{
-		\renewcommand{\appendixpagename}{Anhang}
-		\begin{appendices}
-			\input{\@ifaAppendix}
-			\clearpage
-		\end{appendices}
-	}{}
+  \IfFileExists{\@ifaAppendix}{
+    \renewcommand{\appendixpagename}{Anhang}
+    \begin{appendices}
+      \input{\@ifaAppendix}
+      \clearpage
+    \end{appendices}
+  }{}
 
-	\backmatter
-	
-	% Im Abspann nur Seiten ohne Kopf- und Fu√üzeile (au√üer Abschnittsbeginn)
-	\pagestyle{empty}	
-	% Auch Abschnittsbeginn ohne Kopf- und Fu√üzeile
-	\renewcommand*{\chapterpagestyle}{empty} 
+  \backmatter
+  
+  % Im Abspann nur Seiten ohne Kopf- und Fuﬂzeile (auﬂer Abschnittsbeginn)
+  \pagestyle{empty}  
+  % Auch Abschnittsbeginn ohne Kopf- und Fuﬂzeile
+  \renewcommand*{\chapterpagestyle}{empty} 
 
-	% Selbst√§ndigkeitserkl√§rung
-	%
-	%
-	\vspace*{\fill} %4cm}
-	\section*{Selbstst√§ndigkeitserkl√§rung}
-		Hiermit erkl√§re ich, \@ifaAuthor, geboren am \@ifaAuthorBirthday~in \@ifaAuthorBirthplace, dass ich die 
-		von mir am heutigen Tag dem Pr√ºfungsausschuss der Fakult√§t Elektrotechnik und Informationstechnik 
-		eingereichte Diplomarbeitarbeit zum Thema 
-		\begin{quote}
-	 		\begin{center}
-	  			\emph{\@ifaTitleDE}
-	 		\end{center}
-		\end{quote}
-		vollkommen selbstst√§ndig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt, 
-		sowie Zitate kenntlich gemacht habe.
-	\vspace{2cm}
-	\begin{flushright}
-		Dresden, den \@ifaDayOfSubmission \hfill \dotfill\\
-		Unterschrift
-	\end{flushright}
-	\vfill
+  % Selbst‰ndigkeitserkl‰rung
+  \vspace*{\fill} %4cm}
+  \section*{Selbstst‰ndigkeitserkl‰rung}
+    Hiermit erkl‰re ich, \@ifaAuthor, geboren am \@ifaAuthorBirthday~in \@ifaAuthorBirthplace, dass ich die
+    von mir am heutigen Tag dem Pr¸fungsausschuss der Fakult‰t Elektrotechnik und Informationstechnik
+    eingereichte Diplomarbeitarbeit zum Thema
+    \begin{quote}
+       \begin{center}
+          \emph{\@ifaTitleDE}
+       \end{center}
+    \end{quote}
+    vollkommen selbstst‰ndig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt,
+    sowie Zitate kenntlich gemacht habe.
+  \vspace{2cm}
+  \begin{flushright}
+    Dresden, den \@ifaDayOfSubmission \hfill \dotfill\\
+    Unterschrift
+  \end{flushright}
+  \vfill
 }%EOF
