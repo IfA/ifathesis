@@ -1,5 +1,5 @@
 \def\fileversion{0.1}
-\def\filedate{2010/02/20}
+\def\filedate{2010/06/22}
 \def\filename{ifathesis}
 
 \NeedsTeXFormat{LaTeX2e}
@@ -85,7 +85,7 @@
 
 
 %%%%%
-% Jetzt m¸ssen zun√§chst die variablen Angaben geladen werden
+% Jetzt m¸ssen zun‰chst die variablen Angaben geladen werden
 \newcommand*{\@ifaThesis}{Diplomarbeit}
 \newcommand*{\@ifaAuthor}{Max Mustermann}
 \newcommand*{\@ifaAuthorBirthday}{01.01.1970}
@@ -191,7 +191,7 @@
   \clearpage
   \begingroup
     % Im Vorspann nur Seiten ohne Kopf- und Fuﬂzeile (auﬂer Abschnittsbeginn)
-    \pagestyle{empty}  
+    \pagestyle{empty}
     % Auch Abschnittsbeginn ohne Kopf- und Fuﬂzeile
     \renewcommand*{\chapterpagestyle}{empty}
 
@@ -294,7 +294,7 @@
   % Im Abspann nur Seiten ohne Kopf- und Fuﬂzeile (auﬂer Abschnittsbeginn)
   \pagestyle{empty}  
   % Auch Abschnittsbeginn ohne Kopf- und Fuﬂzeile
-  \renewcommand*{\chapterpagestyle}{empty} 
+  \renewcommand*{\chapterpagestyle}{empty}
 
   % Selbst‰ndigkeitserkl‰rung
   \vspace*{\fill} %4cm}
