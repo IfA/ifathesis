@@ -1,5 +1,5 @@
 \def\fileversion{0.1}
-\def\filedate{2010/06/22}
+\def\filedate{2010/06/23}
 \def\filename{ifathesis}
 
 \NeedsTeXFormat{LaTeX2e}
@@ -130,17 +130,20 @@
 \newcommand*{\ifaReferences}[1]{\renewcommand*{\@ifaReferences}{#1}}
 \newcommand*{\ifaAbbrev}[1]{\renewcommand*{\@ifaAbbrev}{#1}}
 
+\definecolor{TUDBLAU}{rgb}{0.0,0.348,0.637}
+\definecolor{OSGREEN}{rgb}{0,0.75,0.25} 
+
 % Jetzt geht es los...
 \AtBeginDocument{%
   % colorlinks: Farbige Verweise statt Umrahmung 
   % Verhalten von hyperef Ändern: Farbe für Bildschirm, SW für Druck
   % ...color: Farbe verschiedener Verweise nach Farbpalette svgnames
   % pdf...: Setzten von Variablen die in den Eigenschaften der PDF-Datei angzeigt werden
-  % Weitere Optionen möglich - siehe Dokumentation des Paktes hyperref
+  % Weitere Optionen möglich - siehe Dokumentation des Paktes hyperref  
   \hypersetup{
-    linkcolor=\if@isReadyForPrint black\else blue\fi,%
-    urlcolor=\if@isReadyForPrint black\else blue\fi,%
-    citecolor=\if@isReadyForPrint black\else green\fi,%
+    linkcolor=\if@isReadyForPrint black\else TUDBLAU\fi,%
+    urlcolor=\if@isReadyForPrint black\else TUDBLAU\fi,%
+    citecolor=\if@isReadyForPrint black\else OSGREEN\fi,%
     pdftitle=\@ifaTitleDE,%
     pdfauthor=\@ifaAuthor,%
     pdfsubject=\@ifaTitleDE,%
