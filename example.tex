@@ -1,7 +1,7 @@
 \documentclass[
-  print,         %print optimized version of the thesis, standard option
+%  print,         %print optimized version of the thesis, standard option
                  % alternative:
-%  screen,        % makes the thesis better readable on screens (onesided, coloured links)
+  screen,        % makes the thesis better readable on screens (onesided, coloured links)
                  % use only 'print' OR 'screen'
                  % ATTENTION: 'screen' hanges size of text area slightly. Always optimize document WITH
                  % 'print' option first for printing (size of graphics etc.) and convert afterwards
@@ -27,9 +27,18 @@
 %\ifaSupervisorE{}
 \ifaProfessor{Prof. Dr. techn. Klaus Janschek}
 \ifaDayOfSubmission{21.03.2009}
+\ifaTopicDescriptionPDF{example_files/00_Aufgabenstellung.pdf}
 \ifaAppendix{example_files/appendix}
 \ifaAbstractDE{example_files/00_abstract_de}
-\ifaAbstractEN{example_files/00_abstract_en}
+\ifaAbstractEN{example_files/00_abstract_en__invalid}  % HINWEIS: Der Dateiname der englischen Kurzfassung ist absichtlich
+                                                       % ungültig gemacht worden, um zu demonstrieren, dass die Vorlage
+                                                       % auch ohne Kurzfassungen genutzt werden kann. Dazu einfach einen
+                                                       % ungültigen Dateinamen angeben oder den Befehl ganz weglassen.
+                                                       % 
+                                                       % ACHTUNG: Im Institut für Automatisierungstechnik sind die 
+                                                       % Kurzfassungen unbedingt erforderlich. Eine Arbeit ohne 
+                                                       % Kurzfassung wird nicht angenommen, da sie nicht den Richtlinien
+                                                       % des Instituts entspricht.
 \ifaAbbrev{example_files/00_Abbrev}
 \ifaReferences{bibliography}
 

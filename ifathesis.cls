@@ -102,6 +102,7 @@
 \newcommand*{\@ifaSupervisorE}{}
 \newcommand*{\@ifaProfessor}{Titel der Arbeit}
 \newcommand*{\@ifaDayOfSubmission}{\today}
+\newcommand*{\@ifaTopicDescriptionPDF}{he0ohDie}
 \newcommand*{\@ifaAppendix}{GoHaigh2}
 \newcommand*{\@ifaAbstractDE}{GoHaigh2}
 \newcommand*{\@ifaAbstractEN}{GoHaigh2}
@@ -124,6 +125,7 @@
 \newcommand*{\ifaSupervisorE}[1]{\renewcommand*{\@ifaSupervisorE}{#1}}
 \newcommand*{\ifaProfessor}[1]{\renewcommand*{\@ifaProfessor}{#1}}
 \newcommand*{\ifaDayOfSubmission}[1]{\renewcommand*{\@ifaDayOfSubmission}{#1}}
+\newcommand*{\ifaTopicDescriptionPDF}[1]{\renewcommand*{\@ifaTopicDescriptionPDF}{#1}}
 \newcommand*{\ifaAppendix}[1]{\renewcommand*{\@ifaAppendix}{#1}}
 \newcommand*{\ifaAbstractDE}[1]{\renewcommand*{\@ifaAbstractDE}{#1}}
 \newcommand*{\ifaAbstractEN}[1]{\renewcommand*{\@ifaAbstractEN}{#1}}
@@ -199,57 +201,96 @@
     \renewcommand*{\chapterpagestyle}{empty}
 
     % Aufgabenstellung
-    \vfill
-    \begin{center}
-      \Huge Hier die Aufgabenstellung im Original (bzw. als Kopie im Zweitexemplar) nach dem Drucken, vor dem Binden einbinden, indem dieses Blatt ersetzt wird. Die Möglichkeit die Kopie als pdf-Dokument einzufügen wird evtl. in einer folgenden Version der Vorlage zur Verfügung stehen.
-    \end{center}
+    \IfFileExists{\@ifaTopicDescriptionPDF} {
+      \newpage
+      \bgroup
+      \thispagestyle{empty}%
+      \hoffset=-1in
+      \voffset=-1in
+      \topmargin=0pt
+      \headheight=0pt
+      \headsep=0pt
+      \hsize=\paperwidth
+      %  \@colht\paperheight
+      \evensidemargin=0pt
+      \oddsidemargin=0pt
+      \parskip=0pt
+      \parindent=0pt
+      \includegraphics[width=\paperwidth,height=\paperheight]{\@ifaTopicDescriptionPDF}
+      \newpage
+      \egroup
+    }{
+      \vfill
+      \begin{center}
+        {\Large\sf Hier die {\bf \Huge Aufgabenstellung im Original} (bzw. als Kopie im Zweitexemplar) nach dem Drucken, 
+        vor dem Binden einbinden, indem dieses Blatt ersetzt wird. \\[3cm] Für die screen-Version besteht die
+        Möglichkeit, die eingescannte Aufgabenstellung als PDF zu integrieren. Dazu einfach den Befehl
+        {\bf\huge ifaTopicDescriptionPDF} (siehe Dokumentation) nutzen}
+      \end{center}
+    }
     \cleardoublepage 
 
     % Kurzfassungen
-    \begin{picture}(0,0)
-      \put(-97,-50){\includegraphics*{kopfzeile}}
-    \end{picture}
-    \vfill
-    \section*{\@ifaTitleDE}
-    \input{\@ifaAbstractDE}
-    \vfill
+    \IfFileExists{\@ifaAbstractDE}{
+      \begin{picture}(0,0)
+        \put(-97,-50){\includegraphics*{kopfzeile}}
+      \end{picture}
+      \vfill
+      \section*{\@ifaTitleDE}
+      \input{\@ifaAbstractDE}
+      \vfill
+      \begin{flushleft}
+        \scriptsize
+        \begin{tabular}{ll}
+          Betreuer: \ifthenelse{\equal{\@ifaSupervisorA}{}}{}{&\@ifaSupervisorA\\ \ifthenelse{\equal{\@ifaSupervisorB}{}}{}{&\@ifaSupervisorB\\ \ifthenelse{\equal{\@ifaSupervisorC}{}}{}{&\@ifaSupervisorC\\ \ifthenelse{\equal{\@ifaSupervisorD}{}}{}{&\@ifaSupervisorD\\ \ifthenelse{\equal{\@ifaSupervisorE}{}}{}{&\@ifaSupervisorE\\}}}}}Hochschullehrer: &\@ifaProfessor\\Tag der Einreichung: &\@ifaDayOfSubmission \\
+        \end{tabular}
+        \hfill
+        \hrule
+        \vspace{.2cm}\normalsize
 
-    \begin{flushleft}
-      \scriptsize
-      \begin{tabular}{ll}
-        Betreuer: \ifthenelse{\equal{\@ifaSupervisorA}{}}{}{&\@ifaSupervisorA\\ \ifthenelse{\equal{\@ifaSupervisorB}{}}{}{&\@ifaSupervisorB\\ \ifthenelse{\equal{\@ifaSupervisorC}{}}{}{&\@ifaSupervisorC\\ \ifthenelse{\equal{\@ifaSupervisorD}{}}{}{&\@ifaSupervisorD\\ \ifthenelse{\equal{\@ifaSupervisorE}{}}{}{&\@ifaSupervisorE\\}}}}}Hochschullehrer: &\@ifaProfessor\\Tag der Einreichung: &\@ifaDayOfSubmission \\
-      \end{tabular}
-      \hfill
-      \hrule
-      \vspace{.2cm}\normalsize
+        \ifthenelse{\equal{\@ifaThesis}{Diplomarbeit}}{DIPLOMARBEIT}{STUDIENARBEIT}
+        \hfill Bearbeiter: \@ifaAuthor
+      \end{flushleft}
 
-      \ifthenelse{\equal{\@ifaThesis}{Diplomarbeit}}{DIPLOMARBEIT}{STUDIENARBEIT}
-      \hfill Bearbeiter: \@ifaAuthor
-    \end{flushleft}
+      \cleardoublepage
+    }{
+      \ClassWarning{ifathesis}{
+        Konnte die englische Kurzfassung nicht finden. Diese ist fuer Arbeiten am Institut fuer 
+        Automatisierungstechnik unbedingt erforderlich. Sollte die Vorlage anderswo verwendet, 
+        dann kann diese Warnung ignoriert werden.
+      }
+    }
 
-    \cleardoublepage
 
-    %
-    \begin{picture}(0,0)
-      \put(-97,-50){\includegraphics*{kopfzeile}}
-    \end{picture}
-    \vfill
-    \section*{\@ifaTitleEN}
-    \input{\@ifaAbstractEN}
-    \vfill
-    \begin{flushleft}
-      \scriptsize
-      \begin{tabular}{ll}
-        Tutor: \ifthenelse{\equal{\@ifaSupervisorA}{}}{}{&\@ifaSupervisorA\\ \ifthenelse{\equal{\@ifaSupervisorB}{}}{}{&\@ifaSupervisorB\\ \ifthenelse{\equal{\@ifaSupervisorC}{}}{}{&\@ifaSupervisorC\\ \ifthenelse{\equal{\@ifaSupervisorD}{}}{}{&\@ifaSupervisorD\\ \ifthenelse{\equal{\@ifaSupervisorE}{}}{}{&\@ifaSupervisorE\\}}}}}Supervisor: &\@ifaProfessor\\Day of Submission: &\@ifaDayOfSubmission \\
-      \end{tabular}
-      \hfill
-      \hrule
-      \vspace{.2cm}\normalsize
-      \ifthenelse{\equal{\@ifaThesis}{Diplomarbeit}}{DIPLOMA THESIS}{STUDENT RESEARCH THESIS}
-      \hfill Author: \@ifaAuthor
-    \end{flushleft}
+    % Englische Kurzfassung
+    \IfFileExists{\@ifaAbstractEN}{
+      \begin{picture}(0,0)
+        \put(-97,-50){\includegraphics*{kopfzeile}}
+      \end{picture}
+      \vfill
+      \section*{\@ifaTitleEN}
+      \input{\@ifaAbstractEN}
+      \vfill
+      \begin{flushleft}
+        \scriptsize
+        \begin{tabular}{ll}
+          Tutor: \ifthenelse{\equal{\@ifaSupervisorA}{}}{}{&\@ifaSupervisorA\\ \ifthenelse{\equal{\@ifaSupervisorB}{}}{}{&\@ifaSupervisorB\\ \ifthenelse{\equal{\@ifaSupervisorC}{}}{}{&\@ifaSupervisorC\\ \ifthenelse{\equal{\@ifaSupervisorD}{}}{}{&\@ifaSupervisorD\\ \ifthenelse{\equal{\@ifaSupervisorE}{}}{}{&\@ifaSupervisorE\\}}}}}Supervisor: &\@ifaProfessor\\Day of Submission: &\@ifaDayOfSubmission \\
+        \end{tabular}
+        \hfill
+        \hrule
+        \vspace{.2cm}\normalsize
+        \ifthenelse{\equal{\@ifaThesis}{Diplomarbeit}}{DIPLOMA THESIS}{STUDENT RESEARCH THESIS}
+        \hfill Author: \@ifaAuthor
+      \end{flushleft}
 
-    \cleardoublepage
+      \cleardoublepage
+    }{
+      \ClassWarning{ifathesis}{
+        Konnte die englische Kurzfassung nicht finden. Diese ist fuer Arbeiten am Institut fuer 
+        Automatisierungstechnik unbedingt erforderlich. Sollte die Vorlage anderswo verwendet, 
+        dann kann diese Warnung ignoriert werden.
+      }
+    }
 
     % Verzeichnisse
     \tableofcontents
