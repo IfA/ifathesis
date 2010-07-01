@@ -18,7 +18,9 @@ Die Vorlage \verb-ifathesis- ist eine fertige \LaTeX-Klasse, die die Richtlinie 
 \end{compactitem}
 Alternativ können diese Dateien dem \LaTeX-Paketbaum hinzugefügt werden. Dann steht die Vorlage stets zur Verfügung. Die dafür notwendigen Schritte sind allerdings von der verwendeten \LaTeX-Distribution sowie vom Betriebssystem abhängig, daher wird an dieser Stelle auf eine Internetrecherche verwiesen: \href{http://www.google.de/search?sourceid=chrome&ie=UTF-8&q=latex+install+packages}{z.B. über Google.}
 
-Um die automatische Generierung eines Abkürzungs- und Symbolverzeichnises zu benutzen, müssen Sie zusätzlich zum pdftex-Kompiler den makeindex-Kompiler benutzen. Dieser ist wie folgt entweder manuell oder im TeXnicCenter eingebunden aufzurufen:
+Ein weiterer wichtiger Punkt ist die Dateikodierung. Im Test der Vorlage konnten oft Diskrepanzen bei der Darstellung der Sonderzeichen festgestellt werden. Das lag an verschiedenen Zeichenkodierungen, mit der die Dateien abgespeichert werden. Daher haben wir uns für die Vorlage auf die Kodierung \emph{ISO-8859-1 (Latin 1 oder ANSI)} geeinigt.
+
+Um die automatische Generierung eines Abkürzungs- und Symbolverzeichnises zu benutzen, müssen Sie zusätzlich zum pdftex-Kompiler den makeindex-Kompiler benutzen. Dieser ist wie folgt entweder manuell oder im TeXnicCenter eingebunden aufzurufen\footnote{Das ist ein Beispiel für das Betriebssystem Windows. Wie der Befehl auf anderen Betriebssystemen genau lautet, entnehmt bitte einer Internetrecherche.}:
 
 \noindent \begin{center} \verb|makeindex.exe "%bm.nlo" -s nomencl.ist -o "%bm.nls"| \end{center}
 

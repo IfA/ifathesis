@@ -207,7 +207,8 @@
     \end{center}
   \end{titlepage}
 
-  \clearpage
+  \cleardoublepage
+
   \begingroup
     % Im Vorspann nur Seiten ohne Kopf- und Fuﬂzeile (auﬂer Abschnittsbeginn)
     \pagestyle{empty}
@@ -216,23 +217,7 @@
 
     % Aufgabenstellung
     \IfFileExists{\@ifaTopicDescriptionPDF} {
-      \newpage
-      \bgroup
-      \thispagestyle{empty}%
-      \hoffset=-1in
-      \voffset=-1in
-      \topmargin=0pt
-      \headheight=0pt
-      \headsep=0pt
-      \hsize=\paperwidth
-      %  \@colht\paperheight
-      \evensidemargin=0pt
-      \oddsidemargin=0pt
-      \parskip=0pt
-      \parindent=0pt
-      \includegraphics[width=\paperwidth,height=\paperheight]{\@ifaTopicDescriptionPDF}
-      \newpage
-      \egroup
+      \includepdf{\@ifaTopicDescriptionPDF}
     }{
       \vfill
       \begin{center}
