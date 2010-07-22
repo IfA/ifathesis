@@ -97,37 +97,48 @@
   \fi
 }
 
+%-------------------------------------------------------------------------
+% Integriert Listings und baut diese als Gleitobjekt aus
+%-------------------------------------------------------------------------
+\RequirePackage{float}
+\floatstyle{plain}
+\newfloat{listing}{htb}{loq}
+\floatname{listing}{Listing}
+
 % Usage: \shlisting{<Caption>}{<Label>}{<[Dialect]Language>}{<Pfad>}
 \newcommand*{\ifalisting}[5]{% 
-  \hspace*{0mm}
-  \begin{minipage}{0.94\textwidth}
-    \lstinputlisting[
-      caption={#1},
-      label={#2}, 
-      language={#3},
-      keywordstyle=\bfseries\color{blue},
-      identifierstyle=\bf,
-      stringstyle=\itshape\color{red},
-      basicstyle=\ttfamily\color{black}\footnotesize,  % Schriftschnitt des Codes
-      showstringspaces=false,                          % Leerzeichen nicht markieren
-      commentstyle=\color{green},                      % Schriftschnitt der Kommentare
-      tabsize=2,                                       % Tabulatorengröße in Leerzeichen
-      breaklines=true,                                 % zu lange Zeilen umbrechen
-      frame=tb,                                        % Rahmen um das Listing
-      belowcaptionskip=2mm,                            % Abstand unterhalb der Beschriftung
-      abovecaptionskip=3mm,                            % Abstand oberhalb der Beschriftung
-      captionpos=t,                                    % Position der Beschriftung (b=bottom, t=top)
-      numbers=#4,
-      numbersep=5pt
-    ]{#5}
-    \vspace{-5mm}
-    \begin{flushright}
-      \scriptsize
-      Listing \ref{#2}
-    \end{flushright}
-  \end{minipage}
+  \begin{listing}
+    \hspace{4mm}
+    \begin{minipage}{0.96\textwidth}
+      \lstinputlisting[
+        caption={#1},
+        label={#2}, 
+        language={#3},
+        keywordstyle=\bfseries\color{blue},
+        identifierstyle=\bf,
+        stringstyle=\itshape\color{red},
+        basicstyle=\ttfamily\color{black}\footnotesize,  % Schriftschnitt des Codes
+        showstringspaces=false,                          % Leerzeichen nicht markieren
+        commentstyle=\color{green},                      % Schriftschnitt der Kommentare
+        tabsize=2,                                       % Tabulatorengröße in Leerzeichen
+        breaklines=true,                                 % zu lange Zeilen umbrechen
+        frame=tb,                                        % Rahmen um das Listing
+        belowcaptionskip=2mm,                            % Abstand unterhalb der Beschriftung
+        abovecaptionskip=3mm,                            % Abstand oberhalb der Beschriftung
+        captionpos=t,                                    % Position der Beschriftung (b=bottom, t=top)
+        numbers=#4,
+        numbersep=5pt
+      ]{#5}
+      \vspace{-5mm}
+      \begin{flushright}
+        \scriptsize
+        Listing \ref{#2}
+      \end{flushright}
+    \end{minipage}
+  \end{listing}
 }
 \renewcommand*{\lstlistlistingname}{Quelltextverzeichnis}
+%-------------------------------------------------------------------------
 
 \RequirePackage{ifthen}
 
