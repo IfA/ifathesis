@@ -77,9 +77,14 @@
 
 %\RequirePackage[draft]{fixme}	% Zum Einfügen von Kommentaren im Text, z.B. Erinnerungen welche Stellen noch bearbeitet werden müssen.
                                 % Mit \fixme{}, \fxnote{}, \fxwarning{}, \fxerror{} können differnzierte Notizen gemacht werden.
-                                % Beim Kompillieren wird eine Zusammenfassung gegeben, wie viele fixme-Notizen noch im Dokument sind.
+                                % Beim Kompilieren wird eine Zusammenfassung gegeben, wie viele fixme-Notizen noch im Dokument sind.
+
+% Anhänge
 \RequirePackage[page, titletoc]{appendix}
 
+% Quellcode Listings
+\RequirePackage{listings}
+
 % Erlaubt das Einfügen eines automatischen Symbolverzeichnisses
-\usepackage[german]{nomencl}
+\RequirePackage[german]{nomencl}
 \makenomenclature

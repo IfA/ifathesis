@@ -26,6 +26,9 @@
 \newif\if@useListOfTables\@useListOfTablesfalse
 \DeclareOption{listoftables}{\@useListOfTablestrue}
 
+\newif\if@useListOfListings\@useListOfListingsfalse
+\DeclareOption{listoflistings}{\@useListOfListingstrue}
+
 \newif\if@useAbbrevations\@useAbbrevationsfalse
 \DeclareOption{abbrevations}{\@useAbbrevationstrue}
 
@@ -94,9 +97,35 @@
   \fi
 }
 
+% Usage: \shlisting{<Caption>}{<Label>}{<[Dialect]Language>}{<Pfad>}
+\newcommand*{\ifalisting}[5]{%
+  \lstinputlisting[
+    caption={#1},
+    label={#2}, 
+    language={#3},
+    keywordstyle=\bfseries\color{blue},
+    identifierstyle=\bf,
+    stringstyle=\itshape\color{red},
+    basicstyle=\ttfamily\color{black}\footnotesize,  % Schriftschnitt des Codes
+    showstringspaces=false,                          % Leerzeichen nicht markieren
+    commentstyle=\color{green},                      % Schriftschnitt der Kommentare
+    tabsize=2,                                       % Tabulatorengröße in Leerzeichen
+    breaklines=true,                                 % zu lange Zeilen umbrechen
+    frame=tb,                                        % Rahmen um das Listing
+    belowcaptionskip=2mm,                            % Abstand unterhalb der Beschriftung
+    abovecaptionskip=3mm,                            % Abstand oberhalb der Beschriftung
+    captionpos=t,                                    % Position der Beschriftung (b=bottom, t=top)
+    numbers=#4,
+	numbersep=5pt
+  ]{#5}
+  \vspace{-5mm}
+  \begin{flushright}
+    \scriptsize
+    Listing \ref{#2}
+  \end{flushright}
+}
+
 \RequirePackage{ifthen}
-
-
 
 %%%%%
 % Jetzt müssen zunächst die variablen Angaben geladen werden
@@ -300,6 +329,10 @@
     \fi
     \if@useListOfTables
       \listoftables
+      \clearpage
+    \fi
+    \if@useListOfListings
+      \listoflistings
       \clearpage
     \fi
     \if@useAbbrevations

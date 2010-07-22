@@ -43,6 +43,7 @@ Zur Verfügung steht die Dokumentenklasse \verb-ifathesis- mit folgenden Optionen
   \item[print | screen] Übersetzt das Dokument optimiert für den Druck bzw. für das Lesen am Monitor (einseitig, farbig hervorgehobene Links). \textbf{Achtung: Die Größe des Textkörpers unterscheidet sich geringfügig. Daher bitte immer zuerst das Dokument für den Druck optimert erstellen, wodurch bspw. die Größe der Grafiken richtig bestimmt werden kann. Anschließend kann in die für das Monitorlesen optimierte Version übersetzt werden}\footnote{Zur Abgabe der Arbeit auf einem Datenträger erforderlich}. Voreinstellung: \verb-print-.
   \item[listoffigures] Integriert ein Abbildungsverzeichnis an der richtigen Stelle, gemäß der \emph{IfA}-Richtlinie
   \item[listoftables] Integriert ein Tabellenverzeichnis an der richtigen Stelle, gemäß der \emph{IfA}-Richtlinie
+  \item[listoftlistings] Integriert ein Quellcodeverzeichnis an der richtigen Stelle, gemäß der \emph{IfA}-Richtlinie
   \item[abbrevations] Integriert ein Symbol- und Abkürzungsverzeichnis an der richtigen Stelle, gemäß der \emph{IfA}-Richtlinie. Weitere Informationen finden Sie in Abschnitt \ref{sec:install} und in der Datei \verb-exmaple_files\00_abbrev.tex-.
 \end{description}
 
@@ -87,12 +88,41 @@ Zur Verfügung steht die Dokumentenklasse \verb-ifathesis- mit folgenden Optionen
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Neue Befehle und Umgebungen}
+\label{sec:BefehleUndUmgebungen}
+
+In der Vorlage wurden neue Befehle eingeführt, die meist als Wrapper für existierende Befehle gelten und diese so entsprechend der IfA-Richtlinie konfigurieren. Nachfolgend werden diese Befehle bzw. Umgebungen detailliert erläutert.
+
+\subsection{ifalisting}
+Hierbei handelt es sich um einen Befehl zur Erzeugung eines Quellcode-Listings, welcher wie folgt verwendet wird:
+
+\noindent \begin{center} \verb|\ifalisting{<CAPTION>}{<LABEL>}{<LANGUAGE>}{<LINE_NUMBERS>}{<FILE>}| \end{center}
+
+\begin{description}
+	\item[<CAPTION>] Die Überschrift des Listings.
+	\item[<LABEL>] Erzeugt eine Marke, über die das Listing mit dem Befehl \verb|\ref{<LABEL>}| im Text referenziert werden kann.
+	\item[<LANGUAGE>] Diese Angabe ist wichtig für die Syntaxhervorhebung. Latex kennt bspw. die Schlüsselwörter und ähnliches vieler Programmiersprachen, z.B.:
+		\begin{compactitem}
+			\item Assembler
+			\item Java, C/C++
+			\item Matlab
+			\item OCL
+			\item Phython, Perl, PHP, Ruby
+			\item HTML, XML, XSLT
+		\end{compactitem}
+		Eine vollständige Liste ist unter anderem \href{http://en.wikibooks.org/wiki/LaTeX/Packages/Listings}{HIER} zu finden.
+	\item[<LINE\_NUMBERS>] Anzeige einer Zeilennummerierung, gültige Werte: {\bf none|left|right}
+	\item[<FILE>] Dateiname, in der der Quellcode bzw. das Quellcode-Fragment gespeichert ist. Listings sollten stets aus einer separaten Datei geladen werden. Bei mehreren Listings bietet es sich daher an, ein separates Verzeichnis dafür anzulegen.
+\end{description}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Zusätzliche Pakete}
 \label{sec:ZusätzlichePakete}
 
 Die \LaTeX-Klasse \verb-ifathesis- wurde durch sinnvolle \LaTeX-Pakete erweitert, damit der Funktionsumfang für eine wissenschaftliche Arbeit angemessen ist. Wichtige und sinnvolle Pakete wurden in der Datei \verb-packages.tex- eingebunden. Die einzelnen Pakete sind dort mit einem kurzen Kommentar versehen. Eigene Paket-Erweiterungen können hier hinzugefügt werden.
 
-Generell gilt: Benötigen sie Befehle/Funktionen, die die Vorlage nicht zur Verfügung stellt, nutzen Sie ausgewählte Pakete und \emph{nicht} den nächstbesten Workaround der im Internet zu finden ist. Oft sind zusätzliche Pakete besser auf die verwendete Klasse und die anderen ebenfalls eingebundenen Pakete abgestimmt, als wenn man mit \TeX-Primitiven tief in die Grundlagen des Dokuments eingreift. Bei direkten Eingriffen können (nicht gleich erkennbare) Layoutfehler die Folge sein, da die Klasse und andere Pakete nicht "`wissen"' können, das Sie als Anwender etwas verändert haben (z.\,B. ein Textelement verschoben).
+Generell gilt: Benötigen Sie Befehle/Funktionen, die die Vorlage nicht zur Verfügung stellt, nutzen Sie ausgewählte Pakete und \emph{nicht} den nächstbesten Workaround der im Internet zu finden ist. Oft sind zusätzliche Pakete besser auf die verwendete Klasse und die anderen ebenfalls eingebundenen Pakete abgestimmt, als wenn man mit \TeX-Primitiven tief in die Grundlagen des Dokuments eingreift. Bei direkten Eingriffen können (nicht gleich erkennbare) Layoutfehler die Folge sein, da die Klasse und andere Pakete nicht "`wissen"' können, das Sie als Anwender etwas verändert haben (z.\,B. ein Textelement verschoben).
 
 Lesen Sie auch undbedingt die Dokumentationen der bereits eingebundenen und von Ihnen hinzugefügten Packete um
 \begin{itemize}
@@ -106,4 +136,4 @@ Lesen Sie auch undbedingt die Dokumentationen der bereits eingebundenen und von 
 \label{sec:WichtigeInformationenZurFormDerArbeit}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Text- und Formelsatz unterliegt typografischen Regeln, die im Allgemeinen nicht besonders bekannt sind. Dennoch ist es wichtig sich an die Konventionen zu halten, damit das erstellte Dokument einem professionellen Anspruch genügt. Die wichtigsten Regeln und Hinweise findet man in wenigen guten Dokumenten zusammengefasst, die (neben weiteren nützlichen .pdf-Dateien) im Unterverzeichnis \verb-docs- der Vorlage zu finden sind. Bitte beachten sie die die dort aufgestellten Regeln bei der Erstellung Ihrer Arbeit!
+Text- und Formelsatz unterliegt typografischen Regeln, die im Allgemeinen nicht besonders bekannt sind. Dennoch ist es wichtig sich an die Konventionen zu halten, damit das erstellte Dokument einem professionellen Anspruch genügt. Die wichtigsten Regeln und Hinweise findet man in wenigen guten Dokumenten zusammengefasst, die (neben weiteren nützlichen .pdf-Dateien) im Unterverzeichnis \verb-docs- der Vorlage zu finden sind. Bitte beachten Sie die die dort aufgestellten Regeln bei der Erstellung Ihrer Arbeit!
