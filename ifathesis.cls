@@ -124,6 +124,7 @@
     Listing \ref{#2}
   \end{flushright}
 }
+\renewcommand*{\lstlistlistingname}{Quelltextverzeichnis}
 
 \RequirePackage{ifthen}
 
@@ -332,7 +333,7 @@
       \clearpage
     \fi
     \if@useListOfListings
-      \listoflistings
+      \lstlistoflistings
       \clearpage
     \fi
     \if@useAbbrevations
