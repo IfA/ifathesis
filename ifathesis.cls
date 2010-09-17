@@ -1,3 +1,4 @@
+%!TEX root = /Users/stefan/Entwicklung/de.tud.et.ifa.latex.ifathesis/example.tex
 %*******************************************************************************
 % * Copyright (c) 2006-2010 
 % * Institute of Automation, Dresden University of Technology
@@ -390,16 +391,20 @@
   % Selbständigkeitserklärung
   \vspace*{\fill} %4cm}
   \section*{Selbstständigkeitserklärung}
-    Hiermit erkläre ich, \@ifaAuthor, geboren am \@ifaAuthorBirthday~in \@ifaAuthorBirthplace, dass ich die
-    von mir am heutigen Tag dem Prüfungsausschuss der Fakultät Elektrotechnik und Informationstechnik
-    eingereichte Diplomarbeitarbeit zum Thema
+	Hiermit versichere ich, \@ifaAuthor, geboren am \@ifaAuthorBirthday~in \@ifaAuthorBirthplace, dass ich die vorliegende \@ifaThesis~zum Thema 
     \begin{quote}
        \begin{center}
           \emph{\@ifaTitleDE}
        \end{center}
     \end{quote}
-    vollkommen selbstständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt,
-    sowie Zitate kenntlich gemacht habe.
+	ohne unzulässige Hilfe Dritter und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe; 
+	die aus fremden Quellen direkt oder indirekt übernommenen Gedanken sind als solche kenntlich gemacht. Bei der Auswahl und Auswertung des Materials sowie bei der Herstellung des Manuskripts habe ich Unterstützungsleistungen von folgenden Personen erhalten:
+	\vspace*{.5cm}
+    \begin{center}
+		\dotfill \\[.5cm]
+		\dotfill
+	\end{center}
+	Weitere Personen waren an der geistigen Herstellung der vorliegenden \@ifaThesis~nicht beteiligt. Mit ist bekannt, dass die Nichteinhaltung dieser Erklärung zum nachträglichen Entzug des Diplomabschlusses (Masterabschlusses) führen kann.  				
   \vspace{2cm}
   \begin{flushright}
     Dresden, den \@ifaDayOfSubmission \hfill \dotfill\\
