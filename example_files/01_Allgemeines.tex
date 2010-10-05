@@ -1,3 +1,18 @@
+%!TEX root = /Users/stefan/Entwicklung/de.tud.et.ifa.latex.ifathesis/example.tex
+%*******************************************************************************
+% * Copyright (c) 2006-2010 
+% * Institute of Automation, Dresden University of Technology
+% * 
+% * All rights reserved. This program and the accompanying materials
+% * are made available under the terms of the Eclipse Public License v1.0 
+% * which accompanies this distribution, and is available at
+% * http://www.eclipse.org/legal/epl-v10.html
+% * 
+% * Contributors:
+% *   Institute of Automation - TU Dresden, Germany 
+% *      - initial API and implementation
+% ******************************************************************************/
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Allgemeine Hinweise zur Vorlage}
@@ -49,20 +64,6 @@ Zur Verfügung steht die Dokumentenklasse \verb-ifathesis- mit folgenden Optionen
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%*******************************************************************************
-% * Copyright (c) 2006-2010 
-% * Institute of Automation, Dresden University of Technology
-% * 
-% * All rights reserved. This program and the accompanying materials
-% * are made available under the terms of the Eclipse Public License v1.0 
-% * which accompanies this distribution, and is available at
-% * http://www.eclipse.org/legal/epl-v10.html
-% * 
-% * Contributors:
-% *   Institute of Automation - TU Dresden, Germany 
-% *      - initial API and implementation
-% ******************************************************************************/
-
 \subsection{Weitere Parameter}
 
 \begin{description}
@@ -83,7 +84,11 @@ Zur Verfügung steht die Dokumentenklasse \verb-ifathesis- mit folgenden Optionen
   \item[ifaDayOfSubmission] Tag der Einreichung
   \item[ifaTopicDescriptionPDF] Dateiname der Aufgabenstellung (als PDF). Es besteht damit die Möglichkeit, die Aufgabenstellung einzucannen und in die PDF-Version der Arbeit zu integrieren. ACHTUNG: Ein einzureichendes Exemplar der Arbeit muss die Aufgabenstellung im Original enthalten. Ansonsten führt dies zur Nichtannahme der Arbeit.
   \item[ifaAppendix] Dateiname der Hauptdatei der Anhänge (vollständige Pfadangabe ausgehend von der Dokumentenwurzel erforderlich)
-  \item[ifaReferences] Name der Bibliographiedatei (vollständige Pfadangabe ausgehend von der Dokumentenwurzel erforderlich)
+  \item[ifaReferences] Name der Bibliographiedatei (vollständige Pfadangabe ausgehend von der Dokumentenwurzel erforderlich) \\
+	\emph{\textbf{Achtung:} Hier gibt es eine Besonderheit, die es ermöglicht, den vollen Leistungsumfang von TeXnicCenter im Zusammenhang mit Literaturverzeichnissen zu nutzen (vielen Dank an Sara Raitza für den entsprechenden Workaround):
+	\ifalisting{Integration von Literaturverzeichnissen}{lst:litnutz}{tex}{left}{example_files/bibliography.txt}
+	Wie der Dateiname der Literatursammlung anzugeben ist, zeigt Listing~\ref{lst:litnutz} (Zeile 3).}
+  \item[ifaBibliographyStyle] Bibliographie-Stil (mögliche Werte: TODO)
 \end{description}
 
 

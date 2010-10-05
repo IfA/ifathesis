@@ -167,6 +167,7 @@
 \newcommand*{\@ifaAbstractEN}{GoHaigh2}
 \newcommand*{\@ifaReferences}{IPhei0Ox}
 \newcommand*{\@ifaAbbrev}{00_Abbrev}
+\newcommand*{\@ifaBibliographyStyle}{abbrvnat}
 
 \newcommand*{\ifaThesis}[1]{\renewcommand*{\@ifaThesis}{#1}}
 \newcommand*{\ifaAuthor}[1]{\renewcommand*{\@ifaAuthor}{#1}}
@@ -190,6 +191,7 @@
 \newcommand*{\ifaAbstractEN}[1]{\renewcommand*{\@ifaAbstractEN}{#1}}
 \newcommand*{\ifaReferences}[1]{\renewcommand*{\@ifaReferences}{#1}}
 \newcommand*{\ifaAbbrev}[1]{\renewcommand*{\@ifaAbbrev}{#1}}
+\newcommand*{\ifaBibliographyStyle}[1]{\renewcommand*{\@ifaBibliographyStyle}{#1}}
 
 \definecolor{TUDBLAU}{rgb}{0.0,0.348,0.637}
 \definecolor{OSGREEN}{rgb}{0,0.75,0.25} 
@@ -364,17 +366,28 @@
   \pagestyle{scrheadings}
 }
 
+\let\oldbib=\bibliography
+
 % ...und gleich ist Schluss!
 \AtEndDocument{
   % Auch Abschnittsbeginn ohne Kopf- und Fuﬂzeile
   \renewcommand*{\chapterpagestyle}{empty} 
 
-  \bibliographystyle{abbrvnat}
-  \bibliography{\@ifaReferences}
+  \bibliographystyle{\@ifaBibliographyStyle}
+  \oldbib{\@ifaReferences}
   \cleardoublepage
 
   \IfFileExists{\@ifaAppendix}{
     \renewcommand{\appendixpagename}{Anhang}
+	
+	\begin{center}
+		\thispagestyle{empty}
+		\vspace*{\fill}
+		{\sffamily\bf\huge\appendixpagename}
+		\vspace{\fill}
+		\cleardoublepage
+	\end{center}
+	
     \begin{appendices}
       \input{\@ifaAppendix}
       \clearpage

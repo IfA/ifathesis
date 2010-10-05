@@ -55,8 +55,13 @@
                                                        % Kurzfassung wird nicht angenommen, da sie nicht den Richtlinien
                                                        % des Instituts entspricht.
 \ifaAbbrev{example_files/00_abbrev}
-\ifaReferences{bibliography}
+                 
+% Literaturverzeichnis angeben
+\let\bibliography=\ifaReferences
+\bibliography{bibliography}						       % Hier den Dateinamen des Literaturverzeichnisses angeben (ohne *.bib-Endung)
 
+% Bibliography Style
+% \ifaBibliographyStyle{alpha}                         % Hier kann der Bibliographiestil eingestellt werden
 
 \begin{document}
 
