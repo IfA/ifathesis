@@ -168,6 +168,7 @@
 \newcommand*{\@ifaReferences}{IPhei0Ox}
 \newcommand*{\@ifaAbbrev}{00_Abbrev}
 \newcommand*{\@ifaBibliographyStyle}{abbrvnat}
+\newcommand*{\@ifaBibliographyBeforeAppendix}{false}
 
 \newcommand*{\ifaThesis}[1]{\renewcommand*{\@ifaThesis}{#1}}
 \newcommand*{\ifaAuthor}[1]{\renewcommand*{\@ifaAuthor}{#1}}
@@ -192,6 +193,7 @@
 \newcommand*{\ifaReferences}[1]{\renewcommand*{\@ifaReferences}{#1}}
 \newcommand*{\ifaAbbrev}[1]{\renewcommand*{\@ifaAbbrev}{#1}}
 \newcommand*{\ifaBibliographyStyle}[1]{\renewcommand*{\@ifaBibliographyStyle}{#1}}
+\newcommand*{\ifaBibliographyBeforeAppendix}[1]{\renewcommand*{\@ifaBibliographyBeforeAppendix}{#1}}
 
 \definecolor{TUDBLAU}{rgb}{0.0,0.348,0.637}
 \definecolor{OSGREEN}{rgb}{0,0.75,0.25} 
@@ -372,26 +374,37 @@
 \AtEndDocument{
   % Auch Abschnittsbeginn ohne Kopf- und Fußzeile
   \renewcommand*{\chapterpagestyle}{empty} 
+  
+  % Literaturverzeichnis vor dem Anhang
+  \ifthenelse{\equal{\@ifaBibliographyBeforeAppendix}{true}}{
+    \bibliographystyle{\@ifaBibliographyStyle}
+  	\oldbib{\@ifaReferences}
+  	\cleardoublepage
+  }{}
 
-  \bibliographystyle{\@ifaBibliographyStyle}
-  \oldbib{\@ifaReferences}
-  \cleardoublepage
-
+  % Anhänge
   \IfFileExists{\@ifaAppendix}{
     \renewcommand{\appendixpagename}{Anhang}
-	
-	\begin{center}
-		\thispagestyle{empty}
-		\vspace*{\fill}
-		{\sffamily\bf\huge\appendixpagename}
-		\vspace{\fill}
-		\cleardoublepage
-	\end{center}
-	
+    % Zuerst die Titelseite
+    \begin{center}
+      \thispagestyle{empty}
+      \vspace*{\fill}
+	  {\sffamily\bf\huge\appendixpagename}
+	  \vspace{\fill}
+      \cleardoublepage
+    \end{center}
+    % Nun die Anhänge, ohne Titelseite (siehe \RequirePackage --> ohne page-Option)
     \begin{appendices}
       \input{\@ifaAppendix}
       \clearpage
     \end{appendices}
+  }{}
+           
+  % Literaturverzeichnis nach dem Anhang
+  \ifthenelse{\equal{\@ifaBibliographyBeforeAppendix}{false}}{
+  	\bibliographystyle{\@ifaBibliographyStyle}
+  	\oldbib{\@ifaReferences}
+    \cleardoublepage
   }{}
 
   \backmatter
