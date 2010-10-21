@@ -65,10 +65,11 @@
 ]{scrbook}                                                  % Basisklasse der Vorlage: Koma-Skrip Klasse analog zur book-Klasse.
 
 % Absatznummerierung fuer 4 Ebenen (z.B. 2.3.2.1) gemaess IfA Richtlinie einschalten.
-\setcounter{secnumdepth}{4}
-\setcounter{tocdepth}{4} 
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3} 
 
 % Lade benötigte Pakete
+\RequirePackage{scrhack} %Zur Herstellung der Kompabilitaet mit Paketen, die nicht kompatibel zum KOMA-Script sind.
 \include{packages}
 
 %-------------------------------------------------------------------------
