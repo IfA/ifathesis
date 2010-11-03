@@ -107,37 +107,42 @@
 \newfloat{listing}{htb}{loq}
 \floatname{listing}{Listing}
 
-% Usage: \shlisting{<Caption>}{<Label>}{<[Dialect]Language>}{<Pfad>}
-\newcommand*{\ifalisting}[5]{% 
-  \begin{listing}
-    \hspace{4mm}
-    \begin{minipage}{0.96\textwidth}
-      \lstinputlisting[
-        caption={#1},
-        label={#2}, 
-        language={#3},
-        keywordstyle=\bfseries\color{blue},
-        identifierstyle=\bf,
-        stringstyle=\itshape\color{red},
-        basicstyle=\ttfamily\color{black}\footnotesize,  % Schriftschnitt des Codes
-        showstringspaces=false,                          % Leerzeichen nicht markieren
-        commentstyle=\color{green},                      % Schriftschnitt der Kommentare
-        tabsize=2,                                       % Tabulatorengrˆﬂe in Leerzeichen
-        breaklines=true,                                 % zu lange Zeilen umbrechen
-        frame=tb,                                        % Rahmen um das Listing
-        belowcaptionskip=2mm,                            % Abstand unterhalb der Beschriftung
-        abovecaptionskip=3mm,                            % Abstand oberhalb der Beschriftung
-        captionpos=t,                                    % Position der Beschriftung (b=bottom, t=top)
-        numbers=#4,
-        numbersep=5pt
-      ]{#5}
-      \vspace{-5mm}
-      \begin{flushright}
-        \scriptsize
-        Listing \ref{#2}
-      \end{flushright}
-    \end{minipage}
-  \end{listing}
+% Usage: \shlisting{<Caption>}{<Label>}{<[Dialect]Language>}{<Pfad>} 
+% Thanks to Matthias Freund who provided the code to enables listings which are longer than one page.
+\newcommand*{\ifalisting}[5]{%  
+  \renewcommand{\lstlistingname}{\hspace{-0.6cm}Listing}
+  \begin{addmargin*}[0.04\textwidth]{0cm}				% ver‰ndert den Abstand ohne Verwendung einer Minipage
+    \begin{listing}
+      \hspace{4mm}
+%      \begin{minipage}{0.96\textwidth}
+        \lstinputlisting[
+          caption={#1},
+          label={#2}, 
+          language={#3},
+          keywordstyle=\bfseries\color{blue},
+          identifierstyle=\bf,
+          stringstyle=\itshape\color{red},
+          basicstyle=\ttfamily\color{black}\footnotesize,  % Schriftschnitt des Codes
+          showstringspaces=false,                          % Leerzeichen nicht markieren
+          commentstyle=\color{green},                      % Schriftschnitt der Kommentare
+          tabsize=2,                                       % Tabulatorengrˆﬂe in Leerzeichen
+          breaklines=true,                                 % zu lange Zeilen umbrechen
+          frame=tb,                                        % Rahmen um das Listing
+          belowcaptionskip=2mm,                            % Abstand unterhalb der Beschriftung
+          abovecaptionskip=3mm,                            % Abstand oberhalb der Beschriftung
+          captionpos=t,                                    % Position der Beschriftung (b=bottom, t=top)
+          numbers=#4,
+          numbersep=5pt
+        ]{#5}
+        \vspace{-.4mm}
+        \begin{flushright}
+          \scriptsize
+          Listing \ref{#2}
+        \end{flushright}
+%      \end{minipage}
+      \vspace{4.5mm}
+    \end{listing}
+  \end{addmargin*}
 }
 \renewcommand*{\lstlistlistingname}{Quelltextverzeichnis}
 %-------------------------------------------------------------------------
@@ -346,20 +351,20 @@
     \clearpage
     \if@useListOfFigures
       \listoffigures
-      \clearpage
+      \cleardoublepage
     \fi
     \if@useListOfTables
       \listoftables
-      \clearpage
+      \cleardoublepage
     \fi
     \if@useListOfListings
       \lstlistoflistings
-      \clearpage
+      \cleardoublepage
     \fi
     \if@useAbbrevations
       \IfFileExists{\@ifaAbbrev}{
         \input{\@ifaAbbrev}
-        \clearpage
+        \cleardoublepage
       }{}
     \fi
   \endgroup
@@ -373,21 +378,21 @@
 
 % ...und gleich ist Schluss!
 \AtEndDocument{
+  \cleardoublepage
   % Auch Abschnittsbeginn ohne Kopf- und Fuﬂzeile
   \renewcommand*{\chapterpagestyle}{empty} 
-  
   % Literaturverzeichnis vor dem Anhang
-  \ifthenelse{\equal{\@ifaBibliographyBeforeAppendix}{true}}{
+  \ifthenelse{\equal{\@ifaBibliographyBeforeAppendix}{true}}{        
     \bibliographystyle{\@ifaBibliographyStyle}
-  	\oldbib{\@ifaReferences}
-  	\cleardoublepage
+  	\oldbib{\@ifaReferences}     
+    \cleardoublepage
   }{}
 
   % Anh‰nge
   \IfFileExists{\@ifaAppendix}{
     \renewcommand{\appendixpagename}{Anhang}
-    % Zuerst die Titelseite
-    \begin{center}
+    % Zuerst die Titelseite                          
+    \begin{center}                          
       \thispagestyle{empty}
       \vspace*{\fill}
 	  {\sffamily\bf\huge\appendixpagename}
@@ -397,7 +402,7 @@
     % Nun die Anh‰nge, ohne Titelseite (siehe \RequirePackage --> ohne page-Option)
     \begin{appendices}
       \input{\@ifaAppendix}
-      \clearpage
+      \cleardoublepage
     \end{appendices}
   }{}
            
@@ -409,7 +414,7 @@
   }{}
 
   \backmatter
-  
+
   % Im Abspann nur Seiten ohne Kopf- und Fuﬂzeile (auﬂer Abschnittsbeginn)
   \pagestyle{empty}  
   % Auch Abschnittsbeginn ohne Kopf- und Fuﬂzeile
