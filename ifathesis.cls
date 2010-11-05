@@ -100,51 +100,63 @@
 }
 
 %-------------------------------------------------------------------------
-% Integriert Listings und baut diese als Gleitobjekt aus
+% Integriert Listings und baut diese als Gleitobjekt aus, wenn gewünscht
 %-------------------------------------------------------------------------
-\RequirePackage{float}
-\floatstyle{plain}
-\newfloat{listing}{htb}{loq}
-\floatname{listing}{Listing}
+% Usage: \listing{<Caption>}{<Label>}{<[Dialect]Language>}{<Pfad>}{<float?>} 
 
-% Usage: \shlisting{<Caption>}{<Label>}{<[Dialect]Language>}{<Pfad>} 
-% Thanks to Matthias Freund who provided the code to enables listings which are longer than one page.
-\newcommand*{\ifalisting}[5]{%  
-  \renewcommand{\lstlistingname}{\hspace{-0.6cm}Listing}
-  \begin{addmargin*}[0.04\textwidth]{0cm}				% verändert den Abstand ohne Verwendung einer Minipage
-    \begin{listing}
-      \hspace{4mm}
-%      \begin{minipage}{0.96\textwidth}
-        \lstinputlisting[
-          caption={#1},
-          label={#2}, 
-          language={#3},
-          keywordstyle=\bfseries\color{blue},
-          identifierstyle=\bf,
-          stringstyle=\itshape\color{red},
-          basicstyle=\ttfamily\color{black}\footnotesize,  % Schriftschnitt des Codes
-          showstringspaces=false,                          % Leerzeichen nicht markieren
-          commentstyle=\color{green},                      % Schriftschnitt der Kommentare
-          tabsize=2,                                       % Tabulatorengröße in Leerzeichen
-          breaklines=true,                                 % zu lange Zeilen umbrechen
-          frame=tb,                                        % Rahmen um das Listing
-          belowcaptionskip=2mm,                            % Abstand unterhalb der Beschriftung
-          abovecaptionskip=3mm,                            % Abstand oberhalb der Beschriftung
-          captionpos=t,                                    % Position der Beschriftung (b=bottom, t=top)
-          numbers=#4,
-          numbersep=5pt
-        ]{#5}
-        \vspace{-.4mm}
-        \begin{flushright}
-          \scriptsize
-          Listing \ref{#2}
-        \end{flushright}
-%      \end{minipage}
-      \vspace{4.5mm}
-    \end{listing}
-  \end{addmargin*}
+\newcommand*{\ifalisting}[6]{
+	\renewcommand{\lstlistingname}{\hspace{-0.6cm}Listing}
+	\ifthenelse{\equal{#6}{true}}{
+		\ifalistingFloat{#1}{#2}{#3}{#4}{#5}
+	}{
+		\ifalistingNoFloat{#1}{#2}{#3}{#4}{#5}
+	}  
+	\vspace{4.5mm}
 }
-\renewcommand*{\lstlistlistingname}{Quelltextverzeichnis}
+
+\newcommand*{\ifalistingFloat}[5]{% 
+    \begin{minipage}{0.96\textwidth}
+		\lstset{belowcaptionskip=2mm}                   % Abstand unterhalb der Beschriftung
+		\ifalistingRaw{#1}{#2}{#3}{#4}{#5}
+    \end{minipage}
+}
+  
+% Thanks to Matthias Freund who provided the code to enables listings which are longer than one page.
+%                                  
+\newcommand*{\ifalistingNoFloat}[5]{%  
+	\begin{addmargin}[4mm]{1.5mm}				% verändert den Abstand ohne Verwendung einer Minipage
+		\lstset{belowcaptionskip=-3mm}                  % Abstand unterhalb der Beschriftung
+		\ifalistingRaw{#1}{#2}{#3}{#4}{#5}
+		\vspace{-1mm}
+		\begin{flushright}
+			\scriptsize
+			Listing \ref{#2}
+		\end{flushright}
+	\end{addmargin}
+}                                      
+
+\newcommand*{\ifalistingRaw}[5]{
+	\lstinputlisting[
+		caption={#1},
+		label={#2}, 
+		language={#3},
+		keywordstyle=\bfseries\color{blue},
+		identifierstyle=\bf,
+		stringstyle=\itshape\color{red},
+		basicstyle=\ttfamily\color{black}\footnotesize,  % Schriftschnitt des Codes
+		showstringspaces=false,                          % Leerzeichen nicht markieren
+		commentstyle=\color{green},                      % Schriftschnitt der Kommentare
+		tabsize=2,                                       % Tabulatorengröße in Leerzeichen
+		breaklines=true,                                 % zu lange Zeilen umbrechen
+		frame=tb,                                        % Rahmen um das Listing
+		abovecaptionskip=3mm,                            % Abstand oberhalb der Beschriftung
+		captionpos=t,                                    % Position der Beschriftung (b=bottom, t=top)
+		numbers=#4,
+		numbersep=5pt
+	]{#5}
+}
+\renewcommand*{\lstlistlistingname}{Quelltextverzeichnis}          
+
 %-------------------------------------------------------------------------
 
 \RequirePackage{ifthen}

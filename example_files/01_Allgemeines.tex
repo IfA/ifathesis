@@ -102,7 +102,14 @@ In der Vorlage wurden neue Befehle eingeführt, die meist als Wrapper für existie
 \subsection{ifalisting}
 Hierbei handelt es sich um einen Befehl zur Erzeugung eines Quellcode-Listings, welcher wie folgt verwendet wird:
 
-\noindent \begin{center} \verb|\ifalisting{<CAPTION>}{<LABEL>}{<LANGUAGE>}{<LINE_NUMBERS>}{<FILE>}| \end{center}
+\begin{verbatim}
+\ifalisting{<CAPTION>}
+           {<LABEL>}
+           {<LANGUAGE>}
+           {<LINE_NUMBERS>}
+           {<FILE>}
+           {<FLOAT?>}
+\end{verbatim}
 
 \begin{description}
 	\item[<CAPTION>] Die Überschrift des Listings.
@@ -119,8 +126,8 @@ Hierbei handelt es sich um einen Befehl zur Erzeugung eines Quellcode-Listings, 
 		Eine vollständige Liste ist unter anderem \href{http://en.wikibooks.org/wiki/LaTeX/Packages/Listings}{HIER} zu finden.
 	\item[<LINE\_NUMBERS>] Anzeige einer Zeilennummerierung, gültige Werte: {\bf none|left|right}
 	\item[<FILE>] Dateiname, in der der Quellcode bzw. das Quellcode-Fragment gespeichert ist. Listings sollten stets aus einer separaten Datei geladen werden. Bei mehreren Listings bietet es sich daher an, ein separates Verzeichnis dafür anzulegen.
+	\item[<FLOAT?>] Mögliche Werte: \textbf{true}, \textbf{false}. Wenn \textbf{true}, dann wird das Listing als Gleitobjekt behandelt, es "`gleitet"' dann jeweils an die nächste freie Stelle. Gleitobjekte können allerdings nicht unterbrochen werden, das heißt, dass kein Seitenumbruch bei längeren Quelltexten möglich ist. In einem solchen Fall sollte auf \textbf{false} zurückgegriffen werden. Das Listing erscheint dann genau an der definierten Stelle, wird aber bei einem Seitenumbruch auf der nächsten Seite fortgesetzt.
 \end{description}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Zusätzliche Pakete}
