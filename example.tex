@@ -23,7 +23,9 @@
   listoffigures,  % includes list of figures
   listoftables,   % includes list of tables
   listoflistings, % includes list of listings
-  abbrevations    % includes index of symbols and abbrevations
+  abbrevations,   % includes index of symbols and abbrevations
+  bibIfa		  % citation style (IfA standard)
+  				  % alternatives: bibNumeric, bibHarvard
 ]{ifathesis}
 
 \ifaThesis{Diplomarbeit}
@@ -57,17 +59,12 @@
 \ifaAbbrev{example_files/00_abbrev}
                  
 % Literaturverzeichnis angeben
-\let\bibliography=\ifaReferences
-\bibliography{bibliography}						       % Hier den Dateinamen des Literaturverzeichnisses angeben (ohne *.bib-Endung)
-
-% Bibliography Style
-% \ifaBibliographyStyle{alpha}                         % Hier kann der Bibliographiestil eingestellt werden
+\bibliography{bibliography} 
 
 % Soll das Literaturverzeichnis vor oder nach dem Anhang aufgeführt werden?
-\ifaBibliographyBeforeAppendix{true}	% Mögliche Optionen: true, false
+\ifaBibliographyBeforeAppendix{false}	% Mögliche Optionen: true, false
 
 \begin{document}
-
 \input{example_files/00_Vorab.tex}
 \input{example_files/01_Allgemeines.tex}
 \input{example_files/02_Richtlinie.tex}

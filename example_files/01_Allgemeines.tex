@@ -60,6 +60,8 @@ Zur Verfügung steht die Dokumentenklasse \verb-ifathesis- mit folgenden Optionen
   \item[listoftables] Integriert ein Tabellenverzeichnis an der richtigen Stelle, gemäß der \emph{IfA}-Richtlinie
   \item[listoftlistings] Integriert ein Quellcodeverzeichnis an der richtigen Stelle, gemäß der \emph{IfA}-Richtlinie
   \item[abbrevations] Integriert ein Symbol- und Abkürzungsverzeichnis an der richtigen Stelle, gemäß der \emph{IfA}-Richtlinie. Weitere Informationen finden Sie in Abschnitt \ref{sec:install} und in der Datei \verb-exmaple_files\00_abbrev.tex-.
+  \item[bibIfa | bibNumeric | bibHarvard] Verwendung unterschiedlicher Stile für
+  Zitate bzw. für das Literaturverzeichnis
 \end{description}
 
 
@@ -84,11 +86,8 @@ Zur Verfügung steht die Dokumentenklasse \verb-ifathesis- mit folgenden Optionen
   \item[ifaDayOfSubmission] Tag der Einreichung
   \item[ifaTopicDescriptionPDF] Dateiname der Aufgabenstellung (als PDF). Es besteht damit die Möglichkeit, die Aufgabenstellung einzucannen und in die PDF-Version der Arbeit zu integrieren. ACHTUNG: Ein einzureichendes Exemplar der Arbeit muss die Aufgabenstellung im Original enthalten. Ansonsten führt dies zur Nichtannahme der Arbeit.
   \item[ifaAppendix] Dateiname der Hauptdatei der Anhänge (vollständige Pfadangabe ausgehend von der Dokumentenwurzel erforderlich)
-  \item[ifaReferences] Name der Bibliographiedatei (vollständige Pfadangabe ausgehend von der Dokumentenwurzel erforderlich) \\
-	\emph{\textbf{Achtung:} Hier gibt es eine Besonderheit, die es ermöglicht, den vollen Leistungsumfang von TeXnicCenter im Zusammenhang mit Literaturverzeichnissen zu nutzen (vielen Dank an Sara Raitza für den entsprechenden Workaround):
-	\ifalisting{Integration von Literaturverzeichnissen}{lst:litnutz}{tex}{left}{example_files/bibliography.txt}
-	Wie der Dateiname der Literatursammlung anzugeben ist, zeigt Listing~\ref{lst:litnutz} (Zeile 3).}
-  \item[ifaBibliographyStyle] Bibliographie-Stil (mögliche Werte: TODO)
+  \item[bibliography] Name der Bibliographiedatei (vollständige Pfadangabe
+  ausgehend von der Dokumentenwurzel ohne Dateiendung erforderlich)
   \item[ifaBibliographyBeforeAppendix] Soll das Literaturverzeichnis vor oder nach dem Anhang aufgeführt werden? (mögliche Werte: true, false)
 \end{description}
 
@@ -113,7 +112,8 @@ Hierbei handelt es sich um einen Befehl zur Erzeugung eines Quellcode-Listings, 
 
 \begin{description}
 	\item[<CAPTION>] Die Überschrift des Listings.
-	\item[<LABEL>] Erzeugt eine Marke, über die das Listing mit dem Befehl \verb|\ref{<LABEL>}| im Text referenziert werden kann.
+	\item[<LABEL>] Erzeugt eine Marke, über die das Listing mit Hilfe des
+	Befehls \verb|\ref{<LABEL>}| im Text referenziert werden kann.
 	\item[<LANGUAGE>] Diese Angabe ist wichtig für die Syntaxhervorhebung. Latex kennt bspw. die Schlüsselwörter und ähnliches vieler Programmiersprachen, z.B.:
 		\begin{compactitem}
 			\item Assembler
@@ -127,6 +127,15 @@ Hierbei handelt es sich um einen Befehl zur Erzeugung eines Quellcode-Listings, 
 	\item[<LINE\_NUMBERS>] Anzeige einer Zeilennummerierung, gültige Werte: {\bf none|left|right}
 	\item[<FILE>] Dateiname, in der der Quellcode bzw. das Quellcode-Fragment gespeichert ist. Listings sollten stets aus einer separaten Datei geladen werden. Bei mehreren Listings bietet es sich daher an, ein separates Verzeichnis dafür anzulegen.
 	\item[<FLOAT?>] Mögliche Werte: \textbf{true}, \textbf{false}. Wenn \textbf{true}, dann wird das Listing als Gleitobjekt behandelt, es "`gleitet"' dann jeweils an die nächste freie Stelle. Gleitobjekte können allerdings nicht unterbrochen werden, das heißt, dass kein Seitenumbruch bei längeren Quelltexten möglich ist. In einem solchen Fall sollte auf \textbf{false} zurückgegriffen werden. Das Listing erscheint dann genau an der definierten Stelle, wird aber bei einem Seitenumbruch auf der nächsten Seite fortgesetzt.
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Hinweise zu bekannten Inkompatibilitäten}
+\label{sec:Inkompatibilitäten}
+
+\begin{description}
+  \item[quote\{\}] Bei Verwendung des
+  \verb|\quote{}|-Befehls entstehen Fehler im Layout. Daher ist als Ersatz die \verb|quotation|-Umgebung zu benutzen.
 \end{description}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%

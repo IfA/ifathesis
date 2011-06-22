@@ -37,6 +37,11 @@
 \DeclareOption{print}{\@isReadyForPrinttrue}
 \DeclareOption{screen}{\@isReadyForPrintfalse}
 
+\newcommand*{\@ifaBibliographyStyle}{}
+\DeclareOption{bibIfa}{\renewcommand*{\@ifaBibliographyStyle}{authoryear-comp}}
+\DeclareOption{bibHarvard}{\renewcommand*{\@ifaBibliographyStyle}{alphabetic}}
+\DeclareOption{bibNumeric}{\renewcommand*{\@ifaBibliographyStyle}{numeric-comp}}
+
 \ProcessOptions\relax
 
 % Lade Basisklasse der Vorlage
@@ -47,8 +52,14 @@
   pagesize            % Schreibt die Seitengröße ins Seitenregister,
                       % sodass DVI- und PDF-Seiten die richtige Größe haben.
 }{typearea}
-\PassOptionsToPackage{svgnames}{xcolor}  % Namensraum für xcolor Paket      
+
+% Setze Bibliographie-Stil
+\PassOptionsToPackage{style=\@ifaBibliographyStyle}{biblatex}
+
+\PassOptionsToPackage{svgnames}{xcolor}  % Namensraum für xcolor Paket
+      
 \PassOptionsToPackage{fleqn}{amsmath}
+
 \LoadClass[
   fontsize=12pt,                                            % Grundschriftgröße
   \if@isReadyForPrint  BCOR=15mm\else BCOR=0mm\fi,          % Binderandgröße
@@ -88,16 +99,16 @@
 \setkomafont{captionlabel}{\sffamily\bfseries}  % Caption-Label fett und serifenlos
 \setcapindent{1em}                              % 2. Zeile der Caption mit hängendem Einzug
 
-\renewcommand*{\backref}[1]{}
-\renewcommand*{\backrefalt}[4]{%
-  \ifcase #1 %
-    %
-  \or
-    \par \footnotesize \sffamily \vspace{0.25\baselineskip} {\raggedleft Zitiert auf Seite #2.\par}%
-  \else
-    \par \footnotesize \sffamily \vspace{0.25\baselineskip} {\raggedleft Zitiert auf Seiten #2.\par}%
-  \fi
+% Anpassung des Literaturverzeichnisses
+\setlength{\bibitemsep}{10pt}
+\defbibheading{bibliography}{
+  		\chapter*{Literaturverzeichnis}
+  		\addcontentsline{toc}{chapter}{Literaturverzeichnis}
 }
+% Notwendig für Autovervollständigung der Zitate im Texnic Center
+\renewcommand*{\bibliography}[1]{\addbibresource{#1.bib}}
+% Anpassung für eckige Klammern bei 'authoryear-comp'
+\ifthenelse{\equal{\@ifaBibliographyStyle}{authoryear-comp}}{\renewcommand*{\citep}[2][]{\mkbibbrackets{\cite[#1]{#2}}}}{}
 
 %-------------------------------------------------------------------------
 % Integriert Listings und baut diese als Gleitobjekt aus, wenn gewünscht
@@ -185,7 +196,6 @@
 \newcommand*{\@ifaAbstractEN}{GoHaigh2}
 \newcommand*{\@ifaReferences}{IPhei0Ox}
 \newcommand*{\@ifaAbbrev}{00_Abbrev}
-\newcommand*{\@ifaBibliographyStyle}{abbrvnat}
 \newcommand*{\@ifaBibliographyBeforeAppendix}{false}
 
 \newcommand*{\ifaThesis}[1]{\renewcommand*{\@ifaThesis}{#1}}
@@ -210,7 +220,6 @@
 \newcommand*{\ifaAbstractEN}[1]{\renewcommand*{\@ifaAbstractEN}{#1}}
 \newcommand*{\ifaReferences}[1]{\renewcommand*{\@ifaReferences}{#1}}
 \newcommand*{\ifaAbbrev}[1]{\renewcommand*{\@ifaAbbrev}{#1}}
-\newcommand*{\ifaBibliographyStyle}[1]{\renewcommand*{\@ifaBibliographyStyle}{#1}}
 \newcommand*{\ifaBibliographyBeforeAppendix}[1]{\renewcommand*{\@ifaBibliographyBeforeAppendix}{#1}}
 
 \definecolor{TUDBLAU}{rgb}{0.0,0.348,0.637}
@@ -359,6 +368,7 @@
     }
 
     % Verzeichnisse
+    \pdfbookmark[1]{Inhaltsverzeichnis}{toc}
     \tableofcontents
     \clearpage
     \if@useListOfFigures
@@ -386,17 +396,14 @@
   \pagestyle{scrheadings}
 }
 
-\let\oldbib=\bibliography
-
 % ...und gleich ist Schluss!
 \AtEndDocument{
   \cleardoublepage
   % Auch Abschnittsbeginn ohne Kopf- und Fußzeile
-  \renewcommand*{\chapterpagestyle}{empty} 
+  %\renewcommand*{\chapterpagestyle}{empty} 
   % Literaturverzeichnis vor dem Anhang
   \ifthenelse{\equal{\@ifaBibliographyBeforeAppendix}{true}}{        
-    \bibliographystyle{\@ifaBibliographyStyle}
-  	\oldbib{\@ifaReferences}     
+  	\printbibliography     
     \cleardoublepage
   }{}
 
@@ -413,6 +420,10 @@
     \end{center}
     % Nun die Anhänge, ohne Titelseite (siehe \RequirePackage --> ohne page-Option)
     \begin{appendices}
+      \ifthenelse{\equal{\@ifaBibliographyBeforeAppendix}{true}}{        
+  	    \pagenumbering{Roman}							% römische Nummerierung im Anhang
+	    \setcounter{page}{1}							% beginne wieder mit Seitenzahl 1
+  	  }{}
       \input{\@ifaAppendix}
       \cleardoublepage
     \end{appendices}
@@ -420,8 +431,7 @@
            
   % Literaturverzeichnis nach dem Anhang
   \ifthenelse{\equal{\@ifaBibliographyBeforeAppendix}{false}}{
-  	\bibliographystyle{\@ifaBibliographyStyle}
-  	\oldbib{\@ifaReferences}
+  	\printbibliography 
     \cleardoublepage
   }{}
 

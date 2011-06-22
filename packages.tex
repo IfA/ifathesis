@@ -29,7 +29,11 @@
 \RequirePackage[section]{placeins} % Plaztiert zu einem Abschnitt gehörende Floating-Objekte spätestens am Ende des Abschnitts
 \RequirePackage{pdfpages}          % Zum einbinden von kompletten PDF-Seiten (z.B. Aufgabenstellung)
 \RequirePackage{caption}           % Paket zum Einbinden von Captions bei Nicht-Float-Objekten (hauptsächlich für Anhang)
-\RequirePackage[square]{natbib}    % Paket zum Personalisieren von Zitaten im Text. Fuer eckige Klammern [square]
+\RequirePackage[				   % Verwendung von biblatex f�r das Literaturverzeichnis
+	backref=true,
+	natbib=true
+]{biblatex}
+\RequirePackage{csquotes}		   % Erg�nzungspaket zu Babel f�r erweiterte Zitierfunktionen
 
 \RequirePackage{calc}              % Für Berechnungen mit Variablen
 \RequirePackage{upgreek}           % Aufrechte griechische Buchstaben (beachte ISO konformer Formelsatz)
@@ -70,11 +74,6 @@
   pdfpagemode=UseOutlines   % Determines how the file is opening:
                             % UseNone, UseThumbs (show thumbnails), UseOutlines (show bookmarks), FullScreen, UseOC, UseAttachments
 ]{hyperref}
-
-\RequirePackage[
-  hyperpageref,
-  german
-]{backref}
 
 %\RequirePackage[draft]{fixme}	% Zum Einfügen von Kommentaren im Text, z.B. Erinnerungen welche Stellen noch bearbeitet werden müssen.
                                 % Mit \fixme{}, \fxnote{}, \fxwarning{}, \fxerror{} können differnzierte Notizen gemacht werden.
