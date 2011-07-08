@@ -54,7 +54,7 @@
 }{typearea}
 
 % Setze Bibliographie-Stil
-\PassOptionsToPackage{style=\@ifaBibliographyStyle}{biblatex}
+\PassOptionsToPackage{style=\@ifaBibliographyStyle, backend=bibtex8}{biblatex}
 
 \PassOptionsToPackage{svgnames}{xcolor}  % Namensraum für xcolor Paket
       
