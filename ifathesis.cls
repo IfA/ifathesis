@@ -403,8 +403,10 @@
   %\renewcommand*{\chapterpagestyle}{empty} 
   % Literaturverzeichnis vor dem Anhang
   \ifthenelse{\equal{\@ifaBibliographyBeforeAppendix}{true}}{        
-  	\printbibliography     
+    \if@isReadyForPrint  \markboth{Literaturverzeichnis}{}\else \markright{Literaturverzeichnis}\fi
+  	\printbibliography 
     \cleardoublepage
+    \automark[section]{chapter}
   }{}
 
   % Anhänge
@@ -431,8 +433,10 @@
            
   % Literaturverzeichnis nach dem Anhang
   \ifthenelse{\equal{\@ifaBibliographyBeforeAppendix}{false}}{
+    \if@isReadyForPrint  \markboth{Literaturverzeichnis}{}\else \markright{Literaturverzeichnis}\fi
   	\printbibliography 
     \cleardoublepage
+    \automark[section]{chapter}
   }{}
 
   \backmatter
