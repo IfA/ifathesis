@@ -1,4 +1,4 @@
-%!TEX root = /Users/stefan/Entwicklung/de.tud.et.ifa.latex.ifathesis/example.tex
+%!TEX root = example.tex
 %*******************************************************************************
 % * Copyright (c) 2006-2010 
 % * Institute of Automation, Dresden University of Technology
@@ -294,16 +294,16 @@
     % Aufgabenstellung
     \IfFileExists{\@ifaTopicDescriptionPDF} {
       \includepdf{\@ifaTopicDescriptionPDF}
-    }{
-      \vfill
-      \begin{center}
-        {\Large\sf Hier die {\bf \Huge Aufgabenstellung im Original} (bzw. als Kopie im Zweitexemplar) nach dem Drucken, 
-        vor dem Binden einbinden, indem dieses Blatt ersetzt wird. \\[3cm] Für die screen-Version besteht die
-        Möglichkeit, die eingescannte Aufgabenstellung als PDF zu integrieren. Dazu einfach den Befehl
-        {\bf\huge ifaTopicDescriptionPDF} (siehe Dokumentation) nutzen}
-      \end{center}
-    }
-    \cleardoublepage 
+      \cleardoublepage 
+    }% {
+    %       \vfill
+    %       \begin{center}
+    %         {\Large\sf Hier die {\bf \Huge Aufgabenstellung im Original} (bzw. als Kopie im Zweitexemplar) nach dem Drucken, 
+    %         vor dem Binden einbinden, indem dieses Blatt ersetzt wird. \\[3cm] Für die screen-Version besteht die
+    %         Möglichkeit, die eingescannte Aufgabenstellung als PDF zu integrieren. Dazu einfach den Befehl
+    %         {\bf\huge ifaTopicDescriptionPDF} (siehe Dokumentation) nutzen}
+    %       \end{center}
+    %     }
 
     % Kurzfassungen
     \IfFileExists{\@ifaAbstractDE}{
