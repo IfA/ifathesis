@@ -24,11 +24,12 @@
   listoftables,   % includes list of tables
   listoflistings, % includes list of listings
   abbrevations,   % includes index of symbols and abbrevations
-  bibIfa		  % citation style (IfA standard)
+  bibIfa,		  % citation style (IfA standard)
   				  % alternatives: bibNumeric, bibHarvard
 ]{ifathesis}
 
 \ifaThesis{Diplomarbeit}
+\ifaThesisLanguage{en}
 \ifaAuthor{Heinrich Grabow}
 \ifaAuthorBirthday{20.02.1980}
 \ifaAuthorBirthplace{Lutherstadt Eisleben}
@@ -48,11 +49,11 @@
 \ifaAppendix{example_files/appendix}
 \ifaAbstractDE{example_files/00_abstract_de}
 \ifaAbstractEN{example_files/00_abstract_en__invalid}  % HINWEIS: Der Dateiname der englischen Kurzfassung ist absichtlich
-                                                       % ungültig gemacht worden, um zu demonstrieren, dass die Vorlage
+                                                       % ungÃ¼ltig gemacht worden, um zu demonstrieren, dass die Vorlage
                                                        % auch ohne Kurzfassungen genutzt werden kann. Dazu einfach einen
-                                                       % ungültigen Dateinamen angeben oder den Befehl ganz weglassen.
+                                                       % ungÃ¼ltigen Dateinamen angeben oder den Befehl ganz weglassen.
                                                        % 
-                                                       % ACHTUNG: Im Institut für Automatisierungstechnik sind die 
+                                                       % ACHTUNG: Im Institut fÃ¼r Automatisierungstechnik sind die 
                                                        % Kurzfassungen unbedingt erforderlich. Eine Arbeit ohne 
                                                        % Kurzfassung wird nicht angenommen, da sie nicht den Richtlinien
                                                        % des Instituts entspricht.
@@ -61,8 +62,8 @@
 % Literaturverzeichnis angeben
 \bibliography{bibliography} 
 
-% Soll das Literaturverzeichnis vor oder nach dem Anhang aufgeführt werden?
-\ifaBibliographyBeforeAppendix{false}	% Mögliche Optionen: true, false
+% Soll das Literaturverzeichnis vor oder nach dem Anhang aufgefÃ¼hrt werden?
+\ifaBibliographyBeforeAppendix{false}	% MÃ¶gliche Optionen: true, false
 
 \begin{document}
 \input{example_files/00_Vorab.tex}

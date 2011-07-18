@@ -13,10 +13,10 @@
 % *      - initial API and implementation
 % ******************************************************************************/
 
-\RequirePackage[latin1]{inputenc}  % Eingabe von Umlauten ermöglichen.
+\RequirePackage[utf8]{inputenc}  % Eingabe von Umlauten ermöglichen.
 \RequirePackage[T1]{fontenc}       % EC-Fonts verwenden, so dass Wörter mit Umlauten getrennt werden
 \RequirePackage{lmodern}           % Verbesserte Schriftart. Alternativ auch \RequirePackage{palatino}, \RequirePackage{fourier}, etc.
-\RequirePackage[ngerman]{babel}    % Silbentrennung nach neuer deutscher Rechtschreibung.
+
 \RequirePackage{nameref}           % Zusatzpaket zu hyperref. Muss vor inkompatiblen Paketen geladen werden.
 \RequirePackage{graphicx}          % zum Einbinden von Graphiken (.png,.pdf,...)
 \RequirePackage{units}             % zum Korrekten setzen von Einheiten mit \unit[Wert]{Einheit}
@@ -84,10 +84,6 @@
 
 % Quellcode Listings
 \RequirePackage{listings}
-
-% Erlaubt das Einfügen eines automatischen Symbolverzeichnisses
-\RequirePackage[german]{nomencl}
-\makenomenclature    
 
 % Teilweise sind die Füllpunkte im Inhaltsverzeichnis nicht bündig:
 \RequirePackage{titletoc} % Inhaltsverzeichnis anpassen 
