@@ -204,6 +204,7 @@
 \newcommand*{\@ifaAbstractEN}{GoHaigh2}
 \newcommand*{\@ifaReferences}{IPhei0Ox}
 \newcommand*{\@ifaAbbrev}{00_Abbrev}
+\newcommand*{\@ifaAcknowledgements}{Acknowledgements}
 \newcommand*{\@ifaBibliographyBeforeAppendix}{true}
 
 \newcommand*{\ifaThesis}[1]{\renewcommand*{\@ifaThesis}{#1}}
@@ -227,6 +228,7 @@
 \newcommand*{\ifaAbstractDE}[1]{\renewcommand*{\@ifaAbstractDE}{#1}}
 \newcommand*{\ifaAbstractEN}[1]{\renewcommand*{\@ifaAbstractEN}{#1}}
 \newcommand*{\ifaReferences}[1]{\renewcommand*{\@ifaReferences}{#1}}
+\newcommand*{\ifaAcknowledgements}[1]{\renewcommand*{\@ifaAcknowledgements}{#1}}
 \newcommand*{\ifaAbbrev}[1]{\renewcommand*{\@ifaAbbrev}{#1}}
 \newcommand*{\ifaBibliographyBeforeAppendix}[1]{\renewcommand*{\@ifaBibliographyBeforeAppendix}{#1}}
 
@@ -254,7 +256,7 @@
   \newcommand{\@bibTitle}{References}
   \newcommand{\@appTitle}{Appendix}
   \renewcommand{\@pdftitle}{\@ifaTitleEN}
-  \renewcommand{\nomname}{List of Symbols and Abbreviations}
+  \renewcommand{\nomname}{Nomenclature}
   \renewcommand{\lstlistlistingname}{List of Listings}          
 }
 
@@ -301,9 +303,11 @@
       \vfill
 
       \begin{tabular}{rl}
-        vorgelegt von   & \@ifaAuthor \\
-        im Studiengang  & \@ifaAuthorCourse,\:Jg.\:\@ifaAuthorYearOfMatriculation \\
-        geboren am     & \@ifaAuthorBirthday\:in\:\@ifaAuthorBirthplace\\ 
+        \IfStrEq{\@ifaThesisLanguage}{de}{vorgelegt von}{submitted by} & \@ifaAuthor \\
+        \ifthenelse{\not\equal{\@ifaThesis}{Dissertation}} {
+          \IfStrEq{\@ifaThesisLanguage}{de}{im Studiengang}{registered in} & \@ifaAuthorCourse,\:Jg.\:\@ifaAuthorYearOfMatriculation \\
+        }{}
+        \IfStrEq{\@ifaThesisLanguage}{de}{geboren am}{born at} & \@ifaAuthorBirthday\:in\:\@ifaAuthorBirthplace\\ 
       \end{tabular}
       \vfill
 
@@ -366,7 +370,11 @@
         \hrule
         \vspace{.2cm}\normalsize
 
-        \ifthenelse{\equal{\@ifaThesis}{Diplomarbeit}}{DIPLOMARBEIT}{STUDIENARBEIT}
+        \ifthenelse{\equal{\@ifaThesis}{Diplomarbeit}}{DIPLOMARBEIT}{}
+        \ifthenelse{\equal{\@ifaThesis}{Masterarbeit}}{MASTERARBEIT}{}
+        \ifthenelse{\equal{\@ifaThesis}{Bachelorarbeit}}{BACHELORARBEIT}{}
+        \ifthenelse{\equal{\@ifaThesis}{Studienarbeit}}{STUDIENARBEIT}{}
+        \ifthenelse{\equal{\@ifaThesis}{Final Project}}{FINAL PROJECT}{}
         \hfill Bearbeiter: \@ifaAuthor
       \end{flushleft}
 
@@ -409,7 +417,14 @@
         dann kann diese Warnung ignoriert werden.
       }
     }
-
+    
+    % Danksagung
+    \IfFileExists{\@ifaAcknowledgements}{
+      \chapter*{\IfStrEq{\@ifaThesisLanguage}{de}{Danksagung}{Acknowledgements}}
+      \input{\@ifaAcknowledgements}
+      \cleardoublepage
+    }{}
+    
     % Verzeichnisse
     \pdfbookmark[1]{\@conTitle}{toc}
     \tableofcontents
