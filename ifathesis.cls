@@ -37,6 +37,10 @@
 \DeclareOption{print}{\@isReadyForPrinttrue}
 \DeclareOption{screen}{\@isReadyForPrintfalse}
 
+\newcommand*{\@ifaThesisLanguage}{de}
+\DeclareOption{langDE}{\renewcommand*{\@ifaThesisLanguage}{de}}
+\DeclareOption{langEN}{\renewcommand*{\@ifaThesisLanguage}{en}}
+
 \newcommand*{\@ifaBibliographyStyle}{}
 \DeclareOption{bibIfa}{\renewcommand*{\@ifaBibliographyStyle}{authoryear-comp}}
 \DeclareOption{bibHarvard}{\renewcommand*{\@ifaBibliographyStyle}{alphabetic}}
@@ -46,96 +50,43 @@
 
 % Lade Basisklasse der Vorlage
 \PassOptionsToPackage{%
-  paper=a4,           % Papiergr√∂√üe
-  headinclude=true,   % Geh√∂rt Kopfzeile eher zur Seite oder zum Rand?
-  footinclude=false,  % Geh√∂rt Fu√üzeile eher zur Seite oder zum Rand?
-  pagesize            % Schreibt die Seitengr√∂√üe ins Seitenregister,
-                      % sodass DVI- und PDF-Seiten die richtige Gr√∂√üe haben.
+  paper=a4,           % Papiergrˆﬂe
+  headinclude=true,   % Gehˆrt Kopfzeile eher zur Seite oder zum Rand?
+  footinclude=false,  % Gehˆrt Fuﬂzeile eher zur Seite oder zum Rand?
+  pagesize            % Schreibt die Seitengrˆﬂe ins Seitenregister,
+                      % sodass DVI- und PDF-Seiten die richtige Grˆﬂe haben.
 }{typearea}
 
 % Setze Bibliographie-Stil
 \PassOptionsToPackage{style=\@ifaBibliographyStyle, backend=bibtex8}{biblatex}
 
-\PassOptionsToPackage{svgnames}{xcolor}  % Namensraum f√ºr xcolor Paket
+\PassOptionsToPackage{svgnames}{xcolor}  % Namensraum f¸r xcolor Paket
       
 \PassOptionsToPackage{fleqn}{amsmath}
 
 \LoadClass[
-  fontsize=12pt,                                            % Grundschriftgr√∂√üe
-  \if@isReadyForPrint  BCOR=15mm\else BCOR=0mm\fi,          % Binderandgr√∂√üe
-  \if@isReadyForPrint  DIV=10\else DIV=9\fi,                % Teil der Seite, der als Seitenrand ber√ºcksichtigt wird (auch =calc mgl.):
-                                                            % Z.B. DIV=10: Randbreite Oben und Mitte 1/10, Unten und Au√üen 2/10 der Seite.
+  fontsize=12pt,                                            % Grundschriftgrˆﬂe
+  \if@isReadyForPrint  BCOR=15mm\else BCOR=0mm\fi,          % Binderandgrˆﬂe
+  \if@isReadyForPrint  DIV=10\else DIV=9\fi,                % Teil der Seite, der als Seitenrand ber¸cksichtigt wird (auch =calc mgl.):
+                                                            % Z.B. DIV=10: Randbreite Oben und Mitte 1/10, Unten und Auﬂen 2/10 der Seite.
                                                             % Regel: 60 bis 70 Zeichen pro Zeile, weniger ist besser, niemals mehr als 80!
-  captions=tableheading,                                    % Tabellenabst√§nde f√ºr Tabellen√úBERschriften optimieren
+  captions=tableheading,                                    % Tabellenabst‰nde f¸r Tabellen‹BERschriften optimieren
   \if@isReadyForPrint  twoside=true\else twoside=false\fi,  % Dokument zweiseitig?
-  headings=small,                                           % Relative Gr√∂√üe der √úberschriften, small ist besser lesbar und erzeugt weniger Zweizeiligs
-  fleqn,                                                    % Formeln linksb√ºndig
+  headings=small,                                           % Relative Grˆﬂe der ‹berschriften, small ist besser lesbar und erzeugt weniger Zweizeiligs
+  fleqn,                                                    % Formeln linksb¸ndig
   bibliography=totoc,                                       % Literaturverzeichnis im Inhaltsverzeichnis referenziert
   numbers=noenddot,                                         % Punkte nach Abschnittsnummern? (Weglassen = Automatik)
                                                             % Nach Duden im vorliegenden Bsp. falsch, da auch Buchstaben in Gliederung (Anhang), sieht aber besser aus.
 ]{scrbook}                                                  % Basisklasse der Vorlage: Koma-Skrip Klasse analog zur book-Klasse.
 
+% Paket f¸r einfache Realisation von String-Vergleichen, die hier in der Vorlage verwendet werden
+\RequirePackage{xstring}
+
 % Absatznummerierung fuer 4 Ebenen (z.B. 2.3.2.1) gemaess IfA Richtlinie einschalten.
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3} 
 
-% ==============================================================
-% = Definiere m√∂gliche Parameter zur Konfiguration der Vorlage =
-% ==============================================================
-%%%%%
-% Jetzt m√ºssen zun√§chst die variablen Angaben geladen werden
-\newcommand*{\@ifaThesis}{Diplomarbeit}
-\newcommand*{\@ifaThesisLanguage}{de}
-\newcommand*{\@ifaAuthor}{Max Mustermann}
-\newcommand*{\@ifaAuthorBirthday}{01.01.1970}
-\newcommand*{\@ifaAuthorBirthplace}{Dresden}
-\newcommand*{\@ifaAuthorCourse}{Informationssystemtechnik}
-\newcommand*{\@ifaAuthorYearOfMatriculation}{2000}
-\newcommand*{\@ifaKeywords}{Komma-separierte, Liste, mit, Schlagw√∂rtern, zum Thema, der Arbeit}
-\newcommand*{\@ifaTitleDE}{Titel der Arbeit}
-\newcommand*{\@ifaTitleEN}{Thesis' title goes here}
-\newcommand*{\@ifaSupervisorA}{}
-\newcommand*{\@ifaSupervisorB}{}
-\newcommand*{\@ifaSupervisorC}{}
-\newcommand*{\@ifaSupervisorD}{}
-\newcommand*{\@ifaSupervisorE}{}
-\newcommand*{\@ifaProfessor}{Titel der Arbeit}
-\newcommand*{\@ifaDayOfSubmission}{\today}
-\newcommand*{\@ifaTopicDescriptionPDF}{he0ohDie}
-\newcommand*{\@ifaAppendix}{GoHaigh2}
-\newcommand*{\@ifaAbstractDE}{GoHaigh2}
-\newcommand*{\@ifaAbstractEN}{GoHaigh2}
-\newcommand*{\@ifaReferences}{IPhei0Ox}
-\newcommand*{\@ifaAbbrev}{00_Abbrev}
-\newcommand*{\@ifaBibliographyBeforeAppendix}{false}
-
-\newcommand*{\ifaThesis}[1]{\renewcommand*{\@ifaThesis}{#1}}
-\newcommand*{\ifaThesisLanguage}[1]{\renewcommand*{\@ifaThesisLanguage}{#1}}
-\newcommand*{\ifaAuthor}[1]{\renewcommand*{\@ifaAuthor}{#1}}
-\newcommand*{\ifaAuthorBirthday}[1]{\renewcommand*{\@ifaAuthorBirthday}{#1}}
-\newcommand*{\ifaAuthorBirthplace}[1]{\renewcommand*{\@ifaAuthorBirthplace}{#1}}
-\newcommand*{\ifaAuthorCourse}[1]{\renewcommand*{\@ifaAuthorCourse}{#1}}
-\newcommand*{\ifaAuthorYearOfMatriculation}[1]{\renewcommand*{\@ifaAuthorYearOfMatriculation}{#1}}
-\newcommand*{\ifaKeywords}[1]{\renewcommand*{\@ifaKeywords}{#1}}
-\newcommand*{\ifaTitleDE}[1]{\renewcommand*{\@ifaTitleDE}{#1}}
-\newcommand*{\ifaTitleEN}[1]{\renewcommand*{\@ifaTitleEN}{#1}}
-\newcommand*{\ifaSupervisorA}[1]{\renewcommand*{\@ifaSupervisorA}{#1}}
-\newcommand*{\ifaSupervisorB}[1]{\renewcommand*{\@ifaSupervisorB}{#1}}
-\newcommand*{\ifaSupervisorC}[1]{\renewcommand*{\@ifaSupervisorC}{#1}}
-\newcommand*{\ifaSupervisorD}[1]{\renewcommand*{\@ifaSupervisorD}{#1}}
-\newcommand*{\ifaSupervisorE}[1]{\renewcommand*{\@ifaSupervisorE}{#1}}
-\newcommand*{\ifaProfessor}[1]{\renewcommand*{\@ifaProfessor}{#1}}
-\newcommand*{\ifaDayOfSubmission}[1]{\renewcommand*{\@ifaDayOfSubmission}{#1}}
-\newcommand*{\ifaTopicDescriptionPDF}[1]{\renewcommand*{\@ifaTopicDescriptionPDF}{#1}}
-\newcommand*{\ifaAppendix}[1]{\renewcommand*{\@ifaAppendix}{#1}}
-\newcommand*{\ifaAbstractDE}[1]{\renewcommand*{\@ifaAbstractDE}{#1}}
-\newcommand*{\ifaAbstractEN}[1]{\renewcommand*{\@ifaAbstractEN}{#1}}
-\newcommand*{\ifaReferences}[1]{\renewcommand*{\@ifaReferences}{#1}}
-\newcommand*{\ifaAbbrev}[1]{\renewcommand*{\@ifaAbbrev}{#1}}
-\newcommand*{\ifaBibliographyBeforeAppendix}[1]{\renewcommand*{\@ifaBibliographyBeforeAppendix}{#1}}
-
-
-% Lade ben√∂tigte Pakete
+% Lade benˆtigte Pakete
 \RequirePackage{scrhack} %Zur Herstellung der Kompabilitaet mit Paketen, die nicht kompatibel zum KOMA-Script sind.
 \include{packages}
 
@@ -150,10 +101,10 @@
 }
 %-------------------------------------------------------------------------
                                               
-% Ver√§nderung der Bildunterschriften und Tabellen√ºberschriften:
-\addtokomafont{caption}{\small}                 % Kleinere Schriftgr√∂√üe f√ºr Captions
+% Ver‰nderung der Bildunterschriften und Tabellen¸berschriften:
+\addtokomafont{caption}{\small}                 % Kleinere Schriftgrˆﬂe f¸r Captions
 \setkomafont{captionlabel}{\sffamily\bfseries}  % Caption-Label fett und serifenlos
-\setcapindent{1em}                              % 2. Zeile der Caption mit h√§ngendem Einzug
+\setcapindent{1em}                              % 2. Zeile der Caption mit h‰ngendem Einzug
 
 % Anpassung des Literaturverzeichnisses
 \setlength{\bibitemsep}{10pt}
@@ -161,13 +112,13 @@
   		\chapter*{\ifstrequal{\@ifaThesisLanguage}{de}{Literaturverzeichnis}{References}}
   		\addcontentsline{toc}{chapter}{\ifstrequal{\@ifaThesisLanguage}{de}{Literaturverzeichnis}{References}}
 }
-% Notwendig f√ºr Autovervollst√§ndigung der Zitate im Texnic Center
+% Notwendig f¸r Autovervollst‰ndigung der Zitate im Texnic Center
 \renewcommand*{\bibliography}[1]{\addbibresource{#1.bib}}
-% Anpassung f√ºr eckige Klammern bei 'authoryear-comp'
+% Anpassung f¸r eckige Klammern bei 'authoryear-comp'
 \ifthenelse{\equal{\@ifaBibliographyStyle}{authoryear-comp}}{\renewcommand*{\citep}[2][]{\mkbibbrackets{\cite[#1]{#2}}}}{}
 
 %-------------------------------------------------------------------------
-% Integriert Listings und baut diese als Gleitobjekt aus, wenn gew√ºnscht
+% Integriert Listings und baut diese als Gleitobjekt aus, wenn gew¸nscht
 %-------------------------------------------------------------------------
 % Usage: \listing{<Caption>}{<Label>}{<[Dialect]Language>}{<Pfad>}{<float?>} 
 
@@ -191,7 +142,7 @@
 % Thanks to Matthias Freund who provided the code to enables listings which are longer than one page.
 %                                  
 \newcommand*{\ifalistingNoFloat}[5]{%  
-	\begin{addmargin}[4mm]{1.5mm}				% ver√§ndert den Abstand ohne Verwendung einer Minipage
+	\begin{addmargin}[4mm]{1.5mm}				% ver‰ndert den Abstand ohne Verwendung einer Minipage
 		\lstset{belowcaptionskip=-3mm}                  % Abstand unterhalb der Beschriftung
 		\ifalistingRaw{#1}{#2}{#3}{#4}{#5}
 		\vspace{-1mm}
@@ -213,7 +164,7 @@
 		basicstyle=\ttfamily\color{black}\footnotesize,  % Schriftschnitt des Codes
 		showstringspaces=false,                          % Leerzeichen nicht markieren
 		commentstyle=\color{green},                      % Schriftschnitt der Kommentare
-		tabsize=2,                                       % Tabulatorengr√∂√üe in Leerzeichen
+		tabsize=2,                                       % Tabulatorengrˆﬂe in Leerzeichen
 		breaklines=true,                                 % zu lange Zeilen umbrechen
 		frame=tb,                                        % Rahmen um das Listing
 		abovecaptionskip=3mm,                            % Abstand oberhalb der Beschriftung
@@ -222,45 +173,110 @@
 		numbersep=5pt
 	]{#5}
 }
-\renewcommand*{\lstlistlistingname}{\ifstrequal{\@ifaThesisLanguage}{de}{Quelltextverzeichnis}{List of Listings}}          
 
 %-------------------------------------------------------------------------
 \RequirePackage{ifthen}
 
+% ==============================================================
+% = Definiere mˆgliche Parameter zur Konfiguration der Vorlage =
+% ==============================================================
+%%%%%
+% Jetzt m¸ssen zun‰chst die variablen Angaben geladen werden
+\newcommand*{\@ifaThesis}{Diplomarbeit}
+\newcommand*{\@ifaAuthor}{Max Mustermann}
+\newcommand*{\@ifaAuthorBirthday}{01.01.1970}
+\newcommand*{\@ifaAuthorBirthplace}{Dresden}
+\newcommand*{\@ifaAuthorCourse}{Informationssystemtechnik}
+\newcommand*{\@ifaAuthorYearOfMatriculation}{2000}
+\newcommand*{\@ifaKeywords}{Komma-separierte, Liste, mit, Schlagwˆrtern, zum Thema, der Arbeit}
+\newcommand*{\@ifaTitleDE}{Titel der Arbeit}
+\newcommand*{\@ifaTitleEN}{Thesis' title goes here}
+\newcommand*{\@ifaSupervisorA}{}
+\newcommand*{\@ifaSupervisorB}{}
+\newcommand*{\@ifaSupervisorC}{}
+\newcommand*{\@ifaSupervisorD}{}
+\newcommand*{\@ifaSupervisorE}{}
+\newcommand*{\@ifaProfessor}{Titel der Arbeit}
+\newcommand*{\@ifaDayOfSubmission}{\today}
+\newcommand*{\@ifaTopicDescriptionPDF}{he0ohDie}
+\newcommand*{\@ifaAppendix}{GoHaigh2}
+\newcommand*{\@ifaAbstractDE}{GoHaigh2}
+\newcommand*{\@ifaAbstractEN}{GoHaigh2}
+\newcommand*{\@ifaReferences}{IPhei0Ox}
+\newcommand*{\@ifaAbbrev}{00_Abbrev}
+\newcommand*{\@ifaBibliographyBeforeAppendix}{true}
+
+\newcommand*{\ifaThesis}[1]{\renewcommand*{\@ifaThesis}{#1}}
+\newcommand*{\ifaAuthor}[1]{\renewcommand*{\@ifaAuthor}{#1}}
+\newcommand*{\ifaAuthorBirthday}[1]{\renewcommand*{\@ifaAuthorBirthday}{#1}}
+\newcommand*{\ifaAuthorBirthplace}[1]{\renewcommand*{\@ifaAuthorBirthplace}{#1}}
+\newcommand*{\ifaAuthorCourse}[1]{\renewcommand*{\@ifaAuthorCourse}{#1}}
+\newcommand*{\ifaAuthorYearOfMatriculation}[1]{\renewcommand*{\@ifaAuthorYearOfMatriculation}{#1}}
+\newcommand*{\ifaKeywords}[1]{\renewcommand*{\@ifaKeywords}{#1}}
+\newcommand*{\ifaTitleDE}[1]{\renewcommand*{\@ifaTitleDE}{#1}}
+\newcommand*{\ifaTitleEN}[1]{\renewcommand*{\@ifaTitleEN}{#1}}
+\newcommand*{\ifaSupervisorA}[1]{\renewcommand*{\@ifaSupervisorA}{#1}}
+\newcommand*{\ifaSupervisorB}[1]{\renewcommand*{\@ifaSupervisorB}{#1}}
+\newcommand*{\ifaSupervisorC}[1]{\renewcommand*{\@ifaSupervisorC}{#1}}
+\newcommand*{\ifaSupervisorD}[1]{\renewcommand*{\@ifaSupervisorD}{#1}}
+\newcommand*{\ifaSupervisorE}[1]{\renewcommand*{\@ifaSupervisorE}{#1}}
+\newcommand*{\ifaProfessor}[1]{\renewcommand*{\@ifaProfessor}{#1}}
+\newcommand*{\ifaDayOfSubmission}[1]{\renewcommand*{\@ifaDayOfSubmission}{#1}}
+\newcommand*{\ifaTopicDescriptionPDF}[1]{\renewcommand*{\@ifaTopicDescriptionPDF}{#1}}
+\newcommand*{\ifaAppendix}[1]{\renewcommand*{\@ifaAppendix}{#1}}
+\newcommand*{\ifaAbstractDE}[1]{\renewcommand*{\@ifaAbstractDE}{#1}}
+\newcommand*{\ifaAbstractEN}[1]{\renewcommand*{\@ifaAbstractEN}{#1}}
+\newcommand*{\ifaReferences}[1]{\renewcommand*{\@ifaReferences}{#1}}
+\newcommand*{\ifaAbbrev}[1]{\renewcommand*{\@ifaAbbrev}{#1}}
+\newcommand*{\ifaBibliographyBeforeAppendix}[1]{\renewcommand*{\@ifaBibliographyBeforeAppendix}{#1}}
+
 \definecolor{TUDBLAU}{rgb}{0.0,0.348,0.637}
 \definecolor{OSGREEN}{rgb}{0,0.75,0.25} 
 
-% Definiere die richtige Sprache (bspw. f√ºr Silbentrennung, ...)
-\ifstrequal{\@ifaThesisLanguage}{de}{
+% Kl‰re zun‰chst einige Dinge, die von der Sprache abh‰ngen
+\ifthenelse{\equal{\@ifaThesisLanguage}{de}}{ 
+  % Deutsche Pakete
   \RequirePackage[ngerman]{babel}    % Silbentrennung nach neuer deutscher Rechtschreibung.
-}{
-  \RequirePackage[english]{babel}    % Silbentrennung nach englischer Rechtschreibung.
-}
-% Erlaubt das Einf√ºgen eines automatischen Symbolverzeichnisses
-% Definiere die richtige Sprache (bspw. f√ºr Silbentrennung, ...)
-\ifstrequal{\@ifaThesisLanguage}{de}{
   \RequirePackage[german]{nomencl}
-  \renewcommand{\nomname}{Symbol- und Abk√ºrzungsverzeichnis}
+  % Deutsche Begrifflichkeiten
+  \newcommand{\@conTitle}{Inhaltsverzeichnis}
+  \newcommand{\@bibTitle}{Literaturverzeichnis}
+  \newcommand{\@appTitle}{Anhang}
+  \renewcommand{\@pdftitle}{\@ifaTitleDE}
+  \renewcommand{\nomname}{Symbol- und Abk¸rzungsverzeichnis}
+  \renewcommand{\lstlistlistingname}{Quelltextverzeichnis}            
 }{
+  % Englische Pakete
+  \RequirePackage[english]{babel}    % Silbentrennung nach englischer Rechtschreibung.
   \RequirePackage[english]{nomencl}
+  % Englische Begrifflichkeiten
+  \newcommand{\@conTitle}{Contents}
+  \newcommand{\@bibTitle}{References}
+  \newcommand{\@appTitle}{Appendix}
+  \renewcommand{\@pdftitle}{\@ifaTitleEN}
   \renewcommand{\nomname}{List of Symbols and Abbreviations}
+  \renewcommand{\lstlistlistingname}{List of Listings}          
 }
+
+% Erlaubt das Einf¸gen eines automatischen Symbolverzeichnisses
+% Definiere die richtige Sprache (bspw. f¸r Silbentrennung, ...)
+% [Die entsprechenden Pakete wurden bereits eingef¸gt]
 \makenomenclature    
 
 % Jetzt geht es los...
 \AtBeginDocument{%
   % colorlinks: Farbige Verweise statt Umrahmung 
-  % Verhalten von hyperef √Ñndern: Farbe f√ºr Bildschirm, SW f√ºr Druck
+  % Verhalten von hyperef ƒndern: Farbe f¸r Bildschirm, SW f¸r Druck
   % ...color: Farbe verschiedener Verweise nach Farbpalette svgnames
   % pdf...: Setzten von Variablen die in den Eigenschaften der PDF-Datei angzeigt werden
-  % Weitere Optionen m√∂glich - siehe Dokumentation des Paktes hyperref  
+  % Weitere Optionen mˆglich - siehe Dokumentation des Paktes hyperref  
   \hypersetup{
     linkcolor=\if@isReadyForPrint black\else TUDBLAU\fi,%
     urlcolor=\if@isReadyForPrint black\else TUDBLAU\fi,%
     citecolor=\if@isReadyForPrint black\else OSGREEN\fi,%
-    pdftitle=\ifstrequal{\@ifaThesisLanguage}{de}{\@ifaTitleDE}{\@ifaTitleEN},%
+    pdftitle=\@pdftitle,%
     pdfauthor=\@ifaAuthor,%
-    pdfsubject=\ifstrequal{\@ifaThesisLanguage}{de}{\@ifaTitleDE}{\@ifaTitleEN},%
+    pdfsubject=\@pdftitle,%
     pdfkeywords={\@ifaKeywords}%,%
   }
 
@@ -279,8 +295,8 @@
       \vfill
 
       {\huge\textsc{\@ifaThesis}}\\[0.5cm]
-        \ifstrequal{\@ifaThesisLanguage}{de}{zum Thema}{with the Topic} \\[0.5cm]
-      {\large \ifstrequal{\@ifaThesisLanguage}{de}{\@ifaTitleDE}{\@ifaTitleEN}}\\
+        \IfStrEq{\@ifaThesisLanguage}{de}{zum Thema}{with the Topic} \\[0.5cm]
+      {\large \IfStrEq{\@ifaThesisLanguage}{de}{\@ifaTitleDE}{\@ifaTitleEN}}\\
 
       \vfill
 
@@ -317,9 +333,9 @@
   \cleardoublepage
 
   \begingroup
-    % Im Vorspann nur Seiten ohne Kopf- und Fu√üzeile (au√üer Abschnittsbeginn)
+    % Im Vorspann nur Seiten ohne Kopf- und Fuﬂzeile (auﬂer Abschnittsbeginn)
     \pagestyle{empty}
-    % Auch Abschnittsbeginn ohne Kopf- und Fu√üzeile
+    % Auch Abschnittsbeginn ohne Kopf- und Fuﬂzeile
     \renewcommand*{\chapterpagestyle}{empty}
 
     % Aufgabenstellung
@@ -395,7 +411,7 @@
     }
 
     % Verzeichnisse
-    \pdfbookmark[1]{\ifstrequal{\@ifaThesisLanguage}{de}{Inhaltsverzeichnis}{Contents}}{toc}
+    \pdfbookmark[1]{\@conTitle}{toc}
     \tableofcontents
     \clearpage
     \if@useListOfFigures
@@ -426,23 +442,23 @@
 % ...und gleich ist Schluss!
 \AtEndDocument{
   \cleardoublepage
-  % Auch Abschnittsbeginn ohne Kopf- und Fu√üzeile
+  % Auch Abschnittsbeginn ohne Kopf- und Fuﬂzeile
   %\renewcommand*{\chapterpagestyle}{empty} 
   % Literaturverzeichnis vor dem Anhang
   \ifthenelse{\equal{\@ifaBibliographyBeforeAppendix}{true}}{        
     \if@isReadyForPrint  
-      \markboth{\ifstrequal{\@ifaThesisLanguage}{de}{Literaturverzeichnis}{References}}{}
+      \markboth{\@bibTitle}{}
     \else 
-      \markright{\ifstrequal{\@ifaThesisLanguage}{de}{Literaturverzeichnis}{References}}
+      \markright{\@bibTitle}
     \fi
   	\printbibliography 
     \cleardoublepage
     \automark[section]{chapter}
   }{}
 
-  % Anh√§nge
+  % Anh‰nge
   \IfFileExists{\@ifaAppendix}{
-    \renewcommand{\appendixpagename}{\ifstrequal{\@ifaThesisLanguage}{de}{Anhang}{Appendix}}
+    \renewcommand{\appendixpagename}{\@appTitle}
     % Zuerst die Titelseite                          
     \begin{center}                          
       \thispagestyle{empty}
@@ -451,10 +467,10 @@
 	  \vspace{\fill}
       \cleardoublepage
     \end{center}
-    % Nun die Anh√§nge, ohne Titelseite (siehe \RequirePackage --> ohne page-Option)
+    % Nun die Anh‰nge, ohne Titelseite (siehe \RequirePackage --> ohne page-Option)
     \begin{appendices}
       \ifthenelse{\equal{\@ifaBibliographyBeforeAppendix}{true}}{        
-  	    \pagenumbering{Roman}							% r√∂mische Nummerierung im Anhang
+  	    \pagenumbering{Roman}							% rˆmische Nummerierung im Anhang
 	    \setcounter{page}{1}							% beginne wieder mit Seitenzahl 1
   	  }{}
       \input{\@ifaAppendix}
@@ -465,9 +481,9 @@
   % Literaturverzeichnis nach dem Anhang
   \ifthenelse{\equal{\@ifaBibliographyBeforeAppendix}{false}}{
     \if@isReadyForPrint  
-      \markboth{\ifstrequal{\@ifaThesisLanguage}{de}{Literaturverzeichnis}{References}}{}
+      \markboth{\@bibTitle}{}
     \else 
-      \markright{\ifstrequal{\@ifaThesisLanguage}{de}{Literaturverzeichnis}{References}}
+      \markright{\@bibTitle}
     \fi
   	\printbibliography 
     \cleardoublepage
@@ -476,28 +492,28 @@
 
   \backmatter
 
-  % Im Abspann nur Seiten ohne Kopf- und Fu√üzeile (au√üer Abschnittsbeginn)
+  % Im Abspann nur Seiten ohne Kopf- und Fuﬂzeile (auﬂer Abschnittsbeginn)
   \pagestyle{empty}  
-  % Auch Abschnittsbeginn ohne Kopf- und Fu√üzeile
+  % Auch Abschnittsbeginn ohne Kopf- und Fuﬂzeile
   \renewcommand*{\chapterpagestyle}{empty}
 
-  % Selbst√§ndigkeitserkl√§rung
+  % Selbst‰ndigkeitserkl‰rung
   \vspace*{\fill} %4cm}
-  \section*{Selbstst√§ndigkeitserkl√§rung}
+  \section*{Selbstst‰ndigkeitserkl‰rung}
 	Hiermit versichere ich, \@ifaAuthor, geboren am \@ifaAuthorBirthday~in \@ifaAuthorBirthplace, dass ich die vorliegende \@ifaThesis~zum Thema 
     \begin{quote}
        \begin{center}
           \emph{\@ifaTitleDE}
        \end{center}
     \end{quote}
-	ohne unzul√§ssige Hilfe Dritter und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe; 
-	die aus fremden Quellen direkt oder indirekt √ºbernommenen Gedanken sind als solche kenntlich gemacht. Bei der Auswahl und Auswertung des Materials sowie bei der Herstellung des Manuskripts habe ich Unterst√ºtzungsleistungen von folgenden Personen erhalten:
+	ohne unzul‰ssige Hilfe Dritter und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe; 
+	die aus fremden Quellen direkt oder indirekt ¸bernommenen Gedanken sind als solche kenntlich gemacht. Bei der Auswahl und Auswertung des Materials sowie bei der Herstellung des Manuskripts habe ich Unterst¸tzungsleistungen von folgenden Personen erhalten:
 	\vspace*{.5cm}
     \begin{center}
 		\dotfill \\[.5cm]
 		\dotfill
 	\end{center}
-	Weitere Personen waren an der geistigen Herstellung der vorliegenden \@ifaThesis~nicht beteiligt. Mit ist bekannt, dass die Nichteinhaltung dieser Erkl√§rung zum nachtr√§glichen Entzug des Diplomabschlusses (Masterabschlusses) f√ºhren kann.  				
+	Weitere Personen waren an der geistigen Herstellung der vorliegenden \@ifaThesis~nicht beteiligt. Mit ist bekannt, dass die Nichteinhaltung dieser Erkl‰rung zum nachtr‰glichen Entzug des Diplomabschlusses (Masterabschlusses) f¸hren kann.  				
   \vspace{2cm}
   \begin{flushright}
     Dresden, den \@ifaDayOfSubmission \hfill \dotfill\\
