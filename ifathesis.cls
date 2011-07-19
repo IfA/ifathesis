@@ -79,6 +79,64 @@
                                                             % Nach Duden im vorliegenden Bsp. falsch, da auch Buchstaben in Gliederung (Anhang), sieht aber besser aus.
 ]{scrbook}                                                  % Basisklasse der Vorlage: Koma-Skrip Klasse analog zur book-Klasse.
 
+% ==============================================================
+% = Definiere mögliche Parameter zur Konfiguration der Vorlage =
+% ==============================================================
+%%%%%
+% Jetzt müssen zunächst die variablen Angaben geladen werden
+\newcommand*{\@ifaThesis}{Diplomarbeit}
+\newcommand*{\@ifaAuthor}{Max Mustermann}
+\newcommand*{\@ifaAuthorBirthday}{01.01.1970}
+\newcommand*{\@ifaAuthorBirthplace}{Dresden}
+\newcommand*{\@ifaAuthorCourse}{Informationssystemtechnik}
+\newcommand*{\@ifaAuthorYearOfMatriculation}{2000}
+\newcommand*{\@ifaKeywords}{Komma-separierte, Liste, mit, Schlagwörtern, zum Thema, der Arbeit}
+\newcommand*{\@ifaTitleDE}{Titel der Arbeit}
+\newcommand*{\@ifaTitleEN}{Thesis' title goes here}
+\newcommand*{\@ifaSupervisorA}{}
+\newcommand*{\@ifaSupervisorB}{}
+\newcommand*{\@ifaSupervisorC}{}
+\newcommand*{\@ifaSupervisorD}{}
+\newcommand*{\@ifaSupervisorE}{}
+\newcommand*{\@ifaProfessor}{Titel der Arbeit}
+\newcommand*{\@ifaDayOfSubmission}{\today}
+\newcommand*{\@ifaTopicDescriptionPDF}{he0ohDie}
+\newcommand*{\@ifaAppendix}{GoHaigh2}
+\newcommand*{\@ifaAbstractDE}{GoHaigh2}
+\newcommand*{\@ifaAbstractEN}{GoHaigh2}
+\newcommand*{\@ifaReferences}{IPhei0Ox}
+\newcommand*{\@ifaAbbrev}{00_Abbrev}
+\newcommand*{\@ifaAcknowledgements}{Acknowledgements}
+\newcommand*{\@ifaBibliographyBeforeAppendix}{true}
+
+\newcommand*{\ifaThesis}[1]{\renewcommand*{\@ifaThesis}{#1}}
+\newcommand*{\ifaAuthor}[1]{\renewcommand*{\@ifaAuthor}{#1}}
+\newcommand*{\ifaAuthorBirthday}[1]{\renewcommand*{\@ifaAuthorBirthday}{#1}}
+\newcommand*{\ifaAuthorBirthplace}[1]{\renewcommand*{\@ifaAuthorBirthplace}{#1}}
+\newcommand*{\ifaAuthorCourse}[1]{\renewcommand*{\@ifaAuthorCourse}{#1}}
+\newcommand*{\ifaAuthorYearOfMatriculation}[1]{\renewcommand*{\@ifaAuthorYearOfMatriculation}{#1}}
+\newcommand*{\ifaKeywords}[1]{\renewcommand*{\@ifaKeywords}{#1}}
+\newcommand*{\ifaTitleDE}[1]{\renewcommand*{\@ifaTitleDE}{#1}}
+\newcommand*{\ifaTitleEN}[1]{\renewcommand*{\@ifaTitleEN}{#1}}
+\newcommand*{\ifaSupervisorA}[1]{\renewcommand*{\@ifaSupervisorA}{#1}}
+\newcommand*{\ifaSupervisorB}[1]{\renewcommand*{\@ifaSupervisorB}{#1}}
+\newcommand*{\ifaSupervisorC}[1]{\renewcommand*{\@ifaSupervisorC}{#1}}
+\newcommand*{\ifaSupervisorD}[1]{\renewcommand*{\@ifaSupervisorD}{#1}}
+\newcommand*{\ifaSupervisorE}[1]{\renewcommand*{\@ifaSupervisorE}{#1}}
+\newcommand*{\ifaProfessor}[1]{\renewcommand*{\@ifaProfessor}{#1}}
+\newcommand*{\ifaDayOfSubmission}[1]{\renewcommand*{\@ifaDayOfSubmission}{#1}}
+\newcommand*{\ifaTopicDescriptionPDF}[1]{\renewcommand*{\@ifaTopicDescriptionPDF}{#1}}
+\newcommand*{\ifaAppendix}[1]{\renewcommand*{\@ifaAppendix}{#1}}
+\newcommand*{\ifaAbstractDE}[1]{\renewcommand*{\@ifaAbstractDE}{#1}}
+\newcommand*{\ifaAbstractEN}[1]{\renewcommand*{\@ifaAbstractEN}{#1}}
+\newcommand*{\ifaReferences}[1]{\renewcommand*{\@ifaReferences}{#1}}
+\newcommand*{\ifaAcknowledgements}[1]{\renewcommand*{\@ifaAcknowledgements}{#1}}
+\newcommand*{\ifaAbbrev}[1]{\renewcommand*{\@ifaAbbrev}{#1}}
+\newcommand*{\ifaBibliographyBeforeAppendix}[1]{\renewcommand*{\@ifaBibliographyBeforeAppendix}{#1}}
+
+%-------------------------------------------------------------------------
+\RequirePackage{ifthen}
+
 % Paket für einfache Realisation von String-Vergleichen, die hier in der Vorlage verwendet werden
 \RequirePackage{xstring}
 
@@ -88,7 +146,37 @@
 
 % Lade benötigte Pakete
 \RequirePackage{scrhack} %Zur Herstellung der Kompabilitaet mit Paketen, die nicht kompatibel zum KOMA-Script sind.
+
 \include{packages}
+
+% definiere Farben
+\definecolor{TUDBLAU}{rgb}{0.0,0.348,0.637}
+\definecolor{OSGREEN}{rgb}{0,0.75,0.25} 
+
+% Kläre zunächst einige Dinge, die von der Sprache abhängen
+\ifthenelse{\equal{\@ifaThesisLanguage}{de}}{ 
+  % Deutsche Pakete
+  \RequirePackage[ngerman]{babel}    % Silbentrennung nach neuer deutscher Rechtschreibung.
+  \RequirePackage[german]{nomencl}
+  % Deutsche Begrifflichkeiten
+  \newcommand{\@conTitle}{Inhaltsverzeichnis}
+  \newcommand{\@bibTitle}{Literaturverzeichnis}
+  \newcommand{\@appTitle}{Anhang}
+  \renewcommand{\@pdftitle}{\@ifaTitleDE}
+  \renewcommand{\nomname}{Symbol- und Abkürzungsverzeichnis}
+  \renewcommand{\lstlistlistingname}{Quelltextverzeichnis}            
+}{
+  % Englische Pakete
+  \RequirePackage[english]{babel}    % Silbentrennung nach englischer Rechtschreibung.
+  \RequirePackage[english]{nomencl}
+  % Englische Begrifflichkeiten
+  \newcommand{\@conTitle}{Contents}
+  \newcommand{\@bibTitle}{References}
+  \newcommand{\@appTitle}{Appendix}
+  \renewcommand{\@pdftitle}{\@ifaTitleEN}
+  \renewcommand{\nomname}{Nomenclature}
+  \renewcommand{\lstlistlistingname}{List of Listings}          
+}
 
 %-------------------------------------------------------------------------
 % Macht im Anhang aus "A Quellcode" -> "Anhang A Quellcode"
@@ -109,8 +197,8 @@
 % Anpassung des Literaturverzeichnisses
 \setlength{\bibitemsep}{10pt}
 \defbibheading{bibliography}{
-  		\chapter*{\ifstrequal{\@ifaThesisLanguage}{de}{Literaturverzeichnis}{References}}
-  		\addcontentsline{toc}{chapter}{\ifstrequal{\@ifaThesisLanguage}{de}{Literaturverzeichnis}{References}}
+  		\chapter*{\@bibTitle}
+  		\addcontentsline{toc}{chapter}{\@bibTitle}
 }
 % Notwendig für Autovervollständigung der Zitate im Texnic Center
 \renewcommand*{\bibliography}[1]{\addbibresource{#1.bib}}
@@ -174,92 +262,6 @@
 	]{#5}
 }
 
-%-------------------------------------------------------------------------
-\RequirePackage{ifthen}
-
-% ==============================================================
-% = Definiere mögliche Parameter zur Konfiguration der Vorlage =
-% ==============================================================
-%%%%%
-% Jetzt müssen zunächst die variablen Angaben geladen werden
-\newcommand*{\@ifaThesis}{Diplomarbeit}
-\newcommand*{\@ifaAuthor}{Max Mustermann}
-\newcommand*{\@ifaAuthorBirthday}{01.01.1970}
-\newcommand*{\@ifaAuthorBirthplace}{Dresden}
-\newcommand*{\@ifaAuthorCourse}{Informationssystemtechnik}
-\newcommand*{\@ifaAuthorYearOfMatriculation}{2000}
-\newcommand*{\@ifaKeywords}{Komma-separierte, Liste, mit, Schlagwörtern, zum Thema, der Arbeit}
-\newcommand*{\@ifaTitleDE}{Titel der Arbeit}
-\newcommand*{\@ifaTitleEN}{Thesis' title goes here}
-\newcommand*{\@ifaSupervisorA}{}
-\newcommand*{\@ifaSupervisorB}{}
-\newcommand*{\@ifaSupervisorC}{}
-\newcommand*{\@ifaSupervisorD}{}
-\newcommand*{\@ifaSupervisorE}{}
-\newcommand*{\@ifaProfessor}{Titel der Arbeit}
-\newcommand*{\@ifaDayOfSubmission}{\today}
-\newcommand*{\@ifaTopicDescriptionPDF}{he0ohDie}
-\newcommand*{\@ifaAppendix}{GoHaigh2}
-\newcommand*{\@ifaAbstractDE}{GoHaigh2}
-\newcommand*{\@ifaAbstractEN}{GoHaigh2}
-\newcommand*{\@ifaReferences}{IPhei0Ox}
-\newcommand*{\@ifaAbbrev}{00_Abbrev}
-\newcommand*{\@ifaAcknowledgements}{Acknowledgements}
-\newcommand*{\@ifaBibliographyBeforeAppendix}{true}
-
-\newcommand*{\ifaThesis}[1]{\renewcommand*{\@ifaThesis}{#1}}
-\newcommand*{\ifaAuthor}[1]{\renewcommand*{\@ifaAuthor}{#1}}
-\newcommand*{\ifaAuthorBirthday}[1]{\renewcommand*{\@ifaAuthorBirthday}{#1}}
-\newcommand*{\ifaAuthorBirthplace}[1]{\renewcommand*{\@ifaAuthorBirthplace}{#1}}
-\newcommand*{\ifaAuthorCourse}[1]{\renewcommand*{\@ifaAuthorCourse}{#1}}
-\newcommand*{\ifaAuthorYearOfMatriculation}[1]{\renewcommand*{\@ifaAuthorYearOfMatriculation}{#1}}
-\newcommand*{\ifaKeywords}[1]{\renewcommand*{\@ifaKeywords}{#1}}
-\newcommand*{\ifaTitleDE}[1]{\renewcommand*{\@ifaTitleDE}{#1}}
-\newcommand*{\ifaTitleEN}[1]{\renewcommand*{\@ifaTitleEN}{#1}}
-\newcommand*{\ifaSupervisorA}[1]{\renewcommand*{\@ifaSupervisorA}{#1}}
-\newcommand*{\ifaSupervisorB}[1]{\renewcommand*{\@ifaSupervisorB}{#1}}
-\newcommand*{\ifaSupervisorC}[1]{\renewcommand*{\@ifaSupervisorC}{#1}}
-\newcommand*{\ifaSupervisorD}[1]{\renewcommand*{\@ifaSupervisorD}{#1}}
-\newcommand*{\ifaSupervisorE}[1]{\renewcommand*{\@ifaSupervisorE}{#1}}
-\newcommand*{\ifaProfessor}[1]{\renewcommand*{\@ifaProfessor}{#1}}
-\newcommand*{\ifaDayOfSubmission}[1]{\renewcommand*{\@ifaDayOfSubmission}{#1}}
-\newcommand*{\ifaTopicDescriptionPDF}[1]{\renewcommand*{\@ifaTopicDescriptionPDF}{#1}}
-\newcommand*{\ifaAppendix}[1]{\renewcommand*{\@ifaAppendix}{#1}}
-\newcommand*{\ifaAbstractDE}[1]{\renewcommand*{\@ifaAbstractDE}{#1}}
-\newcommand*{\ifaAbstractEN}[1]{\renewcommand*{\@ifaAbstractEN}{#1}}
-\newcommand*{\ifaReferences}[1]{\renewcommand*{\@ifaReferences}{#1}}
-\newcommand*{\ifaAcknowledgements}[1]{\renewcommand*{\@ifaAcknowledgements}{#1}}
-\newcommand*{\ifaAbbrev}[1]{\renewcommand*{\@ifaAbbrev}{#1}}
-\newcommand*{\ifaBibliographyBeforeAppendix}[1]{\renewcommand*{\@ifaBibliographyBeforeAppendix}{#1}}
-
-\definecolor{TUDBLAU}{rgb}{0.0,0.348,0.637}
-\definecolor{OSGREEN}{rgb}{0,0.75,0.25} 
-
-% Kläre zunächst einige Dinge, die von der Sprache abhängen
-\ifthenelse{\equal{\@ifaThesisLanguage}{de}}{ 
-  % Deutsche Pakete
-  \RequirePackage[ngerman]{babel}    % Silbentrennung nach neuer deutscher Rechtschreibung.
-  \RequirePackage[german]{nomencl}
-  % Deutsche Begrifflichkeiten
-  \newcommand{\@conTitle}{Inhaltsverzeichnis}
-  \newcommand{\@bibTitle}{Literaturverzeichnis}
-  \newcommand{\@appTitle}{Anhang}
-  \renewcommand{\@pdftitle}{\@ifaTitleDE}
-  \renewcommand{\nomname}{Symbol- und Abkürzungsverzeichnis}
-  \renewcommand{\lstlistlistingname}{Quelltextverzeichnis}            
-}{
-  % Englische Pakete
-  \RequirePackage[english]{babel}    % Silbentrennung nach englischer Rechtschreibung.
-  \RequirePackage[english]{nomencl}
-  % Englische Begrifflichkeiten
-  \newcommand{\@conTitle}{Contents}
-  \newcommand{\@bibTitle}{References}
-  \newcommand{\@appTitle}{Appendix}
-  \renewcommand{\@pdftitle}{\@ifaTitleEN}
-  \renewcommand{\nomname}{Nomenclature}
-  \renewcommand{\lstlistlistingname}{List of Listings}          
-}
-
 % Erlaubt das Einfügen eines automatischen Symbolverzeichnisses
 % Definiere die richtige Sprache (bspw. für Silbentrennung, ...)
 % [Die entsprechenden Pakete wurden bereits eingefügt]
@@ -297,17 +299,17 @@
       \vfill
 
       {\huge\textsc{\@ifaThesis}}\\[0.5cm]
-        \IfStrEq{\@ifaThesisLanguage}{de}{zum Thema}{with the Topic} \\[0.5cm]
+        zum Thema \\[0.5cm]
       {\large \IfStrEq{\@ifaThesisLanguage}{de}{\@ifaTitleDE}{\@ifaTitleEN}}\\
 
       \vfill
 
       \begin{tabular}{rl}
-        \IfStrEq{\@ifaThesisLanguage}{de}{vorgelegt von}{submitted by} & \@ifaAuthor \\
+        vorgelegt von & \@ifaAuthor \\
         \ifthenelse{\not\equal{\@ifaThesis}{Dissertation}} {
-          \IfStrEq{\@ifaThesisLanguage}{de}{im Studiengang}{registered in} & \@ifaAuthorCourse,\:Jg.\:\@ifaAuthorYearOfMatriculation \\
+          im Studiengang & \@ifaAuthorCourse,\:Jg.\:\@ifaAuthorYearOfMatriculation \\
         }{}
-        \IfStrEq{\@ifaThesisLanguage}{de}{geboren am}{born at} & \@ifaAuthorBirthday\:in\:\@ifaAuthorBirthplace\\ 
+        geboren am & \@ifaAuthorBirthday\:in\:\@ifaAuthorBirthplace\\ 
       \end{tabular}
       \vfill
 
@@ -361,23 +363,24 @@
       \section*{\@ifaTitleDE}
       \input{\@ifaAbstractDE}
       \vfill
-      \begin{flushleft}
-        \scriptsize
-        \begin{tabular}{ll}
-          Betreuer: \ifthenelse{\equal{\@ifaSupervisorA}{}}{}{&\@ifaSupervisorA\\ \ifthenelse{\equal{\@ifaSupervisorB}{}}{}{&\@ifaSupervisorB\\ \ifthenelse{\equal{\@ifaSupervisorC}{}}{}{&\@ifaSupervisorC\\ \ifthenelse{\equal{\@ifaSupervisorD}{}}{}{&\@ifaSupervisorD\\ \ifthenelse{\equal{\@ifaSupervisorE}{}}{}{&\@ifaSupervisorE\\}}}}}Hochschullehrer: &\@ifaProfessor\\Tag der Einreichung: &\@ifaDayOfSubmission \\
-        \end{tabular}
-        \hfill
-        \hrule
-        \vspace{.2cm}\normalsize
+      \ifthenelse{\not\equal{\@ifaThesis}{Dissertation}}{
+        \begin{flushleft}
+          \scriptsize
+          \begin{tabular}{ll}
+            Betreuer: \ifthenelse{\equal{\@ifaSupervisorA}{}}{}{&\@ifaSupervisorA\\ \ifthenelse{\equal{\@ifaSupervisorB}{}}{}{&\@ifaSupervisorB\\ \ifthenelse{\equal{\@ifaSupervisorC}{}}{}{&\@ifaSupervisorC\\ \ifthenelse{\equal{\@ifaSupervisorD}{}}{}{&\@ifaSupervisorD\\ \ifthenelse{\equal{\@ifaSupervisorE}{}}{}{&\@ifaSupervisorE\\}}}}}Hochschullehrer: &\@ifaProfessor\\Tag der Einreichung: &\@ifaDayOfSubmission \\
+          \end{tabular}
+          \hfill
+          \hrule
+          \vspace{.2cm}\normalsize
 
-        \ifthenelse{\equal{\@ifaThesis}{Diplomarbeit}}{DIPLOMARBEIT}{}
-        \ifthenelse{\equal{\@ifaThesis}{Masterarbeit}}{MASTERARBEIT}{}
-        \ifthenelse{\equal{\@ifaThesis}{Bachelorarbeit}}{BACHELORARBEIT}{}
-        \ifthenelse{\equal{\@ifaThesis}{Studienarbeit}}{STUDIENARBEIT}{}
-        \ifthenelse{\equal{\@ifaThesis}{Final Project}}{FINAL PROJECT}{}
-        \hfill Bearbeiter: \@ifaAuthor
-      \end{flushleft}
-
+          \ifthenelse{\equal{\@ifaThesis}{Diplomarbeit}}{DIPLOMARBEIT}{}
+          \ifthenelse{\equal{\@ifaThesis}{Masterarbeit}}{MASTERARBEIT}{}
+          \ifthenelse{\equal{\@ifaThesis}{Bachelorarbeit}}{BACHELORARBEIT}{}
+          \ifthenelse{\equal{\@ifaThesis}{Studienarbeit}}{STUDIENARBEIT}{}
+          \ifthenelse{\equal{\@ifaThesis}{Final Project}}{FINAL PROJECT}{}
+          \hfill Bearbeiter: \@ifaAuthor
+        \end{flushleft}
+      }{}
       \cleardoublepage
     }{
       \ClassWarning{ifathesis}{
@@ -397,18 +400,19 @@
       \section*{\@ifaTitleEN}
       \input{\@ifaAbstractEN}
       \vfill
-      \begin{flushleft}
-        \scriptsize
-        \begin{tabular}{ll}
-          Tutor: \ifthenelse{\equal{\@ifaSupervisorA}{}}{}{&\@ifaSupervisorA\\ \ifthenelse{\equal{\@ifaSupervisorB}{}}{}{&\@ifaSupervisorB\\ \ifthenelse{\equal{\@ifaSupervisorC}{}}{}{&\@ifaSupervisorC\\ \ifthenelse{\equal{\@ifaSupervisorD}{}}{}{&\@ifaSupervisorD\\ \ifthenelse{\equal{\@ifaSupervisorE}{}}{}{&\@ifaSupervisorE\\}}}}}Supervisor: &\@ifaProfessor\\Day of Submission: &\@ifaDayOfSubmission \\
-        \end{tabular}
-        \hfill
-        \hrule
-        \vspace{.2cm}\normalsize
-        \ifthenelse{\equal{\@ifaThesis}{Diplomarbeit}}{DIPLOMA THESIS}{STUDENT RESEARCH THESIS}
-        \hfill Author: \@ifaAuthor
-      \end{flushleft}
-
+      \ifthenelse{\not\equal{\@ifaThesis}{Dissertation}}{
+        \begin{flushleft}
+          \scriptsize
+          \begin{tabular}{ll}
+            Tutor: \ifthenelse{\equal{\@ifaSupervisorA}{}}{}{&\@ifaSupervisorA\\ \ifthenelse{\equal{\@ifaSupervisorB}{}}{}{&\@ifaSupervisorB\\ \ifthenelse{\equal{\@ifaSupervisorC}{}}{}{&\@ifaSupervisorC\\ \ifthenelse{\equal{\@ifaSupervisorD}{}}{}{&\@ifaSupervisorD\\ \ifthenelse{\equal{\@ifaSupervisorE}{}}{}{&\@ifaSupervisorE\\}}}}}Supervisor: &\@ifaProfessor\\Day of Submission: &\@ifaDayOfSubmission \\
+          \end{tabular}
+          \hfill
+          \hrule
+          \vspace{.2cm}\normalsize
+          \ifthenelse{\equal{\@ifaThesis}{Diplomarbeit}}{DIPLOMA THESIS}{STUDENT RESEARCH THESIS}
+          \hfill Author: \@ifaAuthor
+        \end{flushleft}
+      }{}
       \cleardoublepage
     }{
       \ClassWarning{ifathesis}{
