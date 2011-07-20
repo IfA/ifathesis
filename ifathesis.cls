@@ -108,6 +108,7 @@
 \newcommand*{\@ifaAbbrev}{00_Abbrev}
 \newcommand*{\@ifaAcknowledgements}{Acknowledgements}
 \newcommand*{\@ifaBibliographyBeforeAppendix}{true}
+\newcommand*{\@ifaAdditionalContributors}{}
 
 \newcommand*{\ifaThesis}[1]{\renewcommand*{\@ifaThesis}{#1}}
 \newcommand*{\ifaAuthor}[1]{\renewcommand*{\@ifaAuthor}{#1}}
@@ -133,6 +134,7 @@
 \newcommand*{\ifaAcknowledgements}[1]{\renewcommand*{\@ifaAcknowledgements}{#1}}
 \newcommand*{\ifaAbbrev}[1]{\renewcommand*{\@ifaAbbrev}{#1}}
 \newcommand*{\ifaBibliographyBeforeAppendix}[1]{\renewcommand*{\@ifaBibliographyBeforeAppendix}{#1}}
+\newcommand*{\ifaAdditionalContributors}[1]{\renewcommand*{\@ifaAdditionalContributors}{#1}}
 
 %-------------------------------------------------------------------------
 \RequirePackage{ifthen}
@@ -515,24 +517,26 @@
   \pagestyle{empty}  
   % Auch Abschnittsbeginn ohne Kopf- und Fußzeile
   \renewcommand*{\chapterpagestyle}{empty}
-
+  
   % Selbständigkeitserklärung
-  \vspace*{\fill} %4cm}
+  \vspace*{\fill} %4cm} 
   \section*{Selbstständigkeitserklärung}
-	Hiermit versichere ich, \@ifaAuthor, geboren am \@ifaAuthorBirthday~in \@ifaAuthorBirthplace, dass ich die vorliegende \@ifaThesis~zum Thema 
+Hiermit versichere ich, \@ifaAuthor, geboren am \@ifaAuthorBirthday~in
+\@ifaAuthorBirthplace, dass ich die vorliegende \@ifaThesis~zum Thema
     \begin{quote}
        \begin{center}
           \emph{\@ifaTitleDE}
        \end{center}
     \end{quote}
 	ohne unzulässige Hilfe Dritter und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe; 
-	die aus fremden Quellen direkt oder indirekt übernommenen Gedanken sind als solche kenntlich gemacht. Bei der Auswahl und Auswertung des Materials sowie bei der Herstellung des Manuskripts habe ich Unterstützungsleistungen von folgenden Personen erhalten:
-	\vspace*{.5cm}
-    \begin{center}
-		\dotfill \\[.5cm]
-		\dotfill
-	\end{center}
-	Weitere Personen waren an der geistigen Herstellung der vorliegenden \@ifaThesis~nicht beteiligt. Mit ist bekannt, dass die Nichteinhaltung dieser Erklärung zum nachträglichen Entzug des Diplomabschlusses (Masterabschlusses) führen kann.  				
+	die aus fremden Quellen direkt oder indirekt übernommenen Gedanken sind als
+	solche kenntlich gemacht. Bei der Auswahl und Auswertung des Materials sowie
+	bei der Herstellung des Manuskripts habe ich Unterstützungsleistungen von folgenden Personen erhalten:
+		    \begin{center}
+				\emph{\@ifaSupervisorA\IfStrEq{\@ifaSupervisorB}{}{}{, \@ifaSupervisorB}\IfStrEq{\@ifaSupervisorC}{}{}{, \@ifaSupervisorC}\IfStrEq{\@ifaSupervisorD}{}{}{, \@ifaSupervisorD}\IfStrEq{\@ifaSupervisorE}{}{}{, \@ifaSupervisorE}\IfStrEq{\@ifaAdditionalContributors}{}{}{, \@ifaAdditionalContributors}}
+			\end{center}
+	Weitere Personen waren an der geistigen Herstellung der vorliegenden
+	\@ifaThesis~nicht beteiligt. Mir ist bekannt, dass die Nichteinhaltung dieser Erklärung zum nachträglichen Entzug des Diplomabschlusses (Masterabschlusses) führen kann.
   \vspace{2cm}
   \begin{flushright}
     Dresden, den \@ifaDayOfSubmission \hfill \dotfill\\
