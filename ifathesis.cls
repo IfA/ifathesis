@@ -165,7 +165,7 @@
   \newcommand{\@bibTitle}{Literaturverzeichnis}
   \newcommand{\@appTitle}{Anhang}
   \renewcommand{\@pdftitle}{\@ifaTitleDE}
-  \renewcommand{\nomname}{Symbol- und Abkürzungsverzeichnis}
+  \renewcommand{\nomname}{Abkürzungs- und Symbolverzeichnis}
   \renewcommand{\lstlistlistingname}{Quelltextverzeichnis}            
 }{
   % Englische Pakete
