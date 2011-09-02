@@ -295,47 +295,65 @@
     \begin{picture}(0,0)
       \put(-97,-50){\includegraphics*{kopfzeile}}
     \end{picture}
-        
-    \begin{center}
-      \vfill
-      \vfill
-
-      {\huge\textsc{\@ifaThesis}}\\[0.5cm]
-        zum Thema \\[0.5cm]
-      {\large \IfStrEq{\@ifaThesisLanguage}{de}{\@ifaTitleDE}{\@ifaTitleEN}}\\
-
-      \vfill
-
-      \begin{tabular}{rl}
-        vorgelegt von & \@ifaAuthor \\
-        \ifthenelse{\not\equal{\@ifaThesis}{Dissertation}} {
-          im Studiengang & \@ifaAuthorCourse,\:Jg.\:\@ifaAuthorYearOfMatriculation \\
-        }{}
-        geboren am & \@ifaAuthorBirthday\:in\:\@ifaAuthorBirthplace\\ 
-      \end{tabular}
-      \vfill
-
-      \ifthenelse{\equal{\@ifaThesis}{Dissertation}}{
-        {\large zur Erlangung des akademischen Grades} \\[0.2cm]
-        {\LARGE Doktoringenieur\\[0.2cm](Dr.-Ing.)}
+    
+    % A dissertation will get a different titlepage
+    \ifthenelse{\not\equal{\@ifaThesis}{Dissertation}}{
+      % ===============================
+      % = Diplom-, Studienarbeit etc. =
+      % ===============================
+      \begin{center}
         \vfill
-      }{
+        \vfill
+        {\huge\textsc{\@ifaThesis}}\\[0.5cm]
+          zum Thema \\[0.5cm]
+        {\large \IfStrEq{\@ifaThesisLanguage}{de}{\@ifaTitleDE}{\@ifaTitleEN}}\\
+        \vfill
+        \begin{tabular}{rl}
+          vorgelegt von & \@ifaAuthor \\
+          im Studiengang & \@ifaAuthorCourse,\:Jg.\:\@ifaAuthorYearOfMatriculation \\
+          geboren am & \@ifaAuthorBirthday\:in\:\@ifaAuthorBirthplace\\ 
+        \end{tabular}
+        \vfill
         \ifthenelse{\equal{\@ifaThesis}{Diplomarbeit}}{
-          {\large zur Erlangung des akademischen Grades} \\[0.2cm]
-          {\LARGE Diplomingenieur\\[0.2cm](Dipl.-Ing.)}
+          {\large zur Erlangung des akademischen Grades eines} \\[0.2cm]
+          {\LARGE Diplomingenieurs\\[0.2cm](Dipl.-Ing.)}
           \vfill
         }{
           \vfill
           \vfill
         }
-      }
-
-      \begin{tabular}{rl}
-        Betreuer: \ifthenelse{\equal{\@ifaSupervisorA}{}}{}{&\@ifaSupervisorA\\ \ifthenelse{\equal{\@ifaSupervisorB}{}}{}{&\@ifaSupervisorB\\ \ifthenelse{\equal{\@ifaSupervisorC}{}}{}{&\@ifaSupervisorC\\\ifthenelse{\equal{\@ifaSupervisorD}{}}{}{&\@ifaSupervisorD\\ \ifthenelse{\equal{\@ifaSupervisorE}{}}{}{&\@ifaSupervisorE\\}}}}}
-        Verantwortlicher Hochschullehrer:   & \@ifaProfessor \\
-        Tag der Einreichung:  & \@ifaDayOfSubmission \\
-      \end{tabular}
-    \end{center}
+        \begin{tabular}{rl}
+          Betreuer: \ifthenelse{\equal{\@ifaSupervisorA}{}}{}{&\@ifaSupervisorA\\ \ifthenelse{\equal{\@ifaSupervisorB}{}}{}{&\@ifaSupervisorB\\ \ifthenelse{\equal{\@ifaSupervisorC}{}}{}{&\@ifaSupervisorC\\\ifthenelse{\equal{\@ifaSupervisorD}{}}{}{&\@ifaSupervisorD\\ \ifthenelse{\equal{\@ifaSupervisorE}{}}{}{&\@ifaSupervisorE\\}}}}}
+          Verantwortlicher Hochschullehrer:   & \@ifaProfessor \\
+          Tag der Einreichung:  & \@ifaDayOfSubmission \\
+        \end{tabular}
+      \end{center}
+    }{
+      % ================
+      % = Dissertation =
+      % ================
+      \begin{center}
+        \vfill
+        \vfill
+        {\Large {\bfseries\@ifaTitleDE}}\\[5mm]
+        {\Large \@ifaTitleEN}\\
+        \vfill
+        {\large \@ifaAuthor}
+        \vfill
+        Der Fakultät Elektrotechnik und Informationstechnik\\
+        der Technischen Universität Dresden\\[5mm]
+        zur Erlangung des akademischen Grades eines\\[2mm]
+        {\LARGE Doktoringenieurs\\[0.2cm](Dr.-Ing.)}\\[5mm]
+        vorgelegte\\
+        {\bfseries Dissertation}
+        \vfill
+        \begin{tabular}{rl}
+          Gutachter: \ifthenelse{\equal{\@ifaSupervisorA}{}}{}{&\@ifaSupervisorA\\ \ifthenelse{\equal{\@ifaSupervisorB}{}}{}{&\@ifaSupervisorB\\ \ifthenelse{\equal{\@ifaSupervisorC}{}}{}{&\@ifaSupervisorC\\\ifthenelse{\equal{\@ifaSupervisorD}{}}{}{&\@ifaSupervisorD\\ \ifthenelse{\equal{\@ifaSupervisorE}{}}{}{&\@ifaSupervisorE\\}}}}}
+          Verantwortlicher Hochschullehrer:   & \@ifaProfessor \\
+          Tag der Einreichung:  & \@ifaDayOfSubmission \\
+        \end{tabular}
+      \end{center}
+    }
   \end{titlepage}
 
   \cleardoublepage
