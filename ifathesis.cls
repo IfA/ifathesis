@@ -50,47 +50,47 @@
 
 % Lade Basisklasse der Vorlage
 \PassOptionsToPackage{%
-  paper=a4,           % Papiergrˆﬂe
-  headinclude=true,   % Gehˆrt Kopfzeile eher zur Seite oder zum Rand?
-  footinclude=false,  % Gehˆrt Fuﬂzeile eher zur Seite oder zum Rand?
-  pagesize            % Schreibt die Seitengrˆﬂe ins Seitenregister,
-                      % sodass DVI- und PDF-Seiten die richtige Grˆﬂe haben.
+  paper=a4,           % Papiergr√∂√üe
+  headinclude=true,   % Geh√∂rt Kopfzeile eher zur Seite oder zum Rand?
+  footinclude=false,  % Geh√∂rt Fu√üzeile eher zur Seite oder zum Rand?
+  pagesize            % Schreibt die Seitengr√∂√üe ins Seitenregister,
+                      % sodass DVI- und PDF-Seiten die richtige Gr√∂√üe haben.
 }{typearea}
 
 % Setze Bibliographie-Stil
 \PassOptionsToPackage{style=\@ifaBibliographyStyle, backend=bibtex8}{biblatex}
 
-\PassOptionsToPackage{svgnames}{xcolor}  % Namensraum f¸r xcolor Paket
+\PassOptionsToPackage{svgnames}{xcolor}  % Namensraum f√ºr xcolor Paket
       
 \PassOptionsToPackage{fleqn}{amsmath}
 
 \LoadClass[
-  fontsize=12pt,                                            % Grundschriftgrˆﬂe
-  \if@isReadyForPrint  BCOR=15mm\else BCOR=0mm\fi,          % Binderandgrˆﬂe
-  \if@isReadyForPrint  DIV=10\else DIV=9\fi,                % Teil der Seite, der als Seitenrand ber¸cksichtigt wird (auch =calc mgl.):
-                                                            % Z.B. DIV=10: Randbreite Oben und Mitte 1/10, Unten und Auﬂen 2/10 der Seite.
+  fontsize=12pt,                                            % Grundschriftgr√∂√üe
+  \if@isReadyForPrint  BCOR=15mm\else BCOR=0mm\fi,          % Binderandgr√∂√üe
+  \if@isReadyForPrint  DIV=10\else DIV=9\fi,                % Teil der Seite, der als Seitenrand ber√ºcksichtigt wird (auch =calc mgl.):
+                                                            % Z.B. DIV=10: Randbreite Oben und Mitte 1/10, Unten und Au√üen 2/10 der Seite.
                                                             % Regel: 60 bis 70 Zeichen pro Zeile, weniger ist besser, niemals mehr als 80!
-  captions=tableheading,                                    % Tabellenabst‰nde f¸r Tabellen‹BERschriften optimieren
+  captions=tableheading,                                    % Tabellenabst√§nde f√ºr Tabellen√úBERschriften optimieren
   \if@isReadyForPrint  twoside=true\else twoside=false\fi,  % Dokument zweiseitig?
-  headings=small,                                           % Relative Grˆﬂe der ‹berschriften, small ist besser lesbar und erzeugt weniger Zweizeiligs
-  fleqn,                                                    % Formeln linksb¸ndig
+  headings=small,                                           % Relative Gr√∂√üe der √úberschriften, small ist besser lesbar und erzeugt weniger Zweizeiligs
+  fleqn,                                                    % Formeln linksb√ºndig
   bibliography=totoc,                                       % Literaturverzeichnis im Inhaltsverzeichnis referenziert
   numbers=noenddot,                                         % Punkte nach Abschnittsnummern? (Weglassen = Automatik)
                                                             % Nach Duden im vorliegenden Bsp. falsch, da auch Buchstaben in Gliederung (Anhang), sieht aber besser aus.
 ]{scrbook}                                                  % Basisklasse der Vorlage: Koma-Skrip Klasse analog zur book-Klasse.
 
 % ==============================================================
-% = Definiere mˆgliche Parameter zur Konfiguration der Vorlage =
+% = Definiere m√∂gliche Parameter zur Konfiguration der Vorlage =
 % ==============================================================
 %%%%%
-% Jetzt m¸ssen zun‰chst die variablen Angaben geladen werden
+% Jetzt m√ºssen zun√§chst die variablen Angaben geladen werden
 \newcommand*{\@ifaThesis}{Diplomarbeit}
 \newcommand*{\@ifaAuthor}{Max Mustermann}
 \newcommand*{\@ifaAuthorBirthday}{01.01.1970}
 \newcommand*{\@ifaAuthorBirthplace}{Dresden}
 \newcommand*{\@ifaAuthorCourse}{Informationssystemtechnik}
 \newcommand*{\@ifaAuthorYearOfMatriculation}{2000}
-\newcommand*{\@ifaKeywords}{Komma-separierte, Liste, mit, Schlagwˆrtern, zum Thema, der Arbeit}
+\newcommand*{\@ifaKeywords}{Komma-separierte, Liste, mit, Schlagw√∂rtern, zum Thema, der Arbeit}
 \newcommand*{\@ifaTitleDE}{Titel der Arbeit}
 \newcommand*{\@ifaTitleEN}{Thesis' title goes here}
 \newcommand*{\@ifaSupervisorA}{}
@@ -139,14 +139,14 @@
 %-------------------------------------------------------------------------
 \RequirePackage{ifthen}
 
-% Paket f¸r einfache Realisation von String-Vergleichen, die hier in der Vorlage verwendet werden
+% Paket f√ºr einfache Realisation von String-Vergleichen, die hier in der Vorlage verwendet werden
 \RequirePackage{xstring}
 
 % Absatznummerierung fuer 4 Ebenen (z.B. 2.3.2.1) gemaess IfA Richtlinie einschalten.
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3} 
 
-% Lade benˆtigte Pakete
+% Lade ben√∂tigte Pakete
 \RequirePackage{scrhack} %Zur Herstellung der Kompabilitaet mit Paketen, die nicht kompatibel zum KOMA-Script sind.
 
 \include{packages}
@@ -155,7 +155,7 @@
 \definecolor{TUDBLAU}{rgb}{0.0,0.348,0.637}
 \definecolor{OSGREEN}{rgb}{0,0.75,0.25} 
 
-% Kl‰re zun‰chst einige Dinge, die von der Sprache abh‰ngen
+% Kl√§re zun√§chst einige Dinge, die von der Sprache abh√§ngen
 \ifthenelse{\equal{\@ifaThesisLanguage}{de}}{ 
   % Deutsche Pakete
   \RequirePackage[ngerman]{babel}    % Silbentrennung nach neuer deutscher Rechtschreibung.
@@ -165,7 +165,7 @@
   \newcommand{\@bibTitle}{Literaturverzeichnis}
   \newcommand{\@appTitle}{Anhang}
   \renewcommand{\@pdftitle}{\@ifaTitleDE}
-  \renewcommand{\nomname}{Abk¸rzungs- und Symbolverzeichnis}
+  \renewcommand{\nomname}{Abk√ºrzungs- und Symbolverzeichnis}
   \renewcommand{\lstlistlistingname}{Quelltextverzeichnis}            
 }{
   % Englische Pakete
@@ -191,10 +191,10 @@
 }
 %-------------------------------------------------------------------------
                                               
-% Ver‰nderung der Bildunterschriften und Tabellen¸berschriften:
-\addtokomafont{caption}{\small}                 % Kleinere Schriftgrˆﬂe f¸r Captions
+% Ver√§nderung der Bildunterschriften und Tabellen√ºberschriften:
+\addtokomafont{caption}{\small}                 % Kleinere Schriftgr√∂√üe f√ºr Captions
 \setkomafont{captionlabel}{\sffamily\bfseries}  % Caption-Label fett und serifenlos
-\setcapindent{1em}                              % 2. Zeile der Caption mit h‰ngendem Einzug
+\setcapindent{1em}                              % 2. Zeile der Caption mit h√§ngendem Einzug
 
 % Anpassung des Literaturverzeichnisses
 \setlength{\bibitemsep}{10pt}
@@ -202,13 +202,13 @@
   		\chapter*{\@bibTitle}
   		\addcontentsline{toc}{chapter}{\@bibTitle}
 }
-% Notwendig f¸r Autovervollst‰ndigung der Zitate im Texnic Center
+% Notwendig f√ºr Autovervollst√§ndigung der Zitate im Texnic Center
 \renewcommand*{\bibliography}[1]{\addbibresource{#1.bib}}
-% Anpassung f¸r eckige Klammern bei 'authoryear-comp'
+% Anpassung f√ºr eckige Klammern bei 'authoryear-comp'
 \ifthenelse{\equal{\@ifaBibliographyStyle}{authoryear-comp}}{\renewcommand*{\citep}[2][]{\mkbibbrackets{\cite[#1]{#2}}}}{}
 
 %-------------------------------------------------------------------------
-% Integriert Listings und baut diese als Gleitobjekt aus, wenn gew¸nscht
+% Integriert Listings und baut diese als Gleitobjekt aus, wenn gew√ºnscht
 %-------------------------------------------------------------------------
 % Usage: \listing{<Caption>}{<Label>}{<[Dialect]Language>}{<Pfad>}{<float?>} 
 
@@ -232,7 +232,7 @@
 % Thanks to Matthias Freund who provided the code to enables listings which are longer than one page.
 %                                  
 \newcommand*{\ifalistingNoFloat}[5]{%  
-	\begin{addmargin}[4mm]{1.5mm}				% ver‰ndert den Abstand ohne Verwendung einer Minipage
+	\begin{addmargin}[4mm]{1.5mm}				% ver√§ndert den Abstand ohne Verwendung einer Minipage
 		\lstset{belowcaptionskip=-3mm}                  % Abstand unterhalb der Beschriftung
 		\ifalistingRaw{#1}{#2}{#3}{#4}{#5}
 		\vspace{-1mm}
@@ -254,7 +254,7 @@
 		basicstyle=\ttfamily\color{black}\footnotesize,  % Schriftschnitt des Codes
 		showstringspaces=false,                          % Leerzeichen nicht markieren
 		commentstyle=\color{green},                      % Schriftschnitt der Kommentare
-		tabsize=2,                                       % Tabulatorengrˆﬂe in Leerzeichen
+		tabsize=2,                                       % Tabulatorengr√∂√üe in Leerzeichen
 		breaklines=true,                                 % zu lange Zeilen umbrechen
 		frame=tb,                                        % Rahmen um das Listing
 		abovecaptionskip=3mm,                            % Abstand oberhalb der Beschriftung
@@ -264,18 +264,18 @@
 	]{#5}
 }
 
-% Erlaubt das Einf¸gen eines automatischen Symbolverzeichnisses
-% Definiere die richtige Sprache (bspw. f¸r Silbentrennung, ...)
-% [Die entsprechenden Pakete wurden bereits eingef¸gt]
+% Erlaubt das Einf√ºgen eines automatischen Symbolverzeichnisses
+% Definiere die richtige Sprache (bspw. f√ºr Silbentrennung, ...)
+% [Die entsprechenden Pakete wurden bereits eingef√ºgt]
 \makenomenclature    
 
 % Jetzt geht es los...
 \AtBeginDocument{%
   % colorlinks: Farbige Verweise statt Umrahmung 
-  % Verhalten von hyperef ƒndern: Farbe f¸r Bildschirm, SW f¸r Druck
+  % Verhalten von hyperef √Ñndern: Farbe f√ºr Bildschirm, SW f√ºr Druck
   % ...color: Farbe verschiedener Verweise nach Farbpalette svgnames
   % pdf...: Setzten von Variablen die in den Eigenschaften der PDF-Datei angzeigt werden
-  % Weitere Optionen mˆglich - siehe Dokumentation des Paktes hyperref  
+  % Weitere Optionen m√∂glich - siehe Dokumentation des Paktes hyperref  
   \hypersetup{
     linkcolor=\if@isReadyForPrint black\else TUDBLAU\fi,%
     urlcolor=\if@isReadyForPrint black\else TUDBLAU\fi,%
@@ -341,9 +341,9 @@
   \cleardoublepage
 
   \begingroup
-    % Im Vorspann nur Seiten ohne Kopf- und Fuﬂzeile (auﬂer Abschnittsbeginn)
+    % Im Vorspann nur Seiten ohne Kopf- und Fu√üzeile (au√üer Abschnittsbeginn)
     \pagestyle{empty}
-    % Auch Abschnittsbeginn ohne Kopf- und Fuﬂzeile
+    % Auch Abschnittsbeginn ohne Kopf- und Fu√üzeile
     \renewcommand*{\chapterpagestyle}{empty}
 
     % Aufgabenstellung
@@ -463,7 +463,7 @@
 % ...und gleich ist Schluss!
 \AtEndDocument{
   \cleardoublepage
-  % Auch Abschnittsbeginn ohne Kopf- und Fuﬂzeile
+  % Auch Abschnittsbeginn ohne Kopf- und Fu√üzeile
   %\renewcommand*{\chapterpagestyle}{empty} 
   % Literaturverzeichnis vor dem Anhang
   \ifthenelse{\equal{\@ifaBibliographyBeforeAppendix}{true}}{        
@@ -477,7 +477,7 @@
     \automark[section]{chapter}
   }{}
 
-  % Anh‰nge
+  % Anh√§nge
   \IfFileExists{\@ifaAppendix}{
     \renewcommand{\appendixpagename}{\@appTitle}
     % Zuerst die Titelseite                          
@@ -488,10 +488,10 @@
 	  \vspace{\fill}
       \cleardoublepage
     \end{center}
-    % Nun die Anh‰nge, ohne Titelseite (siehe \RequirePackage --> ohne page-Option)
+    % Nun die Anh√§nge, ohne Titelseite (siehe \RequirePackage --> ohne page-Option)
     \begin{appendices}
       \ifthenelse{\equal{\@ifaBibliographyBeforeAppendix}{true}}{        
-  	    \pagenumbering{Roman}							% rˆmische Nummerierung im Anhang
+  	    \pagenumbering{Roman}							% r√∂mische Nummerierung im Anhang
 	    \setcounter{page}{1}							% beginne wieder mit Seitenzahl 1
   	  }{}
       \input{\@ifaAppendix}
@@ -513,14 +513,14 @@
 
   \backmatter
 
-  % Im Abspann nur Seiten ohne Kopf- und Fuﬂzeile (auﬂer Abschnittsbeginn)
+  % Im Abspann nur Seiten ohne Kopf- und Fu√üzeile (au√üer Abschnittsbeginn)
   \pagestyle{empty}  
-  % Auch Abschnittsbeginn ohne Kopf- und Fuﬂzeile
+  % Auch Abschnittsbeginn ohne Kopf- und Fu√üzeile
   \renewcommand*{\chapterpagestyle}{empty}
   
-  % Selbst‰ndigkeitserkl‰rung
+  % Selbst√§ndigkeitserkl√§rung
   \vspace*{\fill} %4cm} 
-  \section*{Selbstst‰ndigkeitserkl‰rung}
+  \section*{Selbstst√§ndigkeitserkl√§rung}
 Hiermit versichere ich, \@ifaAuthor, geboren am \@ifaAuthorBirthday~in
 \@ifaAuthorBirthplace, dass ich die vorliegende \@ifaThesis~zum Thema
     \begin{quote}
@@ -528,15 +528,15 @@ Hiermit versichere ich, \@ifaAuthor, geboren am \@ifaAuthorBirthday~in
           \emph{\@ifaTitleDE}
        \end{center}
     \end{quote}
-	ohne unzul‰ssige Hilfe Dritter und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe; 
-	die aus fremden Quellen direkt oder indirekt ¸bernommenen Gedanken sind als
+	ohne unzul√§ssige Hilfe Dritter und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe; 
+	die aus fremden Quellen direkt oder indirekt √ºbernommenen Gedanken sind als
 	solche kenntlich gemacht. Bei der Auswahl und Auswertung des Materials sowie
-	bei der Herstellung des Manuskripts habe ich Unterst¸tzungsleistungen von folgenden Personen erhalten:
+	bei der Herstellung des Manuskripts habe ich Unterst√ºtzungsleistungen von folgenden Personen erhalten:
 		    \begin{center}
 				\emph{\@ifaSupervisorA\IfStrEq{\@ifaSupervisorB}{}{}{, \@ifaSupervisorB}\IfStrEq{\@ifaSupervisorC}{}{}{, \@ifaSupervisorC}\IfStrEq{\@ifaSupervisorD}{}{}{, \@ifaSupervisorD}\IfStrEq{\@ifaSupervisorE}{}{}{, \@ifaSupervisorE}\IfStrEq{\@ifaAdditionalContributors}{}{}{, \@ifaAdditionalContributors}}
 			\end{center}
 	Weitere Personen waren an der geistigen Herstellung der vorliegenden
-	\@ifaThesis~nicht beteiligt. Mir ist bekannt, dass die Nichteinhaltung dieser Erkl‰rung zum nachtr‰glichen Entzug des Diplomabschlusses (Masterabschlusses) f¸hren kann.
+	\@ifaThesis~nicht beteiligt. Mir ist bekannt, dass die Nichteinhaltung dieser Erkl√§rung zum nachtr√§glichen Entzug des Diplomabschlusses (Masterabschlusses) f√ºhren kann.
   \vspace{2cm}
   \begin{flushright}
     Dresden, den \@ifaDayOfSubmission \hfill \dotfill\\
