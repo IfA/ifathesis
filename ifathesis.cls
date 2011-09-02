@@ -316,7 +316,7 @@
         \vfill
         \ifthenelse{\equal{\@ifaThesis}{Diplomarbeit}}{
           {\large zur Erlangung des akademischen Grades eines} \\[0.2cm]
-          {\LARGE Diplomingenieurs\\[0.2cm](Dipl.-Ing.)}
+          {\Large Diplomingenieurs\\[0.2cm](Dipl.-Ing.)}
           \vfill
         }{
           \vfill
@@ -343,7 +343,7 @@
         Der Fakultät Elektrotechnik und Informationstechnik\\
         der Technischen Universität Dresden\\[5mm]
         zur Erlangung des akademischen Grades eines\\[2mm]
-        {\LARGE Doktoringenieurs\\[0.2cm](Dr.-Ing.)}\\[5mm]
+        {\Large Doktoringenieurs\\[0.2cm](Dr.-Ing.)}\\[5mm]
         vorgelegte\\
         {\bfseries Dissertation}
         \vfill
