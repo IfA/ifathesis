@@ -208,6 +208,19 @@
 \ifthenelse{\equal{\@ifaBibliographyStyle}{authoryear-comp}}{\renewcommand*{\citep}[2][]{\mkbibbrackets{\cite[#1]{#2}}}}{}
 
 %-------------------------------------------------------------------------
+% Löst Probleme mit deutschen Umlauten in Listings
+%-------------------------------------------------------------------------
+\lstset{literate=%
+	{Ö}{{\"O}}1
+	{Ä}{{\"A}}1
+	{Ü}{{\"U}}1
+	{ß}{{\ss}}2
+	{ü}{{\"u}}1
+	{ä}{{\"a}}1
+	{ö}{{\"o}}1
+}
+
+%-------------------------------------------------------------------------
 % Integriert Listings und baut diese als Gleitobjekt aus, wenn gewünscht
 %-------------------------------------------------------------------------
 % Usage: \listing{<Caption>}{<Label>}{<[Dialect]Language>}{<Pfad>}{<float?>} 
