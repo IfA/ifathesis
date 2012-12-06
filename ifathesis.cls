@@ -411,6 +411,7 @@
           \ifthenelse{\equal{\@ifaThesis}{Bachelorarbeit}}{BACHELORARBEIT}{}
           \ifthenelse{\equal{\@ifaThesis}{Studienarbeit}}{STUDIENARBEIT}{}
           \ifthenelse{\equal{\@ifaThesis}{Final Project}}{FINAL PROJECT}{}
+          \ifthenelse{\equal{\@ifaThesis}{Forschungspraktikum}}{FORSCHUNGSPRAKTIKUM}{}
           \hfill Bearbeiter: \@ifaAuthor
         \end{flushleft}
       }{}
@@ -553,7 +554,7 @@
   \vspace*{\fill} %4cm} 
   \section*{Selbstständigkeitserklärung}
 Hiermit versichere ich, \@ifaAuthor, geboren am \@ifaAuthorBirthday~in
-\@ifaAuthorBirthplace, dass ich die vorliegende \@ifaThesis~zum Thema
+\@ifaAuthorBirthplace, dass ich \ifthenelse{\not\equal{\@ifaThesis}{Forschungspraktikum}}{die vorliegende \@ifaThesis}{das vorliegende \@ifaThesis}~zum Thema
     \begin{quote}
        \begin{center}
           \emph{\@ifaTitleDE}
@@ -566,8 +567,7 @@ Hiermit versichere ich, \@ifaAuthor, geboren am \@ifaAuthorBirthday~in
 		    \begin{center}
 				\emph{\@ifaSupervisorA\IfStrEq{\@ifaSupervisorB}{}{}{, \@ifaSupervisorB}\IfStrEq{\@ifaSupervisorC}{}{}{, \@ifaSupervisorC}\IfStrEq{\@ifaSupervisorD}{}{}{, \@ifaSupervisorD}\IfStrEq{\@ifaSupervisorE}{}{}{, \@ifaSupervisorE}\IfStrEq{\@ifaAdditionalContributors}{}{}{, \@ifaAdditionalContributors}}
 			\end{center}
-	Weitere Personen waren an der geistigen Herstellung der vorliegenden
-	\@ifaThesis~nicht beteiligt. Mir ist bekannt, dass die Nichteinhaltung dieser Erklärung zum nachträglichen Entzug des Diplomabschlusses (Masterabschlusses) führen kann.
+	Weitere Personen waren an der geistigen Herstellung \ifthenelse{\not\equal{\@ifaThesis}{Forschungspraktikum}}{der vorliegenden \@ifaThesis}{des vorliegenden \@ifaThesis s}~nicht beteiligt. Mir ist bekannt, dass die Nichteinhaltung dieser Erklärung zum nachträglichen Entzug des Diplomabschlusses (Masterabschlusses) führen kann.
   \vspace{2cm}
   \begin{flushright}
     Dresden, den \@ifaDayOfSubmission \hfill \dotfill\\
