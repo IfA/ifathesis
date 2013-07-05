@@ -1,5 +1,5 @@
 %*******************************************************************************
-% * Copyright (c) 2006-2010 
+% * Copyright (c) 2006-2013 
 % * Institute of Automation, Dresden University of Technology
 % * 
 % * All rights reserved. This program and the accompanying materials
@@ -13,9 +13,9 @@
 % ******************************************************************************/
 
 \documentclass[
-%  print,         % print optimized version of the thesis, standard option
+  print,          % print optimized version of the thesis, standard option
                   % alternative:
-  screen,         % makes the thesis better readable on screens (onesided, coloured links)
+%  screen,        % makes the thesis better readable on screens (onesided, coloured links)
                   % use only 'print' OR 'screen'
                   % ATTENTION: 'screen' changes size of text area slightly. Always optimize document WITH
                   % 'print' option first for printing (size of graphics etc.) and convert afterwards
@@ -24,7 +24,7 @@
   listoftables,   % includes list of tables
   listoflistings, % includes list of listings
   abbrevations,   % includes index of symbols and abbrevations
-  bibIfa,		      % citation style (IfA standard), alternatives: bibNumeric, bibHarvard
+  bibIfa,		  % citation style (IfA standard), alternatives: bibNumeric, bibHarvard
   langDE          % define the language (default: langDE)
 ]{ifathesis}
 
@@ -38,7 +38,7 @@
 \ifaTitleDE{Teleautomation, Chancen und Risiken}
 \ifaTitleEN{Teleautomation, Chances and Risks}
 
-% Im Falle einer Dissertation werden diesen Schaltern die Gutachter angegeben.
+% Im Falle einer Dissertation werden mit diesen Schaltern die Gutachter angegeben.
 \ifaSupervisorA{Dipl.-Ing. Stefan Hennig}
 \ifaSupervisorB{Dipl.-Ing. Arne Sonnenburg}
 \ifaSupervisorC{PD Dr.-Ing. Annerose Braune}
@@ -59,6 +59,7 @@
                                                        % Kurzfassung wird nicht angenommen, da sie nicht den Richtlinien
                                                        % des Instituts entspricht.
 \ifaAbbrev{example_files/00_abbrev}
+%\ifaAcknowledgments{}
 
 % Literaturverzeichnis angeben
 \bibliography{bibliography}

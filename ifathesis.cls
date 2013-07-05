@@ -1,6 +1,6 @@
 %!TEX root = example.tex
 %*******************************************************************************
-% * Copyright (c) 2006-2010 
+% * Copyright (c) 2006-2013 
 % * Institute of Automation, Dresden University of Technology
 % * 
 % * All rights reserved. This program and the accompanying materials
@@ -14,11 +14,11 @@
 % ******************************************************************************/
 
 \def\fileversion{0.1}
-\def\filedate{2010/06/23}
+\def\filedate{2013/07/05}
 \def\filename{ifathesis}
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{\filename}[\filedate DA/SA-Klasse des Instituts fuer Automatisierungstechnik, (c) by Stefan Hennig, Arne Sonnenburg]
+\ProvidesClass{\filename}[\filedate DA/SA-Klasse des Instituts fuer Automatisierungstechnik, (c) by Stefan Hennig, Arne Sonnenburg, Matthias Freund, Christopher Martin]
 \typeout{Class: '\filename' Version \fileversion, Standard DA/SA-Klasse des Instituts fuer Automatisierungstechnik.}
 
 \newif\if@useListOfFigures\@useListOfFiguresfalse
