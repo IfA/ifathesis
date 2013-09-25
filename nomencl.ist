@@ -7,9 +7,8 @@
 %% nomencl.dtx  (with options: `idxstyle')
 %% 
 %% Copyright 1996 Boris Veytsman
-%% Copyright 1999-2000 Bernd Schandl
-%% email schandl@gmx.net
-%% www   http://members.nbci.com/schandl/nomencl
+%% Copyright 1999-2001 Bernd Schandl
+%% www http://sarovar.org/projects/nomencl
 %% 
 %% This file can be redistributed and/or modified under the terms
 %% of the LaTeX Project Public License distributed from CTAN
@@ -24,8 +23,15 @@
 %% 
 %% Written by Boris Veytsman boris@plmsc.psu.edu
 %% Changed by Bernd Schandl schandl@gmx.net (starting 1999/02/20)
+%% Changed by Lee Netherton ltn100@users.sourceforge.net
+%% (starting 2005/03/31)
 %% 
 %% Changes:
+%%  2005/04/27. Updates to the documentation, including support for hyperref (LN)
+%%  2005/04/20. Improvements to Italian option, and minor documentation
+%%              changes (LN)
+%%  2005/03/31. Made more compatible with other glossary packages. (LN)
+%%              Added option to include nomenclature in TOC. (LN)
 %%  1996/11/25. Change quote character to % (BV)
 %%  1999/02/20. Removed setting of actual to its default value
 %%              Removed setting of quote to '%' to get its default '"' instead
@@ -49,13 +55,12 @@
 %%   Right brace   \}     Tilde         \~}
 %%
 %% ---- for input file ----
-keyword    "\\glossaryentry"
+keyword    "\\nomenclatureentry"
 %% Germans might want to change this and delete the two %%
 %% quote '"'
 %% ---- for output file ----
-preamble   "\\begin{theglossary} \n"
-postamble  "\n\n\\end{theglossary}\n"
-group_skip "\n"
+preamble   "\\begin{thenomenclature} \n"%
+postamble  "\n\n\\end{thenomenclature}\n" group_skip "\n"
 delim_0    ""
 delim_1    ""
 delim_2    ""
