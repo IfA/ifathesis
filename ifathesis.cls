@@ -246,7 +246,7 @@
 %                                  
 \newcommand*{\ifalistingNoFloat}[5]{%  
 	\begin{addmargin}[4mm]{1.5mm}				% verändert den Abstand ohne Verwendung einer Minipage
-		\lstset{belowcaptionskip=-3mm}                  % Abstand unterhalb der Beschriftung
+		\lstset{belowcaptionskip=2mm}                  % Abstand unterhalb der Beschriftung
 		\ifalistingRaw{#1}{#2}{#3}{#4}{#5}
 		\vspace{-1mm}
 		\begin{flushright}
