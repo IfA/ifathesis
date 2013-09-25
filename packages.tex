@@ -73,6 +73,7 @@
 \RequirePackage{xcolor}
 
 % Paket zum setzen von Verweisen im Dokument
+\IfStrEq{\@ifaThesisLanguage}{de}{\PassOptionsToPackage{ngerman}{hyperref}}{}     % necessary for \autoref to work for german and english
 \RequirePackage[
   pdfpagelabels,
   plainpages=false,
