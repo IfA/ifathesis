@@ -37,11 +37,11 @@ Zu beachten ist\marginpar{biblatex}, dass unter Windows mindestens die MikTex-Ve
 
 Ein weiterer wichtiger Punkt ist die Dateikodierung\marginpar{encoding}. Im Test der Vorlage konnten oft Diskrepanzen bei der Darstellung der Sonderzeichen festgestellt werden. Das lag an verschiedenen Zeichenkodierungen, mit der die Dateien abgespeichert werden. Daher haben wir uns für die Vorlage auf die Kodierung \emph{UTF-8} geeinigt.
 
-Um die automatische Generierung eines Abkürzungs- und Symbolverzeichnises zu benutzen, müssen Sie zusätzlich zum pdftex-Kompiler den makeindex-Kompiler benutzen. Dieser ist wie folgt entweder manuell oder im TeXnicCenter eingebunden aufzurufen\footnote{Das ist ein Beispiel für das Betriebssystem Windows. Wie der Befehl auf anderen Betriebssystemen genau lautet, entnehmt bitte einer Internetrecherche.}:
+Um die automatische Generierung eines Abkürzungs- und Symbolverzeichnises zu benutzen, müssen Sie zusätzlich zum pdftex-Kompiler den makeindex-Kompiler benutzen. Dieser ist wie folgt entweder manuell oder im TeXnicCenter eingebunden aufzurufen\footnote{Das ist ein Beispiel für das Betriebssystem Windows bei Verwendung von Miktex 2.9. Wie der Befehl auf anderen Betriebssystemen und \LaTeX-Distributionen genau lautet, entnehmt bitte einer Internetrecherche.}:
 
-\noindent \begin{center} \verb|makeindex.exe "%bm.nlo" -s nomencl.ist -o "%bm.nls"| \end{center}
+\noindent \begin{center} \verb|makeindex.exe "%tm.nlo" -s nomencl.ist -o "%tm.nls"| \end{center}
 
-\noindent Dabei steht \verb|%bm| als Platzhalter für den Dateinamen der kompilierten .tex-Datei. Im TexnicCenter wird dieser Platzhalter automatisch durch den richtigen Dateinamen erstetzt.
+\noindent Dabei steht \verb|%tm| als Platzhalter für den Dateinamen der kompilierten .tex-Datei. Im TexnicCenter wird dieser Platzhalter automatisch durch den richtigen Dateinamen erstetzt.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
