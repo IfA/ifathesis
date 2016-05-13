@@ -1,3 +1,0 @@
-% Literaturverzeichnis angeben
-\let\bibliography=\ifaReferences
-\bibliography{<Dateiname des Literaturverzeichnisses>}
