@@ -1,0 +1,76 @@
+%*******************************************************************************
+% * Copyright (c) 2006-2013 
+% * Institute of Automation, Dresden University of Technology
+% * 
+% * All rights reserved. This program and the accompanying materials
+% * are made available under the terms of the Eclipse Public License v1.0 
+% * which accompanies this distribution, and is available at
+% * http://www.eclipse.org/legal/epl-v10.html
+% * 
+% * Contributors:
+% *   Institute of Automation - TU Dresden, Germany 
+% *      - initial API and implementation
+% ******************************************************************************/
+
+\documentclass[
+  print,          % print optimized version of the thesis, standard option
+                  % alternative:
+%  screen,        % makes the thesis better readable on screens (onesided, coloured links)
+                  % use only 'print' OR 'screen'
+                  % ATTENTION: 'screen' changes size of text area slightly. Always optimize document WITH
+                  % 'print' option first for printing (size of graphics etc.) and convert afterwards
+                  % in screen optimized version!
+  listoffigures,  % includes list of figures
+  listoftables,   % includes list of tables
+  listoflistings, % includes list of listings
+  abbrevations,   % includes index of symbols and abbrevations
+  bibIfa,		  % citation style (IfA standard), alternatives: bibNumeric, bibHarvard
+  langDE          % define the language (default: langDE)
+]{ifathesis}
+
+\ifaThesis{Diplomarbeit}
+\ifaAuthor{Heinrich Grabow}
+\ifaAuthorBirthday{20.02.1980}
+\ifaAuthorBirthplace{Lutherstadt Eisleben}
+\ifaAuthorCourse{Mechatronik}
+\ifaAuthorYearOfMatriculation{2002}
+\ifaKeywords{Diplomarbeit, Web, SPS, Security, XML} % Keywords included in pdf-file. Could be found e.g. by Windows file search.
+\ifaTitleDE{Teleautomation, Chancen und Risiken}
+\ifaTitleEN{Teleautomation, Chances and Risks}
+
+% Im Falle einer Dissertation werden mit diesen Schaltern die Gutachter angegeben.
+\ifaSupervisorA{Dipl.-Ing. Stefan Hennig}
+\ifaSupervisorB{Dipl.-Ing. Arne Sonnenburg}
+\ifaSupervisorC{PD Dr.-Ing. Annerose Braune}
+%\ifaSupervisorD{}
+%\ifaSupervisorE{}
+\ifaProfessor{Prof. Dr. techn. Klaus Janschek}
+\ifaDayOfSubmission{21.03.2009}
+\ifaTopicDescriptionPDF{example_files/00_Aufgabenstellung.pdf}
+\ifaAppendix{example_files/appendix}
+\ifaAbstractDE{example_files/00_abstract_de}
+\ifaAbstractEN{example_files/00_abstract_en__invalid}  % HINWEIS: Der Dateiname der englischen Kurzfassung ist absichtlich
+                                                       % ungültig gemacht worden, um zu demonstrieren, dass die Vorlage
+                                                       % auch ohne Kurzfassungen genutzt werden kann. Dazu einfach einen
+                                                       % ungültigen Dateinamen angeben oder den Befehl ganz weglassen.
+                                                       % 
+                                                       % ACHTUNG: Im Institut für Automatisierungstechnik sind die 
+                                                       % Kurzfassungen unbedingt erforderlich. Eine Arbeit ohne 
+                                                       % Kurzfassung wird nicht angenommen, da sie nicht den Richtlinien
+                                                       % des Instituts entspricht.
+\ifaAbbrev{example_files/00_abbrev}
+%\ifaAcknowledgments{}
+
+% Literaturverzeichnis angeben
+\bibliography{bibliography}
+
+% Soll das Literaturverzeichnis vor oder nach dem Anhang aufgeführt werden?
+\ifaBibliographyBeforeAppendix{false}	% Mögliche Optionen: true, false
+\ifaAdditionalContributors{}
+
+\begin{document} 
+\input{example_files/00_Vorab.tex}
+\input{example_files/01_Allgemeines.tex}
+\input{example_files/02_Richtlinie.tex}
+                               
+\end{document}
