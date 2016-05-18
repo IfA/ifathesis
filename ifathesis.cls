@@ -262,7 +262,7 @@
 		label={#2}, 
 		language={#3},
 		keywordstyle=\bfseries\color{blue},
-		identifierstyle=\bf,
+		identifierstyle=\bfseries,
 		stringstyle=\itshape\color{red},
 		basicstyle=\ttfamily\color{black}\footnotesize,  % Schriftschnitt des Codes
 		showstringspaces=false,                          % Leerzeichen nicht markieren
@@ -516,7 +516,7 @@
     \begin{center}                          
       \thispagestyle{empty}
       \vspace*{\fill}
-	  {\sffamily\bf\huge\appendixpagename}
+	  {\sffamily\bfseries\huge\appendixpagename}
 	  \vspace{\fill}
       \cleardoublepage
     \end{center}
