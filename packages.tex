@@ -69,8 +69,9 @@
   automark      % automark für das automatische Update des Kopfzeileninhalts
 ]{scrpage2}
 
-% Für farbige Verweise
-\RequirePackage{xcolor}
+% Für farbige Verweise (die Option 'table' lädt zusätzlich das Paket 'colortbl', wodurch in Tabellen farbige Zellen,
+% Spalten, Zeilen, etc. realisiert werden können)
+\RequirePackage[table]{xcolor}
 
 % Paket zum setzen von Verweisen im Dokument
 \IfStrEq{\@ifaThesisLanguage}{de}{\PassOptionsToPackage{ngerman}{hyperref}}{}     % necessary for \autoref to work for german and english
