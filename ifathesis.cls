@@ -266,7 +266,7 @@
 		stringstyle=\itshape\color{red},
 		basicstyle=\ttfamily\color{black}\footnotesize,  % Schriftschnitt des Codes
 		showstringspaces=false,                          % Leerzeichen nicht markieren
-		commentstyle=\color{green},                      % Schriftschnitt der Kommentare
+		commentstyle=\color{teal},                      % Schriftschnitt der Kommentare
 		tabsize=2,                                       % Tabulatorengröße in Leerzeichen
 		breaklines=true,                                 % zu lange Zeilen umbrechen
 		frame=tb,                                        % Rahmen um das Listing
