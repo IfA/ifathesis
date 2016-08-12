@@ -261,17 +261,17 @@
 		caption={#1},
 		label={#2}, 
 		language={#3},
-		keywordstyle=\bfseries\color{blue},
-		identifierstyle=\bfseries,
+		keywordstyle=\color{blue},
+		identifierstyle=\color{black},
 		stringstyle=\itshape\color{red},
-		basicstyle=\ttfamily\color{black}\footnotesize,  % Schriftschnitt des Codes
-		showstringspaces=false,                          % Leerzeichen nicht markieren
-		commentstyle=\color{teal},                      % Schriftschnitt der Kommentare
-		tabsize=2,                                       % Tabulatorengröße in Leerzeichen
-		breaklines=true,                                 % zu lange Zeilen umbrechen
-		frame=tb,                                        % Rahmen um das Listing
-		abovecaptionskip=3mm,                            % Abstand oberhalb der Beschriftung
-		captionpos=t,                                    % Position der Beschriftung (b=bottom, t=top)
+		basicstyle=\ttfamily\color{darkgray}\footnotesize,% Schriftschnitt des Codes
+		showstringspaces=false,                           % Leerzeichen nicht markieren
+		commentstyle=\ttfamily\color{teal},               % Schriftschnitt der Kommentare
+		tabsize=2,                                        % Tabulatorengröße in Leerzeichen
+		breaklines=true,                                  % zu lange Zeilen umbrechen
+		frame=tb,                                         % Rahmen um das Listing
+		abovecaptionskip=3mm,                             % Abstand oberhalb der Beschriftung
+		captionpos=t,                                     % Position der Beschriftung (b=bottom, t=top)
 		numbers=#4,
 		numbersep=5pt
 	]{#5}
