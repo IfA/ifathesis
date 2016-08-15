@@ -46,6 +46,11 @@
 \DeclareOption{bibHarvard}{\renewcommand*{\@ifaBibliographyStyle}{alphabetic}}
 \DeclareOption{bibNumeric}{\renewcommand*{\@ifaBibliographyStyle}{numeric-comp}}
 
+\newcommand*{\@ifaBibliographyBackend}{bibtex8}
+\DeclareOption{bibtex}{\renewcommand*{\@ifaBibliographyBackend}{bibtex}}
+\DeclareOption{bibtex8}{\renewcommand*{\@ifaBibliographyBackend}{bibtex8}}
+\DeclareOption{biber}{\renewcommand*{\@ifaBibliographyBackend}{biber}}
+
 \ProcessOptions\relax
 
 % Lade Basisklasse der Vorlage
@@ -149,7 +154,7 @@
 \AtEndOfClass{
   \RequirePackage[           % Verwendung von biblatex für das Literaturverzeichnis
     style=\@ifaBibliographyStyle, 
-    backend=bibtex8, 
+    backend=\@ifaBibliographyBackend, 
     maxbibnames=99,
     backref=true,
     natbib=true
