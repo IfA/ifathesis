@@ -57,9 +57,6 @@
                       % sodass DVI- und PDF-Seiten die richtige Größe haben.
 }{typearea}
 
-% Setze Bibliographie-Stil
-\PassOptionsToPackage{style=\@ifaBibliographyStyle, backend=bibtex8, maxbibnames=99}{biblatex}
-
 \PassOptionsToPackage{svgnames}{xcolor}  % Namensraum für xcolor Paket
       
 \PassOptionsToPackage{fleqn}{amsmath}
@@ -146,9 +143,26 @@
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3} 
 
-% Lade benötigte Pakete
 \RequirePackage{scrhack} %Zur Herstellung der Kompabilitaet mit Paketen, die nicht kompatibel zum KOMA-Script sind.
 
+% Muss 'atEndOfClass' geladen werden, da es sonst zu Problemen kommt (bibtex/biber meldet, es könnten Verweise nicht aufgelöst werden, obwohl dies nicht der Fall ist)
+\AtEndOfClass{
+  \RequirePackage[           % Verwendung von biblatex für das Literaturverzeichnis
+    style=\@ifaBibliographyStyle, 
+    backend=bibtex8, 
+    maxbibnames=99,
+    backref=true,
+    natbib=true
+  ]{biblatex}
+
+  % Erlaube URL-Linebreaks
+  \setcounter{biburlnumpenalty}{6000}% Penalty für Zahlenumbruch
+  \setcounter{biburlucpenalty}{3000} % Penalty für Umbruch an Großbuchstaben
+  \setcounter{biburllcpenalty}{9000} % Penalty für Umbruch an Kleinbuchstaben
+}
+
+
+% Lade weitere benötigte Pakete
 \include{packages}
 
 % definiere Farben
@@ -196,16 +210,20 @@
 \setkomafont{captionlabel}{\sffamily\bfseries}  % Caption-Label fett und serifenlos
 \setcapindent{1em}                              % 2. Zeile der Caption mit hängendem Einzug
 
+%-------------------------------------------------------------------------
 % Anpassung des Literaturverzeichnisses
-\setlength{\bibitemsep}{10pt}
-\defbibheading{bibliography}{
-  		\chapter*{\@bibTitle}
-  		\addcontentsline{toc}{chapter}{\@bibTitle}
+%-------------------------------------------------------------------------
+\AtEndOfClass{ % muss 'atEndOfClass' ausgeführt werden, da das 'biblatex'-Paket erst dann geladen wird (s.o.)
+  \setlength{\bibitemsep}{10pt}
+  \defbibheading{bibliography}{
+    		\chapter*{\@bibTitle}
+    		\addcontentsline{toc}{chapter}{\@bibTitle}
+  }
+  % Notwendig für Autovervollständigung der Zitate im Texnic Center
+  \renewcommand*{\bibliography}[1]{\addbibresource{#1.bib}}
+  % Anpassung für eckige Klammern bei 'authoryear-comp'
+  \ifthenelse{\equal{\@ifaBibliographyStyle}{authoryear-comp}}{\renewcommand*{\citep}[2][]{\mkbibbrackets{\cite[#1]{#2}}}}{}
 }
-% Notwendig für Autovervollständigung der Zitate im Texnic Center
-\renewcommand*{\bibliography}[1]{\addbibresource{#1.bib}}
-% Anpassung für eckige Klammern bei 'authoryear-comp'
-\ifthenelse{\equal{\@ifaBibliographyStyle}{authoryear-comp}}{\renewcommand*{\citep}[2][]{\mkbibbrackets{\cite[#1]{#2}}}}{}
 
 %-------------------------------------------------------------------------
 % Löst Probleme mit deutschen Umlauten in Listings
