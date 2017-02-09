@@ -95,6 +95,7 @@
 \newcommand*{\@ifaKeywords}{Komma-separierte, Liste, mit, Schlagwörtern, zum Thema, der Arbeit}
 \newcommand*{\@ifaTitleDE}{Titel der Arbeit}
 \newcommand*{\@ifaTitleEN}{Thesis' title goes here}
+\newcommand*{\@ifaChair}{} % Wird nur im Modus 'Dissertation' zur Angabe des Vorsitzenden der Prüfungskommission verwendet
 \newcommand*{\@ifaSupervisorA}{}
 \newcommand*{\@ifaSupervisorB}{}
 \newcommand*{\@ifaSupervisorC}{}
@@ -102,6 +103,7 @@
 \newcommand*{\@ifaSupervisorE}{}
 \newcommand*{\@ifaProfessor}{Titel der Arbeit}
 \newcommand*{\@ifaDayOfSubmission}{\today}
+\newcommand*{\@ifaDayOfDefense}{} % Wird nur im Modus 'Dissertation' zur Angabe des Tags der Verteidigung verwendet
 \newcommand*{\@ifaTopicDescriptionPDF}{he0ohDie}
 \newcommand*{\@ifaAppendix}{GoHaigh2}
 \newcommand*{\@ifaAbstractDE}{GoHaigh2}
@@ -121,6 +123,7 @@
 \newcommand*{\ifaKeywords}[1]{\renewcommand*{\@ifaKeywords}{#1}}
 \newcommand*{\ifaTitleDE}[1]{\renewcommand*{\@ifaTitleDE}{#1}}
 \newcommand*{\ifaTitleEN}[1]{\renewcommand*{\@ifaTitleEN}{#1}}
+\newcommand*{\ifaChair}[1]{\renewcommand*{\@ifaChair}{#1}}
 \newcommand*{\ifaSupervisorA}[1]{\renewcommand*{\@ifaSupervisorA}{#1}}
 \newcommand*{\ifaSupervisorB}[1]{\renewcommand*{\@ifaSupervisorB}{#1}}
 \newcommand*{\ifaSupervisorC}[1]{\renewcommand*{\@ifaSupervisorC}{#1}}
@@ -128,6 +131,7 @@
 \newcommand*{\ifaSupervisorE}[1]{\renewcommand*{\@ifaSupervisorE}{#1}}
 \newcommand*{\ifaProfessor}[1]{\renewcommand*{\@ifaProfessor}{#1}}
 \newcommand*{\ifaDayOfSubmission}[1]{\renewcommand*{\@ifaDayOfSubmission}{#1}}
+\newcommand*{\ifaDayOfDefense}[1]{\renewcommand*{\@ifaDayOfDefense}{#1}}
 \newcommand*{\ifaTopicDescriptionPDF}[1]{\renewcommand*{\@ifaTopicDescriptionPDF}{#1}}
 \newcommand*{\ifaAppendix}[1]{\renewcommand*{\@ifaAppendix}{#1}}
 \newcommand*{\ifaAbstractDE}[1]{\renewcommand*{\@ifaAbstractDE}{#1}}
@@ -221,8 +225,8 @@
 \AtEndOfClass{ % muss 'atEndOfClass' ausgeführt werden, da das 'biblatex'-Paket erst dann geladen wird (s.o.)
   \setlength{\bibitemsep}{10pt}
   \defbibheading{bibliography}{
-    		\chapter*{\@bibTitle}
-    		\addcontentsline{toc}{chapter}{\@bibTitle}
+        \chapter*{\@bibTitle}
+        \addcontentsline{toc}{chapter}{\@bibTitle}
   }
   % Notwendig für Autovervollständigung der Zitate im Texnic Center
   \renewcommand*{\bibliography}[1]{\addbibresource{#1.bib}}
@@ -234,13 +238,13 @@
 % Löst Probleme mit deutschen Umlauten in Listings
 %-------------------------------------------------------------------------
 \lstset{literate=%
-	{Ö}{{\"O}}1
-	{Ä}{{\"A}}1
-	{Ü}{{\"U}}1
-	{ß}{{\ss}}2
-	{ü}{{\"u}}1
-	{ä}{{\"a}}1
-	{ö}{{\"o}}1
+  {Ö}{{\"O}}1
+  {Ä}{{\"A}}1
+  {Ü}{{\"U}}1
+  {ß}{{\ss}}2
+  {ü}{{\"u}}1
+  {ä}{{\"a}}1
+  {ö}{{\"o}}1
 }
 
 %-------------------------------------------------------------------------
@@ -249,55 +253,55 @@
 % Usage: \listing{<Caption>}{<Label>}{<[Dialect]Language>}{<Pfad>}{<float?>} 
 
 \newcommand*{\ifalisting}[6]{
-	\renewcommand{\lstlistingname}{\hspace{-0.6cm}Listing}
-	\ifthenelse{\equal{#6}{true}}{
-		\ifalistingFloat{#1}{#2}{#3}{#4}{#5}
-	}{
-		\ifalistingNoFloat{#1}{#2}{#3}{#4}{#5}
-	}  
-	\vspace{4.5mm}
+  \renewcommand{\lstlistingname}{\hspace{-0.6cm}Listing}
+  \ifthenelse{\equal{#6}{true}}{
+    \ifalistingFloat{#1}{#2}{#3}{#4}{#5}
+  }{
+    \ifalistingNoFloat{#1}{#2}{#3}{#4}{#5}
+  }  
+  \vspace{4.5mm}
 }
 
 \newcommand*{\ifalistingFloat}[5]{% 
     \begin{minipage}{0.96\textwidth}
-		\lstset{belowcaptionskip=2mm}                   % Abstand unterhalb der Beschriftung
-		\ifalistingRaw{#1}{#2}{#3}{#4}{#5}
+    \lstset{belowcaptionskip=2mm}                   % Abstand unterhalb der Beschriftung
+    \ifalistingRaw{#1}{#2}{#3}{#4}{#5}
     \end{minipage}
 }
   
 % Thanks to Matthias Freund who provided the code to enables listings which are longer than one page.
 %                                  
 \newcommand*{\ifalistingNoFloat}[5]{%  
-	\begin{addmargin}[4mm]{1.5mm}				% verändert den Abstand ohne Verwendung einer Minipage
-		\lstset{belowcaptionskip=2mm}                  % Abstand unterhalb der Beschriftung
-		\ifalistingRaw{#1}{#2}{#3}{#4}{#5}
-		\vspace{-1mm}
-		\begin{flushright}
-			\scriptsize
-			Listing \ref{#2}
-		\end{flushright}
-	\end{addmargin}
+  \begin{addmargin}[4mm]{1.5mm}       % verändert den Abstand ohne Verwendung einer Minipage
+    \lstset{belowcaptionskip=2mm}                  % Abstand unterhalb der Beschriftung
+    \ifalistingRaw{#1}{#2}{#3}{#4}{#5}
+    \vspace{-1mm}
+    \begin{flushright}
+      \scriptsize
+      Listing \ref{#2}
+    \end{flushright}
+  \end{addmargin}
 }                                      
 
 \newcommand*{\ifalistingRaw}[5]{
-	\lstinputlisting[
-		caption={#1},
-		label={#2}, 
-		language={#3},
-		keywordstyle=\color{blue},
-		identifierstyle=\color{black},
-		stringstyle=\itshape\color{red},
-		basicstyle=\ttfamily\color{darkgray}\footnotesize,% Schriftschnitt des Codes
-		showstringspaces=false,                           % Leerzeichen nicht markieren
-		commentstyle=\ttfamily\color{teal},               % Schriftschnitt der Kommentare
-		tabsize=2,                                        % Tabulatorengröße in Leerzeichen
-		breaklines=true,                                  % zu lange Zeilen umbrechen
-		frame=tb,                                         % Rahmen um das Listing
-		abovecaptionskip=3mm,                             % Abstand oberhalb der Beschriftung
-		captionpos=t,                                     % Position der Beschriftung (b=bottom, t=top)
-		numbers=#4,
-		numbersep=5pt
-	]{#5}
+  \lstinputlisting[
+    caption={#1},
+    label={#2}, 
+    language={#3},
+    keywordstyle=\color{blue},
+    identifierstyle=\color{black},
+    stringstyle=\itshape\color{red},
+    basicstyle=\ttfamily\color{darkgray}\footnotesize,% Schriftschnitt des Codes
+    showstringspaces=false,                           % Leerzeichen nicht markieren
+    commentstyle=\ttfamily\color{teal},               % Schriftschnitt der Kommentare
+    tabsize=2,                                        % Tabulatorengröße in Leerzeichen
+    breaklines=true,                                  % zu lange Zeilen umbrechen
+    frame=tb,                                         % Rahmen um das Listing
+    abovecaptionskip=3mm,                             % Abstand oberhalb der Beschriftung
+    captionpos=t,                                     % Position der Beschriftung (b=bottom, t=top)
+    numbers=#4,
+    numbersep=5pt
+  ]{#5}
 }
 
 % Erlaubt das Einfügen eines automatischen Symbolverzeichnisses
@@ -384,9 +388,11 @@
         {\bfseries Dissertation}
         \vfill
         \begin{tabular}{rl}
-          Gutachter: \ifthenelse{\equal{\@ifaSupervisorA}{}}{}{&\@ifaSupervisorA\\ \ifthenelse{\equal{\@ifaSupervisorB}{}}{}{&\@ifaSupervisorB\\ \ifthenelse{\equal{\@ifaSupervisorC}{}}{}{&\@ifaSupervisorC\\\ifthenelse{\equal{\@ifaSupervisorD}{}}{}{&\@ifaSupervisorD\\ \ifthenelse{\equal{\@ifaSupervisorE}{}}{}{&\@ifaSupervisorE\\}}}}}
-          Verantwortlicher Hochschullehrer:   & \@ifaProfessor \\
-          Tag der Einreichung:  & \@ifaDayOfSubmission \\
+          \ifthenelse{\equal{\@ifaChair}{}}{}{Vorsitzender: & \@ifaChair \vspace*{.7em}\\}
+          Gutachter: \ifthenelse{\equal{\@ifaSupervisorA}{}}{}{&\@ifaSupervisorA\ifthenelse{\equal{\@ifaSupervisorB}{}}{}{\\&\@ifaSupervisorB\ifthenelse{\equal{\@ifaSupervisorC}{}}{}{\\&\@ifaSupervisorC\ifthenelse{\equal{\@ifaSupervisorD}{}}{}{\\&\@ifaSupervisorD\ifthenelse{\equal{\@ifaSupervisorE}{}}{}{\\&\@ifaSupervisorE}}}}}\vspace*{.7em}\\
+          % Verantwortlicher Hochschullehrer:   & \@ifaProfessor \\
+          Tag der Einreichung: & \@ifaDayOfSubmission \\
+          \ifthenelse{\equal{\@ifaDayOfDefense}{}}{}{Tag der Verteidigung: & \@ifaDayOfDefense \\}
         \end{tabular}
       \end{center}
     }
@@ -527,7 +533,7 @@
     \else 
       \markright{\@bibTitle}
     \fi
-  	\printbibliography 
+    \printbibliography 
     \cleardoublepage
     \automark[section]{chapter}
   }{}
@@ -539,16 +545,16 @@
     \begin{center}                          
       \thispagestyle{empty}
       \vspace*{\fill}
-	  {\sffamily\bfseries\huge\appendixpagename}
-	  \vspace{\fill}
+    {\sffamily\bfseries\huge\appendixpagename}
+    \vspace{\fill}
       \cleardoublepage
     \end{center}
     % Nun die Anhänge, ohne Titelseite (siehe \RequirePackage --> ohne page-Option)
     \begin{appendices}
       \ifthenelse{\equal{\@ifaBibliographyBeforeAppendix}{true}}{        
-  	    \pagenumbering{Roman}							% römische Nummerierung im Anhang
-	    \setcounter{page}{1}							% beginne wieder mit Seitenzahl 1
-  	  }{}
+        \pagenumbering{Roman}             % römische Nummerierung im Anhang
+      \setcounter{page}{1}              % beginne wieder mit Seitenzahl 1
+      }{}
       \input{\@ifaAppendix}
       \cleardoublepage
     \end{appendices}
@@ -561,7 +567,7 @@
     \else 
       \markright{\@bibTitle}
     \fi
-  	\printbibliography 
+    \printbibliography 
     \cleardoublepage
     \automark[section]{chapter}
   }{}
@@ -583,14 +589,14 @@ Hiermit versichere ich, \@ifaAuthor, geboren am \@ifaAuthorBirthday~in
           \emph{\@ifaTitleDE}
        \end{center}
     \end{quote}
-	ohne unzulässige Hilfe Dritter und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe; 
-	die aus fremden Quellen direkt oder indirekt übernommenen Gedanken sind als
-	solche kenntlich gemacht. Bei der Auswahl und Auswertung des Materials sowie
-	bei der Herstellung des Manuskripts habe ich Unterstützungsleistungen von folgenden Personen erhalten:
-		    \begin{center}
-				\emph{\@ifaSupervisorA\IfStrEq{\@ifaSupervisorB}{}{}{, \@ifaSupervisorB}\IfStrEq{\@ifaSupervisorC}{}{}{, \@ifaSupervisorC}\IfStrEq{\@ifaSupervisorD}{}{}{, \@ifaSupervisorD}\IfStrEq{\@ifaSupervisorE}{}{}{, \@ifaSupervisorE}\IfStrEq{\@ifaAdditionalContributors}{}{}{, \@ifaAdditionalContributors}}
-			\end{center}
-	Weitere Personen waren an der geistigen Herstellung \ifthenelse{\not\equal{\@ifaThesis}{Forschungspraktikum}}{der vorliegenden \@ifaThesis}{des vorliegenden \@ifaThesis s}~nicht beteiligt. Mir ist bekannt, dass die Nichteinhaltung dieser Erklärung zum nachträglichen Entzug des Diplomabschlusses (Masterabschlusses) führen kann.
+  ohne unzulässige Hilfe Dritter und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe; 
+  die aus fremden Quellen direkt oder indirekt übernommenen Gedanken sind als
+  solche kenntlich gemacht. Bei der Auswahl und Auswertung des Materials sowie
+  bei der Herstellung des Manuskripts habe ich Unterstützungsleistungen von folgenden Personen erhalten:
+        \begin{center}
+        \emph{\@ifaSupervisorA\IfStrEq{\@ifaSupervisorB}{}{}{, \@ifaSupervisorB}\IfStrEq{\@ifaSupervisorC}{}{}{, \@ifaSupervisorC}\IfStrEq{\@ifaSupervisorD}{}{}{, \@ifaSupervisorD}\IfStrEq{\@ifaSupervisorE}{}{}{, \@ifaSupervisorE}\IfStrEq{\@ifaAdditionalContributors}{}{}{, \@ifaAdditionalContributors}}
+      \end{center}
+  Weitere Personen waren an der geistigen Herstellung \ifthenelse{\not\equal{\@ifaThesis}{Forschungspraktikum}}{der vorliegenden \@ifaThesis}{des vorliegenden \@ifaThesis s}~nicht beteiligt. Mir ist bekannt, dass die Nichteinhaltung dieser Erklärung zum nachträglichen Entzug des Diplomabschlusses (Masterabschlusses) führen kann.
   \vspace{2cm}
   \begin{flushright}
     Dresden, den \@ifaDayOfSubmission \hfill \dotfill\\
