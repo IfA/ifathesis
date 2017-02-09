@@ -384,8 +384,8 @@
         der Technischen Universität Dresden\\[5mm]
         zur Erlangung des akademischen Grades eines\\[2mm]
         {\Large Doktoringenieurs\\[0.2cm](Dr.-Ing.)}\\[5mm]
-        vorgelegte\\
-        {\bfseries Dissertation}
+        vorgelegte Dissertation\\[5mm]
+        ------ \ding{91} ------
         \vfill
         \begin{tabular}{rl}
           \ifthenelse{\equal{\@ifaChair}{}}{}{Vorsitzender: & \@ifaChair \vspace*{.7em}\\}
