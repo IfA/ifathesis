@@ -375,15 +375,17 @@
       \begin{center}
         \vfill
         \vfill
+        \setstretch{1.7}
         {\Large {\bfseries\@ifaTitleDE}}\\[5mm]
         {\Large \@ifaTitleEN}\\
+        \setstretch{1}
         \vfill
-        {\large \@ifaAuthor}
+        {\large\bfseries\@ifaAuthor}
         \vfill
         Der Fakultät Elektrotechnik und Informationstechnik\\
         der Technischen Universität Dresden\\[5mm]
         zur Erlangung des akademischen Grades eines\\[2mm]
-        {\Large Doktoringenieurs\\[0.2cm](Dr.-Ing.)}\\[5mm]
+        {\Large{\bfseries Doktoringenieurs}\\[0.2cm](Dr.-Ing.)}\\[5mm]
         vorgelegte Dissertation\\[5mm]
         ------ \ding{91} ------
         \vfill
