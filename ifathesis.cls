@@ -448,10 +448,16 @@
       }{}
       \cleardoublepage
     }{
-      \ClassWarning{ifathesis}{
-        Konnte die englische Kurzfassung nicht finden. Diese ist fuer Arbeiten am Institut fuer 
-        Automatisierungstechnik unbedingt erforderlich. Sollte die Vorlage anderswo verwendet, 
-        dann kann diese Warnung ignoriert werden.
+      \ifthenelse{\equal{\@ifaThesis}{Dissertation}}{
+        \ClassWarning{ifathesis}{
+          Konnte die deutsche Kurzfassung nicht finden. Diese ist fuer die finale Version der Dissertation unbedingt
+          erforderlich. Fuer die Gutachter-Version kann diese Warnung ignoriert werden. } 
+      }{
+        \ClassWarning{ifathesis}{
+          Konnte die deutsche Kurzfassung nicht finden. Diese ist fuer Arbeiten am Institut fuer 
+          Automatisierungstechnik unbedingt erforderlich. Sollte die Vorlage anderswo verwendet, 
+          dann kann diese Warnung ignoriert werden.
+        }
       }
     }
 
@@ -480,10 +486,16 @@
       }{}
       \cleardoublepage
     }{
-      \ClassWarning{ifathesis}{
-        Konnte die englische Kurzfassung nicht finden. Diese ist fuer Arbeiten am Institut fuer 
-        Automatisierungstechnik unbedingt erforderlich. Sollte die Vorlage anderswo verwendet, 
-        dann kann diese Warnung ignoriert werden.
+      \ifthenelse{\equal{\@ifaThesis}{Dissertation}}{
+        \ClassWarning{ifathesis}{
+          Konnte die englische Kurzfassung nicht finden. Diese ist fuer die finale Version der Dissertation unbedingt
+          erforderlich. Fuer die Gutachter-Version kann diese Warnung ignoriert werden. } 
+      }{
+        \ClassWarning{ifathesis}{
+          Konnte die englische Kurzfassung nicht finden. Diese ist fuer Arbeiten am Institut fuer 
+          Automatisierungstechnik unbedingt erforderlich. Sollte die Vorlage anderswo verwendet, 
+          dann kann diese Warnung ignoriert werden.
+        }
       }
     }
     
