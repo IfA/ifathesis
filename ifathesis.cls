@@ -580,29 +580,34 @@
   \pagestyle{empty}  
   % Auch Abschnittsbeginn ohne Kopf- und Fußzeile
   \renewcommand*{\chapterpagestyle}{empty}
+
+  % Selbständigkeitserklärung (nicht bei Dissertationen)
+  \ifthenelse{\not\equal{\@ifaThesis}{Dissertation}}{
+    
+    \vspace*{\fill} %4cm} 
+    \section*{Selbstständigkeitserklärung}
+
+    Hiermit versichere ich, \@ifaAuthor, geboren am \@ifaAuthorBirthday~in
+    \@ifaAuthorBirthplace, dass ich \ifthenelse{\not\equal{\@ifaThesis}{Forschungspraktikum}}{die vorliegende \@ifaThesis}{das vorliegende \@ifaThesis}~zum Thema
+      \begin{quote}
+         \begin{center}
+            \emph{\@ifaTitleDE}
+         \end{center}
+      \end{quote}
+    ohne unzulässige Hilfe Dritter und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe; 
+    die aus fremden Quellen direkt oder indirekt übernommenen Gedanken sind als
+    solche kenntlich gemacht. Bei der Auswahl und Auswertung des Materials sowie
+    bei der Herstellung des Manuskripts habe ich Unterstützungsleistungen von folgenden Personen erhalten:
+          \begin{center}
+          \emph{\@ifaSupervisorA\IfStrEq{\@ifaSupervisorB}{}{}{, \@ifaSupervisorB}\IfStrEq{\@ifaSupervisorC}{}{}{, \@ifaSupervisorC}\IfStrEq{\@ifaSupervisorD}{}{}{, \@ifaSupervisorD}\IfStrEq{\@ifaSupervisorE}{}{}{, \@ifaSupervisorE}\IfStrEq{\@ifaAdditionalContributors}{}{}{, \@ifaAdditionalContributors}}
+        \end{center}
+    Weitere Personen waren an der geistigen Herstellung \ifthenelse{\not\equal{\@ifaThesis}{Forschungspraktikum}}{der vorliegenden \@ifaThesis}{des vorliegenden \@ifaThesis s}~nicht beteiligt. Mir ist bekannt, dass die Nichteinhaltung dieser Erklärung zum nachträglichen Entzug des Diplomabschlusses (Masterabschlusses) führen kann.
+    \vspace{2cm}
+    \begin{flushright}
+      Dresden, den \@ifaDayOfSubmission \hfill \dotfill\\
+      Unterschrift
+    \end{flushright}
+    \vfill
+  }{}
   
-  % Selbständigkeitserklärung
-  \vspace*{\fill} %4cm} 
-  \section*{Selbstständigkeitserklärung}
-Hiermit versichere ich, \@ifaAuthor, geboren am \@ifaAuthorBirthday~in
-\@ifaAuthorBirthplace, dass ich \ifthenelse{\not\equal{\@ifaThesis}{Forschungspraktikum}}{die vorliegende \@ifaThesis}{das vorliegende \@ifaThesis}~zum Thema
-    \begin{quote}
-       \begin{center}
-          \emph{\@ifaTitleDE}
-       \end{center}
-    \end{quote}
-  ohne unzulässige Hilfe Dritter und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe; 
-  die aus fremden Quellen direkt oder indirekt übernommenen Gedanken sind als
-  solche kenntlich gemacht. Bei der Auswahl und Auswertung des Materials sowie
-  bei der Herstellung des Manuskripts habe ich Unterstützungsleistungen von folgenden Personen erhalten:
-        \begin{center}
-        \emph{\@ifaSupervisorA\IfStrEq{\@ifaSupervisorB}{}{}{, \@ifaSupervisorB}\IfStrEq{\@ifaSupervisorC}{}{}{, \@ifaSupervisorC}\IfStrEq{\@ifaSupervisorD}{}{}{, \@ifaSupervisorD}\IfStrEq{\@ifaSupervisorE}{}{}{, \@ifaSupervisorE}\IfStrEq{\@ifaAdditionalContributors}{}{}{, \@ifaAdditionalContributors}}
-      \end{center}
-  Weitere Personen waren an der geistigen Herstellung \ifthenelse{\not\equal{\@ifaThesis}{Forschungspraktikum}}{der vorliegenden \@ifaThesis}{des vorliegenden \@ifaThesis s}~nicht beteiligt. Mir ist bekannt, dass die Nichteinhaltung dieser Erklärung zum nachträglichen Entzug des Diplomabschlusses (Masterabschlusses) führen kann.
-  \vspace{2cm}
-  \begin{flushright}
-    Dresden, den \@ifaDayOfSubmission \hfill \dotfill\\
-    Unterschrift
-  \end{flushright}
-  \vfill
 }%EOF
