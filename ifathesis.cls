@@ -110,6 +110,7 @@
 \newcommand*{\@ifaAbstractEN}{GoHaigh2}
 \newcommand*{\@ifaReferences}{IPhei0Ox}
 \newcommand*{\@ifaAbbrev}{00_Abbrev}
+\newcommand*{\@ifaUserListings}{user-listings}
 \newcommand*{\@ifaAcknowledgements}{Acknowledgements}
 \newcommand*{\@ifaBibliographyBeforeAppendix}{true}
 \newcommand*{\@ifaAdditionalContributors}{}
@@ -139,6 +140,7 @@
 \newcommand*{\ifaReferences}[1]{\renewcommand*{\@ifaReferences}{#1}}
 \newcommand*{\ifaAcknowledgements}[1]{\renewcommand*{\@ifaAcknowledgements}{#1}}
 \newcommand*{\ifaAbbrev}[1]{\renewcommand*{\@ifaAbbrev}{#1}}
+\newcommand*{\ifaUserListings}[1]{\renewcommand*{\@ifaUserListings}{#1}}
 \newcommand*{\ifaBibliographyBeforeAppendix}[1]{\renewcommand*{\@ifaBibliographyBeforeAppendix}{#1}}
 \newcommand*{\ifaAdditionalContributors}[1]{\renewcommand*{\@ifaAdditionalContributors}{#1}}
 
@@ -527,6 +529,10 @@
       \lstlistoflistings
       \cleardoublepage
     \fi
+    \IfFileExists{\@ifaUserListings}{
+      \input{\@ifaUserListings}
+      \cleardoublepage
+    }{}
     \if@useAbbrevations
       \IfFileExists{\@ifaAbbrev}{
         \input{\@ifaAbbrev}
