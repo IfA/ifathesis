@@ -403,10 +403,15 @@
   \cleardoublepage
 
   \begingroup
-    % Im Vorspann nur Seiten ohne Kopf- und Fußzeile (außer Abschnittsbeginn)
-    \pagestyle{empty}
-    % Auch Abschnittsbeginn ohne Kopf- und Fußzeile
-    \renewcommand*{\chapterpagestyle}{empty}
+    \ifthenelse{\not\equal{\@ifaThesis}{Dissertation}}{
+      % Im Vorspann nur Seiten ohne Kopf- und Fußzeile (außer Abschnittsbeginn)
+      \pagestyle{empty}
+      % Auch Abschnittsbeginn ohne Kopf- und Fußzeile
+      \renewcommand*{\chapterpagestyle}{empty}
+    }{
+      % Im Vorspann werden kleine römische Seitenzahlen genutzt
+      \pagestyle{scrheadings}
+    }
 
     % Aufgabenstellung
     \IfFileExists{\@ifaTopicDescriptionPDF} {
