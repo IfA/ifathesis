@@ -114,6 +114,7 @@
 \newcommand*{\@ifaAcknowledgements}{Acknowledgements}
 \newcommand*{\@ifaBibliographyBeforeAppendix}{true}
 \newcommand*{\@ifaAdditionalContributors}{}
+\newcommand*{\@ifaCV}{cv}
 
 \newcommand*{\ifaThesis}[1]{\renewcommand*{\@ifaThesis}{#1}}
 \newcommand*{\ifaAuthor}[1]{\renewcommand*{\@ifaAuthor}{#1}}
@@ -143,6 +144,7 @@
 \newcommand*{\ifaUserListings}[1]{\renewcommand*{\@ifaUserListings}{#1}}
 \newcommand*{\ifaBibliographyBeforeAppendix}[1]{\renewcommand*{\@ifaBibliographyBeforeAppendix}{#1}}
 \newcommand*{\ifaAdditionalContributors}[1]{\renewcommand*{\@ifaAdditionalContributors}{#1}}
+\newcommand*{\ifaCV}[1]{\renewcommand*{\@ifaCV}{#1}}
 
 %-------------------------------------------------------------------------
 \RequirePackage{ifthen}
@@ -604,8 +606,8 @@
   % Auch Abschnittsbeginn ohne Kopf- und Fußzeile
   \renewcommand*{\chapterpagestyle}{empty}
 
-  % Selbständigkeitserklärung (nicht bei Dissertationen)
   \ifthenelse{\not\equal{\@ifaThesis}{Dissertation}}{
+    % Selbständigkeitserklärung (nicht bei Dissertationen)
     
     \vspace*{\fill} %4cm} 
     \section*{Selbstständigkeitserklärung}
@@ -631,6 +633,11 @@
       Unterschrift
     \end{flushright}
     \vfill
-  }{}
+  }{
+    % CV (falls gewünscht, nur bei Dissertationen)
+    \IfFileExists{\@ifaCV}{
+      \includepdf{\@ifaCV}
+    }{}
+  }
   
 }%EOF
