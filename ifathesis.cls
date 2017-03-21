@@ -110,9 +110,11 @@
 \newcommand*{\@ifaAbstractEN}{GoHaigh2}
 \newcommand*{\@ifaReferences}{IPhei0Ox}
 \newcommand*{\@ifaAbbrev}{00_Abbrev}
+\newcommand*{\@ifaUserListings}{user-listings}
 \newcommand*{\@ifaAcknowledgements}{Acknowledgements}
 \newcommand*{\@ifaBibliographyBeforeAppendix}{true}
 \newcommand*{\@ifaAdditionalContributors}{}
+\newcommand*{\@ifaCV}{cv}
 
 \newcommand*{\ifaThesis}[1]{\renewcommand*{\@ifaThesis}{#1}}
 \newcommand*{\ifaAuthor}[1]{\renewcommand*{\@ifaAuthor}{#1}}
@@ -139,8 +141,10 @@
 \newcommand*{\ifaReferences}[1]{\renewcommand*{\@ifaReferences}{#1}}
 \newcommand*{\ifaAcknowledgements}[1]{\renewcommand*{\@ifaAcknowledgements}{#1}}
 \newcommand*{\ifaAbbrev}[1]{\renewcommand*{\@ifaAbbrev}{#1}}
+\newcommand*{\ifaUserListings}[1]{\renewcommand*{\@ifaUserListings}{#1}}
 \newcommand*{\ifaBibliographyBeforeAppendix}[1]{\renewcommand*{\@ifaBibliographyBeforeAppendix}{#1}}
 \newcommand*{\ifaAdditionalContributors}[1]{\renewcommand*{\@ifaAdditionalContributors}{#1}}
+\newcommand*{\ifaCV}[1]{\renewcommand*{\@ifaCV}{#1}}
 
 %-------------------------------------------------------------------------
 \RequirePackage{ifthen}
@@ -403,10 +407,15 @@
   \cleardoublepage
 
   \begingroup
-    % Im Vorspann nur Seiten ohne Kopf- und Fußzeile (außer Abschnittsbeginn)
-    \pagestyle{empty}
-    % Auch Abschnittsbeginn ohne Kopf- und Fußzeile
-    \renewcommand*{\chapterpagestyle}{empty}
+    \ifthenelse{\not\equal{\@ifaThesis}{Dissertation}}{
+      % Im Vorspann nur Seiten ohne Kopf- und Fußzeile (außer Abschnittsbeginn)
+      \pagestyle{empty}
+      % Auch Abschnittsbeginn ohne Kopf- und Fußzeile
+      \renewcommand*{\chapterpagestyle}{empty}
+    }{
+      % Im Vorspann werden kleine römische Seitenzahlen genutzt
+      \pagestyle{scrheadings}
+    }
 
     % Aufgabenstellung
     \IfFileExists{\@ifaTopicDescriptionPDF} {
@@ -420,14 +429,14 @@
       
     % Kurzfassungen
     \IfFileExists{\@ifaAbstractDE}{
-      \begin{picture}(0,0)
-        \put(-97,-50){\includegraphics*{kopfzeile}}
-      \end{picture}
-      \vfill
-      \section*{\@ifaTitleDE}
-      \input{\@ifaAbstractDE}
-      \vfill
       \ifthenelse{\not\equal{\@ifaThesis}{Dissertation}}{
+        \begin{picture}(0,0)
+          \put(-97,-50){\includegraphics*{kopfzeile}}
+        \end{picture}
+        \vfill
+        \section*{\@ifaTitleDE}
+        \input{\@ifaAbstractDE}
+        \vfill
         \begin{flushleft}
           \scriptsize
           \begin{tabular}{ll}
@@ -445,45 +454,69 @@
           \ifthenelse{\equal{\@ifaThesis}{Forschungspraktikum}}{FORSCHUNGSPRAKTIKUM}{}
           \hfill Bearbeiter: \@ifaAuthor
         \end{flushleft}
-      }{}
+      }{
+        \thispagestyle{\chapterpagestyle}
+        \chapter*{Kurzfassung}
+        \addcontentsline{toc}{chapter}{Kurzfassung}%
+        \input{\@ifaAbstractDE}
+      }
       \cleardoublepage
     }{
-      \ClassWarning{ifathesis}{
-        Konnte die englische Kurzfassung nicht finden. Diese ist fuer Arbeiten am Institut fuer 
-        Automatisierungstechnik unbedingt erforderlich. Sollte die Vorlage anderswo verwendet, 
-        dann kann diese Warnung ignoriert werden.
+      \ifthenelse{\equal{\@ifaThesis}{Dissertation}}{
+        \ClassWarning{ifathesis}{
+          Konnte die deutsche Kurzfassung nicht finden. Diese ist fuer die finale Version der Dissertation unbedingt
+          erforderlich. Fuer die Gutachter-Version kann diese Warnung ignoriert werden. } 
+      }{
+        \ClassWarning{ifathesis}{
+          Konnte die deutsche Kurzfassung nicht finden. Diese ist fuer Arbeiten am Institut fuer 
+          Automatisierungstechnik unbedingt erforderlich. Sollte die Vorlage anderswo verwendet, 
+          dann kann diese Warnung ignoriert werden.
+        }
       }
     }
 
 
     % Englische Kurzfassung
     \IfFileExists{\@ifaAbstractEN}{
-      \begin{picture}(0,0)
-        \put(-97,-50){\includegraphics*{kopfzeile}}
-      \end{picture}
-      \vfill
-      \section*{\@ifaTitleEN}
-      \input{\@ifaAbstractEN}
-      \vfill
       \ifthenelse{\not\equal{\@ifaThesis}{Dissertation}}{
-        \begin{flushleft}
-          \scriptsize
-          \begin{tabular}{ll}
-            Tutor: \ifthenelse{\equal{\@ifaSupervisorA}{}}{}{&\@ifaSupervisorA\\ \ifthenelse{\equal{\@ifaSupervisorB}{}}{}{&\@ifaSupervisorB\\ \ifthenelse{\equal{\@ifaSupervisorC}{}}{}{&\@ifaSupervisorC\\ \ifthenelse{\equal{\@ifaSupervisorD}{}}{}{&\@ifaSupervisorD\\ \ifthenelse{\equal{\@ifaSupervisorE}{}}{}{&\@ifaSupervisorE\\}}}}}Supervisor: &\@ifaProfessor\\Day of Submission: &\@ifaDayOfSubmission \\
-          \end{tabular}
-          \hfill
-          \hrule
-          \vspace{.2cm}\normalsize
-          \ifthenelse{\equal{\@ifaThesis}{Diplomarbeit}}{DIPLOMA THESIS}{STUDENT RESEARCH THESIS}
-          \hfill Author: \@ifaAuthor
-        \end{flushleft}
-      }{}
+        \begin{picture}(0,0)
+          \put(-97,-50){\includegraphics*{kopfzeile}}
+        \end{picture}
+        \vfill
+        \section*{\@ifaTitleEN}
+        \input{\@ifaAbstractEN}
+        \vfill
+          \begin{flushleft}
+            \scriptsize
+            \begin{tabular}{ll}
+              Tutor: \ifthenelse{\equal{\@ifaSupervisorA}{}}{}{&\@ifaSupervisorA\\ \ifthenelse{\equal{\@ifaSupervisorB}{}}{}{&\@ifaSupervisorB\\ \ifthenelse{\equal{\@ifaSupervisorC}{}}{}{&\@ifaSupervisorC\\ \ifthenelse{\equal{\@ifaSupervisorD}{}}{}{&\@ifaSupervisorD\\ \ifthenelse{\equal{\@ifaSupervisorE}{}}{}{&\@ifaSupervisorE\\}}}}}Supervisor: &\@ifaProfessor\\Day of Submission: &\@ifaDayOfSubmission \\
+            \end{tabular}
+            \hfill
+            \hrule
+            \vspace{.2cm}\normalsize
+            \ifthenelse{\equal{\@ifaThesis}{Diplomarbeit}}{DIPLOMA THESIS}{STUDENT RESEARCH THESIS}
+            \hfill Author: \@ifaAuthor
+          \end{flushleft}
+      }{
+        {
+          \thispagestyle{\chapterpagestyle}
+          \chapter*{Abstract}
+          \addcontentsline{toc}{chapter}{Abstract}%
+          \input{\@ifaAbstractEN}
+        }
+      }
       \cleardoublepage
     }{
-      \ClassWarning{ifathesis}{
-        Konnte die englische Kurzfassung nicht finden. Diese ist fuer Arbeiten am Institut fuer 
-        Automatisierungstechnik unbedingt erforderlich. Sollte die Vorlage anderswo verwendet, 
-        dann kann diese Warnung ignoriert werden.
+      \ifthenelse{\equal{\@ifaThesis}{Dissertation}}{
+        \ClassWarning{ifathesis}{
+          Konnte die englische Kurzfassung nicht finden. Diese ist fuer die finale Version der Dissertation unbedingt
+          erforderlich. Fuer die Gutachter-Version kann diese Warnung ignoriert werden. } 
+      }{
+        \ClassWarning{ifathesis}{
+          Konnte die englische Kurzfassung nicht finden. Diese ist fuer Arbeiten am Institut fuer 
+          Automatisierungstechnik unbedingt erforderlich. Sollte die Vorlage anderswo verwendet, 
+          dann kann diese Warnung ignoriert werden.
+        }
       }
     }
     
@@ -495,7 +528,12 @@
     }{}
     
     % Verzeichnisse
-    \pdfbookmark[1]{\@conTitle}{toc}
+    \ifthenelse{\not\equal{\@ifaThesis}{Dissertation}}{
+      \pdfbookmark[0]{\@conTitle}{toc}
+    }{
+      % Da für Dissertationen Kurzfassung, Abstract, LOF, etc. ins Inhaltsverzeichnis aufgenommen werden, sollte der Vollständigkeit halber auch das Inhaltsverzeichnis selbst aufgenommen werden (ansonsten entsteht eine 'Lücke')
+      \setuptoc{toc}{totoc} 
+    }
     \tableofcontents
     \clearpage
     \if@useListOfFigures
@@ -510,6 +548,10 @@
       \lstlistoflistings
       \cleardoublepage
     \fi
+    \IfFileExists{\@ifaUserListings}{
+      \input{\@ifaUserListings}
+      \cleardoublepage
+    }{}
     \if@useAbbrevations
       \IfFileExists{\@ifaAbbrev}{
         \input{\@ifaAbbrev}
@@ -580,29 +622,39 @@
   \pagestyle{empty}  
   % Auch Abschnittsbeginn ohne Kopf- und Fußzeile
   \renewcommand*{\chapterpagestyle}{empty}
+
+  \ifthenelse{\not\equal{\@ifaThesis}{Dissertation}}{
+    % Selbständigkeitserklärung (nicht bei Dissertationen)
+    
+    \vspace*{\fill} %4cm} 
+    \section*{Selbstständigkeitserklärung}
+
+    Hiermit versichere ich, \@ifaAuthor, geboren am \@ifaAuthorBirthday~in
+    \@ifaAuthorBirthplace, dass ich \ifthenelse{\not\equal{\@ifaThesis}{Forschungspraktikum}}{die vorliegende \@ifaThesis}{das vorliegende \@ifaThesis}~zum Thema
+      \begin{quote}
+         \begin{center}
+            \emph{\@ifaTitleDE}
+         \end{center}
+      \end{quote}
+    ohne unzulässige Hilfe Dritter und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe; 
+    die aus fremden Quellen direkt oder indirekt übernommenen Gedanken sind als
+    solche kenntlich gemacht. Bei der Auswahl und Auswertung des Materials sowie
+    bei der Herstellung des Manuskripts habe ich Unterstützungsleistungen von folgenden Personen erhalten:
+          \begin{center}
+          \emph{\@ifaSupervisorA\IfStrEq{\@ifaSupervisorB}{}{}{, \@ifaSupervisorB}\IfStrEq{\@ifaSupervisorC}{}{}{, \@ifaSupervisorC}\IfStrEq{\@ifaSupervisorD}{}{}{, \@ifaSupervisorD}\IfStrEq{\@ifaSupervisorE}{}{}{, \@ifaSupervisorE}\IfStrEq{\@ifaAdditionalContributors}{}{}{, \@ifaAdditionalContributors}}
+        \end{center}
+    Weitere Personen waren an der geistigen Herstellung \ifthenelse{\not\equal{\@ifaThesis}{Forschungspraktikum}}{der vorliegenden \@ifaThesis}{des vorliegenden \@ifaThesis s}~nicht beteiligt. Mir ist bekannt, dass die Nichteinhaltung dieser Erklärung zum nachträglichen Entzug des Diplomabschlusses (Masterabschlusses) führen kann.
+    \vspace{2cm}
+    \begin{flushright}
+      Dresden, den \@ifaDayOfSubmission \hfill \dotfill\\
+      Unterschrift
+    \end{flushright}
+    \vfill
+  }{
+    % CV (falls gewünscht, nur bei Dissertationen)
+    \IfFileExists{\@ifaCV}{
+      \includepdf{\@ifaCV}
+    }{}
+  }
   
-  % Selbständigkeitserklärung
-  \vspace*{\fill} %4cm} 
-  \section*{Selbstständigkeitserklärung}
-Hiermit versichere ich, \@ifaAuthor, geboren am \@ifaAuthorBirthday~in
-\@ifaAuthorBirthplace, dass ich \ifthenelse{\not\equal{\@ifaThesis}{Forschungspraktikum}}{die vorliegende \@ifaThesis}{das vorliegende \@ifaThesis}~zum Thema
-    \begin{quote}
-       \begin{center}
-          \emph{\@ifaTitleDE}
-       \end{center}
-    \end{quote}
-  ohne unzulässige Hilfe Dritter und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe; 
-  die aus fremden Quellen direkt oder indirekt übernommenen Gedanken sind als
-  solche kenntlich gemacht. Bei der Auswahl und Auswertung des Materials sowie
-  bei der Herstellung des Manuskripts habe ich Unterstützungsleistungen von folgenden Personen erhalten:
-        \begin{center}
-        \emph{\@ifaSupervisorA\IfStrEq{\@ifaSupervisorB}{}{}{, \@ifaSupervisorB}\IfStrEq{\@ifaSupervisorC}{}{}{, \@ifaSupervisorC}\IfStrEq{\@ifaSupervisorD}{}{}{, \@ifaSupervisorD}\IfStrEq{\@ifaSupervisorE}{}{}{, \@ifaSupervisorE}\IfStrEq{\@ifaAdditionalContributors}{}{}{, \@ifaAdditionalContributors}}
-      \end{center}
-  Weitere Personen waren an der geistigen Herstellung \ifthenelse{\not\equal{\@ifaThesis}{Forschungspraktikum}}{der vorliegenden \@ifaThesis}{des vorliegenden \@ifaThesis s}~nicht beteiligt. Mir ist bekannt, dass die Nichteinhaltung dieser Erklärung zum nachträglichen Entzug des Diplomabschlusses (Masterabschlusses) führen kann.
-  \vspace{2cm}
-  \begin{flushright}
-    Dresden, den \@ifaDayOfSubmission \hfill \dotfill\\
-    Unterschrift
-  \end{flushright}
-  \vfill
 }%EOF
