@@ -429,14 +429,14 @@
       
     % Kurzfassungen
     \IfFileExists{\@ifaAbstractDE}{
-      \begin{picture}(0,0)
-        \put(-97,-50){\includegraphics*{kopfzeile}}
-      \end{picture}
-      \vfill
-      \section*{\@ifaTitleDE}
-      \input{\@ifaAbstractDE}
-      \vfill
       \ifthenelse{\not\equal{\@ifaThesis}{Dissertation}}{
+        \begin{picture}(0,0)
+          \put(-97,-50){\includegraphics*{kopfzeile}}
+        \end{picture}
+        \vfill
+        \section*{\@ifaTitleDE}
+        \input{\@ifaAbstractDE}
+        \vfill
         \begin{flushleft}
           \scriptsize
           \begin{tabular}{ll}
@@ -454,7 +454,12 @@
           \ifthenelse{\equal{\@ifaThesis}{Forschungspraktikum}}{FORSCHUNGSPRAKTIKUM}{}
           \hfill Bearbeiter: \@ifaAuthor
         \end{flushleft}
-      }{}
+      }{
+        \thispagestyle{\chapterpagestyle}
+        \chapter*{Kurzfassung}
+        \addcontentsline{toc}{chapter}{Kurzfassung}%
+        \input{\@ifaAbstractDE}
+      }
       \cleardoublepage
     }{
       \ifthenelse{\equal{\@ifaThesis}{Dissertation}}{
@@ -473,26 +478,33 @@
 
     % Englische Kurzfassung
     \IfFileExists{\@ifaAbstractEN}{
-      \begin{picture}(0,0)
-        \put(-97,-50){\includegraphics*{kopfzeile}}
-      \end{picture}
-      \vfill
-      \section*{\@ifaTitleEN}
-      \input{\@ifaAbstractEN}
-      \vfill
       \ifthenelse{\not\equal{\@ifaThesis}{Dissertation}}{
-        \begin{flushleft}
-          \scriptsize
-          \begin{tabular}{ll}
-            Tutor: \ifthenelse{\equal{\@ifaSupervisorA}{}}{}{&\@ifaSupervisorA\\ \ifthenelse{\equal{\@ifaSupervisorB}{}}{}{&\@ifaSupervisorB\\ \ifthenelse{\equal{\@ifaSupervisorC}{}}{}{&\@ifaSupervisorC\\ \ifthenelse{\equal{\@ifaSupervisorD}{}}{}{&\@ifaSupervisorD\\ \ifthenelse{\equal{\@ifaSupervisorE}{}}{}{&\@ifaSupervisorE\\}}}}}Supervisor: &\@ifaProfessor\\Day of Submission: &\@ifaDayOfSubmission \\
-          \end{tabular}
-          \hfill
-          \hrule
-          \vspace{.2cm}\normalsize
-          \ifthenelse{\equal{\@ifaThesis}{Diplomarbeit}}{DIPLOMA THESIS}{STUDENT RESEARCH THESIS}
-          \hfill Author: \@ifaAuthor
-        \end{flushleft}
-      }{}
+        \begin{picture}(0,0)
+          \put(-97,-50){\includegraphics*{kopfzeile}}
+        \end{picture}
+        \vfill
+        \section*{\@ifaTitleEN}
+        \input{\@ifaAbstractEN}
+        \vfill
+          \begin{flushleft}
+            \scriptsize
+            \begin{tabular}{ll}
+              Tutor: \ifthenelse{\equal{\@ifaSupervisorA}{}}{}{&\@ifaSupervisorA\\ \ifthenelse{\equal{\@ifaSupervisorB}{}}{}{&\@ifaSupervisorB\\ \ifthenelse{\equal{\@ifaSupervisorC}{}}{}{&\@ifaSupervisorC\\ \ifthenelse{\equal{\@ifaSupervisorD}{}}{}{&\@ifaSupervisorD\\ \ifthenelse{\equal{\@ifaSupervisorE}{}}{}{&\@ifaSupervisorE\\}}}}}Supervisor: &\@ifaProfessor\\Day of Submission: &\@ifaDayOfSubmission \\
+            \end{tabular}
+            \hfill
+            \hrule
+            \vspace{.2cm}\normalsize
+            \ifthenelse{\equal{\@ifaThesis}{Diplomarbeit}}{DIPLOMA THESIS}{STUDENT RESEARCH THESIS}
+            \hfill Author: \@ifaAuthor
+          \end{flushleft}
+      }{
+        {
+          \thispagestyle{\chapterpagestyle}
+          \chapter*{Abstract}
+          \addcontentsline{toc}{chapter}{Abstract}%
+          \input{\@ifaAbstractEN}
+        }
+      }
       \cleardoublepage
     }{
       \ifthenelse{\equal{\@ifaThesis}{Dissertation}}{
@@ -516,7 +528,12 @@
     }{}
     
     % Verzeichnisse
-    \pdfbookmark[1]{\@conTitle}{toc}
+    \ifthenelse{\not\equal{\@ifaThesis}{Dissertation}}{
+      \pdfbookmark[0]{\@conTitle}{toc}
+    }{
+      % Da für Dissertationen Kurzfassung, Abstract, LOF, etc. ins Inhaltsverzeichnis aufgenommen werden, sollte der Vollständigkeit halber auch das Inhaltsverzeichnis selbst aufgenommen werden (ansonsten entsteht eine 'Lücke')
+      \setuptoc{toc}{totoc} 
+    }
     \tableofcontents
     \clearpage
     \if@useListOfFigures
