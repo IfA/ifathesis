@@ -172,6 +172,11 @@
   \setcounter{biburlnumpenalty}{6000}% Penalty für Zahlenumbruch
   \setcounter{biburlucpenalty}{3000} % Penalty für Umbruch an Großbuchstaben
   \setcounter{biburllcpenalty}{9000} % Penalty für Umbruch an Kleinbuchstaben
+
+  % Hurenkinder und Schusterjungen verhindern
+  \clubpenalty10000
+  \widowpenalty10000
+  \displaywidowpenalty=10000
 }
 
 
