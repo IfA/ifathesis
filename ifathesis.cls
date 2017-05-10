@@ -172,6 +172,8 @@
   \setcounter{biburlnumpenalty}{6000}% Penalty für Zahlenumbruch
   \setcounter{biburlucpenalty}{3000} % Penalty für Umbruch an Großbuchstaben
   \setcounter{biburllcpenalty}{9000} % Penalty für Umbruch an Kleinbuchstaben
+
+  \interfootnotelinepenalty=9999 % Verhindert, dass Fußnoten auf zwei Seiten verteilt werden
 }
 
 
