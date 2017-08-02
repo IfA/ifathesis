@@ -37,6 +37,9 @@
 \DeclareOption{print}{\@isReadyForPrinttrue}
 \DeclareOption{screen}{\@isReadyForPrintfalse}
 
+\newif\if@isIfaLogo\@isIfaLogotrue
+\DeclareOption{noIfaLogo}{\@isIfaLogofalse}
+
 \newcommand*{\@ifaThesisLanguage}{de}
 \DeclareOption{langDE}{\renewcommand*{\@ifaThesisLanguage}{de}}
 \DeclareOption{langEN}{\renewcommand*{\@ifaThesisLanguage}{en}}
@@ -148,6 +151,10 @@
 \newcommand*{\ifaAdditionalContributors}[1]{\renewcommand*{\@ifaAdditionalContributors}{#1}}
 \newcommand*{\ifaCV}[1]{\renewcommand*{\@ifaCV}{#1}}
 
+% Schriftspezifische Definitionen
+\DeclareFixedFont{\univLightIX}{T1}{aun}{l}{n}{9}
+\DeclareFixedFont{\univBoldIX}{T1}{aun}{b}{n}{9}
+
 %-------------------------------------------------------------------------
 \RequirePackage{ifthen}
 
@@ -209,6 +216,31 @@
   \renewcommand{\@pdftitle}{\@ifaTitleEN}
   \renewcommand{\nomname}{Nomenclature}
   \renewcommand{\lstlistlistingname}{List of Listings}          
+}
+
+%-------------------------------------------------------------------------
+% Inserts the typical IfA header including the TU and IfA logo as well as
+% the faculty and institute name
+%-------------------------------------------------------------------------
+\newcommand{\@ifaPrintHeader}{%
+  \begin{center}
+    \vspace*{-26.63mm} % height of the logo (16.73mm) + skip below the logo (3.75mm) + one line (approx. 6.15mm)
+    \begin{tabular*}{\textwidth}[b]{@{}p{\textwidth}@{}}%@{\extracolsep\fill}
+      % TUD-Logo
+        \hspace*{-19mm}\includegraphics[height=16.73mm]{TU_Logo_SW}%  width=57mm
+        \hfill
+      % IfA-Logo
+        \if@isIfaLogo   \includegraphics[height=16.73mm]{IfA_Logo_SW}\fi
+        \\[3.75mm]
+        \hline%
+      % Einrichtungsname
+        \rule[-1.2mm]{0mm}{13pt}\univBoldIX Fakult{\"a}t Elektrotechnik und Informationstechnik%
+      % Institut
+        \ \univLightIX Institut f{\"u}r Automatisierungstechnik%
+        \\
+        \hline
+    \end{tabular*}%
+  \end{center}
 }
 
 %-------------------------------------------------------------------------
@@ -340,9 +372,8 @@
 % = Titelseite(n) =
 % =================  
   \begin{titlepage}
-    \begin{picture}(0,0)
-      \put(-97,-50){\includegraphics*{kopfzeile}}
-    \end{picture}
+
+    \@ifaPrintHeader
     
     % A dissertation will get a different titlepage
     \ifthenelse{\not\equal{\@ifaThesis}{Dissertation}}{
@@ -454,9 +485,7 @@
     % Kurzfassungen
     \IfFileExists{\@ifaAbstractDE}{
       \ifthenelse{\not\equal{\@ifaThesis}{Dissertation}}{
-        \begin{picture}(0,0)
-          \put(-97,-50){\includegraphics*{kopfzeile}}
-        \end{picture}
+        \@ifaPrintHeader
         \vfill
         \section*{\@ifaTitleDE}
         \input{\@ifaAbstractDE}
@@ -507,9 +536,7 @@
     % Englische Kurzfassung
     \IfFileExists{\@ifaAbstractEN}{
       \ifthenelse{\not\equal{\@ifaThesis}{Dissertation}}{
-        \begin{picture}(0,0)
-          \put(-97,-50){\includegraphics*{kopfzeile}}
-        \end{picture}
+        \@ifaPrintHeader
         \vfill
         \section*{\@ifaTitleEN}
         \input{\@ifaAbstractEN}
