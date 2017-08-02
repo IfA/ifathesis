@@ -86,7 +86,8 @@
 % ==============================================================
 %%%%%
 % Jetzt müssen zunächst die variablen Angaben geladen werden
-\newcommand*{\@ifaThesis}{Diplomarbeit}
+\newcommand*{\@ifaThesis}{Diplomarbeit} % Type of the thesis
+\newcommand*{\@ifaDissertationStage}{Gutachten} % Only used in 'Dissertation' mode to indicate the stage of the work ('Gutachten' oder 'Pflichtexemplare')
 \newcommand*{\@ifaAuthor}{Max Mustermann}
 \newcommand*{\@ifaAuthorBirthday}{01.01.1970}
 \newcommand*{\@ifaAuthorBirthplace}{Dresden}
@@ -117,6 +118,7 @@
 \newcommand*{\@ifaCV}{cv}
 
 \newcommand*{\ifaThesis}[1]{\renewcommand*{\@ifaThesis}{#1}}
+\newcommand*{\ifaDissertationStage}[1]{\renewcommand*{\@ifaDissertationStage}{#1}}
 \newcommand*{\ifaAuthor}[1]{\renewcommand*{\@ifaAuthor}{#1}}
 \newcommand*{\ifaAuthorBirthday}[1]{\renewcommand*{\@ifaAuthorBirthday}{#1}}
 \newcommand*{\ifaAuthorBirthplace}[1]{\renewcommand*{\@ifaAuthorBirthplace}{#1}}
@@ -396,11 +398,31 @@
         ------ \ding{91} ------
         \vfill
         \begin{tabular}{rl}
-          \ifthenelse{\equal{\@ifaChair}{}}{}{Vorsitzender: & \@ifaChair \vspace*{.7em}\\}
-          Gutachter: \ifthenelse{\equal{\@ifaSupervisorA}{}}{}{&\@ifaSupervisorA\ifthenelse{\equal{\@ifaSupervisorB}{}}{}{\\&\@ifaSupervisorB\ifthenelse{\equal{\@ifaSupervisorC}{}}{}{\\&\@ifaSupervisorC\ifthenelse{\equal{\@ifaSupervisorD}{}}{}{\\&\@ifaSupervisorD\ifthenelse{\equal{\@ifaSupervisorE}{}}{}{\\&\@ifaSupervisorE}}}}}\vspace*{.7em}\\
-          % Verantwortlicher Hochschullehrer:   & \@ifaProfessor \\
-          Tag der Einreichung: & \@ifaDayOfSubmission \\
-          \ifthenelse{\equal{\@ifaDayOfDefense}{}}{}{Tag der Verteidigung: & \@ifaDayOfDefense \\}
+          % Only print the 'Vorsitzender', 'Gutachter', and 'Tag der Verteidigung' during the 'Pflichtexemplare' stage
+          \ifthenelse{\equal{\@ifaDissertationStage}{Gutachten}}{}{%
+            \ifthenelse{\equal{\@ifaChair}{}}{%
+              \ClassWarning{ifathesis}{%
+                Kein(e) Vorsitzende(r) der Promotionskommission angegeben. Dies ist fuer die Pflichtexemplare der Dissertation unbedingt erforderlich.
+              }% 
+            }{%
+              Vorsitzender: & \@ifaChair \vspace*{.7em}\\%
+            }%
+          }%
+          \ifthenelse{\equal{\@ifaDissertationStage}{Gutachten}}{}{%
+            \ifthenelse{\equal{\@ifaSupervisorA}{}}{\ClassWarning{ifathesis}{Kein(e) erste(r) Gutachter(in) angegeben. Dies ist fuer die Pflichtexemplare der Dissertation unbedingt erforderlich.}}{}%
+            \ifthenelse{\equal{\@ifaSupervisorB}{}}{\ClassWarning{ifathesis}{Kein(e) zweite(r) Gutachter(in) angegeben. Dies ist fuer die Pflichtexemplare der Dissertation unbedingt erforderlich.}}{}%
+            Gutachter: \ifthenelse{\equal{\@ifaSupervisorA}{}}{}{&\@ifaSupervisorA\vspace*{.1em}\ifthenelse{\equal{\@ifaSupervisorB}{}}{}{\\&\@ifaSupervisorB\vspace*{.1em}\ifthenelse{\equal{\@ifaSupervisorC}{}}{}{\\&\@ifaSupervisorC\vspace*{.1em}\ifthenelse{\equal{\@ifaSupervisorD}{}}{}{\\&\@ifaSupervisorD\vspace*{.1em}\ifthenelse{\equal{\@ifaSupervisorE}{}}{}{\\&\@ifaSupervisorE\vspace*{.1em}}}}}}\vspace*{.6em}\\%
+          }
+          Tag der Einreichung: & \@ifaDayOfSubmission\vspace*{.7em}\\
+          \ifthenelse{\equal{\@ifaDissertationStage}{Gutachten}}{}{%
+            \ifthenelse{\equal{\@ifaDayOfDefense}{}}{%
+              \ClassWarning{ifathesis}{%
+                Kein Tag der Verteidigung angegeben. Dies ist fuer die Pflichtexemplare der Dissertation unbedingt erforderlich.
+              }% 
+            }{%
+             Tag der Verteidigung: & \@ifaDayOfDefense \\%
+            }%
+          }%
         \end{tabular}
       \end{center}
     }
@@ -464,10 +486,14 @@
       }
       \cleardoublepage
     }{
+      % no german abstract found
       \ifthenelse{\equal{\@ifaThesis}{Dissertation}}{
-        \ClassWarning{ifathesis}{
-          Konnte die deutsche Kurzfassung nicht finden. Diese ist fuer die finale Version der Dissertation unbedingt
-          erforderlich. Fuer die Gutachter-Version kann diese Warnung ignoriert werden. } 
+        \ifthenelse{\equal{\@ifaDissertationStage}{Gutachten}}{}{%
+          \ClassWarning{ifathesis}{%
+            Konnte die deutsche Kurzfassung nicht finden. Diese ist fuer die Pflichtexemplare der Dissertation unbedingt
+            erforderlich.
+          } 
+        }
       }{
         \ClassWarning{ifathesis}{
           Konnte die deutsche Kurzfassung nicht finden. Diese ist fuer Arbeiten am Institut fuer 
@@ -509,10 +535,14 @@
       }
       \cleardoublepage
     }{
+      % no english abstract found
       \ifthenelse{\equal{\@ifaThesis}{Dissertation}}{
-        \ClassWarning{ifathesis}{
-          Konnte die englische Kurzfassung nicht finden. Diese ist fuer die finale Version der Dissertation unbedingt
-          erforderlich. Fuer die Gutachter-Version kann diese Warnung ignoriert werden. } 
+        \ifthenelse{\equal{\@ifaDissertationStage}{Gutachten}}{}{%
+          \ClassWarning{ifathesis}{%
+            Konnte die englische Kurzfassung nicht finden. Diese ist fuer die Pflichtexemplare der Dissertation unbedingt
+            erforderlich. 
+          }
+        }
       }{
         \ClassWarning{ifathesis}{
           Konnte die englische Kurzfassung nicht finden. Diese ist fuer Arbeiten am Institut fuer 
