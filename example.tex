@@ -25,11 +25,16 @@
   listoflistings, % includes list of listings
   abbrevations,   % includes index of symbols and abbrevations
   bibIfa,         % citation style (IfA standard), alternatives: bibNumeric, bibHarvard
-  biber,        % bibliography backend, alternatives: bibtex, bibtex8, biber
-  langDE          % define the language (default: langDE)
+  biber,          % bibliography backend, alternatives: bibtex, bibtex8, biber
+  langDE,         % define the language (default: langDE)
+%  noIfaLogo      % prevents the 'IfA' logo from being inculded in the header for the title page and abstract
 ]{ifathesis}
 
 \ifaThesis{Diplomarbeit}
+
+% Im Falle einer Dissertation wird mit diesem Schalter der die Phase der Arbeit ('Gutachten' vs. 'Pflichtexemplare') festgelegt
+% \ifaDissertationStage{Gutachten}
+
 \ifaAuthor{Heinrich Grabow}
 \ifaAuthorBirthday{20.02.1980}
 \ifaAuthorBirthplace{Lutherstadt Eisleben}

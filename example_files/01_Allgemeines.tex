@@ -28,7 +28,8 @@ Die Vorlage \verb-ifathesis- ist eine fertige \LaTeX-Klasse, die die Richtlinie 
 \begin{compactitem}
   \item \verb-ifathesis.cls-
   \item \verb-packages.tex-
-  \item \verb-kopfzeile.{pdf, eps}-
+  \item \verb-TU_Logo_SW.pdf-
+  \item \verb-IfA_Logo_SW.pdf-
   \item \verb-nomencl.cfg-
 \end{compactitem}
 Alternativ können diese Dateien dem \LaTeX-Paketbaum hinzugefügt werden. Dann steht die Vorlage stets zur Verfügung. Die dafür notwendigen Schritte sind allerdings von der verwendeten \LaTeX-Distribution sowie vom Betriebssystem abhängig, daher wird an dieser Stelle auf eine Internetrecherche verwiesen: \href{http://www.google.de/search?sourceid=chrome&ie=UTF-8&q=latex+install+packages}{z.B. über Google.}
@@ -66,6 +67,7 @@ Zur Verfügung steht die Dokumentenklasse \verb-ifathesis- mit folgenden Optione
   Zitate bzw. für das Literaturverzeichnis
   \item[bibtex | bibtex8 | biber] Festlegung des Bibliography"=Backends für das Paket \emph{biblatex} (relevant für das Format der verwendeten \texttt{*.bib}-Datei). Für Eigenheiten sei an dieser Stelle auf die \href{https://www.ctan.org/pkg/biblatex?lang=de}{Dokumentation} des \emph{biblatex}-Pakets verwiesen.
   \item[langDE | langEN] Festlegung der Sprache (wichtig für Beschriftungen, Silbentrennung etc.)
+  \item[noIfaLogo] Verhindert die Einbindung des IfA"=Logos in die Kopfzeile von Titelseite und Abstract
 \end{description}
 
 
@@ -74,6 +76,7 @@ Zur Verfügung steht die Dokumentenklasse \verb-ifathesis- mit folgenden Optione
 
 \begin{description}
   \item[ifaThesis] Art der Arbeit (gültige Werte \emph{Dissertation}, \emph{Diplomarbeit}, \emph{Masterarbeit}, \emph{Studienarbeit}, \emph{Final Project}, \emph{Bachelorarbeit}, \emph{Forschungspraktikum})
+  \item[ifaDissertationStage] Nur bei Dissertationen zur Angabe der Phase der Arbeit (gültige Werte sind \emph{Gutachten} $\rightarrow$ Version für die Gutachter (vor der Verteidigung) und \emph{Pflichtexemplare} $\rightarrow$ Version für die Pflichtexemplare (nach der Verteidigung))
   \item[ifaAuthor] Name des Autors
   \item[ifaAuthorBirthday] Geburtsdatum des Autors (Format: \verb-TT.MM.JJJJ-)
   \item[ifaAuthorBirthplace] Geburtsort des Autors
