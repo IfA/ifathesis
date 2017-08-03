@@ -40,6 +40,9 @@
 \newif\if@isIfaLogo\@isIfaLogotrue
 \DeclareOption{noIfaLogo}{\@isIfaLogofalse}
 
+\newif\if@isAFivePaper\@isAFivePaperfalse
+\DeclareOption{a5paper}{\@isAFivePapertrue}
+
 \newcommand*{\@ifaThesisLanguage}{de}
 \DeclareOption{langDE}{\renewcommand*{\@ifaThesisLanguage}{de}}
 \DeclareOption{langEN}{\renewcommand*{\@ifaThesisLanguage}{en}}
@@ -58,23 +61,46 @@
 
 % Lade Basisklasse der Vorlage
 \PassOptionsToPackage{%
-  paper=a4,           % Papiergröße
-  headinclude=true,   % Gehört Kopfzeile eher zur Seite oder zum Rand?
-  footinclude=false,  % Gehört Fußzeile eher zur Seite oder zum Rand?
-  pagesize            % Schreibt die Seitengröße ins Seitenregister,
-                      % sodass DVI- und PDF-Seiten die richtige Größe haben.
+  \if@isAFivePaper paper=a5\else paper=a4\fi, % Papiergröße
+  headinclude=true,                           % Gehört Kopfzeile eher zur Seite oder zum Rand?
+  footinclude=false,                          % Gehört Fußzeile eher zur Seite oder zum Rand?
+  pagesize                                    % Schreibt die Seitengröße ins Seitenregister,
+                                              % sodass DVI- und PDF-Seiten die richtige Größe haben.
 }{typearea}
 
 \PassOptionsToPackage{svgnames}{xcolor}  % Namensraum für xcolor Paket
       
 \PassOptionsToPackage{fleqn}{amsmath}
 
+% Grundschriftgröße
+\newcommand{\FONT}{
+  \if@isAFivePaper 9pt\else 12pt\fi
+}
+
+% Binderandgröße
+\newcommand{\BCOR}{%                                        
+  \if@isReadyForPrint%    
+    \if@isAFivePaper 10mm\else 15mm\fi                                                                
+  \else%                                                    
+    0mm      
+  \fi
+}
+
+% Teil der Seite, der als Seitenrand berücksichtigt wird (auch =calc mgl.):
+% Z.B. DIV=10: Randbreite Oben und Mitte 1/10, Unten und Außen 2/10 der Seite.
+% Regel: 60 bis 70 Zeichen pro Zeile, weniger ist besser, niemals mehr als 80!
+\newcommand{\DIV}{%                                         
+  \if@isReadyForPrint%                                      
+    \if@isAFivePaper 13\else 10\fi                          
+  \else%                                                    
+    \if@isAFivePaper 11\else 9\fi         
+  \fi
+}
+
 \LoadClass[
-  fontsize=12pt,                                            % Grundschriftgröße
-  \if@isReadyForPrint  BCOR=15mm\else BCOR=0mm\fi,          % Binderandgröße
-  \if@isReadyForPrint  DIV=10\else DIV=9\fi,                % Teil der Seite, der als Seitenrand berücksichtigt wird (auch =calc mgl.):
-                                                            % Z.B. DIV=10: Randbreite Oben und Mitte 1/10, Unten und Außen 2/10 der Seite.
-                                                            % Regel: 60 bis 70 Zeichen pro Zeile, weniger ist besser, niemals mehr als 80!
+  fontsize=\FONT,                                           % Grundschriftgröße
+  BCOR=\BCOR,                                               % Binderandgröße
+  DIV=\DIV,                                                 % Seitenaufteilung
   captions=tableheading,                                    % Tabellenabstände für TabellenÜBERschriften optimieren
   \if@isReadyForPrint  twoside=true\else twoside=false\fi,  % Dokument zweiseitig?
   headings=small,                                           % Relative Größe der Überschriften, small ist besser lesbar und erzeugt weniger Zweizeiligs
@@ -152,8 +178,8 @@
 \newcommand*{\ifaCV}[1]{\renewcommand*{\@ifaCV}{#1}}
 
 % Schriftspezifische Definitionen
-\DeclareFixedFont{\univLightIX}{T1}{aun}{l}{n}{9}
-\DeclareFixedFont{\univBoldIX}{T1}{aun}{b}{n}{9}
+\DeclareFixedFont{\univLightIX}{T1}{aun}{l}{n}{\if@isAFivePaper 7\else 9\fi}
+\DeclareFixedFont{\univBoldIX}{T1}{aun}{b}{n}{\if@isAFivePaper 7\else 9\fi}
 
 %-------------------------------------------------------------------------
 \RequirePackage{ifthen}
@@ -224,17 +250,17 @@
 %-------------------------------------------------------------------------
 \newcommand{\@ifaPrintHeader}{%
   \begin{center}
-    \vspace*{-26.63mm} % height of the logo (16.73mm) + skip below the logo (3.75mm) + one line (approx. 6.15mm)
+    \vspace*{\if@isAFivePaper -18.83mm\else -26.63mm\fi} % height of the logo (16.73mm) + skip below the logo (3.75mm) + one line (approx. 6.15mm)
     \begin{tabular*}{\textwidth}[b]{@{}p{\textwidth}@{}}%@{\extracolsep\fill}
       % TUD-Logo
-        \hspace*{-19mm}\includegraphics[height=16.73mm]{TU_Logo_SW}%  width=57mm
+        \hspace*{\if@isAFivePaper -13.44mm\else -19mm\fi}\includegraphics[height=\if@isAFivePaper 11.83mm\else 16.73mm\fi]{TU_Logo_SW}%  width=57mm
         \hfill
       % IfA-Logo
-        \if@isIfaLogo   \includegraphics[height=16.73mm]{IfA_Logo_SW}\fi
-        \\[3.75mm]
+        \if@isIfaLogo   \includegraphics[height=\if@isAFivePaper 11.83mm\else 16.73mm\fi]{IfA_Logo_SW}\fi
+        \\[\if@isAFivePaper 2.65mm\else 3.75mm\fi]
         \hline%
       % Einrichtungsname
-        \rule[-1.2mm]{0mm}{13pt}\univBoldIX Fakult{\"a}t Elektrotechnik und Informationstechnik%
+        \rule[-1.2mm]{0mm}{\if@isAFivePaper 11pt\else 13pt\fi}\univBoldIX Fakult{\"a}t Elektrotechnik und Informationstechnik%
       % Institut
         \ \univLightIX Institut f{\"u}r Automatisierungstechnik%
         \\
@@ -366,6 +392,14 @@
     pdfkeywords={\@ifaKeywords}%,%
   }
 
+  \ifthenelse{\not\equal{\@ifaThesis}{Dissertation}}{%
+    \if@isAFivePaper %
+      \ClassWarning{ifathesis}{%
+        Klassenoption 'a5paper' sollte nur bei Dissertationen gewählt werden. Studienarbeiten, Diplomarbeiten, etc. sind grundsätzliche auf A4 zu drucken!
+      }%
+    \fi%
+  }
+
   \frontmatter
 
 % =================
@@ -416,22 +450,22 @@
         \vfill
         \setstretch{1.7}
         % The german title always needs to be the 'main' title (disregarding the actual language of the dissertation). 
-        {\Large {\bfseries\@ifaTitleDE}}
+        {\if@isAFivePaper \LARGE\else \Large\fi {\bfseries\@ifaTitleDE}}
         % However, if the language of the dissertation is english, we also add the english title as 'secondary' title.
          \IfStrEq{\@ifaThesisLanguage}{de}{}{%
           \\[5mm]
-          {\Large \@ifaTitleEN}
+          {\if@isAFivePaper \LARGE\else \Large\fi \@ifaTitleEN}
         }
         \\[5mm]
         \setstretch{1}
         \vfill
-        {\large\bfseries\@ifaAuthor}
+        {\if@isAFivePaper \LARGE\else \Large\fi\bfseries\@ifaAuthor}
         \vfill
         \vfill
         \ifthenelse{\equal{\@ifaDissertationStage}{Pflichtexemplare}}{von }{}der Fakultät Elektrotechnik und Informationstechnik\\
         der Technischen Universität Dresden\\[5mm]
         zur Erlangung des akademischen Grades eines\\[2mm]
-        {\Large{\bfseries Doktoringenieurs}\\[0.2cm](Dr.-Ing.)}\\[5mm]
+        {\if@isAFivePaper \LARGE\else \Large\fi{\bfseries Doktoringenieurs}\\[0.2cm](Dr.-Ing.)}\\[5mm]
         \ifthenelse{\equal{\@ifaDissertationStage}{Pflichtexemplare}}{genehmigte }{vorgelegte }Dissertation\\[5mm]
         ------ \ding{91} ------
         \vfill
