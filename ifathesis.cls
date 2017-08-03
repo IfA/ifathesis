@@ -415,17 +415,24 @@
         \vfill
         \vfill
         \setstretch{1.7}
-        {\Large {\bfseries\@ifaTitleDE}}\\[5mm]
-        {\Large \@ifaTitleEN}\\
+        % The german title always needs to be the 'main' title (disregarding the actual language of the dissertation). 
+        {\Large {\bfseries\@ifaTitleDE}}
+        % However, if the language of the dissertation is english, we also add the english title as 'secondary' title.
+         \IfStrEq{\@ifaThesisLanguage}{de}{}{%
+          \\[5mm]
+          {\Large \@ifaTitleEN}
+        }
+        \\[5mm]
         \setstretch{1}
         \vfill
         {\large\bfseries\@ifaAuthor}
         \vfill
-        Der Fakultät Elektrotechnik und Informationstechnik\\
+        \vfill
+        \ifthenelse{\equal{\@ifaDissertationStage}{Pflichtexemplare}}{von }{}der Fakultät Elektrotechnik und Informationstechnik\\
         der Technischen Universität Dresden\\[5mm]
         zur Erlangung des akademischen Grades eines\\[2mm]
         {\Large{\bfseries Doktoringenieurs}\\[0.2cm](Dr.-Ing.)}\\[5mm]
-        vorgelegte Dissertation\\[5mm]
+        \ifthenelse{\equal{\@ifaDissertationStage}{Pflichtexemplare}}{genehmigte }{vorgelegte }Dissertation\\[5mm]
         ------ \ding{91} ------
         \vfill
         \begin{tabular}{rl}
