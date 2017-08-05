@@ -106,9 +106,15 @@
   headings=small,                                           % Relative Größe der Überschriften, small ist besser lesbar und erzeugt weniger Zweizeiligs
   fleqn,                                                    % Formeln linksbündig
   bibliography=totoc,                                       % Literaturverzeichnis im Inhaltsverzeichnis referenziert
-  numbers=noenddot,                                         % Punkte nach Abschnittsnummern? (Weglassen = Automatik)
+  numbers=noenddot                                         % Punkte nach Abschnittsnummern? (Weglassen = Automatik)
                                                             % Nach Duden im vorliegenden Bsp. falsch, da auch Buchstaben in Gliederung (Anhang), sieht aber besser aus.
 ]{scrbook}                                                  % Basisklasse der Vorlage: Koma-Skrip Klasse analog zur book-Klasse.
+
+\addtokomafont{chapterprefix}{\mdseries}
+\if@isAFivePaper
+  \setkomafont{chapterprefix}{\huge}
+  \setkomafont{chapter}{\Huge}
+\fi
 
 % ==============================================================
 % = Definiere mögliche Parameter zur Konfiguration der Vorlage =
@@ -398,6 +404,10 @@
         Klassenoption 'a5paper' sollte nur bei Dissertationen gewählt werden. Studienarbeiten, Diplomarbeiten, etc. sind grundsätzliche auf A4 zu drucken!
       }%
     \fi%
+  }{
+    % Show chapter prefixes if in 'Pflichtexemplare' mode:
+    % % 'Kapitel 1\nKapitelname' instead of '1. Kapitelname'?
+    \ifthenelse{\equal{\@ifaDissertationStage}{Pflichtexemplare}}{\KOMAoption{chapterprefix}{true}}{}
   }
 
   \frontmatter
@@ -459,7 +469,7 @@
         \\[5mm]
         \setstretch{1}
         \vfill
-        {\if@isAFivePaper \LARGE\else \Large\fi\bfseries\@ifaAuthor}
+        {\if@isAFivePaper \Large\else \large\fi\bfseries\@ifaAuthor}
         \vfill
         \vfill
         \ifthenelse{\equal{\@ifaDissertationStage}{Pflichtexemplare}}{von }{}der Fakultät Elektrotechnik und Informationstechnik\\
