@@ -262,7 +262,9 @@
         \hspace*{\if@isAFivePaper -13.44mm\else -19mm\fi}\includegraphics[height=\if@isAFivePaper 11.83mm\else 16.73mm\fi]{TU_Logo_SW}%  width=57mm
         \hfill
       % IfA-Logo
-        \if@isIfaLogo   \includegraphics[height=\if@isAFivePaper 11.83mm\else 16.73mm\fi]{IfA_Logo_SW}\fi
+        \ifthenelse{\not\equal{\@ifaThesis}{Dissertation}}{ % According to Frau Wermuth, there must only be the TU logo on the title page of a dissertation
+          \if@isIfaLogo   \includegraphics[height=\if@isAFivePaper 11.83mm\else 16.73mm\fi]{IfA_Logo_SW}\fi
+        }{}
         \\[\if@isAFivePaper 2.65mm\else 3.75mm\fi]
         \hline%
       % Einrichtungsname
