@@ -31,56 +31,49 @@
 %  a5paper        % switches to 'A5' paper size (this may only be used for Dissertations!!!)
 ]{ifathesis}
 
-\ifaThesis{Diplomarbeit}
+%***********************************
+% General commands
+%***********************************
 
-% Im Falle einer Dissertation wird mit diesem Schalter der die Phase der Arbeit ('Gutachten' vs. 'Pflichtexemplare') festgelegt
-% \ifaDissertationStage{Gutachten}
-
-\ifaAuthor{Heinrich Grabow}
-\ifaAuthorBirthday{20.02.1980}
-\ifaAuthorBirthplace{Lutherstadt Eisleben}
-\ifaAuthorCourse{Mechatronik}
-\ifaAuthorYearOfMatriculation{2002}
+\ifaThesis{Diplomarbeit}                            % type of the thesis                
+\ifaAuthor{Heinrich Grabow}                         % author of the thesis
+\ifaAuthorBirthday{20.02.1980}                      % date of birth
+\ifaAuthorBirthplace{Lutherstadt Eisleben}          % place of birth
+\ifaAuthorCourse{Mechatronik}                       % study program
+\ifaAuthorYearOfMatriculation{2002}                 % year of immatriculation
 \ifaKeywords{Diplomarbeit, Web, SPS, Security, XML} % Keywords included in pdf-file. Could be found e.g. by Windows file search.
-\ifaTitleDE{Teleautomation, Chancen und Risiken}
-\ifaTitleEN{Teleautomation, Chances and Risks}
+\ifaTitleDE{Teleautomation, Chancen und Risiken}    % geman title of the thesis
+\ifaTitleEN{Teleautomation, Chances and Risks}      % english title of the thesis
 
-% Im Falle einer Dissertation wird mit diesem Schalter der Vorsitzende der Prüfungskommission angegeben
-% \ifaChair{}
-
-% Im Falle einer Dissertation werden mit diesen Schaltern die Gutachter angegeben.
+% supervisors of the thesis (for dissertations, this can be used to indicate the reviewers)
 \ifaSupervisorA{Dipl.-Ing. Stefan Hennig}
 \ifaSupervisorB{Dipl.-Ing. Arne Sonnenburg}
 \ifaSupervisorC{PD Dr.-Ing. Annerose Braune}
 %\ifaSupervisorD{}
 %\ifaSupervisorE{}
-\ifaProfessor{Prof. Dr. techn. Klaus Janschek}
-\ifaDayOfSubmission{21.03.2009}
-% Im Falle einer Dissertation kann mit diesem Schalter falls gewünscht der Tag der Verteidigung angegeben werden
-% \ifaDayOfDefense{}
-\ifaTopicDescriptionPDF{example_files/00_Aufgabenstellung.pdf}
-\ifaAppendix{example_files/appendix}
-\ifaAbstractDE{example_files/00_abstract_de}
-\ifaAbstractEN{example_files/00_abstract_en__invalid}  % HINWEIS: Der Dateiname der englischen Kurzfassung ist absichtlich
-                                                       % ungültig gemacht worden, um zu demonstrieren, dass die Vorlage
-                                                       % auch ohne Kurzfassungen genutzt werden kann. Dazu einfach einen
-                                                       % ungültigen Dateinamen angeben oder den Befehl ganz weglassen.
-                                                       % 
-                                                       % ACHTUNG: Im Institut für Automatisierungstechnik sind die 
-                                                       % Kurzfassungen unbedingt erforderlich. Eine Arbeit ohne 
-                                                       % Kurzfassung wird nicht angenommen, da sie nicht den Richtlinien
-                                                       % des Instituts entspricht.
-\ifaAbbrev{example_files/00_abbrev}
-%\ifaAcknowledegments{}
-%\ifaIncludeBeforeTitlePage{}
-%\ifaIncludeAfterTitlePage{}
+
+\ifaProfessor{Prof. Dr. techn. Klaus Janschek}         % supervising professor as indicated on the topic description
+\ifaDayOfSubmission{21.03.2009}                        % the day the thesis is submitted
+\ifaTopicDescriptionPDF{example_files/00_Aufgabenstellung.pdf} % a PDF file of the topic description
+\ifaAppendix{example_files/appendix}                   % a tex file containing the appendix for the thesis
+\ifaAbstractDE{example_files/00_abstract_de}           % a tex file containing the german abstract
+\ifaAbstractEN{example_files/00_abstract_en__invalid}  % a tex file containing the german abstract
+%\ifaAcknowledegments{}                                % the acknowlegements for the thesis (usually only used for dissertation)
 
 % Literaturverzeichnis angeben
-\bibliography{bibliography}
+\bibliography{bibliography}                            % a bib file containing the reference sources
+\ifaBibliographyBeforeAppendix{false}	                 % print the bibliography before or after the appendix ('true' or 'false')
+\ifaAdditionalContributors{}                           % additional contributors to be included in the statement of authorship
 
-% Soll das Literaturverzeichnis vor oder nach dem Anhang aufgeführt werden?
-\ifaBibliographyBeforeAppendix{false}	% Mögliche Optionen: true, false
-\ifaAdditionalContributors{}
+%***********************************
+% Special commands for dissertations
+%***********************************
+
+% \ifaDissertationStage{Gutachten}           % stage of the dissertation ('Gutachten' or 'Pflichtexemplare')
+% \ifaChair{}                                % chair of the phd board
+% \ifaDayOfDefense{}                         % the day the dissertation was defended (only used in 'Pflichtexemplare' mode)
+%\ifaIncludeBeforeTitlePage{}                % include additional content before the title page (e.g. bastard title or impressum)
+%\ifaIncludeAfterTitlePage{}                 % include additional content between title page and abstract (e.g. impressum or dedication)
 
 \begin{document} 
 \input{example_files/00_Vorab.tex}

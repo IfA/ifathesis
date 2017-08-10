@@ -78,7 +78,6 @@ Zur Verfügung steht die Dokumentenklasse \verb-ifathesis- mit folgenden Optione
 
 \begin{description}
   \item[ifaThesis] Art der Arbeit (gültige Werte \emph{Dissertation}, \emph{Diplomarbeit}, \emph{Masterarbeit}, \emph{Studienarbeit}, \emph{Final Project}, \emph{Bachelorarbeit}, \emph{Forschungspraktikum})
-  \item[ifaDissertationStage] Nur bei Dissertationen zur Angabe der Phase der Arbeit (gültige Werte sind \emph{Gutachten} $\rightarrow$ Version für die Gutachter (vor der Verteidigung) und \emph{Pflichtexemplare} $\rightarrow$ Version für die Pflichtexemplare (nach der Verteidigung))
   \item[ifaAuthor] Name des Autors
   \item[ifaAuthorBirthday] Geburtsdatum des Autors (Format: \verb-TT.MM.JJJJ-)
   \item[ifaAuthorBirthplace] Geburtsort des Autors
@@ -91,11 +90,9 @@ Zur Verfügung steht die Dokumentenklasse \verb-ifathesis- mit folgenden Optione
   \item[ifaAbstractEN] Dateiname der englischsprachigen Kurzfassung
   \item[ifaAbbrev] Dateiname des Abkürzungsverzeichnisses
   \item[ifaAcknowledgements] Dateiname der Danksagung
-  \item[ifaChair] Vorsitzender der Prüfungskommission (nur für Dissertationen)
   \item[ifaSupervisor{\emph X}] mit $X=A\dots E$, Angabe von bis zu fünf Betreuern (A\,--\,E).
   \item[ifaProfessor] Betreuender Hochschullehrer
   \item[ifaDayOfSubmission] Tag der Einreichung
-  \item[ifaDayOfDefense] Tag der Verteidigung (nur für Dissertationen)
   \item[ifaTopicDescriptionPDF] Dateiname der Aufgabenstellung (als PDF). Es besteht damit die Möglichkeit, die Aufgabenstellung einzucannen und in die PDF-Version der Arbeit zu integrieren. Wird der Befehl weggelassen oder es ist ein ungültiger Dateiname angegeben, dann wird die Aufgabenstellung einfach ignoriert. \textcolor{red}{ACHTUNG: Am Institut für Automatisierungstechnik muss ein einzureichendes Exemplar der Arbeit die Aufgabenstellung im Original enthalten. Ansonsten führt dies zur Nichtannahme der Arbeit.}
   \item[ifaAppendix] Dateiname der Hauptdatei der Anhänge (vollständige Pfadangabe ausgehend von der Dokumentenwurzel erforderlich)
   \item[bibliography] Name der Bibliographiedatei (vollständige Pfadangabe
@@ -104,6 +101,16 @@ Zur Verfügung steht die Dokumentenklasse \verb-ifathesis- mit folgenden Optione
   \item[ifaAdditionalContributors] Standardmäßig werden bei der
   Selbstständigkeitserklärung die Betreuer als beitragende Personen angegeben.
   Sollen zusätzliche Personen aufgeführt werden, können diese hier definiert werden.
+\end{description}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Weitere Parameter ausschließlich für Dissertationen}
+
+\begin{description}
+  \item[ifaDissertationStage] Nur bei Dissertationen zur Angabe der Phase der Arbeit (gültige Werte sind \emph{Gutachten} $\rightarrow$ Version für die Gutachter (vor der Verteidigung) und \emph{Pflichtexemplare} $\rightarrow$ Version für die Pflichtexemplare (nach der Verteidigung))
+  \item[ifaChair] Vorsitzender der Prüfungskommission (nur für Dissertationen)
+  \item[ifaDayOfDefense] Tag der Verteidigung (nur für Dissertationen)
   \item[ifaIncludeBeforeTitlePage] Dateiname für zusätzlichen Inhalt, der vor der Titelseite ausgegeben werden soll (nur bei Dissertationen; z.\,B. für Schmutztitel, Impressum, etc.)
   \item[ifaIncludeAfterTitlePage] Dateiname für zusätzlichen Inhalt, der zwischen Titelseite und Abstract ausgegeben werden soll (nur bei Dissertationen; z.\,B. für Impressum, Widmung, etc.)
 \end{description}
