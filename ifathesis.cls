@@ -151,6 +151,8 @@
 \newcommand*{\@ifaBibliographyBeforeAppendix}{true}
 \newcommand*{\@ifaAdditionalContributors}{}
 \newcommand*{\@ifaCV}{cv}
+\newcommand*{\@ifaIncludeBeforeTitlePage}{} % Can be used for 'Dissertations' to include additional content before the title page (e.g. for a bastard title or an impressum)
+\newcommand*{\@ifaIncludeAfterTitlePage}{} % Can be used for 'Dissertations' to include additional content between the title page and abstract (e.g. for an impressum)
 
 \newcommand*{\ifaThesis}[1]{\renewcommand*{\@ifaThesis}{#1}}
 \newcommand*{\ifaDissertationStage}[1]{\renewcommand*{\@ifaDissertationStage}{#1}}
@@ -182,6 +184,8 @@
 \newcommand*{\ifaBibliographyBeforeAppendix}[1]{\renewcommand*{\@ifaBibliographyBeforeAppendix}{#1}}
 \newcommand*{\ifaAdditionalContributors}[1]{\renewcommand*{\@ifaAdditionalContributors}{#1}}
 \newcommand*{\ifaCV}[1]{\renewcommand*{\@ifaCV}{#1}}
+\newcommand*{\ifaIncludeBeforeTitlePage}[1]{\renewcommand*{\@ifaIncludeBeforeTitlePage}{#1}}
+\newcommand*{\ifaIncludeAfterTitlePage}[1]{\renewcommand*{\@ifaIncludeAfterTitlePage}{#1}}
 
 % Schriftspezifische Definitionen
 \DeclareFixedFont{\univLightIX}{T1}{aun}{l}{n}{\if@isAFivePaper 7\else 9\fi}
@@ -262,7 +266,9 @@
         \hspace*{\if@isAFivePaper -13.44mm\else -19mm\fi}\includegraphics[height=\if@isAFivePaper 11.83mm\else 16.73mm\fi]{TU_Logo_SW}%  width=57mm
         \hfill
       % IfA-Logo
-        \if@isIfaLogo   \includegraphics[height=\if@isAFivePaper 11.83mm\else 16.73mm\fi]{IfA_Logo_SW}\fi
+        \ifthenelse{\not\equal{\@ifaThesis}{Dissertation}}{ % According to Frau Wermuth, there must only be the TU logo on the title page of a dissertation
+          \if@isIfaLogo   \includegraphics[height=\if@isAFivePaper 11.83mm\else 16.73mm\fi]{IfA_Logo_SW}\fi
+        }{}
         \\[\if@isAFivePaper 2.65mm\else 3.75mm\fi]
         \hline%
       % Einrichtungsname
@@ -412,6 +418,20 @@
 
   \frontmatter
 
+% ================================================
+% = Bastard title, etc. (only for dissertations) =
+% ================= ==============================
+
+  \ifthenelse{\equal{\@ifaThesis}{Dissertation}}{
+    \ifthenelse{\equal{\@ifaDissertationStage}{Pflichtexemplare}}{
+      \IfFileExists{\@ifaIncludeBeforeTitlePage}{
+        \pagestyle{empty}
+        \input{\@ifaIncludeBeforeTitlePage}
+        \cleardoublepage
+      }{}
+    }{}
+  }{}
+
 % =================
 % = Titelseite(n) =
 % =================  
@@ -509,6 +529,20 @@
       \end{center}
     }
   \end{titlepage}
+
+% ================================================
+% = Impressum, etc. (only for dissertations) =
+% ================= ==============================
+
+  \ifthenelse{\equal{\@ifaThesis}{Dissertation}}{
+    \ifthenelse{\equal{\@ifaDissertationStage}{Pflichtexemplare}}{
+      \clearpage
+      \IfFileExists{\@ifaIncludeAfterTitlePage}{
+        \pagestyle{empty}
+        \input{\@ifaIncludeAfterTitlePage}
+      }{}
+    }{}
+  }{}
 
   \cleardoublepage
 
