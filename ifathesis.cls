@@ -153,6 +153,7 @@
 \newcommand*{\@ifaCV}{cv}
 \newcommand*{\@ifaIncludeBeforeTitlePage}{} % Can be used for 'Dissertations' to include additional content before the title page (e.g. for a bastard title or an impressum)
 \newcommand*{\@ifaIncludeAfterTitlePage}{} % Can be used for 'Dissertations' to include additional content between the title page and abstract (e.g. for an impressum)
+\newcommand*{\@ifaIncludeAtEndOfDocument}{} % Can be used for 'Dissertations' to include additional content at the end of the document (e.g. to achieve an even number of pages)
 
 \newcommand*{\ifaThesis}[1]{\renewcommand*{\@ifaThesis}{#1}}
 \newcommand*{\ifaDissertationStage}[1]{\renewcommand*{\@ifaDissertationStage}{#1}}
@@ -186,6 +187,7 @@
 \newcommand*{\ifaCV}[1]{\renewcommand*{\@ifaCV}{#1}}
 \newcommand*{\ifaIncludeBeforeTitlePage}[1]{\renewcommand*{\@ifaIncludeBeforeTitlePage}{#1}}
 \newcommand*{\ifaIncludeAfterTitlePage}[1]{\renewcommand*{\@ifaIncludeAfterTitlePage}{#1}}
+\newcommand*{\ifaIncludeAtEndOfDocument}[1]{\renewcommand*{\@ifaIncludeAtEndOfDocument}{#1}}
 
 % Schriftspezifische Definitionen
 \DeclareFixedFont{\univLightIX}{T1}{aun}{l}{n}{\if@isAFivePaper 7\else 9\fi}
@@ -800,5 +802,19 @@
       \includepdf{\@ifaCV}
     }{}
   }
+
+% ================================================
+% = Final content at the end of the file         =
+% ================= ==============================
+
+  \ifthenelse{\equal{\@ifaThesis}{Dissertation}}{
+    \ifthenelse{\equal{\@ifaDissertationStage}{Pflichtexemplare}}{
+      \clearpage
+      \IfFileExists{\@ifaIncludeAtEndOfDocument}{
+        \pagestyle{empty}
+        \input{\@ifaIncludeAtEndOfDocument}
+      }{}
+    }{}
+  }{}
   
 }%EOF
