@@ -568,6 +568,13 @@
         \ClassWarning{ifathesis}{Es wurde keine Aufgabenstellung angegeben.}
       }{}
     }
+
+    % Danksagung
+    \IfFileExists{\@ifaAcknowledgements}{
+      \chapter*{\IfStrEq{\@ifaThesisLanguage}{de}{Danksagung}{Acknowledgements}}
+      \input{\@ifaAcknowledgements}
+      \cleardoublepage
+    }{}
       
     % Kurzfassungen
     \IfFileExists{\@ifaAbstractDE}{
@@ -619,7 +626,6 @@
       }
     }
 
-
     % Englische Kurzfassung
     \IfFileExists{\@ifaAbstractEN}{
       \ifthenelse{\not\equal{\@ifaThesis}{Dissertation}}{
@@ -665,13 +671,6 @@
         }
       }
     }
-    
-    % Danksagung
-    \IfFileExists{\@ifaAcknowledgements}{
-      \chapter*{\IfStrEq{\@ifaThesisLanguage}{de}{Danksagung}{Acknowledgements}}
-      \input{\@ifaAcknowledgements}
-      \cleardoublepage
-    }{}
     
     % Verzeichnisse
     \ifthenelse{\not\equal{\@ifaThesis}{Dissertation}}{
