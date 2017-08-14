@@ -734,7 +734,7 @@
     \begin{center}                          
       \thispagestyle{empty}
       \vspace*{\fill}
-    {\sffamily\bfseries\huge\appendixpagename}
+    {\sffamily\bfseries\if@isAFivePaper\Huge\else\huge\fi\appendixpagename}
     \vspace{\fill}
       \cleardoublepage
     \end{center}
