@@ -35,15 +35,21 @@
 % General commands
 %***********************************
 
-\ifaThesis{Diplomarbeit}                            % type of the thesis                
-\ifaAuthor{Heinrich Grabow}                         % author of the thesis
-\ifaAuthorBirthday{20.02.1980}                      % date of birth
-\ifaAuthorBirthplace{Lutherstadt Eisleben}          % place of birth
-\ifaAuthorCourse{Mechatronik}                       % study program
-\ifaAuthorYearOfMatriculation{2002}                 % year of immatriculation
-\ifaKeywords{Diplomarbeit, Web, SPS, Security, XML} % Keywords included in pdf-file. Could be found e.g. by Windows file search.
-\ifaTitleDE{Teleautomation, Chancen und Risiken}    % geman title of the thesis
-\ifaTitleEN{Teleautomation, Chances and Risks}      % english title of the thesis
+\ifaThesis{Diplomarbeit}                               % type of the thesis                
+\ifaAuthor{Heinrich Grabow}                            % author of the thesis
+\ifaAuthorBirthday{20.02.1980}                         % date of birth
+\ifaAuthorBirthplace{Lutherstadt Eisleben}             % place of birth
+\ifaAuthorCourse{Mechatronik}                          % study program
+\ifaAuthorYearOfMatriculation{2002}                    % year of immatriculation
+\ifaKeywords{Diplomarbeit, Web, SPS, Security, XML}    % Keywords included in pdf-file. Could be found e.g. by Windows file search.
+\ifaTitleDE{Teleautomation, Chancen und Risiken}       % geman title of the thesis
+\ifaTitleEN{Teleautomation, Chances and Risks}         % english title of the thesis
+\ifaAbstractDE{example_files/00_abstract_de}           % a tex file containing the german abstract
+\ifaAbstractEN{example_files/00_abstract_en__invalid}  % a tex file containing the german abstract
+%\ifaAbbrev{}                                          % a tex file containing the various abbreviations to include into the list of abbreviations (alternatively,
+%\ifaUserListings{}                                    % a tex file containing additional listings to be printed (besides list of figures, tables, and/or listings)
+%\ifaAcknowledegments{}                                % the acknowlegements for the thesis (usually only used for dissertation)
+                                                       % these may also be defined in the text where they are first used)
 
 % supervisors of the thesis (for dissertations, this can be used to indicate the reviewers)
 \ifaSupervisorA{Dipl.-Ing. Stefan Hennig}
@@ -56,12 +62,6 @@
 \ifaDayOfSubmission{21.03.2009}                        % the day the thesis is submitted
 \ifaTopicDescriptionPDF{example_files/00_Aufgabenstellung.pdf} % a PDF file of the topic description
 \ifaAppendix{example_files/appendix}                   % a tex file containing the appendix for the thesis
-\ifaAbstractDE{example_files/00_abstract_de}           % a tex file containing the german abstract
-\ifaAbstractEN{example_files/00_abstract_en__invalid}  % a tex file containing the german abstract
-%\ifaAbbrev{}                                          % a tex file containing the various abbreviations to include into the list of abbreviations (alternatively,
-                                                       % these may also be defined in the text where they are first used)
-%\ifaUserListings{}                                    % a tex file containing additional listings to be printed (besides list of figures, tables, and/or listings)
-%\ifaAcknowledegments{}                                % the acknowlegements for the thesis (usually only used for dissertation)
 
 % Literaturverzeichnis angeben
 \bibliography{bibliography}                            % a bib file containing the reference sources
@@ -72,13 +72,18 @@
 % Special commands for dissertations
 %***********************************
 
-% \ifaDissertationStage{Gutachten}           % stage of the dissertation ('Gutachten' or 'Pflichtexemplare')
-% \ifaChair{}                                % chair of the phd board
-% \ifaDayOfDefense{}                         % the day the dissertation was defended (only used in 'Pflichtexemplare' mode)
-%\ifaIncludeBeforeTitlePage{}                % include additional content before the title page (e.g. bastard title or impressum)
-%\ifaIncludeAfterTitlePage{}                 % include additional content between title page and abstract (e.g. impressum or dedication)
-%\ifaCV{}                                    % include a CV at the end of the document
-%\ifaIncludeAtEndOfDocument{}                % include additional content at the end of the document (e.g. to reach an even number of pages)
+%\ifaDissertationStage{Gutachten}                      % stage of the dissertation ('Gutachten' or 'Pflichtexemplare')
+%\ifaChair{}                                           % chair of the phd board
+%\ifaDayOfDefense{}                                    % the day the dissertation was defended (only used in 'Pflichtexemplare' mode)
+%\ifaIncludeBeforeTitlePage{}                          % include additional content before the title page (e.g. bastard title or impressum)
+%\ifaIncludeAfterTitlePage{}                           % include additional content between title page and abstract (e.g. impressum or dedication)
+%\ifaCV{}                                              % include a CV at the end of the document
+%\ifaIncludeAtEndOfDocument{}                          % include additional content at the end of the document (e.g. to reach an even number of pages)
+
+
+%***********************************
+% The actual content of the thesis
+%***********************************
 
 \begin{document} 
 \input{example_files/00_Vorab.tex}

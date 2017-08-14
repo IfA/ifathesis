@@ -23,7 +23,7 @@
 \label{sec:install}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Die Vorlage \verb-ifathesis- ist eine fertige \LaTeX-Klasse, die die Richtlinie für wissenschaftliche Arbeiten am \emph{Institut für Automatisierungstechnik, Technische Universität Dresden} (IfA) realisiert. Um diese Vorlage zu verwenden müssen die folgenden Dateien lediglich im Wurzelverzeichnis des zu verfassenden \LaTeX-Dokuments liegen:
+Die Vorlage \verb-ifathesis- ist eine fertige \LaTeX-Klasse, die die Richtlinie für wissenschaftliche Arbeiten am \emph{Institut für Automatisierungstechnik, Technische Universität Dresden} (IfA) realisiert. Um diese Vorlage zu verwenden, müssen die folgenden Dateien lediglich im Wurzelverzeichnis des zu verfassenden \LaTeX-Dokuments liegen:
 \nomenclature[ba ]{IfA}{Institut für Automatisierungstechnik}
 \begin{compactitem}
   \item \verb-ifathesis.cls-
@@ -50,7 +50,10 @@ Um die automatische Generierung eines Abkürzungs- und Symbolverzeichnises zu be
 \section{Konfiguration}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Dieser Vorlage liegt ein umfassendes Beispiel bei, welches mit der Vorlage erstellt wurde (siehe \verb-example.tex-).
+Dieser Vorlage liegt ein umfassendes Beispiel bei, welches mit der Vorlage erstellt wurde (siehe \verb-example.tex-) und
+dieses PDF erzeugt. Bevor Sie eigenen Inhalt einfügen oder Anpassungen vornehmen, sollten Sie die Korrektheit Ihres
+\LaTeX"=Setups testen: Stellen Sie dazu sicher, dass sich die Vorlage fehlerfrei übersetzen/bauen lässt und dass das
+resultierende PDF äquivalent zu dieser Datei ist.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -89,7 +92,9 @@ Zur Verfügung steht die Dokumentenklasse \verb-ifathesis- mit folgenden Optione
   \item[ifaAbstractDE] Dateiname der deutschsprachigen Kurzfassung
   \item[ifaAbstractEN] Dateiname der englischsprachigen Kurzfassung
   \item[ifaAbbrev] Dateiname des Abkürzungsverzeichnisses
-  \item[ifaUserListings] Dateiname einer Datei, die zusätzliche Verzeichnisse definiert/ausgibt, die nach dem Abbildungs-, Tabellen- und Quellcodeverzeichnis eingebunden werden sollen
+  \item[ifaUserListings] Dateiname einer Datei, die zusätzliche, selbst definierte Verzeichnisse druckt (z.\,B. ein
+  Definitions"=Verzeichnis). Diese werden dann an der richtigen Stelle, gemäß der \emph{IfA}-Richtlinie, nach dem
+  Abbildungs-, Tabellen- und Quellcodeverzeichnis ausgegeben.
   \item[ifaAcknowledgements] Dateiname der Danksagung
   \item[ifaSupervisor{\emph X}] mit $X=A\dots E$, Angabe von bis zu fünf Betreuern (A\,--\,E).
   \item[ifaProfessor] Betreuender Hochschullehrer
@@ -184,4 +189,4 @@ Lesen Sie auch undbedingt die Dokumentationen der bereits eingebundenen und von 
 \label{sec:WichtigeInformationenZurFormDerArbeit}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Text- und Formelsatz unterliegt typografischen Regeln, die im Allgemeinen nicht besonders bekannt sind. Dennoch ist es wichtig sich an die Konventionen zu halten, damit das erstellte Dokument einem professionellen Anspruch genügt. Die wichtigsten Regeln und Hinweise findet man in wenigen guten Dokumenten zusammengefasst, die (neben weiteren nützlichen .pdf-Dateien) im Unterverzeichnis \verb-docs- der Vorlage zu finden sind. Bitte beachten Sie die die dort aufgestellten Regeln bei der Erstellung Ihrer Arbeit!
+Text- und Formelsatz unterliegt typografischen Regeln, die im Allgemeinen nicht besonders bekannt sind. Dennoch ist es wichtig, sich an die Konventionen zu halten, damit das erstellte Dokument einem professionellen Anspruch genügt. Die wichtigsten Regeln und Hinweise findet man in wenigen guten Dokumenten zusammengefasst, die (neben weiteren nützlichen .pdf-Dateien) im Unterverzeichnis \verb-docs- der Vorlage zu finden sind. Bitte beachten Sie die die dort aufgestellten Regeln bei der Erstellung Ihrer Arbeit!
