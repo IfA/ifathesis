@@ -146,8 +146,8 @@
 \newcommand*{\@ifaAbstractEN}{GoHaigh2}
 \newcommand*{\@ifaReferences}{IPhei0Ox}
 \newcommand*{\@ifaAbbrev}{00_Abbrev}
-\newcommand*{\@ifaUserListings}{user-listings}
-\newcommand*{\@ifaAcknowledgements}{Acknowledgements}
+\newcommand*{\@ifaUserListings}{}
+\newcommand*{\@ifaAcknowledgements}{}
 \newcommand*{\@ifaBibliographyBeforeAppendix}{true}
 \newcommand*{\@ifaAdditionalContributors}{}
 \newcommand*{\@ifaCV}{cv}
