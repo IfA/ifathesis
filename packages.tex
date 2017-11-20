@@ -64,21 +64,6 @@
 % Spalten, Zeilen, etc. realisiert werden können)
 \RequirePackage[table]{xcolor}
 
-% Paket zum setzen von Verweisen im Dokument
-\IfStrEq{\@ifaThesisLanguage}{de}{\PassOptionsToPackage{ngerman}{hyperref}}{}     % necessary for \autoref to work for german and english
-\RequirePackage[
-  pdfpagelabels,
-  plainpages=false,
-  colorlinks=true,
-  pdfdisplaydoctitle=true,  %
-  pdfpagemode=UseOutlines   % Determines how the file is opening:
-                            % UseNone, UseThumbs (show thumbnails), UseOutlines (show bookmarks), FullScreen, UseOC, UseAttachments
-]{hyperref}
-
-%\RequirePackage[draft]{fixme}	% Zum Einfügen von Kommentaren im Text, z.B. Erinnerungen welche Stellen noch bearbeitet werden müssen.
-                                % Mit \fixme{}, \fxnote{}, \fxwarning{}, \fxerror{} können differnzierte Notizen gemacht werden.
-                                % Beim Kompilieren wird eine Zusammenfassung gegeben, wie viele fixme-Notizen noch im Dokument sind.
-
 % Anhänge
 \RequirePackage[titletoc]{appendix}
 
@@ -101,3 +86,18 @@
 \RequirePackage{setspace}
 
 \RequirePackage{pifont}
+
+% Paket zum setzen von Verweisen im Dokument
+\IfStrEq{\@ifaThesisLanguage}{de}{\PassOptionsToPackage{ngerman}{hyperref}}{}     % necessary for \autoref to work for german and english
+\RequirePackage[
+  pdfpagelabels,
+  plainpages=false,
+  colorlinks=true,
+  pdfdisplaydoctitle=true,  %
+  pdfpagemode=UseOutlines   % Determines how the file is opening:
+                            % UseNone, UseThumbs (show thumbnails), UseOutlines (show bookmarks), FullScreen, UseOC, UseAttachments
+]{hyperref}
+
+%\RequirePackage[draft]{fixme}	% Zum Einfügen von Kommentaren im Text, z.B. Erinnerungen welche Stellen noch bearbeitet werden müssen.
+                                % Mit \fixme{}, \fxnote{}, \fxwarning{}, \fxerror{} können differnzierte Notizen gemacht werden.
+                                % Beim Kompilieren wird eine Zusammenfassung gegeben, wie viele fixme-Notizen noch im Dokument sind.
