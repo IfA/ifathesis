@@ -189,9 +189,14 @@
 \newcommand*{\ifaIncludeAfterTitlePage}[1]{\renewcommand*{\@ifaIncludeAfterTitlePage}{#1}}
 \newcommand*{\ifaIncludeAtEndOfDocument}[1]{\renewcommand*{\@ifaIncludeAtEndOfDocument}{#1}}
 
-% Schriftspezifische Definitionen
-\DeclareFixedFont{\univLightIX}{T1}{aun}{l}{n}{\if@isAFivePaper 7\else 9\fi}
-\DeclareFixedFont{\univBoldIX}{T1}{aun}{b}{n}{\if@isAFivePaper 7\else 9\fi}
+% Schriftspezifische Definitionen (wird lediglich für die Kopfzeile verwendet)
+\RequirePackage[default,scale=.95]{opensans} %scales the letter spacing, default refers to the printing style for numbers
+\DeclareFixedFont{\openSansLightIX}{T1}{fos}{l}{n}{\if@isAFivePaper 7\else 9\fi}
+\DeclareFixedFont{\openSansBoldIX}{T1}{fos}{b}{n}{\if@isAFivePaper 7\else 9\fi}
+
+
+% Standardschrift (muss manuell zurückgesetzt werden, nachdem oben das 'OpenSans' package geladen wurde)
+\renewcommand*\familydefault{cmr} % coputer modern roman
 
 %-------------------------------------------------------------------------
 \RequirePackage{ifthen}
@@ -274,9 +279,9 @@
         \\[\if@isAFivePaper 2.65mm\else 3.75mm\fi]
         \hline%
       % Einrichtungsname
-        \rule[-1.2mm]{0mm}{\if@isAFivePaper 11pt\else 13pt\fi}\univBoldIX Fakult{\"a}t Elektrotechnik und Informationstechnik%
+        \rule[-1.2mm]{0mm}{\if@isAFivePaper 11pt\else 13pt\fi}\openSansBoldIX Fakult{\"a}t Elektrotechnik und Informationstechnik%
       % Institut
-        \ \univLightIX Institut f{\"u}r Automatisierungstechnik%
+        \ \openSansLightIX Institut f{\"u}r Automatisierungstechnik%
         \\
         \hline
     \end{tabular*}%
