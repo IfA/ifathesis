@@ -189,10 +189,9 @@
 \newcommand*{\ifaIncludeAfterTitlePage}[1]{\renewcommand*{\@ifaIncludeAfterTitlePage}{#1}}
 \newcommand*{\ifaIncludeAtEndOfDocument}[1]{\renewcommand*{\@ifaIncludeAtEndOfDocument}{#1}}
 
-% Not required any longer in order to enable students that do not own the TUD fonts to use the class file...
-% % Schriftspezifische Definitionen
-% \DeclareFixedFont{\univLightIX}{T1}{aun}{l}{n}{\if@isAFivePaper 7\else 9\fi}
-% \DeclareFixedFont{\univBoldIX}{T1}{aun}{b}{n}{\if@isAFivePaper 7\else 9\fi}
+% Schriftspezifische Definitionen
+\DeclareFixedFont{\univLightIX}{T1}{aun}{l}{n}{\if@isAFivePaper 7\else 9\fi}
+\DeclareFixedFont{\univBoldIX}{T1}{aun}{b}{n}{\if@isAFivePaper 7\else 9\fi}
 
 %-------------------------------------------------------------------------
 \RequirePackage{ifthen}
@@ -274,17 +273,10 @@
         }{}
         \\[\if@isAFivePaper 2.65mm\else 3.75mm\fi]
         \hline%
-        \newcommand{\IfAHeaderHeight}{\if@isAFivePaper 11pt\else 13pt\fi}
-        %
-        % Include a PDF that prints the 'faculty' and 'institute' name so that we do depend on the TUD fonts...
-        \parbox[c][\IfAHeaderHeight][c]{\textwidth}{\includegraphics[width=.9\textwidth]{IfA_Header}}
-        %
-        % ..., however, if these are available, we could generate the header without relying on the PDF file
-        % \rule[-1.2mm]{1mm}{\if@isAFivePaper 11pt\else 13pt\fi}
-        % % Einrichtungsname
-        %   \rule[-1.2mm]{0mm}{IfAHeaderHeight}\univBoldIX Fakult{\"a}t Elektrotechnik und Informationstechnik%
-        % % Institut
-        %   \ \univLightIX Institut f{\"u}r Automatisierungstechnik%
+      % Einrichtungsname
+        \rule[-1.2mm]{0mm}{\if@isAFivePaper 11pt\else 13pt\fi}\univBoldIX Fakult{\"a}t Elektrotechnik und Informationstechnik%
+      % Institut
+        \ \univLightIX Institut f{\"u}r Automatisierungstechnik%
         \\
         \hline
     \end{tabular*}%
