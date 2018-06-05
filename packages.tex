@@ -13,8 +13,8 @@
 % *      - initial API and implementation
 % ******************************************************************************/
 
-\RequirePackage[utf8]{inputenc}  % Eingabe von Umlauten ermöglichen.
-\RequirePackage[T1]{fontenc}       % EC-Fonts verwenden, so dass Wörter mit Umlauten getrennt werden
+\RequirePackage[utf8]{inputenc}    % Eingabe von Umlauten ermöglichen.
+\RequirePackage[OT1]{fontenc}      % EC-Fonts verwenden, so dass Wörter mit Umlauten getrennt werden
 \RequirePackage{lmodern}           % Verbesserte Schriftart. Alternativ auch \RequirePackage{palatino}, \RequirePackage{fourier}, etc.
 
 \RequirePackage{nameref}           % Zusatzpaket zu hyperref. Muss vor inkompatiblen Paketen geladen werden.
@@ -31,7 +31,7 @@
 \RequirePackage{pdfpages}          % Zum einbinden von kompletten PDF-Seiten (z.B. Aufgabenstellung)
 \RequirePackage{caption}           % Paket zum Einbinden von Captions bei Nicht-Float-Objekten (hauptsächlich für Anhang)
 
-\RequirePackage{csquotes}		   % Ergänzungspaket zu Babel für erweiterte Zitierfunktionen
+\RequirePackage{csquotes}          % Ergänzungspaket zu Babel für erweiterte Zitierfunktionen
 
 \RequirePackage{calc}              % Für Berechnungen mit Variablen
 \RequirePackage{upgreek}           % Aufrechte griechische Buchstaben (beachte ISO konformer Formelsatz)
@@ -98,6 +98,6 @@
                             % UseNone, UseThumbs (show thumbnails), UseOutlines (show bookmarks), FullScreen, UseOC, UseAttachments
 ]{hyperref}
 
-%\RequirePackage[draft]{fixme}	% Zum Einfügen von Kommentaren im Text, z.B. Erinnerungen welche Stellen noch bearbeitet werden müssen.
+%\RequirePackage[draft]{fixme}  % Zum Einfügen von Kommentaren im Text, z.B. Erinnerungen welche Stellen noch bearbeitet werden müssen.
                                 % Mit \fixme{}, \fxnote{}, \fxwarning{}, \fxerror{} können differnzierte Notizen gemacht werden.
                                 % Beim Kompilieren wird eine Zusammenfassung gegeben, wie viele fixme-Notizen noch im Dokument sind.

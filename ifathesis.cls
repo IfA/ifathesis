@@ -18,7 +18,7 @@
 \def\filename{ifathesis}
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{\filename}[\filedate DA/SA-Klasse des Instituts fuer Automatisierungstechnik, (c) by Stefan Hennig, Arne Sonnenburg, Matthias Freund, Christopher Martin]
+\ProvidesClass{\filename}[\filedate DA/SA-Klasse des Instituts fuer Automatisierungstechnik, (c) by Stefan Hennig, Arne Sonnenburg, Matthias Freund, Christopher Martin, Lukas Baron]
 \typeout{Class: '\filename' Version \fileversion, Standard DA/SA-Klasse des Instituts fuer Automatisierungstechnik.}
 
 \newif\if@useListOfFigures\@useListOfFiguresfalse
@@ -196,7 +196,7 @@
 
 
 % Standardschrift (muss manuell zurückgesetzt werden, nachdem oben das 'OpenSans' package geladen wurde)
-\renewcommand*\familydefault{cmr} % coputer modern roman
+\renewcommand*\familydefault{cmr} % computer modern roman
 
 %-------------------------------------------------------------------------
 \RequirePackage{ifthen}
