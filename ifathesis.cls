@@ -18,7 +18,7 @@
 \def\filename{ifathesis}
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{\filename}[\filedate DA/SA-Klasse des Instituts fuer Automatisierungstechnik, (c) by Stefan Hennig, Arne Sonnenburg, Matthias Freund, Christopher Martin]
+\ProvidesClass{\filename}[\filedate DA/SA-Klasse des Instituts fuer Automatisierungstechnik, (c) by Stefan Hennig, Arne Sonnenburg, Matthias Freund, Christopher Martin, Lukas Baron]
 \typeout{Class: '\filename' Version \fileversion, Standard DA/SA-Klasse des Instituts fuer Automatisierungstechnik.}
 
 \newif\if@useListOfFigures\@useListOfFiguresfalse
@@ -189,10 +189,14 @@
 \newcommand*{\ifaIncludeAfterTitlePage}[1]{\renewcommand*{\@ifaIncludeAfterTitlePage}{#1}}
 \newcommand*{\ifaIncludeAtEndOfDocument}[1]{\renewcommand*{\@ifaIncludeAtEndOfDocument}{#1}}
 
-% Not required any longer in order to enable students that do not own the TUD fonts to use the class file...
-% % Schriftspezifische Definitionen
-% \DeclareFixedFont{\univLightIX}{T1}{aun}{l}{n}{\if@isAFivePaper 7\else 9\fi}
-% \DeclareFixedFont{\univBoldIX}{T1}{aun}{b}{n}{\if@isAFivePaper 7\else 9\fi}
+% Schriftspezifische Definitionen (wird lediglich für die Kopfzeile verwendet)
+\RequirePackage[default,scale=.95]{opensans} %scales the letter spacing, default refers to the printing style for numbers
+\DeclareFixedFont{\openSansLightIX}{T1}{fos}{l}{n}{\if@isAFivePaper 7\else 9\fi}
+\DeclareFixedFont{\openSansBoldIX}{T1}{fos}{b}{n}{\if@isAFivePaper 7\else 9\fi}
+
+
+% Standardschrift (muss manuell zurückgesetzt werden, nachdem oben das 'OpenSans' package geladen wurde)
+\renewcommand*\familydefault{cmr} % computer modern roman
 
 %-------------------------------------------------------------------------
 \RequirePackage{ifthen}
@@ -274,17 +278,10 @@
         }{}
         \\[\if@isAFivePaper 2.65mm\else 3.75mm\fi]
         \hline%
-        \newcommand{\IfAHeaderHeight}{\if@isAFivePaper 11pt\else 13pt\fi}
-        %
-        % Include a PDF that prints the 'faculty' and 'institute' name so that we do depend on the TUD fonts...
-        \parbox[c][\IfAHeaderHeight][c]{\textwidth}{\includegraphics[width=.9\textwidth]{IfA_Header}}
-        %
-        % ..., however, if these are available, we could generate the header without relying on the PDF file
-        % \rule[-1.2mm]{1mm}{\if@isAFivePaper 11pt\else 13pt\fi}
-        % % Einrichtungsname
-        %   \rule[-1.2mm]{0mm}{IfAHeaderHeight}\univBoldIX Fakult{\"a}t Elektrotechnik und Informationstechnik%
-        % % Institut
-        %   \ \univLightIX Institut f{\"u}r Automatisierungstechnik%
+      % Einrichtungsname
+        \rule[-1.2mm]{0mm}{\if@isAFivePaper 11pt\else 13pt\fi}\openSansBoldIX Fakult{\"a}t Elektrotechnik und Informationstechnik%
+      % Institut
+        \ \openSansLightIX Institut f{\"u}r Automatisierungstechnik%
         \\
         \hline
     \end{tabular*}%
