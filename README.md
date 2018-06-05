@@ -12,11 +12,13 @@ The repository not only contains the basic template but also a sample document (
 
 There are multiple ways to setup this thesis project for developing your own thesis:
 
-1. Forking the Project into a new personal thesis project, cloning the new repository into a local working copy. 
+1. **Forking this project** into a new personal thesis project, cloning the new repository into a local working copy. 
    This is probably a good solution, but the remaining forking relation is only useful, if this thesis project shall be further developed.
    For personal thesis projects, no merge request can be applied to this thesis template project.
-   Thus, the forking relation should be removed. Updates however, from this project can only be received when this project is added as a remote to the local working copy of the newly forked project.
-2. Clone this template project into a local working copy. Create a new seperate Latex-project in a folder nearby (not within, since the versioning cannot be separated this way). 
+   Thus, the forking relation should be removed.
+   Updates however, from this project can only be received when this project is added as a remote to the local working copy of the newly forked project.
+   In this case, updates should be received only from the `template` branch that is cleaned from the sample files.
+2. **Clone this project** into a local working copy. Create a new seperate Latex-project in a folder nearby (not within, since the versioning cannot be separated this way). 
    In the preamlbe your main Latex-file, use the command `\documentclass[...]{../ifathesis/ifathesis.cls}`. 
    This way, the versioning for the original thesis template project and the custom thesis project can be separated, updates to the template project will be received, and the example files are constantly available.
 
@@ -24,6 +26,7 @@ There are multiple ways to setup this thesis project for developing your own the
 1. You should use Git for the versioning on the one hand and on the other hand a GitLab/GitHub-Server Repository for synchonizing the project between multiple devices and for maintaining a backup automatically.
 2. Only track files that are not generated during Latex build with the versioning tool (Git). 
    Do not checkin Latex temporary files or the generated output PDF, but check all files in, that are required for a Latex build, i.e. everything that is required to perform the command `pdflatex <main/thesis/etc.>.tex` should be checked-in into verisioning, nothing less, nothing more.
+   Unless using setup method 2, e.g. the `ifthesis.cls` and helper files such as `packages.tex`, logo files, etc. should be checked in.
 3. Snippet [Snippet 1](https://git.agtele.eats.et.tu-dresden.de/snippets/1) provides a good .gitignore list, that should be added to the thesis project (copy over the version that is cloned with this thesis template project, or on windows create the file gitignore.txt and use the command `mv gitignore.text .gitignore` in order to rename the file).
    This file helps your local git client to track only files, that are necessary to be tracked.
 4. For the use of Git, and for other software-related stuff, [Snippet 3](https://git.agtele.eats.et.tu-dresden.de/snippets/3) provides a lecture script for practical aspectes of software development including a short introduction into Git. 
