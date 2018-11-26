@@ -190,7 +190,7 @@
 \newcommand*{\ifaIncludeAtEndOfDocument}[1]{\renewcommand*{\@ifaIncludeAtEndOfDocument}{#1}}
 
 % Schriftspezifische Definitionen (wird lediglich für die Kopfzeile verwendet)
-\RequirePackage[default,scale=.95]{opensans} %scales the letter spacing, default refers to the printing style for numbers
+\RequirePackage[scale=.95]{opensans} %scales the letter spacing, default refers to the printing style for numbers
 \DeclareFixedFont{\openSansLightIX}{T1}{fos}{l}{n}{\if@isAFivePaper 7\else 9\fi}
 \DeclareFixedFont{\openSansBoldIX}{T1}{fos}{b}{n}{\if@isAFivePaper 7\else 9\fi}
 
@@ -279,9 +279,14 @@
         \\[\if@isAFivePaper 2.65mm\else 3.75mm\fi]
         \hline%
       % Einrichtungsname
-        \rule[-1.2mm]{0mm}{\if@isAFivePaper 11pt\else 13pt\fi}\openSansBoldIX Fakult{\"a}t Elektrotechnik und Informationstechnik%
+        \rule[-1.2mm]{0mm}{\if@isAFivePaper 11pt\else 13pt\fi}%\openSansBoldIX 
+        \fosfamily\textbf {\fontsize{\if@isAFivePaper 7\else 9\fi}{\if@isAFivePaper 9\else 12\fi}\selectfont Fakult{\"a}t Elektrotechnik und Informationstechnik}%
+        % \usefont{OT1}{fos}{b}{n}\fontsize{\if@isAFivePaper 7\else 9\fi}{\if@isAFivePaper 9\else 12\fi}\selectfont Fakult{\"a}t Elektrotechnik und Informationstechnik%
+        % \openSansBoldIX Fakult{\"a}t Elektrotechnik und Informationstechnik%
       % Institut
-        \ \openSansLightIX Institut f{\"u}r Automatisierungstechnik%
+        \ 
+        % \openSansLightIX Institut f{\"u}r Automatisierungstechnik%
+        \fosfamily {\fontseries{l}\fontsize{\if@isAFivePaper 7\else 9\fi}{\if@isAFivePaper 9\else 12\fi}\selectfont Institut f{\"u}r Automatisierungstechnik}%
         \\
         \hline
     \end{tabular*}%
