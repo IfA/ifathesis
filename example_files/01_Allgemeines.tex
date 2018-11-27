@@ -142,10 +142,10 @@ Hierbei handelt es sich um einen Befehl zur Erzeugung eines Quellcode-Listings, 
 \end{verbatim}
 
 \begin{description}
-	\item[<CAPTION>] Die Überschrift des Listings.
-	\item[<LABEL>] Erzeugt eine Marke, über die das Listing mit Hilfe des
+	\item[\textless CAPTION\textgreater] Die Überschrift des Listings.
+	\item[\textless LABEL\textgreater] Erzeugt eine Marke, über die das Listing mit Hilfe des
 	Befehls \verb|\ref{<LABEL>}| im Text referenziert werden kann.
-	\item[<LANGUAGE>] Diese Angabe ist wichtig für die Syntaxhervorhebung. Latex kennt bspw. die Schlüsselwörter und ähnliches vieler Programmiersprachen, z.B.:
+	\item[\textless LANGUAGE\textgreater] Diese Angabe ist wichtig für die Syntaxhervorhebung. Latex kennt bspw. die Schlüsselwörter und ähnliches vieler Programmiersprachen, z.B.:
 		\begin{compactitem}
 			\item Assembler
 			\item Java, C/C++
@@ -155,9 +155,9 @@ Hierbei handelt es sich um einen Befehl zur Erzeugung eines Quellcode-Listings, 
 			\item HTML, XML, XSLT
 		\end{compactitem}
 		Eine vollständige Liste ist unter anderem \href{http://en.wikibooks.org/wiki/LaTeX/Packages/Listings}{HIER} zu finden.
-	\item[<LINE\_NUMBERS>] Anzeige einer Zeilennummerierung, gültige Werte: {\bfseries none|left|right}
-	\item[<FILE>] Dateiname, in der der Quellcode bzw. das Quellcode-Fragment gespeichert ist. Listings sollten stets aus einer separaten Datei geladen werden. Bei mehreren Listings bietet es sich daher an, ein separates Verzeichnis dafür anzulegen.
-	\item[<FLOAT?>] Mögliche Werte: \textbf{true}, \textbf{false}. Wenn \textbf{true}, dann wird das Listing als Gleitobjekt behandelt, es "`gleitet"' dann jeweils an die nächste freie Stelle. Gleitobjekte können allerdings nicht unterbrochen werden, das heißt, dass kein Seitenumbruch bei längeren Quelltexten möglich ist. In einem solchen Fall sollte auf \textbf{false} zurückgegriffen werden. Das Listing erscheint dann genau an der definierten Stelle, wird aber bei einem Seitenumbruch auf der nächsten Seite fortgesetzt.
+	\item[\textless LINE\_NUMBERS\textgreater] Anzeige einer Zeilennummerierung, gültige Werte: {\bfseries none|left|right}
+	\item[\textless FILE\textgreater] Dateiname, in der der Quellcode bzw. das Quellcode-Fragment gespeichert ist. Listings sollten stets aus einer separaten Datei geladen werden. Bei mehreren Listings bietet es sich daher an, ein separates Verzeichnis dafür anzulegen.
+	\item[\textless FLOAT?\textgreater] Mögliche Werte: \textbf{true}, \textbf{false}. Wenn \textbf{true}, dann wird das Listing als Gleitobjekt behandelt, es "`gleitet"' dann jeweils an die nächste freie Stelle. Gleitobjekte können allerdings nicht unterbrochen werden, das heißt, dass kein Seitenumbruch bei längeren Quelltexten möglich ist. In einem solchen Fall sollte auf \textbf{false} zurückgegriffen werden. Das Listing erscheint dann genau an der definierten Stelle, wird aber bei einem Seitenumbruch auf der nächsten Seite fortgesetzt.
 \end{description}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -165,7 +165,7 @@ Hierbei handelt es sich um einen Befehl zur Erzeugung eines Quellcode-Listings, 
 \label{sec:Inkompatibilitaeten}
 
 \begin{description}
-  \item[quote\{\}] Bei Verwendung des
+  \item[quote\textbraceleft\textbraceright] Bei Verwendung des
   \verb|\quote{}|-Befehls entstehen Fehler im Layout. Daher ist als Ersatz die \verb|quotation|-Umgebung zu benutzen.
 \end{description}
 
