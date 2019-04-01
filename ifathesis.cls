@@ -19,7 +19,7 @@
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{\filename}[\filedate DA/SA-Klasse des Instituts fuer Automatisierungstechnik, (c) by Stefan Hennig, Arne Sonnenburg, Matthias Freund, Christopher Martin, Lukas Baron]
-\typeout{Class: '\filename' Version \fileversion, Standard DA/SA-Klasse des Instituts fuer Automatisierungstechnik.}
+\typeout{Class: '\filename' Version \fileversion, Standard DA/StA-Klasse des Instituts fuer Automatisierungstechnik.}
 
 \newif\if@useListOfFigures\@useListOfFiguresfalse
 \DeclareOption{listoffigures}{\@useListOfFigurestrue}
@@ -155,6 +155,11 @@
 \newcommand*{\@ifaIncludeAfterTitlePage}{} % Can be used for 'Dissertations' to include additional content between the title page and abstract (e.g. for an impressum)
 \newcommand*{\@ifaIncludeAtEndOfDocument}{} % Can be used for 'Dissertations' to include additional content at the end of the document (e.g. to achieve an even number of pages)
 
+\newcommand*{\@logo}{IfA_Logo_SW}
+\newcommand*{\@institute}{Institut f{\"u}r Automatisierungstechnik}
+\newcommand*{\@department}{Fakult{\"a}t Elektrotechnik und Informationstechnik}
+
+
 \newcommand*{\ifaThesis}[1]{\renewcommand*{\@ifaThesis}{#1}}
 \newcommand*{\ifaDissertationStage}[1]{\renewcommand*{\@ifaDissertationStage}{#1}}
 \newcommand*{\ifaAuthor}[1]{\renewcommand*{\@ifaAuthor}{#1}}
@@ -188,6 +193,11 @@
 \newcommand*{\ifaIncludeBeforeTitlePage}[1]{\renewcommand*{\@ifaIncludeBeforeTitlePage}{#1}}
 \newcommand*{\ifaIncludeAfterTitlePage}[1]{\renewcommand*{\@ifaIncludeAfterTitlePage}{#1}}
 \newcommand*{\ifaIncludeAtEndOfDocument}[1]{\renewcommand*{\@ifaIncludeAtEndOfDocument}{#1}}
+\newcommand*{\otherInstitute}[1]{\renewcommand*{\@institute}{#1}}
+\newcommand*{\otherDepartment}[1]{\renewcommand*{\@department}{#1}}
+\newcommand*{\otherLogo}[1]{\renewcommand*{\@logo}{#1}}
+
+
 
 % Schriftspezifische Definitionen (wird lediglich für die Kopfzeile verwendet)
 \RequirePackage[scale=.95]{opensans} %scales the letter spacing, default refers to the printing style for numbers
@@ -274,19 +284,19 @@
         \hfill
       % IfA-Logo
         \ifthenelse{\not\equal{\@ifaThesis}{Dissertation}}{ % According to Frau Wermuth, there must only be the TU logo on the title page of a dissertation
-          \if@isIfaLogo   \includegraphics[height=\if@isAFivePaper 11.83mm\else 16.73mm\fi]{IfA_Logo_SW}\fi
+          \if@isIfaLogo   \includegraphics[height=\if@isAFivePaper 11.83mm\else 16.73mm\fi]{\@logo}\fi
         }{}
         \\[\if@isAFivePaper 2.65mm\else 3.75mm\fi]
         \hline%
       % Einrichtungsname
         \rule[-1.2mm]{0mm}{\if@isAFivePaper 11pt\else 13pt\fi}%\openSansBoldIX 
-        \fosfamily\textbf {\fontsize{\if@isAFivePaper 7\else 9\fi}{\if@isAFivePaper 9\else 12\fi}\selectfont Fakult{\"a}t Elektrotechnik und Informationstechnik}%
+        \fosfamily\textbf {\fontsize{\if@isAFivePaper 7\else 9\fi}{\if@isAFivePaper 9\else 12\fi}\selectfont \@department}%
         % \usefont{OT1}{fos}{b}{n}\fontsize{\if@isAFivePaper 7\else 9\fi}{\if@isAFivePaper 9\else 12\fi}\selectfont Fakult{\"a}t Elektrotechnik und Informationstechnik%
         % \openSansBoldIX Fakult{\"a}t Elektrotechnik und Informationstechnik%
       % Institut
         \ 
         % \openSansLightIX Institut f{\"u}r Automatisierungstechnik%
-        \fosfamily {\fontseries{l}\fontsize{\if@isAFivePaper 7\else 9\fi}{\if@isAFivePaper 9\else 12\fi}\selectfont Institut f{\"u}r Automatisierungstechnik}%
+        \fosfamily {\fontseries{l}\fontsize{\if@isAFivePaper 7\else 9\fi}{\if@isAFivePaper 9\else 12\fi}\selectfont \@institute}%
         \\
         \hline
     \end{tabular*}%
