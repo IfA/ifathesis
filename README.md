@@ -4,6 +4,11 @@ A Latex template that can be used to prepare theses of various types (master the
 
 **Note**: Before starting to write your own thesis, carefully read the [official guideline of the Institute of Automation](http://www.et.tu-dresden.de/ifa/index.php?id=330) and all linked documents!
 
+## Corporate Design Note
+This template is not compliant with the corporate design of TU Dresden. 
+Reasons: The CD-Font openSans is only used in the logo header, but not in the text body because sans fonts are not suitable for large text bodies, especially not in thesises.
+Placing the institute logo in the header is not suggested. However, if needed, both settings can be overridden by the user.
+
 ## Usage
 
 The repository not only contains the basic template but also a sample document ([example.tex](/example.tex)) that should provide a good starting point for your own thesis. It explains the possible configuration options, provided commands, and basic usage hints. 
