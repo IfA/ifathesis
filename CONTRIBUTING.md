@@ -1,3 +1,12 @@
+# deprecated
+
+The following Contributing Guide is deprecated. 
+The two-branch model was intended to be used in order to provide the example document based on the ifathesis class (master) 
+and to provide an update source (template) for the class file alone that can be incorporated as a remote in derived thesis project.
+This, however, makes the project harder to maintain while there is a better installation option available (Side-by-Side), see Readme.
+
+# Contributing
+
 The repository contains two branches: 'template' and 'master'.
 
 The 'template' branch contains the main files that are necessary for creating a 
