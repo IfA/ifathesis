@@ -21,9 +21,9 @@ There are multiple ways to setup this thesis project for developing your own the
    This is probably a good solution, but the remaining forking relation is only useful, if this thesis project shall be further developed.
    For personal thesis projects, no merge request can be applied to this thesis template project.
    Thus, the forking relation should be removed.
-   Updates however, from this project can only be received when this project is added as a remote to the local working copy of the newly forked project.
+   **Note, the template branch is deprecated, see Contributing guide** Updates however, from this project can only be received when this project is added as a remote to the local working copy of the newly forked project.
    In this case, updates should be received only from the `template` branch that is cleaned from the sample files.
-2. **Clone this project** into a local working copy. Create a new seperate Latex-project in a folder nearby (not within, since the versioning cannot be separated this way). 
+2. **Clone this project (Side-by-Side installation)** into a local working copy. Create a new seperate Latex-project in a folder nearby (not within, since the versioning cannot be separated this way). 
    In the preamlbe your main Latex-file, use the command `\documentclass[...]{../ifathesis/ifathesis.cls}`. 
    This way, the versioning for the original thesis template project and the custom thesis project can be separated, updates to the template project will be received, and the example files are constantly available.
 
