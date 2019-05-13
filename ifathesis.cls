@@ -230,6 +230,33 @@
     natbib=true
   ]{biblatex}
 
+  % Add custom driver for @standard bib entries
+\DeclareDatamodelEntrytypes{standard}
+\DeclareDatamodelEntryfields[standard]{type,number}
+\DeclareBibliographyDriver{standard}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newunit\newblock
+  \printfield{number}%
+  \setunit{\addspace}\newblock
+  \printfield[parens]{type}%
+  \newunit\newblock
+  \usebibmacro{location+date}%
+  \newunit\newblock
+  \iftoggle{bbx:url}
+    {\usebibmacro{url+urldate}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \usebibmacro{related}%
+  \usebibmacro{finentry}}  
+
   % Erlaube URL-Linebreaks
   \setcounter{biburlnumpenalty}{6000}% Penalty für Zahlenumbruch
   \setcounter{biburlucpenalty}{3000} % Penalty für Umbruch an Großbuchstaben
