@@ -377,9 +377,9 @@
 % Integriert Listings und baut diese als Gleitobjekt aus, wenn gewünscht
 %-------------------------------------------------------------------------
 % Usage: \listing{<Caption>}{<Label>}{<[Dialect]Language>}{<Pfad>}{<float?>} 
-
+\captionsetup[lstlisting]{margin={0pt,-.3cm},singlelinecheck=true,labelsep=space}%Fixing the listing caption formatting that originally is centered to the top-line of the listing
 \newcommand*{\ifalisting}[6]{
-  \renewcommand{\lstlistingname}{\hspace{-0.6cm}Listing}
+  \renewcommand{\lstlistingname}{Listing}
   \ifthenelse{\equal{#6}{true}}{
     \ifalistingFloat{#1}{#2}{#3}{#4}{#5}
   }{
