@@ -15,6 +15,8 @@
 
 \RequirePackage[utf8]{inputenc}  % Eingabe von Umlauten ermöglichen.
 \RequirePackage[OT1]{fontenc}       % EC-Fonts verwenden, so dass Wörter mit Umlauten getrennt werden
+\RequirePackage[T1]{fontenc}       
+% \RequirePackage{type1ec} % or \RequirePackage{cm-super} % .sty-file cannot be found, the cm-super package has to installed manually using the package manager
 \RequirePackage{lmodern}           % Verbesserte Schriftart. Alternativ auch \RequirePackage{palatino}, \RequirePackage{fourier}, etc.
 
 \RequirePackage{nameref}           % Zusatzpaket zu hyperref. Muss vor inkompatiblen Paketen geladen werden.
@@ -106,3 +108,4 @@
   pdfpagemode=UseOutlines   % Determines how the file is opening:
                             % UseNone, UseThumbs (show thumbnails), UseOutlines (show bookmarks), FullScreen, UseOC, UseAttachments
 ]{hyperref}
+

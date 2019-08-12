@@ -145,7 +145,7 @@
 \newcommand*{\@ifaAbstractDE}{GoHaigh2}
 \newcommand*{\@ifaAbstractEN}{GoHaigh2}
 \newcommand*{\@ifaReferences}{IPhei0Ox}
-\newcommand*{\@ifaAbbrev}{00_Abbrev}
+\newcommand*{\@ifaAbbrev}{example_files/00_abbrev}
 \newcommand*{\@ifaUserListings}{}
 \newcommand*{\@ifaAcknowledgements}{}
 \newcommand*{\@ifaBibliographyBeforeAppendix}{true}
