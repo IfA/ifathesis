@@ -9,6 +9,9 @@ This template is not compliant with the corporate design of TU Dresden.
 Reasons: The CD-Font openSans is only used in the logo header, but not in the text body because sans fonts are not suitable for large text bodies, especially not in thesises.
 Placing the institute logo in the header is not suggested. However, if needed, both settings can be overridden by the user.
 
+## License
+The content of this repository is made available under the Eclipse Public License v1.0 (see [LICENSE](/LICENSE) file), except logo files (IfA_Logo_SW.pdf, TU_Logo_SW.pdf etc.) that are property of Technische Universität Dresden instution or its subordinate institutions. The use of such protected files is allowed for members or students of Technische Universität Dresden only.
+
 ## Usage
 
 The repository not only contains the basic template but also a sample document ([example.tex](/example.tex)) that should provide a good starting point for your own thesis. It explains the possible configuration options, provided commands, and basic usage hints. 
