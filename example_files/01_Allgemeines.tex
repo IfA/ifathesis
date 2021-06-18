@@ -66,7 +66,7 @@ Zur Verfügung steht die Dokumentenklasse \verb-ifathesis- mit folgenden Optione
   \item[listoffigures] Integriert ein Abbildungsverzeichnis an der richtigen Stelle, gemäß der \emph{IfA}-Richtlinie
   \item[listoftables] Integriert ein Tabellenverzeichnis an der richtigen Stelle, gemäß der \emph{IfA}-Richtlinie
   \item[listoftlistings] Integriert ein Quellcodeverzeichnis an der richtigen Stelle, gemäß der \emph{IfA}-Richtlinie
-  \item[abbrevations] Integriert ein Symbol- und Abkürzungsverzeichnis an der richtigen Stelle, gemäß der \emph{IfA}-Richtlinie. Weitere Informationen finden Sie in Abschnitt \ref{sec:install} und in der Datei \verb-exmaple_files\00_abbrev.tex-.
+  \item[abbrevations] Integriert ein Symbol- und Abkürzungsverzeichnis an der richtigen Stelle, gemäß der \emph{IfA}-Richtlinie. Weitere Informationen finden Sie in \autoref{sec:install} und in der Datei \verb-exmaple_files\00_abbrev.tex-.
   \item[bibIfa | bibNumeric | bibHarvard] Verwendung unterschiedlicher Stile für
   Zitate bzw. für das Literaturverzeichnis
   \item[bibtex | bibtex8 | biber] Festlegung des Bibliography"=Backends für das Paket \emph{biblatex} (relevant für das Format der verwendeten \texttt{*.bib}-Datei). Für Eigenheiten sei an dieser Stelle auf die \href{https://www.ctan.org/pkg/biblatex?lang=de}{Dokumentation} des \emph{biblatex}-Pakets verwiesen.
@@ -151,10 +151,10 @@ Hierbei handelt es sich um einen Befehl zur Erzeugung eines Quellcode-Listings, 
 \end{verbatim}
 
 \begin{description}
-	\item[\textless CAPTION\textgreater] Die Überschrift des Listings.
-	\item[\textless LABEL\textgreater] Erzeugt eine Marke, über die das Listing mit Hilfe des
+	\item[$<$CAPTION$>$] Die Überschrift des Listings.
+	\item[$<$LABEL$>$] Erzeugt eine Marke, über die das Listing mit Hilfe des
 	Befehls \verb|\ref{<LABEL>}| im Text referenziert werden kann.
-	\item[\textless LANGUAGE\textgreater] Diese Angabe ist wichtig für die Syntaxhervorhebung. Latex kennt bspw. die Schlüsselwörter und ähnliches vieler Programmiersprachen, z.B.:
+	\item[$<$LANGUAGE$>$] Diese Angabe ist wichtig für die Syntaxhervorhebung. Latex kennt bspw. die Schlüsselwörter und ähnliches vieler Programmiersprachen, z.B.:
 		\begin{compactitem}
 			\item Assembler
 			\item Java, C/C++
@@ -164,9 +164,9 @@ Hierbei handelt es sich um einen Befehl zur Erzeugung eines Quellcode-Listings, 
 			\item HTML, XML, XSLT
 		\end{compactitem}
 		Eine vollständige Liste ist unter anderem \href{http://en.wikibooks.org/wiki/LaTeX/Packages/Listings}{HIER} zu finden.
-	\item[\textless LINE\_NUMBERS\textgreater] Anzeige einer Zeilennummerierung, gültige Werte: {\bfseries none|left|right}
-	\item[\textless FILE\textgreater] Dateiname, in der der Quellcode bzw. das Quellcode-Fragment gespeichert ist. Listings sollten stets aus einer separaten Datei geladen werden. Bei mehreren Listings bietet es sich daher an, ein separates Verzeichnis dafür anzulegen.
-	\item[\textless FLOAT?\textgreater] Mögliche Werte: \textbf{true}, \textbf{false}. Wenn \textbf{true}, dann wird das Listing als Gleitobjekt behandelt, es "`gleitet"' dann jeweils an die nächste freie Stelle. Gleitobjekte können allerdings nicht unterbrochen werden, das heißt, dass kein Seitenumbruch bei längeren Quelltexten möglich ist. In einem solchen Fall sollte auf \textbf{false} zurückgegriffen werden. Das Listing erscheint dann genau an der definierten Stelle, wird aber bei einem Seitenumbruch auf der nächsten Seite fortgesetzt.
+	\item[$<$LINE\_NUMBERS$>$] Anzeige einer Zeilennummerierung, gültige Werte: {\bfseries none|left|right}
+	\item[$<$FILE$>$] Dateiname, in der der Quellcode bzw. das Quellcode-Fragment gespeichert ist. Listings sollten stets aus einer separaten Datei geladen werden. Bei mehreren Listings bietet es sich daher an, ein separates Verzeichnis dafür anzulegen.
+	\item[$<$FLOAT$>$] Mögliche Werte: \textbf{true}, \textbf{false}. Wenn \textbf{true}, dann wird das Listing als Gleitobjekt behandelt, es "`gleitet"' dann jeweils an die nächste freie Stelle. Gleitobjekte können allerdings nicht unterbrochen werden, das heißt, dass kein Seitenumbruch bei längeren Quelltexten möglich ist. In einem solchen Fall sollte auf \textbf{false} zurückgegriffen werden. Das Listing erscheint dann genau an der definierten Stelle, wird aber bei einem Seitenumbruch auf der nächsten Seite fortgesetzt.
 \end{description}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -174,7 +174,7 @@ Hierbei handelt es sich um einen Befehl zur Erzeugung eines Quellcode-Listings, 
 \label{sec:Inkompatibilitaeten}
 
 \begin{description}
-  \item[quote\textbraceleft\textbraceright] Bei Verwendung des
+  \item[quote${}$] Bei Verwendung des
   \verb|\quote{}|-Befehls entstehen Fehler im Layout. Daher ist als Ersatz die \verb|quotation|-Umgebung zu benutzen.
   \item[Paket cm-super] Sollte es zu Problemen bei der automatischen Silbentrennung für Worte mit Umlauten (ä, ü, ö, Ä, Ö, Ü etc.) kommen, kann versucht werden das \verb|cm-super|-Paket zu installieren. Dazu kann der Paketmanager der jeweiligen Latex-Distribution genutzt werden. Bei der Verwendung von MikTex ist dieser in die \verb|miktex-console| integriert und unter \verb|[miktex-root]/miktex/bin/miktex-console[.exe]| zu finden.
 \end{description}

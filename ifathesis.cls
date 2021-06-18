@@ -61,10 +61,10 @@
 
 % Lade Basisklasse der Vorlage
 \PassOptionsToPackage{%
-  \if@isAFivePaper paper=a5\else paper=a4\fi, % Papiergröße
+  paper=\if@isAFivePaper a5\else a4\fi,       % Papiergröße
   headinclude=true,                           % Gehört Kopfzeile eher zur Seite oder zum Rand?
   footinclude=false,                          % Gehört Fußzeile eher zur Seite oder zum Rand?
-  pagesize                                    % Schreibt die Seitengröße ins Seitenregister,
+  pagesize=auto                               % Schreibt die Seitengröße ins Seitenregister,
                                               % sodass DVI- und PDF-Seiten die richtige Größe haben.
 }{typearea}
 
@@ -72,43 +72,42 @@
       
 \PassOptionsToPackage{fleqn}{amsmath}
 
+  % fontsize=\FONT,                                           % Grundschriftgröße
+  % BCOR=\BCOR,                                               % Binderandgröße
+  % DIV=\DIV,                                                 % Seitenaufteilung
+
+\LoadClass[  
+  captions=tableheading,                                    % Tabellenabstände für TabellenÜBERschriften optimieren
+  twoside=\if@isReadyForPrint true\else false\fi,  % Dokument zweiseitig?
+  headings=small,                                           % Relative Größe der Überschriften, small ist besser lesbar und erzeugt weniger Zweizeiligs
+  fleqn=true,                                               % Formeln linksbündig
+  bibliography=totoc,                                       % Literaturverzeichnis im Inhaltsverzeichnis referenziert
+  numbers=noenddot                                          % Punkte nach Abschnittsnummern? (Weglassen = Automatik)
+                                                            % Nach Duden im vorliegenden Bsp. falsch, da auch Buchstaben in Gliederung (Anhang), sieht aber besser aus.
+]{scrbook}                                                  % Basisklasse der Vorlage: Koma-Skrip Klasse analog zur book-Klasse.
+
+% Papiergröße
+% \if@isAFivePaper\KOMAoptions{paper=a5}\else\fi%
+
 % Grundschriftgröße
-\newcommand{\FONT}{
-  \if@isAFivePaper 9pt\else 12pt\fi
-}
+\KOMAoptions{fontsize=\if@isAFivePaper 9pt\else 12pt\fi}
 
 % Binderandgröße
-\newcommand{\BCOR}{%                                        
-  \if@isReadyForPrint%    
-    \if@isAFivePaper 10mm\else 15mm\fi                                                                
+\KOMAoptions{BCOR=\if@isReadyForPrint%    
+    \if@isAFivePaper 10mm\else 15mm\fi%                                                                
   \else%                                                    
-    0mm      
-  \fi
-}
+    0mm%      
+  \fi}
 
 % Teil der Seite, der als Seitenrand berücksichtigt wird (auch =calc mgl.):
 % Z.B. DIV=10: Randbreite Oben und Mitte 1/10, Unten und Außen 2/10 der Seite.
 % Regel: 60 bis 70 Zeichen pro Zeile, weniger ist besser, niemals mehr als 80!
-\newcommand{\DIV}{%                                         
-  \if@isReadyForPrint%                                      
-    \if@isAFivePaper 13\else 10\fi                          
+\KOMAoptions{DIV=\if@isReadyForPrint%                                      
+    \if@isAFivePaper 13\else 10\fi%                          
   \else%                                                    
-    \if@isAFivePaper 11\else 9\fi         
-  \fi
-}
+    \if@isAFivePaper 11\else 9\fi%         
+  \fi}%
 
-\LoadClass[
-  fontsize=\FONT,                                           % Grundschriftgröße
-  BCOR=\BCOR,                                               % Binderandgröße
-  DIV=\DIV,                                                 % Seitenaufteilung
-  captions=tableheading,                                    % Tabellenabstände für TabellenÜBERschriften optimieren
-  \if@isReadyForPrint  twoside=true\else twoside=false\fi,  % Dokument zweiseitig?
-  headings=small,                                           % Relative Größe der Überschriften, small ist besser lesbar und erzeugt weniger Zweizeiligs
-  fleqn,                                                    % Formeln linksbündig
-  bibliography=totoc,                                       % Literaturverzeichnis im Inhaltsverzeichnis referenziert
-  numbers=noenddot                                         % Punkte nach Abschnittsnummern? (Weglassen = Automatik)
-                                                            % Nach Duden im vorliegenden Bsp. falsch, da auch Buchstaben in Gliederung (Anhang), sieht aber besser aus.
-]{scrbook}                                                  % Basisklasse der Vorlage: Koma-Skrip Klasse analog zur book-Klasse.
 
 \addtokomafont{chapterprefix}{\mdseries}
 \if@isAFivePaper
@@ -200,9 +199,9 @@
 
 
 % Schriftspezifische Definitionen (wird lediglich für die Kopfzeile verwendet)
-\RequirePackage[scale=.95]{opensans} %scales the letter spacing, default refers to the printing style for numbers
-\DeclareFixedFont{\openSansLightIX}{T1}{fos}{l}{n}{\if@isAFivePaper 7\else 9\fi}
-\DeclareFixedFont{\openSansBoldIX}{T1}{fos}{b}{n}{\if@isAFivePaper 7\else 9\fi}
+\usepackage[scale=.95]{opensans} %scales the letter spacing, default refers to the printing style for numbers
+\DeclareFixedFont{\openSansLightIX}{OT1}{opensans-TLF}{m}{n}{\if@isAFivePaper 7\else 9\fi}
+\DeclareFixedFont{\openSansBoldIX}{OT1}{opensans-TLF}{b}{n}{\if@isAFivePaper 7\else 9\fi}
 
 
 % Standardschrift (muss manuell zurückgesetzt werden, nachdem oben das 'OpenSans' package geladen wurde)
@@ -283,7 +282,47 @@
   \newcommand{\@appTitle}{Anhang}
   \renewcommand{\@pdftitle}{\@ifaTitleDE}
   \renewcommand{\nomname}{Abkürzungs- und Symbolverzeichnis}
-  \renewcommand{\lstlistlistingname}{Quelltextverzeichnis}            
+  \renewcommand{\lstlistlistingname}{Quelltextverzeichnis}           
+
+   \addto\extrasngerman{%
+    \def\figureautorefname{Abb.}%
+   }
+   \addto\extrasngerman{%
+    \def\tableautorefname{Tab.}%
+   }
+   \addto\extrasngerman{%
+    \def\appendixautorefname{Anh.}%
+   }
+   \addto\extrasngerman{%
+    \def\equationautorefname{Gl.}%
+   }
+   \addto\extrasngerman{%
+    \def\chapterautorefname{Kap.}%
+   }
+   \addto\extrasngerman{%
+    \def\sectionautorefname{Abschn.}%
+   }
+   \addto\extrasngerman{%
+    \def\subsectionautorefname{Abschn.}%
+   }
+   \addto\extrasngerman{%
+    \def\subsubsectionautorefname{Abschn.}%
+   }
+   \addto\extrasngerman{%
+    \def\paragraphautorefname{Abs.}%
+   }
+   \addto\extrasngerman{%
+    \def\Hfootnoteautorefname{Fußn.}%
+   }
+   \addto\extrasngerman{%
+    \def\AMSautorefname{Gl.}%
+   }
+   \addto\extrasngerman{%
+    \def\theoremautorefname{Theorem}%
+   }
+   \addto\extrasngerman{%
+    \def\pageautoref{S.}%
+   }
 }{
   % Englische Pakete
   \RequirePackage[english]{babel}    % Silbentrennung nach englischer Rechtschreibung.
@@ -295,6 +334,46 @@
   \renewcommand{\@pdftitle}{\@ifaTitleEN}
   \renewcommand{\nomname}{Nomenclature}
   \renewcommand{\lstlistlistingname}{List of Listings}          
+
+  \addto\extrasenglish{%
+    \def\figureautorefname{fig.}%
+   }
+   \addto\extrasenglish{%
+    \def\tableautorefname{tbl.}%
+   }
+   \addto\extrasenglish{%
+    \def\appendixautorefname{app.}%
+   }
+   \addto\extrasenglish{%
+    \def\equationautorefname{eqn.}%
+   }
+   \addto\extrasenglish{%
+    \def\chapterautorefname{ch.}%
+   }
+   \addto\extrasenglish{%
+    \def\sectionautorefname{sec.}%
+   }
+   \addto\extrasenglish{%
+    \def\subsectionautorefname{sec.}%
+   }
+   \addto\extrasenglish{%
+    \def\subsubsectionautorefname{sec.}%
+   }
+   \addto\extrasenglish{%
+    \def\paragraphautorefname{p.}%
+   }
+   \addto\extrasenglish{%
+    \def\Hfootnoteautorefname{fn.}%
+   }
+   \addto\extrasenglish{%
+    \def\AMSautorefname{eqn.}%
+   }
+   \addto\extrasenglish{%
+    \def\theoremautorefname{theorem}%
+   }
+   \addto\extrasenglish{%
+    \def\pageautoref{p.}%
+   }
 }
 
 %-------------------------------------------------------------------------
