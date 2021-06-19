@@ -395,13 +395,12 @@
         \hline%
       % Einrichtungsname
         \rule[-1.2mm]{0mm}{\if@isAFivePaper 11pt\else 13pt\fi}%\openSansBoldIX 
-        \fosfamily\textbf {\fontsize{\if@isAFivePaper 7\else 9\fi}{\if@isAFivePaper 9\else 12\fi}\selectfont \@department}%
-        % \usefont{OT1}{fos}{b}{n}\fontsize{\if@isAFivePaper 7\else 9\fi}{\if@isAFivePaper 9\else 12\fi}\selectfont Fakult{\"a}t Elektrotechnik und Informationstechnik%
-        % \openSansBoldIX Fakult{\"a}t Elektrotechnik und Informationstechnik%
+        %\fosfamily\textbf {\fontsize{\if@isAFivePaper 7\else 9\fi}{\if@isAFivePaper 9\else 12\fi}\selectfont \@department}%
+         {\fontsize{\if@isAFivePaper 7\else 9\fi}{\if@isAFivePaper 9\else 12\fi}\selectfont\openSansBoldIX \@department}%
       % Institut
         \ 
-        % \openSansLightIX Institut f{\"u}r Automatisierungstechnik%
-        \fosfamily {\fontseries{l}\fontsize{\if@isAFivePaper 7\else 9\fi}{\if@isAFivePaper 9\else 12\fi}\selectfont \@institute}%
+        %\fosfamily {\fontseries{l}\fontsize{\if@isAFivePaper 7\else 9\fi}{\if@isAFivePaper 9\else 12\fi}\selectfont \@institute}%
+         {\fontsize{\if@isAFivePaper 7\else 9\fi}{\if@isAFivePaper 9\else 12\fi}\selectfont\openSansLightIX \@institute}%
         \\
         \hline
     \end{tabular*}%
