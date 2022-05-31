@@ -205,7 +205,7 @@
 
 
 % Standardschrift (muss manuell zurückgesetzt werden, nachdem oben das 'OpenSans' package geladen wurde)
-\renewcommand*\familydefault{cmr} % computer modern roman
+\renewcommand*\familydefault{lmr} % latin modern roman => hochauflösende Schriften
 
 %-------------------------------------------------------------------------
 \RequirePackage{ifthen}
@@ -265,7 +265,7 @@
 
 
 % Lade weitere benötigte Pakete
-\include{packages}
+\input{packages}
 
 % definiere Farben
 \definecolor{TUDBLAU}{rgb}{0.0,0.348,0.637}
@@ -396,15 +396,15 @@
       % Einrichtungsname
         \rule[-1.2mm]{0mm}{\if@isAFivePaper 11pt\else 13pt\fi}%\openSansBoldIX 
         %\fosfamily\textbf {\fontsize{\if@isAFivePaper 7\else 9\fi}{\if@isAFivePaper 9\else 12\fi}\selectfont \@department}%
-         {\fontsize{\if@isAFivePaper 7\else 9\fi}{\if@isAFivePaper 9\else 12\fi}\selectfont\openSansBoldIX \@department}%
+         {\fontencoding{OT1}\fontsize{\if@isAFivePaper 7\else 9\fi}{\if@isAFivePaper 9\else 12\fi}\selectfont\openSansBoldIX \@department}%
       % Institut
         \ 
         %\fosfamily {\fontseries{l}\fontsize{\if@isAFivePaper 7\else 9\fi}{\if@isAFivePaper 9\else 12\fi}\selectfont \@institute}%
-         {\fontsize{\if@isAFivePaper 7\else 9\fi}{\if@isAFivePaper 9\else 12\fi}\selectfont\openSansLightIX \@institute}%
+         {\fontencoding{OT1}\fontsize{\if@isAFivePaper 7\else 9\fi}{\if@isAFivePaper 9\else 12\fi}\selectfont\openSansLightIX \@institute}%
         \\
         \hline
     \end{tabular*}%
-  \end{center}
+  \end{center}%
 }
 
 %-------------------------------------------------------------------------
@@ -564,8 +564,8 @@
 % =================  
   \begin{titlepage}
 
-    \@ifaPrintHeader
-    
+    \@ifaPrintHeader    
+    \fontencoding{T1}\fontfamily{\familydefault}\selectfont%
     % A dissertation will get a different titlepage
     \ifthenelse{\not\equal{\@ifaThesis}{Dissertation}}{
       % ===============================
