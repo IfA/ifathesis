@@ -255,10 +255,13 @@
     \usebibmacro{finentry}%
   }  
 
+
   % Erlaube URL-Linebreaks
-  \setcounter{biburlnumpenalty}{6000}% Penalty für Zahlenumbruch
-  \setcounter{biburlucpenalty}{3000} % Penalty für Umbruch an Großbuchstaben
-  \setcounter{biburllcpenalty}{9000} % Penalty für Umbruch an Kleinbuchstaben
+  \setcounter{biburlnumpenalty}{100}% Penalty für Zahlenumbruch
+  \setcounter{biburlucpenalty}{100} % Penalty für Umbruch an Großbuchstaben
+  \setcounter{biburllcpenalty}{100} % Penalty für Umbruch an Kleinbuchstaben
+
+  \RequirePackage{xurl}
 
   \interfootnotelinepenalty=9999 % Verhindert, dass Fußnoten auf zwei Seiten verteilt werden
 }
@@ -527,7 +530,8 @@
     pdftitle=\@pdftitle,%
     pdfauthor=\@ifaAuthor,%
     pdfsubject=\@pdftitle,%
-    pdfkeywords={\@ifaKeywords}%,%
+    pdfkeywords={\@ifaKeywords},%
+    breaklinks=true%,%
   }
   
   % Check paper size
@@ -847,7 +851,9 @@
     \else 
       \markright{\@bibTitle}
     \fi
-    \printbibliography 
+    \begin{flushleft}
+    \printbibliography
+    \end{flushleft}
     \cleardoublepage
     \automark[section]{chapter}
   }{}
@@ -881,7 +887,9 @@
     \else 
       \markright{\@bibTitle}
     \fi
-    \printbibliography 
+    \begin{flushleft}
+    \printbibliography
+    \end{flushleft}
     \cleardoublepage
     \automark[section]{chapter}
   }{}
