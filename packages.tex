@@ -98,6 +98,8 @@
 
 \RequirePackage{pifont}
 
+\RequirePackage[htt]{hyphenat}  % Erlaubt die automatische Silbentrennung in texttt, allerdings werden Bindestriche (-) sowie Leerzeichen als geschützt behandelt
+
 % Paket zum setzen von Verweisen im Dokument
 \IfStrEq{\@ifaThesisLanguage}{de}{\PassOptionsToPackage{ngerman}{hyperref}}{}     % necessary for \autoref to work for german and english
 \RequirePackage[

@@ -146,10 +146,10 @@
 \newcommand*{\@ifaReferences}{IPhei0Ox}
 \newcommand*{\@ifaAbbrev}{example_files/00_abbrev}
 \newcommand*{\@ifaUserListings}{}
-\newcommand*{\@ifaAcknowledgements}{}
+\newcommand*{\@ifaAcknowledgements}{GoHaigh2}
 \newcommand*{\@ifaBibliographyBeforeAppendix}{true}
 \newcommand*{\@ifaAdditionalContributors}{}
-\newcommand*{\@ifaCV}{cv}
+\newcommand*{\@ifaCV}{GoHaigh2}
 \newcommand*{\@ifaIncludeBeforeTitlePage}{} % Can be used for 'Dissertations' to include additional content before the title page (e.g. for a bastard title or an impressum)
 \newcommand*{\@ifaIncludeAfterTitlePage}{} % Can be used for 'Dissertations' to include additional content between the title page and abstract (e.g. for an impressum)
 \newcommand*{\@ifaIncludeAtEndOfDocument}{} % Can be used for 'Dissertations' to include additional content at the end of the document (e.g. to achieve an even number of pages)
@@ -202,6 +202,9 @@
 \usepackage[scale=.95]{opensans} %scales the letter spacing, default refers to the printing style for numbers
 \DeclareFixedFont{\openSansLightIX}{OT1}{opensans-TLF}{m}{n}{\if@isAFivePaper 7\else 9\fi}
 \DeclareFixedFont{\openSansBoldIX}{OT1}{opensans-TLF}{b}{n}{\if@isAFivePaper 7\else 9\fi}
+
+% Automatische Silbentrennung in texttt erlauben:
+%\DeclareFontFamily{\encodingdefault}{\ttdefault}{\hyphenchar\font=`\-}
 
 
 % Standardschrift (muss manuell zurückgesetzt werden, nachdem oben das 'OpenSans' package geladen wurde)
