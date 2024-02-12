@@ -280,8 +280,8 @@
 % Kläre zunächst einige Dinge, die von der Sprache abhängen
 \ifthenelse{\equal{\@ifaThesisLanguage}{de}}{ 
   % Deutsche Pakete
-  \RequirePackage[ngerman, english]{babel}    % Silbentrennung nach neuer deutscher Rechtschreibung.
-  \RequirePackage[german, english]{nomencl}
+  \RequirePackage[english, ngerman]{babel}    % Silbentrennung nach neuer deutscher Rechtschreibung.
+  \RequirePackage[english, german]{nomencl}
   % Deutsche Begrifflichkeiten
   \newcommand{\@conTitle}{Inhaltsverzeichnis}
   \newcommand{\@bibTitle}{Literaturverzeichnis}
